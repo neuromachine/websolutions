@@ -12,7 +12,975 @@
   </div>
   <!-- End Preloader Section -->
 
+  <!-- Start Navbar Section -->
+  <div class="navbar-section">
+    <div class="techvio-responsive-nav index-navber-responsive">
+      <div class="container">
+        <div class="techvio-responsive-menu">
+          <div class="logo">
+            <a href="index.html">
+              <img src="/assets/img/logo-black.png" class="white-logo" alt="logo">
+              <img src="/assets/img/logo-black.png" class="black-logo" alt="logo">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="techvio-nav index-navber">
+      <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light">
+          <a class="navbar-brand" href="index.html">
+            <img src="/assets/img/logo-black.png" class="white-logo" alt="logo">
+            <img src="/assets/img/logo-black.png" class="black-logo" alt="logo">
+          </a>
+          <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a href="#" class="nav-link">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a href="/about.html" class="nav-link">О нас</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Услуги <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item">
+                    <a href="services.html" class="nav-link">Разработка</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="services-2.html" class="nav-link">Продвижение</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="services-3.html" class="nav-link">Сопровождение</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="single-services.html" class="nav-link">Индивидуально</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Портфолио</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Инфо <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item">
+                    <a href="team.html" class="nav-link">Команда</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="pricing.html" class="nav-link">Цены</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Блог</a>
+              </li>
+              <li class="nav-item">
+                <a href="contact.html" class="nav-link">Контакты</a>
+              </li>
+            </ul>
+            <div class="other-option">
+              <a class="default-btn" href="mailto:sales@nero1218.tech">Связаться <span></span></a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- End Navbar Section -->
 
+  <!-- Start Home Section -->
+  <div class="home-section home-2">
+    <div class="d-table">
+      <div class="d-table-cell">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+              <div class="main-banner-content">
+                <h6 class="text-gradient">Надёжные web-решения</h6>
+                <h1>Твой успешный бизнес,<br>Наша экспертная<br><span class="text-gradient">Web-поддержка.</span></h1>
+                <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
+                <div class="banner-btn">
+                  <a class="default-btn-one" href="services.html">Смотреть видео<span></span></a>
+                  <div class="video-box">
+                    <a href="https://www.youtube.com/watch?v=G9TdA8d5aaU" class="popup-video video-btn"> <i class="fa fa-play"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="banner-image">
+                <img src="/assets/img/home-font-2.png" alt="image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="home-shape-animation">
+      <div class="shape-1">
+        <img src="/assets/img/shape/1.png" alt="shape image">
+      </div>
+      <div class="shape-2">
+        <img src="/assets/img/shape/2.png" alt="shape image">
+      </div>
+      <div class="shape-3">
+        <img src="/assets/img/shape/3.png" alt="shape image">
+      </div>
+      <div class="shape-4">
+        <img src="/assets/img/shape/4.png" alt="shape image">
+      </div>
+      <div class="shape-5">
+        <img src="/assets/img/shape/5.png" alt="shape image">
+      </div>
+      <div class="shape-6">
+        <img src="/assets/img/shape/6.png" alt="shape image">
+      </div>
+      <div class="shape-7">
+        <img src="/assets/img/shape/7.png" alt="shape image">
+      </div>
+    </div>
+  </div>
+  <!-- End Home Section -->
+
+  <!-- Start Services Two Section -->
+  <section class="services-section-two section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">Что мы делаем</h6>
+            <h2>Наши услуги</h2>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-two-item">
+            <div class="services-icon-box">
+              <div class="default-icon">
+                <img src="/assets/img/icon/services-icon-1.svg" alt="svg icon">
+              </div>
+              <div class="hover-icon">
+                <img src="/assets/img/icon/services-icon-hover-1.svg" alt="svg icon">
+              </div>
+            </div>
+            <div class="services-two-content">
+              <h3>Разработка сайтов</h3>
+              <p>Создаём современные и удобные сайты — от лендингов до сложных платформ. Разрабатываем с нуля или дорабатываем существующие решения, адаптируя их под ваш бизнес</p>
+              <div class="services-btn">
+                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-two-item">
+            <div class="services-icon-box">
+              <div class="default-icon">
+                <img src="/assets/img/icon/services-icon-2.svg" alt="svg icon">
+              </div>
+              <div class="hover-icon">
+                <img src="/assets/img/icon/services-icon-hover-2.svg" alt="svg icon">
+              </div>
+            </div>
+            <div class="services-two-content">
+              <h3>Хостинг и серверные решения</h3>
+              <p>Надёжный хостинг и оптимизированные серверные решения для стабильной работы вашего проекта. Настроим, обезопасим и обеспечим бесперебойную поддержку</p>
+              <div class="services-btn">
+                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-two-item">
+            <div class="services-icon-box">
+              <div class="default-icon">
+                <img src="/assets/img/icon/services-icon-3.svg" alt="svg icon">
+              </div>
+              <div class="hover-icon">
+                <img src="/assets/img/icon/services-icon-hover-3.svg" alt="svg icon">
+              </div>
+            </div>
+            <div class="services-two-content">
+              <h3>Поддержка и доработка</h3>
+              <p>Обновляем, дорабатываем и оптимизируем сайты. Исправляем ошибки, ускоряем загрузку, улучшаем UX/UI и добавляем новые функции по запросу</p>
+              <div class="services-btn">
+                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-two-item">
+            <div class="services-icon-box">
+              <div class="default-icon">
+                <img src="/assets/img/icon/services-icon-4.svg" alt="svg icon">
+              </div>
+              <div class="hover-icon">
+                <img src="/assets/img/icon/services-icon-hover-4.svg" alt="svg icon">
+              </div>
+            </div>
+            <div class="services-two-content">
+              <h3>Адаптация под устройства</h3>
+              <p>Делаем сайты, которые работают на всех устройствах. Оптимизируем под мобильные, планшеты и десктопы, улучшая удобство и скорость работы</p>
+              <div class="services-btn">
+                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-two-item">
+            <div class="services-icon-box">
+              <div class="default-icon">
+                <img src="/assets/img/icon/services-icon-5.svg" alt="svg icon">
+              </div>
+              <div class="hover-icon">
+                <img src="/assets/img/icon/services-icon-hover-5.svg" alt="svg icon">
+              </div>
+            </div>
+            <div class="services-two-content">
+              <h3>Безопасность и защита</h3>
+              <p>Защищаем сайты от взломов, DDoS-атак и утечек данных. Настраиваем SSL, резервное копирование и средства мониторинга угроз.</p>
+              <div class="services-btn">
+                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-two-item">
+            <div class="services-icon-box">
+              <div class="default-icon">
+                <img src="/assets/img/icon/services-icon-6.svg" alt="svg icon">
+              </div>
+              <div class="hover-icon">
+                <img src="/assets/img/icon/services-icon-hover-6.svg" alt="svg icon">
+              </div>
+            </div>
+            <div class="services-two-content">
+              <h3>Интеграции и API</h3>
+              <p>Подключаем CRM, платёжные системы, маркетплейсы и сторонние сервисы. Делаем ваш сайт удобнее, автоматизируя ключевые процессы</p>
+              <div class="services-btn">
+                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Services Two Section -->
+
+  <!-- Start About Section -->
+  <section class="about-area bg-grey section-padding">
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 col-md-12">
+          <div class="about-content">
+            <h6 class="sub-title">О студии</h6>
+            <h2>Web-решения с фокусом на результат</h2>
+            <p>Разрабатываем web-решения, которые двигают бизнес вперёд.</p>
+            <p>Мы создаём продуманные сайты и цифровые продукты, ориентированные на рост и удобство пользователей.</p>
+            <p>Внимание к деталям, технологиям и дизайну — в основе каждого нашего проекта.</p>
+            <div class="about-btn-box">
+              <a class="default-btn" href="about.html">Подробнее<span></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="about-image">
+            <img src="/assets/img/about-2.png" alt="About image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End About Section -->
+
+  <!-- Start Portfolio Section -->
+  <section class="portfolio-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">Последние работы</h6>
+            <h2>Наше портфолио</h2>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="portfolio-list">
+            <ul class="nav" id="portfolio-flters">
+              <li class="filter filter-active" data-filter=".all">Все</li>
+              <li class="filter" data-filter=".dev">Разработка</li>
+              <li class="filter" data-filter=".branding">Брендинг</li>
+              <li class="filter" data-filter=".application">SMM</li>
+              <li class="filter" data-filter=".photography">Продвижение</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-container">
+        <div class="row">
+          <!-- portfolio-item -->
+          <div class="col-lg-4 col-md-6 portfolio-grid-item all dev">
+            <div class="portfolio-item">
+              <img src="/assets/img/portfolio/thumb_1.jpg" alt="image">
+              <div class="portfolio-content-overlay">
+                <p>Разработка | Сопровождение</p>
+                <h3><a href="single-portfolio.html">Магазин мебели "Авто-кроватка"</a></h3>
+                <a class="portfolio-link-icon" href="/portfolio_car.html"><i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item -->
+          <div class="col-lg-4 col-md-6 portfolio-grid-item all photography">
+            <div class="portfolio-item">
+              <img src="/assets/img/portfolio/portfolio-2.jpg" alt="image">
+              <div class="portfolio-content-overlay">
+                <p>App Store | Social Media</p>
+                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
+                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item -->
+          <div class="col-lg-4 col-md-6 portfolio-grid-item all branding webdesign">
+            <div class="portfolio-item">
+              <img src="/assets/img/portfolio/portfolio-3.jpg" alt="image">
+              <div class="portfolio-content-overlay">
+                <p>App Store | Social Media</p>
+                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
+                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item -->
+          <div class="col-lg-4 col-md-6 portfolio-grid-item all webdesign">
+            <div class="portfolio-item">
+              <img src="/assets/img/portfolio/portfolio-4.jpg" alt="image">
+              <div class="portfolio-content-overlay">
+                <p>App Store | Social Media</p>
+                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
+                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item -->
+          <div class="col-lg-4 col-md-6 portfolio-grid-item all application">
+            <div class="portfolio-item">
+              <img src="/assets/img/portfolio/portfolio-5.jpg" alt="image">
+              <div class="portfolio-content-overlay">
+                <p>App Store | Social Media</p>
+                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
+                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <!-- portfolio-item -->
+          <div class="col-lg-4 col-md-6 portfolio-grid-item all application photography">
+            <div class="portfolio-item">
+              <img src="/assets/img/portfolio/portfolio-6.jpg" alt="image">
+              <div class="portfolio-content-overlay">
+                <p>App Store | Social Media</p>
+                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
+                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Portfolio Section -->
+
+  <!-- Start Works Process Section -->
+  <section class="workprocess-section bg-grey section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">4 шага к прогрессу</h6>
+            <h2>Рабочий процесс</h2>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="workprocess-single-item">
+            <div class="workprocess-icon-box">
+              <img src="/assets/img/icon/workprocess-icon-1.svg" alt="icon">
+            </div>
+            <div class="workprocess-info">
+              <h3>Изучаем и планируем</h3>
+              <p>Анализируем цели проекта, аудиторию и конкурентов. Разрабатываем стратегию, чтобы web-решение соответствовало задачам бизнеса и давало результат</p>
+            </div>
+            <div class="workprocess-number-bg"><span>01</span></div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="workprocess-single-item">
+            <div class="workprocess-icon-box">
+              <img src="/assets/img/icon/workprocess-icon-2.svg" alt="icon">
+            </div>
+            <div class="workprocess-info">
+              <h3>Дизайн и разработка</h3>
+              <p>Создаём продуманный интерфейс и превращаем его в функциональный сайт. Уделяем внимание каждому элементу, обеспечивая удобство и стабильную работу</p>
+            </div>
+            <div class="workprocess-number-bg"><span>02</span></div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="workprocess-single-item">
+            <div class="workprocess-icon-box">
+              <img src="/assets/img/icon/workprocess-icon-3.svg" alt="icon">
+            </div>
+            <div class="workprocess-info">
+              <h3>Публикация и тесты</h3>
+              <p>Запускаем проект и проводим финальное тестирование. Проверяем скорость, адаптивность, безопасность и исправляем возможные недочёты перед выходом в сеть</p>
+            </div>
+            <div class="workprocess-number-bg"><span>03</span></div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <div class="workprocess-single-item">
+            <div class="workprocess-icon-box">
+              <img src="/assets/img/icon/workprocess-icon-4.svg" alt="icon">
+            </div>
+            <div class="workprocess-info">
+              <h3>Сопровождаем</h3>
+              <p>Поддерживаем, обновляем и масштабируем сайт. Оптимизируем производительность, добавляем новые функции и помогаем адаптироваться к изменениям</p>
+            </div>
+            <div class="workprocess-number-bg"><span>04</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Works Process Section -->
+
+  <!-- Start Counter Section -->
+  <section class="counter-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 counter-item">
+          <div class="single-counter">
+            <div class="counter-contents">
+              <h2>
+                <span class="counter-number">16</span>
+                <span>+</span>
+              </h2>
+              <h3 class="counter-heading">Лет помогаем бизнесу</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 counter-item">
+          <div class="single-counter">
+            <div class="counter-contents">
+              <h2>
+                <span class="counter-number">8</span>
+                <span>+</span>
+              </h2>
+              <h3 class="counter-heading">Клиентов постоянно с нами</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 counter-item">
+          <div class="single-counter">
+            <div class="counter-contents">
+              <h2>
+                <span class="counter-number">350</span>
+                <span>+</span>
+              </h2>
+              <h3 class="counter-heading">Завершенных проектов</h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 counter-item">
+          <div class="single-counter">
+            <div class="counter-contents">
+              <h2>
+                <span class="counter-number">100</span>
+                <span>+</span>
+              </h2>
+              <h3 class="counter-heading">Выполненных рекламных компаний</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Counter Section -->
+
+  <!-- Start Testimonial Section -->
+  <section class="testimonial-section section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">Обратная связь клиентов</h6>
+            <h2>Отзывы</h2>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+          <div class="testimonial-slider owl-carousel owl-theme">
+            <!-- testimonials item -->
+            <div class="single-testimonial">
+              <div class="rating-box">
+                <ul>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
+              <div class="testimonial-content">
+                <p>Обратилась в Web Solution для создания сайта монобренда. Всё сделали быстро, качественно и по цене ниже, чем у конкурентов. Получила удобный, стильный сайт, полностью соответствующий моему бренду!</p>
+              </div>
+              <div class="avatar">
+                <img src="/assets/img/client/review_1.jpg" alt="testimonial images">
+              </div>
+              <div class="testimonial-bio">
+                <div class="bio-info">
+                  <h3>Рая</h3>
+                  <span>основатель бренда одежды</span>
+                </div>
+              </div>
+            </div>
+            <!-- testimonials item -->
+            <div class="single-testimonial">
+              <div class="rating-box">
+                <ul>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
+              <div class="testimonial-content">
+                <p>Сотрудничаем с Web Solution уже более 5 лет. За это время сайт прошёл множество модификаций, доработок и улучшений. Команда всегда оперативно решает задачи и предлагает грамотные решения!</p>
+              </div>
+              <div class="avatar">
+                <img src="/assets/img/client/review_2.jpg" alt="testimonial images">
+              </div>
+              <div class="testimonial-bio">
+                <div class="bio-info">
+                  <h3>Дмитрий</h3>
+                  <span>основатель портала о рыболовстве</span>
+                </div>
+              </div>
+            </div>
+            <!-- testimonials item -->
+            <div class="single-testimonial">
+              <div class="rating-box">
+                <ul>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
+              <div class="testimonial-content">
+                <p>Работали с Web Solution по ряду проектов. Нужно было создать удобные, конверсионные сайты для крупнейшего B2B-дилера шин. Задачи выполнены на высоком уровне, в срок и с учётом всех нюансов SEO.</p>
+              </div>
+              <div class="avatar">
+                <img src="/assets/img/client/review_3.jpg" alt="testimonial images">
+              </div>
+              <div class="testimonial-bio">
+                <div class="bio-info">
+                  <h3>Вячеслав</h3>
+                  <span>B2B-дилер шин, ЮФО</span>
+                </div>
+              </div>
+            </div>
+            <!-- testimonials item -->
+            <div class="single-testimonial">
+              <div class="rating-box">
+                <ul>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
+              <div class="testimonial-content">
+                <p>За время работы с Web Solution реализовали множество сайтов для компании. Команда всегда на связи, быстро решает технические вопросы и обеспечивает стабильную поддержку на аутсорсе.</p>
+              </div>
+              <div class="avatar">
+                <img src="/assets/img/client/review_4.jpg" alt="testimonial images">
+              </div>
+              <div class="testimonial-bio">
+                <div class="bio-info">
+                  <h3>Денис</h3>
+                  <span>директор веб-студии</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Testimonial Section -->
+
+  <!-- Start Faq Section -->
+  <section class="faq-section home-faq bg-grey section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="faq-img">
+            <img src="/assets/img/faq.png" alt="images">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">Вопросы</h6>
+            <h2>Ответы</h2>
+          </div>
+          <div class="faq-accordion first-faq-box">
+            <ul class="accordion">
+              <li class="accordion-item">
+                <a class="accordion-title active" href="javascript:void(0)"> <i class="fa fa-plus"></i> У конкурентов дешевле, почему?</a>
+                <p class="accordion-content show">При выполнении услуг - строим производственные цепочки с упором на качество! Не умеем и не стремимся удерешвлять нашу работу, ниже определенного порога</p>
+              </li>
+              <li class="accordion-item">
+                <a class="accordion-title" href="javascript:void(0)"> <i class="fa fa-plus"></i> Возможно снизить цену?</a>
+                <p class="accordion-content">Мы стремимся обеспечить гибкий подход к клиенту, в определенных случаях мы можем договорится о поэтамном подходе в реализации проекта</p>
+              </li>
+              <li class="accordion-item">
+                <a class="accordion-title" href="javascript:void(0)"> <i class="fa fa-plus"></i> Сколько стоит интернет магазин?</a>
+                <p class="accordion-content">Минимальная цена проекта реализующего "цепочку on-line продаж" - 500$, в данном случае мы предложем ряд условий, обеспечивающих понижение издержек на таких этапах как: разработка дизайн макета, а так же введем упрощенную систему заказа. Советуем закладывать бюджет подобного проекта от 1k $</p>
+              </li>
+              <li class="accordion-item">
+                <a class="accordion-title" href="javascript:void(0)"> <i class="fa fa-plus"></i> Вы занимаетесь продвижением бизнеса локализированного не в РФ</a>
+                <p class="accordion-content">Наша квалификация позволяет выпонять услуги всюду, конечно в ряде случаев необходимо заложить издержки на переводчика и юриста, однако на базовом уровне можно обойтись средствами GPT</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Faq Section -->
+
+  <!-- Start Hire Section -->
+  <section class="hire-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-md-12">
+          <div class="hire-content">
+            <h6 class="sub-title">Будем сотрудничать?</h6>
+            <h2>Цифровая трансформация - путь к росту вашего бизнеса</h2>
+            <p>Современный рынок требует скорости, удобства и технологичности. Мы создаём web-решения, которые упрощают процессы, привлекают клиентов и помогают вам масштабироваться. Готовы сделать следующий шаг?</p>
+            <div class="hire-btn">
+              <a class="default-btn" href="tel:+79282619061">Позвоните<span></span></a>
+              <a class="default-btn-one" href="/contact.html">Свяжитесь<span></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Hire Section -->
+
+  <!-- Start Blog Section -->
+  <section class="blog-section bg-grey pt-100 pb-70">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">Блог и статьи</h6>
+            <h2>Последнее в блоге</h2>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-single-item">
+            <div class="blog-image">
+              <a href="single-blog.html">
+                <img src="/assets/img/blog/blog-1.jpg" alt="image">
+              </a>
+            </div>
+            <div class="blog-description">
+              <ul class="blog-info">
+                <li>
+                  <a href="#"><i class="bi bi-person-circle"></i> Nero</a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-calendar-check"></i> 17 Июля 2024</a>
+                </li>
+              </ul>
+              <div class="blog-text">
+                <h3>
+                  <a href="single-blog.html">
+                    Этапы разработки сайта: от идеи до реализации
+                  </a>
+                </h3>
+                <p>В этой статье мы рассмотрим алгоритм разработки сайта и подробно расскажем о каждом этапе, начиная с идеи и заканчивая финальным продуктом</p>
+                <div class="blog-btn"> <a href="single-blog.html" class="read-more"><i class="bi bi-arrow-right-short"></i> Читать</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-single-item">
+            <div class="blog-image">
+              <a href="single-blog.html">
+                <img src="/assets/img/blog/blog-2.jpg" alt="image">
+              </a>
+            </div>
+            <div class="blog-description">
+              <ul class="blog-info">
+                <li>
+                  <a href="#"><i class="bi bi-person-circle"></i> Лолита</a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-calendar-check"></i> 20 Июня 2024</a>
+                </li>
+              </ul>
+              <div class="blog-text">
+                <h3>
+                  <a href="single-blog.html">
+                    Какие критерии важны крупному клиенту при выборе агентства на веб-разработку?
+                  </a>
+                </h3>
+                <p>Предлагаю сегодня обсудить, на какие ключевые критерии в первую очередь должен смотреть крупный заказчик</p>
+                <div class="blog-btn">
+                  <a href="single-blog.html" class="read-more"><i class="bi bi-arrow-right-short"></i> Читать</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-single-item">
+            <div class="blog-image">
+              <a href="single-blog.html">
+                <img src="/assets/img/blog/blog-3.jpg" alt="image">
+              </a>
+            </div>
+            <div class="blog-description">
+              <ul class="blog-info">
+                <li>
+                  <a href="#"><i class="bi bi-person-circle"></i> Евгений</a>
+                </li>
+                <li>
+                  <a href="#"><i class="bi bi-calendar-check"></i> 11 Мая 2024</a>
+                </li>
+              </ul>
+              <div class="blog-text">
+                <h3>
+                  <a href="single-blog.html">
+                    Использование машинного обучения в веб-разработке
+                  </a>
+                </h3>
+                <p>Машинное обучение (ML) быстро становится важной частью современных веб-приложений. Оно может использоваться для предсказания пользовательского поведения, автоматической модерации контента, улучшения поиска и многого другого.</p>
+                <div class="blog-btn">
+                  <a href="single-blog.html" class="read-more"><i class="bi bi-arrow-right-short"></i> Читать</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Blog Section -->
+
+  <!-- Start Partner section -->
+  <!--
+  <section class="partner-section pt-100 pb-70">
+      <div class="container">
+          <div class="partner-title">
+              <h6 class="sub-title">Trusted By Over 1500</h6>
+              <h2>Our Customers</h2>
+          </div>
+          <div class="partner-list">
+              <div class="partner-item">
+                  <a href="#0">
+                      <img src="/assets/img/partner/client-1.png" alt="image">
+                  </a>
+              </div>
+              <div class="partner-item">
+                  <a href="#0">
+                      <img src="/assets/img/partner/client-2.png" alt="image">
+                  </a>
+              </div>
+              <div class="partner-item">
+                  <a href="#0">
+                      <img src="/assets/img/partner/client-3.png" alt="image">
+                  </a>
+              </div>
+              <div class="partner-item">
+                  <a href="#0">
+                      <img src="/assets/img/partner/client-4.png" alt="image">
+                  </a>
+              </div>
+              <div class="partner-item">
+                  <a href="#0">
+                      <img src="/assets/img/partner/client-5.png" alt="image">
+                  </a>
+              </div>
+              <div class="partner-item">
+                  <a href="#0">
+                      <img src="/assets/img/partner/client-6.png" alt="image">
+                  </a>
+              </div>
+              <div class="partner-item">
+                  <a href="#0">
+                      <img src="/assets/img/partner/client-7.png" alt="image">
+                  </a>
+              </div>
+              <div class="partner-item">
+                  <a href="#0">
+                      <img src="/assets/img/partner/client-8.png" alt="image">
+                  </a>
+              </div>
+              <div class="partner-item">
+                  <a href="#0">
+                      <img src="/assets/img/partner/client-9.png" alt="image">
+                  </a>
+              </div>
+          </div>
+      </div>
+  </section>
+  -->
+  <!-- End Partner section -->
+
+  <!-- Start Footer & Subscribe Section -->
+  <section class="footer-subscribe-wrapper">
+    <!-- Start Subscribe Section -->
+    <div class="subscribe-area">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-md-6">
+            <div class="subscribe-content">
+              <h2>Заполните форму</h2>
+              <p>Оставьте нам свой контакт - свяжемся оперативно</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <form class="newsletter-form">
+              <input type="text" class="input-newsletter" name="email" placeholder="имя в мессенджере, телефон или e-mail" required autocomplete="off">
+              <button type="submit">Отправить</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Subscribe Section -->
+    <!-- Start Footer Section -->
+    <div class="footer-area ptb-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <a class="footer-logo" href="#">
+                <img src="/assets/img/logo.png" class="white-logo" alt="logo">
+              </a>
+              <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
+              <ul class="footer-social">
+                <li>
+                  <a href="@Lola_06"> <i class="fa-brands fa-telegram"></i></a>
+                </li>
+                <!--
+                                            <li>
+                                                <a href="#"> <i class="fa-brands fa-x-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"> <i class="fab fa-youtube"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"> <i class="fab fa-linkedin"></i></a>
+                                            </li>
+                -->
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <div class="footer-heading">
+                <h3>Услуги</h3>
+              </div>
+              <ul class="footer-quick-links">
+                <li><a href="#">Разработка</a></li>
+                <li><a href="#">Продвижение</a></li>
+                <li><a href="#">Сопровождение</a></li>
+                <li><a href="#">Индивидуально</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <div class="footer-heading">
+                <h3>Инфо</h3>
+              </div>
+              <ul class="footer-quick-links">
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="portfolio.html">Команда</a></li>
+                <li><a href="contact.html">Цены</a></li>
+                <li><a href="privacy-policy.html">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <div class="footer-heading">
+                <h3>Контакты</h3>
+              </div>
+              <div class="footer-info-contact">
+                <i class="flaticon-phone-call"></i>
+                <h3>Телефон</h3>
+                <span><a href="tel:12345678">+7 928 261 9061</a></span>
+              </div>
+              <div class="footer-info-contact">
+                <i class="flaticon-envelope"></i>
+                <h3>Email</h3>
+                <span><a href="mailto:info@nero1218.tech">info@nero1218.tech</a></span>
+              </div>
+              <div class="footer-info-contact">
+                <i class="flaticon-placeholder"></i>
+                <h3>Адрес</h3>
+                <span>Паттайя, Bang Lamung District, Chon Buri 20150 Laguna Beach Resort 3 The Maldives 164/1151</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Footer Section -->
+  </section>
+  <!-- End Footer & Subscribe Section -->
+
+  <!-- Start Copy Right Section -->
+  <div class="copyright-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-6">
+          <p><i class="far fa-copyright"></i> 2025 WebSoulutions - All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 col-md-6">
+          <ul>
+            <li><a href="terms-condition.html">Соглашения</a></li>
+            <li><a href="privacy-policy.html">Политика конфеденциальности</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Copy Right Section -->
+
+  <!-- Start Go Top Section -->
+  <div class="go-top">
+    <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
+  </div>
+  <!-- End Go Top Section -->
 
   <p>
     <strong>Current route path:</strong> {{ $route.fullPath }}
