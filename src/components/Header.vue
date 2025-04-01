@@ -80,7 +80,7 @@
                 <a href="#" class="nav-link">Блог</a>
               </li>
               <li class="nav-item">
-                <a href="contact.html" class="nav-link">Контакты</a>
+                <RouterLink to="/page/contact" class="nav-link">Контакты</RouterLink>
               </li>
             </ul>
             <div class="other-option">
