@@ -1,5 +1,36 @@
 <script setup>
+import { onMounted } from 'vue';
 import Portfolio from "@/components/Portfolio.vue";
+import $ from 'jquery';
+
+onMounted(() => {
+  // Preloader Area
+  $(window).on('load', function() {
+    $('.preloader').addClass('preloader-deactivate');
+  });
+
+  // Header Sticky
+  $(window).on('scroll',function() {
+    if ($(this).scrollTop() > 120){
+      $('.navbar-section').addClass("is-sticky");
+    }
+    else{
+      $('.navbar-section').removeClass("is-sticky");
+    }
+  });
+
+  // Popup Video
+  $(".popup-video").magnificPopup({
+    disableOn: 320,
+    type: "iframe",
+    mainClass: "mfp-fade",
+    removalDelay: 160,
+    preloader: false,
+    fixedContentPos: false,
+  });
+
+});
+
 </script>
 
 <template>
