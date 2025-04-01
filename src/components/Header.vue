@@ -60,7 +60,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <RouterLink to="/portfolio/test" class="nav-link">Портфолио</RouterLink>
+                <RouterLink to="/portfolio" class="nav-link">Портфолио</RouterLink>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">Инфо <i class="fas fa-chevron-down"></i></a>
