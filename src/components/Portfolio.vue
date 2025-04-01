@@ -1,4 +1,43 @@
 <script setup>
+import {onMounted, onUnmounted, ref} from "vue";
+import $ from 'jquery'
+import Isotope from 'isotope-layout';
+
+const isotopeInstance = ref(null);
+
+onUnmounted(() => {
+  if (isotopeInstance.value) {
+    isotopeInstance.value.destroy();
+  }
+});
+
+import imagesLoaded from 'imagesloaded'; // Установи npm install imagesloaded
+
+onMounted(() => {
+  const container = document.querySelector('.portfolio-container');
+  if (container) {
+    isotopeInstance.value = new Isotope(container, {
+      itemSelector: '.portfolio-grid-item',
+    });
+
+    imagesLoaded(container, () => {
+      isotopeInstance.value.layout(); // Когда все изображения загружены — пересчёт
+    });
+
+    document.querySelectorAll('#portfolio-flters li').forEach((item) => {
+      item.addEventListener('click', function () {
+        document.querySelectorAll('#portfolio-flters li').forEach((el) => el.classList.remove('filter-active'));
+        this.classList.add('filter-active');
+
+        isotopeInstance.value.arrange({
+          filter: this.getAttribute('data-filter'),
+        });
+      });
+    });
+  }
+});
+
+
 
 </script>
 

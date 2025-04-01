@@ -1,14 +1,12 @@
 <script setup>
-import { onMounted } from 'vue'
-import Portfolio from "@/components/Portfolio.vue"
+import { ref, onMounted, onUnmounted } from 'vue'
 import $ from 'jquery'
+import Portfolio from "@/components/Portfolio.vue"
+
 
 onMounted(() => {
-  // TODO: Reformat
-  $(window).on('load', function() {
-    // Preloader Area
-    // $('.preloader').addClass('preloader-deactivate');
-  });
+
+
 
   // Header Sticky
   $(window).on('scroll',function() {
@@ -20,19 +18,6 @@ onMounted(() => {
     }
   });
 
-  // Porfolio isotope and filter
-  $(window).on('load', function () {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: ".portfolio-grid-item",
-    });
-    $('#portfolio-flters li').on('click', function () {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
-      });
-    });
-  });
 
 });
 
