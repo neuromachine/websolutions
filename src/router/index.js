@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory} from 'vue-router'
+import $ from 'jquery'
 
 const routes = [
     {
@@ -38,5 +39,16 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 })
+
+router.beforeEach((to, from, next) => {
+    $('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер
+    next();
+});
+
+router.afterEach(() => {
+    setTimeout(() => {
+        $('.preloader').addClass('preloader-deactivate'); // Скрываем прелоадер после завершения перехода
+    }, 500); // Даем небольшой запас, если надо
+});
 
 export default router

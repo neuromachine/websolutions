@@ -1,26 +1,10 @@
 <script setup>
-
+import PageTitle from "@/components/PageTitle.vue";
 </script>
 
 <template>
 
-  <!-- Start Page Title Section -->
-  <div class="page-title-area">
-    <div class="d-table">
-      <div class="d-table-cell">
-        <div class="container">
-          <div class="page-title-content">
-            <h2>About Us</h2>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li>About Us</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Page Title Section -->
+  <PageTitle />
 
   <!-- Start Feature Section -->
   <section class="feature-section pt-100">

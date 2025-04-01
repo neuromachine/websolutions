@@ -1,12 +1,12 @@
 <script setup>
-import { onMounted } from 'vue';
-import Portfolio from "@/components/Portfolio.vue";
-import $ from 'jquery';
+import { onMounted } from 'vue'
+import Portfolio from "@/components/Portfolio.vue"
+import $ from 'jquery'
 
 onMounted(() => {
   // Preloader Area
   $(window).on('load', function() {
-    $('.preloader').addClass('preloader-deactivate');
+    // $('.preloader').addClass('preloader-deactivate');
   });
 
   // Header Sticky
@@ -17,16 +17,6 @@ onMounted(() => {
     else{
       $('.navbar-section').removeClass("is-sticky");
     }
-  });
-
-  // Popup Video
-  $(".popup-video").magnificPopup({
-    disableOn: 320,
-    type: "iframe",
-    mainClass: "mfp-fade",
-    removalDelay: 160,
-    preloader: false,
-    fixedContentPos: false,
   });
 
 });
