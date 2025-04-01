@@ -4,8 +4,9 @@ import Portfolio from "@/components/Portfolio.vue"
 import $ from 'jquery'
 
 onMounted(() => {
-  // Preloader Area
+  // TODO: Reformat
   $(window).on('load', function() {
+    // Preloader Area
     // $('.preloader').addClass('preloader-deactivate');
   });
 
@@ -17,6 +18,20 @@ onMounted(() => {
     else{
       $('.navbar-section').removeClass("is-sticky");
     }
+  });
+
+  // Porfolio isotope and filter
+  $(window).on('load', function () {
+    var portfolioIsotope = $('.portfolio-container').isotope({
+      itemSelector: ".portfolio-grid-item",
+    });
+    $('#portfolio-flters li').on('click', function () {
+      $("#portfolio-flters li").removeClass('filter-active');
+      $(this).addClass('filter-active');
+      portfolioIsotope.isotope({
+        filter: $(this).data('filter')
+      });
+    });
   });
 
 });

@@ -18,10 +18,10 @@
       <div class="container">
         <div class="techvio-responsive-menu">
           <div class="logo">
-            <RouterLink to="/">
+            <a href="/">
               <img src="/assets/img/logo-black.png" class="white-logo" alt="logo">
               <img src="/assets/img/logo-black.png" class="black-logo" alt="logo">
-            </RouterLink>
+            </a>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
     <div class="techvio-nav index-navber">
       <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
-          <a class="navbar-brand" href="index.html">
+          <a href="/">
             <img src="/assets/img/logo-black.png" class="white-logo" alt="logo">
             <img src="/assets/img/logo-black.png" class="black-logo" alt="logo">
           </a>
