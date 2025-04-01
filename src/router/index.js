@@ -1,23 +1,11 @@
-// import { createRouter, createMemoryHistory} from 'vue-router'
 import { createRouter, createWebHistory} from 'vue-router'
-
-import HomeView from './../views/HomeView.vue'
-// import ProductListView from './../views/ProductListView.vue'
-// import ServiceView from './../views/ServiceView.vue'
 
 const routes = [
     {
         path: '/',
         name: 'home',
-        component: HomeView
+        component: () => import('@/views/HomeView.vue'),
     },
-    /*
-    {
-        path: '/product-list',
-        name: 'product-list',
-        component: ProductListView
-    },
-    */
     {
         path: '/services',
         name: 'services_list',
@@ -42,7 +30,6 @@ const routes = [
 ]
 
 const router = createRouter({
-    // history: createMemoryHistory(),
     history: createWebHistory(),
     routes,
 })
