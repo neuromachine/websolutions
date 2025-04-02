@@ -1,4 +1,22 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import $ from 'jquery'
+
+defineProps({
+  isMain: Boolean,
+})
+
+onMounted(() => {
+  // Header Sticky
+  $(window).on('scroll',function() {
+    if ($(this).scrollTop() > 120){
+      $('.navbar-section').addClass("is-sticky");
+    }
+    else{
+      $('.navbar-section').removeClass("is-sticky");
+    }
+  });
+});
 
 </script>
 
@@ -19,18 +37,24 @@
         <div class="techvio-responsive-menu">
           <div class="logo">
             <a href="/">
-              <img src="/assets/img/logo-black.png" class="white-logo" alt="logo">
+              <img src="/assets/img/logo.png" class="white-logo" alt="logo">
               <img src="/assets/img/logo-black.png" class="black-logo" alt="logo">
             </a>
           </div>
         </div>
       </div>
     </div>
-    <div class="techvio-nav index-navber">
+    <div class="techvio-nav" :class="{ 'index-navber': isMain }">
       <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
           <a href="/">
-            <img src="/assets/img/logo-black.png" class="white-logo" alt="logo">
+            <!--TODO: тут нужно переработать логику, сформировалась путаница при интеграции шаблона-->
+            <div v-if="isMain">
+              <img src="/assets/img/logo-black.png" class="white-logo" alt="logo">
+            </div>
+            <div v-else>
+              <img src="/assets/img/logo.png" class="white-logo" alt="logo">
+            </div>
             <img src="/assets/img/logo-black.png" class="black-logo" alt="logo">
           </a>
           <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">

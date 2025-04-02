@@ -1,29 +1,16 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import $ from 'jquery'
+
 import Portfolio from "@/components/Portfolio.vue"
+import Header from "@/components/Header.vue";
+import Faq from "@/components/Faq.vue";
+import Testimonial from "@/components/Testimonial.vue";
 
 
-onMounted(() => {
-
-
-
-  // Header Sticky
-  $(window).on('scroll',function() {
-    if ($(this).scrollTop() > 120){
-      $('.navbar-section').addClass("is-sticky");
-    }
-    else{
-      $('.navbar-section').removeClass("is-sticky");
-    }
-  });
-
-
-});
 
 </script>
 
 <template>
+  <Header :isMain="true"/>
   <!-- Start Home Section -->
   <div class="home-section home-2">
     <div class="d-table">
@@ -351,160 +338,10 @@ onMounted(() => {
   </section>
   <!-- End Counter Section -->
 
-  <!-- Start Testimonial Section -->
-  <section class="testimonial-section section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-title">
-            <h6 class="sub-title">Обратная связь клиентов</h6>
-            <h2>Отзывы</h2>
-          </div>
-        </div>
-        <div class="col-lg-12 col-md-12">
-          <div class="testimonial-slider owl-carousel owl-theme">
-            <!-- testimonials item -->
-            <div class="single-testimonial">
-              <div class="rating-box">
-                <ul>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                </ul>
-              </div>
-              <div class="testimonial-content">
-                <p>Обратилась в Web Solution для создания сайта монобренда. Всё сделали быстро, качественно и по цене ниже, чем у конкурентов. Получила удобный, стильный сайт, полностью соответствующий моему бренду!</p>
-              </div>
-              <div class="avatar">
-                <img src="/assets/img/client/review_1.jpg" alt="testimonial images">
-              </div>
-              <div class="testimonial-bio">
-                <div class="bio-info">
-                  <h3>Рая</h3>
-                  <span>основатель бренда одежды</span>
-                </div>
-              </div>
-            </div>
-            <!-- testimonials item -->
-            <div class="single-testimonial">
-              <div class="rating-box">
-                <ul>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                </ul>
-              </div>
-              <div class="testimonial-content">
-                <p>Сотрудничаем с Web Solution уже более 5 лет. За это время сайт прошёл множество модификаций, доработок и улучшений. Команда всегда оперативно решает задачи и предлагает грамотные решения!</p>
-              </div>
-              <div class="avatar">
-                <img src="/assets/img/client/review_2.jpg" alt="testimonial images">
-              </div>
-              <div class="testimonial-bio">
-                <div class="bio-info">
-                  <h3>Дмитрий</h3>
-                  <span>основатель портала о рыболовстве</span>
-                </div>
-              </div>
-            </div>
-            <!-- testimonials item -->
-            <div class="single-testimonial">
-              <div class="rating-box">
-                <ul>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                </ul>
-              </div>
-              <div class="testimonial-content">
-                <p>Работали с Web Solution по ряду проектов. Нужно было создать удобные, конверсионные сайты для крупнейшего B2B-дилера шин. Задачи выполнены на высоком уровне, в срок и с учётом всех нюансов SEO.</p>
-              </div>
-              <div class="avatar">
-                <img src="/assets/img/client/review_3.jpg" alt="testimonial images">
-              </div>
-              <div class="testimonial-bio">
-                <div class="bio-info">
-                  <h3>Вячеслав</h3>
-                  <span>B2B-дилер шин, ЮФО</span>
-                </div>
-              </div>
-            </div>
-            <!-- testimonials item -->
-            <div class="single-testimonial">
-              <div class="rating-box">
-                <ul>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <li><i class="fa fa-star"></i></li>
-                </ul>
-              </div>
-              <div class="testimonial-content">
-                <p>За время работы с Web Solution реализовали множество сайтов для компании. Команда всегда на связи, быстро решает технические вопросы и обеспечивает стабильную поддержку на аутсорсе.</p>
-              </div>
-              <div class="avatar">
-                <img src="/assets/img/client/review_4.jpg" alt="testimonial images">
-              </div>
-              <div class="testimonial-bio">
-                <div class="bio-info">
-                  <h3>Денис</h3>
-                  <span>директор веб-студии</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Testimonial Section -->
 
-  <!-- Start Faq Section -->
-  <section class="faq-section home-faq bg-grey section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-md-12">
-          <div class="faq-img">
-            <img src="/assets/img/faq.png" alt="images">
-          </div>
-        </div>
-        <div class="col-lg-6 col-md-12">
-          <div class="section-title">
-            <h6 class="sub-title">Вопросы</h6>
-            <h2>Ответы</h2>
-          </div>
-          <div class="faq-accordion first-faq-box">
-            <ul class="accordion">
-              <li class="accordion-item">
-                <a class="accordion-title active" href="javascript:void(0)"> <i class="fa fa-plus"></i> У конкурентов дешевле, почему?</a>
-                <p class="accordion-content show">При выполнении услуг - строим производственные цепочки с упором на качество! Не умеем и не стремимся удерешвлять нашу работу, ниже определенного порога</p>
-              </li>
-              <li class="accordion-item">
-                <a class="accordion-title" href="javascript:void(0)"> <i class="fa fa-plus"></i> Возможно снизить цену?</a>
-                <p class="accordion-content">Мы стремимся обеспечить гибкий подход к клиенту, в определенных случаях мы можем договорится о поэтамном подходе в реализации проекта</p>
-              </li>
-              <li class="accordion-item">
-                <a class="accordion-title" href="javascript:void(0)"> <i class="fa fa-plus"></i> Сколько стоит интернет магазин?</a>
-                <p class="accordion-content">Минимальная цена проекта реализующего "цепочку on-line продаж" - 500$, в данном случае мы предложем ряд условий, обеспечивающих понижение издержек на таких этапах как: разработка дизайн макета, а так же введем упрощенную систему заказа. Советуем закладывать бюджет подобного проекта от 1k $</p>
-              </li>
-              <li class="accordion-item">
-                <a class="accordion-title" href="javascript:void(0)"> <i class="fa fa-plus"></i> Вы занимаетесь продвижением бизнеса локализированного не в РФ</a>
-                <p class="accordion-content">Наша квалификация позволяет выпонять услуги всюду, конечно в ряде случаев необходимо заложить издержки на переводчика и юриста, однако на базовом уровне можно обойтись средствами GPT</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Faq Section -->
+  <Testimonial />
+
+  <Faq />
 
   <!-- Start Hire Section -->
   <section class="hire-section">
