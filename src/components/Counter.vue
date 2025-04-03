@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, getCurrentInstance } from "vue";
-import CounterUp from "counterup2";
+import CounterUp from "counterup2"; //https://github.com/bfintal/Counter-Up2
 
 const counterRefs = ref([]); // Массив ссылок на все счетчики
 
