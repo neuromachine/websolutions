@@ -49,6 +49,10 @@ router.afterEach(() => {
     setTimeout(() => {
         $('.preloader').addClass('preloader-deactivate'); // Скрываем прелоадер после завершения перехода
     }, 500); // Даем небольшой запас, если надо
+
+    setTimeout(() => {
+        $("html, body").animate({ scrollTop: "0" }, 100); // Прокручиваем к верхнему краю страницы
+    }, 100); // Даем небольшой запас, если надо
 });
 
 export default router

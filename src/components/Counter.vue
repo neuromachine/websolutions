@@ -1,5 +1,33 @@
 <script setup>
+import { ref, onMounted, getCurrentInstance } from "vue";
+import CounterUp from "counterup2";
 
+const counterRefs = ref([]); // Массив ссылок на все счетчики
+
+const counters = [
+  { value: 16, label: "Лет помогаем бизнесу" },
+  { value: 8, label: "Клиентов постоянно с нами" },
+  { value: 350, label: "Завершенных проектов" },
+  { value: 50, label: "Рекламных компаний" },
+];
+
+onMounted(() => {
+  const instance = getCurrentInstance();
+  const Waypoint = instance.appContext.config.globalProperties.$Waypoint;
+
+  if (!Waypoint) return;
+
+  counterRefs.value.forEach((counter) => {
+    new Waypoint({
+      element: counter,
+      handler: function () {
+        CounterUp(counter, { duration: 1000, delay: 16 });
+        this.destroy(); // Удаляем Waypoint после анимации
+      },
+      offset: "75%",
+    });
+  });
+});
 </script>
 
 <template>
@@ -7,47 +35,14 @@
   <section class="counter-area section-padding">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-6 counter-item">
+        <div v-for="(item, index) in counters" :key="index" class="col-lg-3 col-md-6 counter-item">
           <div class="single-counter">
             <div class="counter-contents">
               <h2>
-                <span class="counter-number">16</span>
+                <span ref="counterRefs" class="counter-number">{{ item.value }}</span>
                 <span>+</span>
               </h2>
-              <h3 class="counter-heading">Лет помогаем бизнесу</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 counter-item">
-          <div class="single-counter">
-            <div class="counter-contents">
-              <h2>
-                <span class="counter-number">8</span>
-                <span>+</span>
-              </h2>
-              <h3 class="counter-heading">Клиентов постоянно с нами</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 counter-item">
-          <div class="single-counter">
-            <div class="counter-contents">
-              <h2>
-                <span class="counter-number">350</span>
-                <span>+</span>
-              </h2>
-              <h3 class="counter-heading">Завершенных проектов</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 counter-item">
-          <div class="single-counter">
-            <div class="counter-contents">
-              <h2>
-                <span class="counter-number">100</span>
-                <span>+</span>
-              </h2>
-              <h3 class="counter-heading">Выполненных рекламных компаний</h3>
+              <h3 class="counter-heading">{{ item.label }}</h3>
             </div>
           </div>
         </div>
@@ -56,6 +51,7 @@
   </section>
   <!-- End Counter Section -->
 </template>
+
 
 <style scoped>
 
