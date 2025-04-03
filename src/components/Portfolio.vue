@@ -34,10 +34,28 @@ onMounted(() => {
         });
       });
     });
+
   }
 });
 
-
+const data = [
+  {
+    id: 1,
+    title: 'Магазин мебели "Авто-кроватка"',
+    thumb: 'thumb_1.jpg',
+    class: ['Разработка','Сопровождение'],
+    groups: ['dev'],
+    slug: 'car',
+  },
+  {
+    id: 2,
+    title: 'TFF Портал - рыбная ловля нахлыстом"',
+    thumb: 'thumb_2.jpg',
+    class: ['Разработка','Сопровождение'],
+    groups: ['dev','support'],
+    slug: 'tff',
+  },
+]
 
 </script>
 
@@ -57,7 +75,7 @@ onMounted(() => {
             <ul class="nav" id="portfolio-flters">
               <li class="filter filter-active" data-filter=".all">Все</li>
               <li class="filter" data-filter=".dev">Разработка</li>
-              <li class="filter" data-filter=".branding">Брендинг</li>
+              <li class="filter" data-filter=".support">Сопровождение</li>
               <li class="filter" data-filter=".application">SMM</li>
               <li class="filter" data-filter=".photography">Продвижение</li>
             </ul>
@@ -66,72 +84,19 @@ onMounted(() => {
       </div>
       <div class="portfolio-container">
         <div class="row">
+
           <!-- portfolio-item -->
-          <div class="col-lg-4 col-md-6 portfolio-grid-item all dev">
+          <div v-for="(item, index) in data" :key="index" :class="item.groups.join(' ')" class="col-lg-4 col-md-6 portfolio-grid-item all">
             <div class="portfolio-item">
-              <img src="/assets/img/portfolio/thumb_1.jpg" alt="image">
+              <img v-bind="{src: '/assets/img/portfolio/'+item.thumb}" alt="image">
               <div class="portfolio-content-overlay">
-                <p>Разработка | Сопровождение</p>
-                <h3><RouterLink to="/portfolio/car">Магазин мебели "Авто-кроватка"</RouterLink></h3>
-                <RouterLink to="/portfolio/car" class="portfolio-link-icon"><i class="bi bi-arrow-right"></i></RouterLink>
+                <p>{{item.class.join(' | ')}}</p>
+                <h3><RouterLink :to="{ path: '/portfolio/' + item.slug }">{{item.title}}</RouterLink></h3>
+                <RouterLink :to="{ path: '/portfolio/' + item.slug }" class="portfolio-link-icon"><i class="bi bi-arrow-right"></i></RouterLink>
               </div>
             </div>
           </div>
-          <!-- portfolio-item -->
-          <div class="col-lg-4 col-md-6 portfolio-grid-item all photography">
-            <div class="portfolio-item">
-              <img src="/assets/img/portfolio/portfolio-2.jpg" alt="image">
-              <div class="portfolio-content-overlay">
-                <p>App Store | Social Media</p>
-                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
-                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item -->
-          <div class="col-lg-4 col-md-6 portfolio-grid-item all branding webdesign">
-            <div class="portfolio-item">
-              <img src="/assets/img/portfolio/portfolio-3.jpg" alt="image">
-              <div class="portfolio-content-overlay">
-                <p>App Store | Social Media</p>
-                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
-                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item -->
-          <div class="col-lg-4 col-md-6 portfolio-grid-item all webdesign">
-            <div class="portfolio-item">
-              <img src="/assets/img/portfolio/portfolio-4.jpg" alt="image">
-              <div class="portfolio-content-overlay">
-                <p>App Store | Social Media</p>
-                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
-                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item -->
-          <div class="col-lg-4 col-md-6 portfolio-grid-item all application">
-            <div class="portfolio-item">
-              <img src="/assets/img/portfolio/portfolio-5.jpg" alt="image">
-              <div class="portfolio-content-overlay">
-                <p>App Store | Social Media</p>
-                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
-                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <!-- portfolio-item -->
-          <div class="col-lg-4 col-md-6 portfolio-grid-item all application photography">
-            <div class="portfolio-item">
-              <img src="/assets/img/portfolio/portfolio-6.jpg" alt="image">
-              <div class="portfolio-content-overlay">
-                <p>App Store | Social Media</p>
-                <h3><a href="single-portfolio.html">Creative Web Design</a></h3>
-                <a class="portfolio-link-icon" href="single-portfolio.html"><i class="bi bi-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>

@@ -1,25 +1,16 @@
 <script setup>
+import PageTitle from "@/components/PageTitle.vue";
+import Header from "@/components/Header.vue";
+import sourceData from '@/data.json'
+
 
 </script>
 
 <template>
-  <!-- Start Page Title Section -->
-  <div class="page-title-area item-bg2">
-    <div class="d-table">
-      <div class="d-table-cell">
-        <div class="container">
-          <div class="page-title-content">
-            <h2>Portfolios Details</h2>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li>Portfolios Details</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Page Title Section -->
+  <Header />
+  <PageTitle title="О работе" />
+
+  <div>{{$route.params.slug}} {{sourceData}}</div>
 
   <!-- Start Portfolio Details Section -->
   <section class="portfolio-details-area ptb-100">
@@ -27,7 +18,7 @@
       <div class="row">
         <div class="col-lg-12 col-md-12">
           <div class="portfolio-details-image">
-            <img src="/assets/img/portfolio/portfolio-details-1.jpg" alt="image">
+            <img src="/assets/img/portfolio/work_1_1.png" alt="image">
           </div>
         </div>
         <div class="col-lg-12 col-md-12">

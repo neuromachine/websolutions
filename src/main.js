@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './app.vue'
-import "waypoints/lib/noframework.waypoints.js";
+import "waypoints/lib/noframework.waypoints.js"; //http://imakewebthings.com/waypoints/
 import router from '@/router'
 // import * as jQuery from 'jquery';
 // window.$ = window.jQuery = jQuery;

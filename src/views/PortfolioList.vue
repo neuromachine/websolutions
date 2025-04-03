@@ -9,7 +9,3 @@ import Header from "@/components/Header.vue";
   <PageTitle title="Home" />
   <Portfolio />
 </template>
-
-<style scoped>
-
-</style>
