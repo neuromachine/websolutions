@@ -1,5 +1,7 @@
 <script setup>
-
+defineProps({
+  breadcrumbs: Array
+});
 </script>
 
 <template>
@@ -9,10 +11,14 @@
       <div class="d-table-cell">
         <div class="container">
           <div class="page-title-content">
-            <h2>Portfolio</h2>
+            <h2>{{ breadcrumbs.at(-1)?.title }}</h2>
             <ul>
-              <li><a href="index.html">Home</a></li>
-              <li>Portfolio</li>
+              <li v-for="(crumb, index) in breadcrumbs" :key="index">
+                <RouterLink v-if="crumb.link && index !== breadcrumbs.length - 1" :to="crumb.link">
+                  {{ crumb.title }}
+                </RouterLink>
+                <span v-else>{{ crumb.title }}</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -23,5 +29,5 @@
 </template>
 
 <style scoped>
-
+/* Можно добавить стили для хлебных крошек */
 </style>

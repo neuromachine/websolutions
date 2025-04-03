@@ -6,6 +6,9 @@ import Header from "@/components/Header.vue";
 
 <template>
   <Header />
-  <PageTitle title="Home" />
+  <PageTitle :breadcrumbs="[
+  { title: 'Главная', link: '/' },
+  { title: 'Портфолио', link: '/portfolio' },
+]" />
   <Portfolio />
 </template>
