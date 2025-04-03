@@ -72,8 +72,8 @@ onMounted(() => {
               <img src="/assets/img/portfolio/thumb_1.jpg" alt="image">
               <div class="portfolio-content-overlay">
                 <p>Разработка | Сопровождение</p>
-                <h3><a href="single-portfolio.html">Магазин мебели "Авто-кроватка"</a></h3>
-                <a class="portfolio-link-icon" href="/portfolio_car.html"><i class="bi bi-arrow-right"></i></a>
+                <h3><RouterLink to="/portfolio/car">Магазин мебели "Авто-кроватка"</RouterLink></h3>
+                <RouterLink to="/portfolio/car" class="portfolio-link-icon"><i class="bi bi-arrow-right"></i></RouterLink>
               </div>
             </div>
           </div>

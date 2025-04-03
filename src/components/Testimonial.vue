@@ -1,6 +1,27 @@
 <script setup>
+import { ref } from "vue";
+import Carousel from "vue-owl-carousel";
 
+const options = ref({
+  loop: true,
+  nav: true,
+  dots: true,
+  autoplay: true,
+  smartSpeed: 1000,
+  margin: 20,
+  navText: [
+    "<i class='fa fa-chevron-left'></i>",
+    "<i class='fa fa-chevron-right'></i>"
+  ],
+  responsive: {
+    0: { items: 1 },
+    768: { items: 2 },
+    1200: { items: 3 }
+  }
+});
 </script>
+
+
 
 <template>
   <!-- Start Testimonial Section -->
