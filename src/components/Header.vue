@@ -4,9 +4,9 @@ import $ from 'jquery'
 // import MeanMenu from "@/components/MeanMenu.vue";
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
 
-import sourceData from "@/structure.json";
+import structure from "@/structure.json";
 // const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
-const items = sourceData
+// const items = sourceData
 
 // const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
 
@@ -21,7 +21,7 @@ const toggleMenu = () => {
 }
 
 onMounted(() => {
-  console.log(items)
+  // console.log(structure)
 
   // Header Sticky
   $(window).on('scroll',function() {
@@ -54,7 +54,7 @@ onMounted(() => {
       <i :class="isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
     </button>
 
-    <ResponsiveMenu v-if="isOpen" />
+    <ResponsiveMenu v-if="isOpen" :structure="structure" />
     <div v-if="false" class="techvio-responsive-nav index-navber-responsive">
       <div class="container">
         <div class="techvio-responsive-menu">
