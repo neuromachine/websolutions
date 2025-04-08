@@ -1,5 +1,6 @@
 <script setup>
 import {ref, onMounted, onUnmounted, computed} from 'vue'
+import { useUiStore } from '@/stores/uiStore'; // Импорт стора
 import $ from 'jquery'
 // import MeanMenu from "@/components/MeanMenu.vue";
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
@@ -15,9 +16,13 @@ defineProps({
   isMain: Boolean,
 })
 
-const isOpen = ref(false)
+const uiStore = useUiStore(); // Инициализация стора
+
+// const isOpen = ref(false)
+const isOpen = uiStore.isOpen
 const toggleMenu = () => {
-  isOpen.value = !isOpen.value
+  // isOpen.value = !isOpen.value
+  uiStore.setIsOpen(!uiStore.isOpen); // Пример переключения состояния
 }
 
 
@@ -50,32 +55,20 @@ onMounted(() => {
   <!-- Start Navbar Section -->
   <div class="navbar-section">
 
-    <div class="nav_wrap">
-      <RouterLink to="/" class="logo_wrap">
-        <img src="/assets/img/logo-black.png" class="black-logo" alt="logo">
-      </RouterLink>
-
-
-      <!-- Иконка-бургер -->
-      <button class="burger-button" @click="toggleMenu">
-        <i :class="isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
-      </button>
-
-
-
-    </div>
-
-    <ResponsiveMenu v-if="isOpen" :structure="structure" />
-
-
-
 
 
     <div class="techvio-nav" :class="{ 'index-navber': isMain }">
       <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
-
-
+          <div class="nav_wrap">
+            <RouterLink to="/" class="logo_wrap">
+              <img src="/assets/img/logo-black.png" alt="logo">
+            </RouterLink>
+            <!-- Иконка-бургер -->
+            <button class="burger-button" @click="toggleMenu">
+              <i :class="uiStore.isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
+            </button>
+          </div>
           <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
@@ -130,8 +123,8 @@ onMounted(() => {
               <a class="default-btn" href="mailto:sales@nero1218.tech">Связаться <span></span></a>
             </div>
           </div>
-
         </nav>
+        <ResponsiveMenu v-if="uiStore.isOpen" :structure="structure" />
       </div>
     </div>
   </div>
@@ -139,7 +132,9 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.navbar-section { background: #FFF;}
+.navbar-section {
+  /* background: #FFF; */
+}
 .nav_wrap { display: flex;  flex-direction: row; justify-content: space-between; }
 .logo_wrap { margin: 0 0 0 1rem;}
 .burger-button {
@@ -157,6 +152,8 @@ onMounted(() => {
 
 /* Показывать бургер только на экранах меньше 991px */
 @media screen and (max-width: 991px) {
+  .nav_wrap { width: 100%;}
+  .techvio-nav { padding: 0 !important;}
   .burger-button {
     display: block;
     margin: 0 1rem 0 0;

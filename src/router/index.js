@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory} from 'vue-router'
+import { useUiStore } from '@/stores/uiStore'; // Импорт стора
 import $ from 'jquery'
 
 const routes = [
@@ -42,7 +43,9 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     $('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер
-    next();
+    const uiStore = useUiStore(); // Получаем доступ к стору
+    uiStore.setIsOpen(false); // Устанавливаем isOpen в false перед каждым переходом
+    next(); // Продолжаем навигацию
 });
 
 router.afterEach(() => {
