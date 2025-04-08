@@ -1,81 +1,165 @@
-<template>
-  <nav class="responsive-menu">
-    <ul>
-      <li v-for="(item, index) in structure" :key="index">
-        <RouterLink v-if="item.link" :to="item.link || '/'">{{ item.title }}</RouterLink>
-        <span v-else>{{ item.title }}</span>
-      </li>
-    </ul>
-  </nav>
-</template>
-
 <script setup>
-import { defineProps } from 'vue';
-import { RouterLink } from 'vue-router';
+import {ref, onMounted, onUnmounted, computed} from 'vue'
+import $ from 'jquery'
+// import MeanMenu from "@/components/MeanMenu.vue";
+import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
+
+import structure from "@/structure.json";
+// const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
+// const items = sourceData
+
+// const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
+
 
 defineProps({
-  structure: {
-    type: Array,
-    required: true
-  }
+  isMain: Boolean,
+})
+
+const isOpen = ref(false)
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value
+}
+
+
+onMounted(() => {
+  // console.log(structure)
+
+  // Header Sticky
+  $(window).on('scroll',function() {
+    if ($(this).scrollTop() > 120){
+      $('.navbar-section').addClass("is-sticky");
+    }
+    else{
+      $('.navbar-section').removeClass("is-sticky");
+    }
+  });
 });
+
 </script>
 
+<template>
+  <!-- Start Preloader Section -->
+  <div class="preloader">
+    <div class="loader">
+      <div class="shadow"></div>
+      <div class="box"></div>
+    </div>
+  </div>
+  <!-- End Preloader Section -->
+
+  <!-- Start Navbar Section -->
+  <div class="navbar-section">
+
+    <div class="nav_wrap">
+      <RouterLink to="/" class="logo_wrap">
+        <img src="/assets/img/logo-black.png" class="black-logo" alt="logo">
+      </RouterLink>
+
+
+      <!-- Иконка-бургер -->
+      <button class="burger-button" @click="toggleMenu">
+        <i :class="isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
+      </button>
+
+
+
+    </div>
+
+    <ResponsiveMenu v-if="isOpen" :structure="structure" />
+
+
+
+
+
+    <div class="techvio-nav" :class="{ 'index-navber': isMain }">
+      <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light">
+
+
+          <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <RouterLink to="/">Главная</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink to="/page/about" class="nav-link">О нас</RouterLink>
+              </li>
+              <li class="nav-item">
+                <!--                <RouterLink class="nav-link" to="/product-list">Услуги <i class="fas fa-chevron-down"></i></RouterLink>-->
+                <RouterLink class="nav-link" to="/services">Услуги <i class="fas fa-chevron-down"></i></RouterLink>
+                <ul class="dropdown-menu">
+                  <li class="nav-item">
+                    <RouterLink to="/service/dev" class="nav-link">Разработка</RouterLink>
+                  </li>
+                  <li class="nav-item">
+                    <RouterLink to="/service/seo" class="nav-link">Продвижение</RouterLink>
+                  </li>
+                  <li class="nav-item">
+                    <RouterLink to="/service/support" class="nav-link">Сопровождение</RouterLink>
+                  </li>
+                  <li class="nav-item">
+                    <RouterLink to="/service/individual" class="nav-link">Индивидуально</RouterLink>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <RouterLink to="/portfolio" class="nav-link">Портфолио</RouterLink>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Инфо <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item">
+                    <a href="team.html" class="nav-link">Команда</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="pricing.html" class="nav-link">Цены</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="faq.html" class="nav-link">FAQ</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Блог</a>
+              </li>
+              <li class="nav-item">
+                <RouterLink to="/page/contact" class="nav-link">Контакты</RouterLink>
+              </li>
+            </ul>
+            <div class="other-option">
+              <a class="default-btn" href="mailto:sales@nero1218.tech">Связаться <span></span></a>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </div>
+  </div>
+  <!-- End Navbar Section -->
+</template>
+
 <style scoped>
-.responsive-menu {
-  background: white;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-/* Прячем на десктопах */
-@media screen and (min-width: 992px) {
-  .responsive-menu {
-    display: none;
-  }
-}
-
-.responsive-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.responsive-menu li {
-  margin-bottom: 0.75rem;
-}
-
+.navbar-section { background: #FFF;}
+.nav_wrap { display: flex;  flex-direction: row; justify-content: space-between; }
+.logo_wrap { margin: 0 0 0 1rem;}
 .burger-button {
-  background: white;
+  background: none;
   border: none;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #0a1f44; /* Тёмно-синий */
+  font-size: 1.8rem;
+  color: #222;
   cursor: pointer;
-  display: none; /* Покажем только в адаптиве */
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease, transform 0.3s ease;
+  display: none; /* по умолчанию скрыт */
 }
 
-.burger-button:hover {
-  background-color: rgba(10, 31, 68, 0.05);
-}
-
-.burger-button .fa-bars {
+.burger-icon {
   transition: transform 0.3s ease;
 }
 
-.burger-button.open .fa-bars {
-  transform: rotate(90deg);
-}
-
+/* Показывать бургер только на экранах меньше 991px */
 @media screen and (max-width: 991px) {
   .burger-button {
     display: block;
+    margin: 0 1rem 0 0;
   }
 }
 </style>

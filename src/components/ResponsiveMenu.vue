@@ -2,7 +2,7 @@
   <nav class="responsive-menu">
     <ul>
       <li v-for="(item, index) in structure" :key="index">
-        <RouterLink v-if="item.link" :to="item.link">{{ item.title }}</RouterLink>
+        <RouterLink v-if="item.slug" :to="item.slug || '/'">{{ item.title }}</RouterLink>
         <span v-else>{{ item.title }}</span>
       </li>
     </ul>
@@ -10,21 +10,27 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
-import { RouterLink } from 'vue-router';
+import {defineProps, toRefs} from 'vue';
+import {RouterLink} from 'vue-router';
 
-defineProps({
+const props = defineProps({
   structure: {
     type: Array,
     required: true
   }
 });
+
+const {structure} = toRefs(props);
 </script>
 
 <style scoped>
 .responsive-menu {
   background: white;
   padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
 }
 
 /* Прячем на десктопах */
@@ -42,5 +48,37 @@ defineProps({
 
 .responsive-menu li {
   margin-bottom: 0.75rem;
+}
+
+.burger-button {
+  background: white;
+  border: none;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a1f44; /* Тёмно-синий */
+  cursor: pointer;
+  display: none; /* Покажем только в адаптиве */
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.burger-button:hover {
+  background-color: rgba(10, 31, 68, 0.05);
+}
+
+.burger-button .fa-bars {
+  transition: transform 0.3s ease;
+}
+
+.burger-button.open .fa-bars {
+  transform: rotate(90deg);
+}
+
+@media screen and (max-width: 991px) {
+  .burger-button {
+    display: block;
+  }
 }
 </style>
