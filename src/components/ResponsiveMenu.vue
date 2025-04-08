@@ -1,66 +1,27 @@
-<script setup>
-import { RouterLink } from 'vue-router'
-import {onMounted, onUnmounted, ref} from "vue";
-
-// Правильное объявление пропсов
-const props = defineProps({
-  structure: {
-    type: Array,
-    required: true
-  }
-})
-
-const isMobile = ref(window.innerWidth <= 991);
-const menuOpen = ref(false);
-
-const checkScreen = () => {
-  isMobile.value = window.innerWidth <= 991;
-  if (!isMobile.value) {
-    menuOpen.value = false;
-  }
-};
-
-const toggleMenu = () => {
-  menuOpen.value = !menuOpen.value;
-};
-
-
-
-onMounted(() => {
-  window.addEventListener('resize', checkScreen);
-});
-
-onUnmounted(() => {
-  window.removeEventListener('resize', checkScreen);
-});
-</script>
-
 <template>
-  <nav :class="{ 'is-mobile': isMobile }">
-    <button @click="toggleMenu" v-if="isMobile">Меню</button>
-    <ul v-show="!isMobile || menuOpen">
+  <nav class="responsive-menu">
+    <ul>
       <li v-for="(item, index) in structure" :key="index">
-        <RouterLink :to="item.link">{{ item.title }}</RouterLink>
+        <RouterLink v-if="item.link" :to="item.link">{{ item.title }}</RouterLink>
+        <span v-else>{{ item.title }}</span>
       </li>
     </ul>
   </nav>
 </template>
 
+<script setup>
+import { defineProps } from 'vue';
+import { RouterLink } from 'vue-router';
 
+defineProps({
+  structure: {
+    type: Array,
+    required: true
+  }
+});
+</script>
 
 <style scoped>
-nav {
-  /* Стили для десктопного меню */
-}
-nav.is-mobile {
-  /* Стили для мобильного меню */
-}
-button {
-  /* Стили для кнопки "Меню" */
-}
-ul {
-  /* Стили для списка пунктов меню */
-}
 .responsive-menu {
   background: white;
   padding: 1rem;
