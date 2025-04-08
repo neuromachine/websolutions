@@ -2,10 +2,16 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import $ from 'jquery'
 // import MeanMenu from "@/components/MeanMenu.vue";
+import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
 
 defineProps({
   isMain: Boolean,
 })
+
+const isOpen = ref(false)
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value
+}
 
 onMounted(() => {
   // Header Sticky
@@ -33,7 +39,14 @@ onMounted(() => {
 
   <!-- Start Navbar Section -->
   <div class="navbar-section">
-    <div class="techvio-responsive-nav index-navber-responsive">
+
+    <!-- Иконка-бургер -->
+    <button class="burger-button" @click="toggleMenu">
+      <i :class="isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
+    </button>
+
+    <ResponsiveMenu v-if="isOpen" />
+    <div v-if="false" class="techvio-responsive-nav index-navber-responsive">
       <div class="container">
         <div class="techvio-responsive-menu">
           <div class="logo">
@@ -122,5 +135,15 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.burger-button {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #222;
+  cursor: pointer;
+}
 
+.burger-icon {
+  transition: transform 0.3s ease;
+}
 </style>

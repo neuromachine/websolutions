@@ -59,7 +59,7 @@ onMounted(() => {
             </div>
             <img src="/assets/img/logo-black.png" class="black-logo" alt="logo">
           </a>
-          <div ref="menuRef" class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <RouterLink to="/">Главная</RouterLink>
