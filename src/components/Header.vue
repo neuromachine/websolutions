@@ -1,8 +1,15 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import {ref, onMounted, onUnmounted, computed} from 'vue'
 import $ from 'jquery'
 // import MeanMenu from "@/components/MeanMenu.vue";
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
+
+import sourceData from "@/structure.json";
+// const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
+const items = sourceData
+
+// const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
+
 
 defineProps({
   isMain: Boolean,
@@ -14,6 +21,8 @@ const toggleMenu = () => {
 }
 
 onMounted(() => {
+  console.log(items)
+
   // Header Sticky
   $(window).on('scroll',function() {
     if ($(this).scrollTop() > 120){
@@ -141,9 +150,17 @@ onMounted(() => {
   font-size: 1.8rem;
   color: #222;
   cursor: pointer;
+  display: none; /* по умолчанию скрыт */
 }
 
 .burger-icon {
   transition: transform 0.3s ease;
+}
+
+/* Показывать бургер только на экранах меньше 991px */
+@media screen and (max-width: 991px) {
+  .burger-button {
+    display: block;
+  }
 }
 </style>
