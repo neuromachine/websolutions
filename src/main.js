@@ -1,3 +1,17 @@
+/*
+import $ from 'jquery';
+
+// Проверяем, есть ли jQuery в глобальном объекте
+console.log('jQuery in global scope:', window.jQuery, window.$);
+
+// Принудительно делаем jQuery глобальным
+window.jQuery = $;
+window.$ = $;
+
+// Проверяем еще раз
+console.log('jQuery set in global scope:', window.jQuery, window.$);
+*/
+
 import { createApp } from 'vue'
 import App from './app.vue'
 import "waypoints/lib/noframework.waypoints.js"; //http://imakewebthings.com/waypoints/

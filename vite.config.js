@@ -6,6 +6,11 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // define: {
+  //   'window.jQuery': 'jquery',
+  //   'jQuery': 'jquery',
+  //   '$': 'jquery'
+  // },
   plugins: [
     vue(),
     vueDevTools(),
