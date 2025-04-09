@@ -1,8 +1,11 @@
 <script setup>
+
 import { computed } from "vue";
 import { useRoute } from "vue-router";
+
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
+
 import sourceData from "@/data.json";
 
 const route = useRoute();
@@ -12,7 +15,7 @@ const item = computed(() => sourceData.find((work) => work.slug === route.params
 </script>
 
 <template>
-  <h1>{{$route.params.slug}}</h1>
+<!--  <h1>{{$route.params.slug}}</h1>-->
   <Header />
   <PageTitle :breadcrumbs="[
   { title: 'Главная', link: '/' },

@@ -3,7 +3,7 @@ import {onMounted, onUnmounted, ref} from "vue";
 import $ from 'jquery'
 import Isotope from 'isotope-layout';
 
-import portfolio_json from "@/portfolio.json";
+import data_json from "@/portfolio.json";
 
 const isotopeInstance = ref(null);
 
@@ -76,7 +76,7 @@ const data = [
 ]
 */
 
-const data = portfolio_json
+const data = data_json
 </script>
 
 <template>

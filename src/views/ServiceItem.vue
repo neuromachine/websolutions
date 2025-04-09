@@ -1,25 +1,26 @@
 <script setup>
 
+import {computed} from "vue";
+import {useRoute} from "vue-router";
+
+import PageTitle from "@/components/PageTitle.vue";
+import Header from "@/components/Header.vue";
+
+import sourceData from "@/data.json";
+
+const route = useRoute();
+
+// Ищем объект в массиве по slug
+const item = computed(() => sourceData.find((item) => item.slug == route.params.slug));
 </script>
 
 <template>
-  <!-- Start Page Title Section -->
-  <div class="page-title-area item-bg1">
-    <div class="d-table">
-      <div class="d-table-cell">
-        <div class="container">
-          <div class="page-title-content">
-            <h2>Services Details</h2>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li>Services Details</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Page Title Section -->
+  <Header />
+  <PageTitle :breadcrumbs="[
+  { title: 'Главная', link: '/' },
+  { title: 'Услуги', link: '/services' },
+ // { title: item.title, link: '/service/'+item.slug }
+]" />
 
   <!-- Start Services Details Section -->
   <section class="services-details-area section-padding">
@@ -31,7 +32,7 @@
               <img src="/assets/img/services-details-1.jpg" alt="image">
             </div>
 
-            <h3>Software Development Consulting We Provide</h3>
+            <h3>{{item.title}}Software Development Consulting We Provide</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa officia deserunt laborum</p>
 
             <div class="features-text">
