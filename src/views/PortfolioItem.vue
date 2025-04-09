@@ -12,6 +12,7 @@ const item = computed(() => sourceData.find((work) => work.slug === route.params
 </script>
 
 <template>
+  <h1>{{$route.params.slug}}</h1>
   <Header />
   <PageTitle :breadcrumbs="[
   { title: 'Главная', link: '/' },
