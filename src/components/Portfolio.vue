@@ -3,6 +3,8 @@ import {onMounted, onUnmounted, ref} from "vue";
 import $ from 'jquery'
 import Isotope from 'isotope-layout';
 
+import portfolio_json from "@/portfolio.json";
+
 const isotopeInstance = ref(null);
 
 onUnmounted(() => {
@@ -37,7 +39,7 @@ onMounted(() => {
 
   }
 });
-
+/*
 const data = [
   {
     id: 1,
@@ -55,8 +57,26 @@ const data = [
     groups: ['dev','support'],
     slug: 'tff',
   },
+  {
+    id: 3,
+    title: 'TFF Портал - рыбная ловля нахлыстом"',
+    thumb: 'thumb_2.jpg',
+    class: ['Разработка','Сопровождение'],
+    groups: ['dev','promo'],
+    slug: 'tff',
+  },
+  {
+    id: 4,
+    title: 'TFF Портал - рыбная ловля нахлыстом"',
+    thumb: 'thumb_2.jpg',
+    class: ['Разработка','Сопровождение'],
+    groups: ['dev','support','smm'],
+    slug: 'tff',
+  },
 ]
+*/
 
+const data = portfolio_json
 </script>
 
 <template>
@@ -76,8 +96,8 @@ const data = [
               <li class="filter filter-active" data-filter=".all">Все</li>
               <li class="filter" data-filter=".dev">Разработка</li>
               <li class="filter" data-filter=".support">Сопровождение</li>
-              <li class="filter" data-filter=".application">SMM</li>
-              <li class="filter" data-filter=".photography">Продвижение</li>
+              <li class="filter" data-filter=".smm">SMM</li>
+              <li class="filter" data-filter=".promo">Продвижение</li>
             </ul>
           </div>
         </div>
@@ -88,7 +108,9 @@ const data = [
           <!-- portfolio-item -->
           <div v-for="(item, index) in data" :key="index" :class="item.groups.join(' ')" class="col-lg-4 col-md-6 portfolio-grid-item all">
             <div class="portfolio-item">
-              <img v-bind="{src: '/assets/img/portfolio/'+item.thumb}" alt="image">
+              <RouterLink :to="{ path: '/portfolio/' + item.slug }">
+                <img v-bind="{src: '/assets/img/portfolio/'+item.thumb}" alt="image">
+              </RouterLink>
               <div class="portfolio-content-overlay">
                 <p>{{item.class.join(' | ')}}</p>
                 <h3><RouterLink :to="{ path: '/portfolio/' + item.slug }">{{item.title}}</RouterLink></h3>
