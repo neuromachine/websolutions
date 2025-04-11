@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import $ from 'jquery'
-
+// TODO: Refactoring
 onMounted(() => {
   // Go to Top
   // Scroll Event

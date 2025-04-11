@@ -1,6 +1,5 @@
 <script setup>
 import {computed} from "vue";
-import ServiceItem from "@/components/ServiceItem.vue";
 /*
 import data_json from "@/services.json";
 onMounted(() => {
@@ -29,12 +28,93 @@ const tree = computed(() => {
   <section class="services-section section-padding">
     <div class="container">
       <div class="row">
-        <ServiceItem v-for="(item, index) in tree" :key="index"
-                     :id="item.id"
-                     :title="item.title"
-                     :childs="item.childs"
-                     :slug="item.slug"
-        />
+        <div v-for="(item, index) in tree" :key="index" class="col-lg-4 col-md-6">
+          <div class="single-services-item">
+            <div class="services-icon">
+              <i class="flaticon-development"></i>
+            </div>
+            <h3>{{item.title}}</h3>
+            <p v-for="(child, indexC) in item.childs" :key="indexC">
+              <span><h3>{{child.title}}</h3></span>
+              <ul class="subitems">
+                <li v-for="(schild, indexS) in child.childs" :key="indexS">
+                  <span>{{schild.title}}</span>
+
+                  <span  class="lv3">{{schild.thumb}}</span>
+                  <span  class="lv3">{{schild.id}}</span>
+                  <span  class="lv3">{{schild.slug}}</span>
+
+                  <span  v-for="(tchild, index3) in schild.childs" :key="index3" class="lv3">{{tchild.title}}</span>
+                </li>
+              </ul>
+            </p>
+            <div class="services-btn">
+              <RouterLink :to="{ path: '/service/' + item.slug }" class="read-more">
+                <i class="bi bi-arrow-right-short"></i> Read More
+              </RouterLink>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-item">
+            <div class="services-icon">
+              <i class="flaticon-targeted-marketing"></i>
+            </div>
+            <h3>Digital Marketing</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua</p>
+            <div class="services-btn">
+              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-item">
+            <div class="services-icon">
+              <i class="flaticon-analytics"></i>
+            </div>
+            <h3>Startup Solutions</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua</p>
+            <div class="services-btn">
+              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-item">
+            <div class="services-icon">
+              <i class="flaticon-super-intelligence"></i>
+            </div>
+            <h3>Networking Services</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua</p>
+            <div class="services-btn">
+              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-item">
+            <div class="services-icon">
+              <i class="flaticon-code"></i>
+            </div>
+            <h3>SEO Optimization</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua</p>
+            <div class="services-btn">
+              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-services-item">
+            <div class="services-icon">
+              <i class="flaticon-mobile-app"></i>
+            </div>
+            <h3>Apps Development</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt dolore magna aliqua</p>
+            <div class="services-btn">
+              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Read More</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

@@ -2,30 +2,20 @@
 
 import {computed} from "vue";
 import {useRoute} from "vue-router";
-
-import PageTitle from "@/components/PageTitle.vue";
-import Header from "@/components/Header.vue";
-
-
-// import sourceData from "@/data.json";
-import { useMainStore } from '@/stores/mainStore';
-
 const route = useRoute();
 
+import { useMainStore } from '@/stores/mainStore';
 const mainStore = useMainStore();
-// const items = mainStore.services;
-
-// Ищем объект в массиве по slug
-// const item = computed(() => sourceData.find((item) => item.slug == route.params.slug));
-
 const item = computed(() => {
   if (!route.params.slug) return null;
   return mainStore.getServiceBySlug(route.params.slug);
 });
-
 const tree = computed(() => {
   return mainStore.geyServicesTree(mainStore.data.tree);
 });
+
+import PageTitle from "@/components/PageTitle.vue";
+import Header from "@/components/Header.vue";
 
 </script>
 

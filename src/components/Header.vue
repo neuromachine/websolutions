@@ -42,12 +42,13 @@ const toggleMenu = () => {
 
 
 onMounted(() => {
+// TODO: refactoring
   // console.log(structure)
 
 // const $dlg = getCurrentInstance().appContext.config.globalProperties.$dlg
-  const $dlg = getCurrentInstance().proxy.$dlg
 
-  $dlg.message('Saved successfully!')
+  // const $dlg = getCurrentInstance().proxy.$dlg
+  // $dlg.message('Saved successfully!')
 
 
   // Header Sticky
