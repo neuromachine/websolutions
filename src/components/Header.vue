@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, onUnmounted, computed} from 'vue'
+import {ref, onMounted, getCurrentInstance, onUnmounted, computed} from 'vue'
 import { useUiStore } from '@/stores/uiStore'; // Импорт стора
 import $ from 'jquery'
 // import MeanMenu from "@/components/MeanMenu.vue";
@@ -11,6 +11,21 @@ import structure from "@/structure.json";
 
 // const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
 
+
+import { DialogModal, DialogAlert } from 'v-dialogs'
+import UserProfile from '@/components/Modal.vue'
+
+DialogModal(UserProfile, {
+
+  title: 'User Profile',
+  params: {
+    userId: 1,
+    userName: 'Terry Zeng'
+  },
+  callback: data => {
+    DialogAlert(`Received message: ${data}`)
+  }
+})
 
 defineProps({
   isMain: Boolean,
@@ -28,6 +43,12 @@ const toggleMenu = () => {
 
 onMounted(() => {
   // console.log(structure)
+
+// const $dlg = getCurrentInstance().appContext.config.globalProperties.$dlg
+  const $dlg = getCurrentInstance().proxy.$dlg
+
+  $dlg.message('Saved successfully!')
+
 
   // Header Sticky
   $(window).on('scroll',function() {
@@ -138,6 +159,7 @@ onMounted(() => {
 .navbar-section {
   /* background: #FFF; */
 }
+/* TODO: вернуться 0 */
 .nav_wrap { display: flex;  flex-direction: row; justify-content: space-between; }
 .logo_wrap { margin: 0 0 0 1rem;}
 .burger-button {

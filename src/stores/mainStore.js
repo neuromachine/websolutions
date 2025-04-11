@@ -1,12 +1,64 @@
 import { defineStore } from 'pinia';
 import portfolio_json from "@/portfolio.json";
 import sourceData from '@/data.json';
+import servicesData from '@/data/services.json';
+import { slugify } from '@/utils/slugify'
+import { extractTitle } from '@/utils/extractTitle'
+
+let idCounter = 0
+function generateId() {
+    return `srv-${++idCounter}`
+}
+
+function mapServicesToTree(data) {
+    return Object.entries(data).map(([topLevelKey, topLevelValue]) => {
+        const topSlug = slugify(topLevelKey)
+
+        return {
+            id: generateId(),
+            raw: topLevelKey,
+            title: extractTitle(topLevelKey),
+            slug: topSlug,
+            icon: topSlug, // можно будет использовать в компоненте как `icon-${slug}`
+            thumb: `${topSlug}.png`,
+            images: [],
+            childs: Object.entries(topLevelValue).map(([secondLevelKey, secondLevelValue]) => {
+                const secondSlug = slugify(secondLevelKey)
+
+                return {
+                    id: generateId(),
+                    raw: secondLevelKey,
+                    title: extractTitle(secondLevelKey),
+                    slug: secondSlug,
+                    icon: secondSlug,
+                    thumb: `${secondSlug}.png`,
+                    images: [],
+                    childs: secondLevelValue.map(thirdLevelItem => {
+                        const thirdSlug = slugify(thirdLevelItem)
+
+                        return {
+                            id: generateId(),
+                            raw: thirdLevelItem,
+                            title: extractTitle(thirdLevelItem),
+                            slug: thirdSlug,
+                            icon: thirdSlug,
+                            thumb: `${thirdSlug}.png`,
+                            images: [],
+                            childs: null
+                        }
+                    })
+                }
+            })
+        }
+    })
+}
 
 export const useMainStore = defineStore('main', {
     state: () => ({
         data: {
             portfolio : portfolio_json,
             services: sourceData,
+            tree: servicesData,
         }
     }),
     actions: {
@@ -15,5 +67,8 @@ export const useMainStore = defineStore('main', {
         getServiceBySlug: (state) => (slug) => {
             return state.data.services.find((service) => service.slug === slug);
         },
+        geyServicesTree: (state) => (inputJson) => {
+            return mapServicesToTree(inputJson)
+        }
     },
 });

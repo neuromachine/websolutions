@@ -6,6 +6,7 @@ import {useRoute} from "vue-router";
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
 
+
 // import sourceData from "@/data.json";
 import { useMainStore } from '@/stores/mainStore';
 
@@ -21,6 +22,11 @@ const item = computed(() => {
   if (!route.params.slug) return null;
   return mainStore.getServiceBySlug(route.params.slug);
 });
+
+const tree = computed(() => {
+  return mainStore.geyServicesTree(mainStore.data.tree);
+});
+
 </script>
 
 <template>
@@ -30,6 +36,12 @@ const item = computed(() => {
   { title: 'Услуги', link: '/services' },
  // { title: item.title, link: '/service/'+item.slug }
 ]" />
+
+  <section>
+    <div>
+      <div><h1>{{tree}}</h1></div>
+    </div>
+  </section>
 
   <!-- Start Services Details Section -->
   <section class="services-details-area section-padding">

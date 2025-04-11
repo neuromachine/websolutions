@@ -6,7 +6,7 @@ import { useRoute } from "vue-router";
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
 
-import sourceData from "@/data.json";
+import sourceData from "@/data.json";//TODO: вернуться -1
 
 const route = useRoute();
 
