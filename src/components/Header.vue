@@ -11,9 +11,11 @@ import structure from "@/structure.json";
 
 // const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
 
+/*
 
 import { DialogModal, DialogAlert } from 'v-dialogs'
 import UserProfile from '@/components/Modal.vue'
+
 
 DialogModal(UserProfile, {
 
@@ -26,6 +28,7 @@ DialogModal(UserProfile, {
     DialogAlert(`Received message: ${data}`)
   }
 })
+*/
 
 defineProps({
   isMain: Boolean,

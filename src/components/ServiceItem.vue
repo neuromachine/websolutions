@@ -1,4 +1,10 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { DialogModal, DialogAlert } from 'v-dialogs'
+
+
+import OverlayItem from '@/components/OverlayItem.vue'
+
 const data = defineProps({
   id: {
     type: String,
@@ -18,6 +24,29 @@ const data = defineProps({
     required: true
   },
 })
+
+
+
+function handleClick() {
+  //console.log(data.title);
+  DialogModal(OverlayItem, {
+    title: 'INFO',
+    params: {
+      data
+    },
+  });
+}
+
+onMounted(() => {
+
+  // console.log(
+  //     data
+  // );
+
+});
+
+
+
 </script>
 
 <template>
@@ -26,7 +55,7 @@ const data = defineProps({
       <div class="services-icon">
         <i class="flaticon-development"></i>
       </div>
-      <h3>{{data.title}}</h3>
+      <h3 @click="handleClick">{{data.title}}</h3>
       <p v-for="(child, indexC) in data.childs" :key="indexC">
         <span><h3>{{child.title}}</h3></span>
         <ul class="subitems">
