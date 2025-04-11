@@ -127,21 +127,21 @@ onMounted(() => {
                 <RouterLink to="/portfolio" class="nav-link">Портфолио</RouterLink>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Инфо <i class="fas fa-chevron-down"></i></a>
+                <RouterLink to="/page/info" class="nav-link">Инфо <i class="fas fa-chevron-down"></i></RouterLink>
                 <ul class="dropdown-menu">
                   <li class="nav-item">
-                    <a href="team.html" class="nav-link">Команда</a>
+                    <RouterLink to="/page/team" class="nav-link">Команда</RouterLink>
                   </li>
                   <li class="nav-item">
-                    <a href="pricing.html" class="nav-link">Цены</a>
+                    <RouterLink to="/page/prices" class="nav-link">Цены</RouterLink>
                   </li>
                   <li class="nav-item">
-                    <a href="faq.html" class="nav-link">FAQ</a>
+                    <RouterLink to="/page/faq" class="nav-link">FAQ</RouterLink>
                   </li>
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Блог</a>
+                <RouterLink to="/blog/contact" class="nav-link">Блог</RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/page/contact" class="nav-link">Контакты</RouterLink>

@@ -9,17 +9,6 @@ const routes = [
         component: () => import('@/views/Home.vue'),
     },
     {
-        path: '/services',
-        name: 'services_list',
-        component: () => import('@/views/ServicesList.vue'),
-    },
-    {
-        path: '/service/:slug',
-        name: 'service_item',
-        component: () => import('@/views/ServiceItem.vue'),
-        // component: ServiceView
-    },
-    {
         path: '/page/:slug',
         name: 'page',
         component: () => import('@/views/Page.vue'),
@@ -33,6 +22,28 @@ const routes = [
         path: '/portfolio/:slug',
         name: 'portfolio_item',
         component: () => import('@/views/PortfolioItem.vue'),
+    },
+    {
+        path: '/services',
+        name: 'services_list',
+        component: () => import('@/views/ServicesList.vue'),
+    },
+    {
+        path: '/service/:slug',
+        name: 'service_item',
+        component: () => import('@/views/ServiceItem.vue'),
+        // component: ServiceView
+    },
+    {
+        path: '/blog',
+        name: 'blog_list',
+        component: () => import('@/views/BlogList.vue'),
+    },
+    {
+        path: '/blog/:slug',
+        name: 'blog_item',
+        component: () => import('@/views/BlogItem.vue'),
+        // component: ServiceView
     },
 ]
 

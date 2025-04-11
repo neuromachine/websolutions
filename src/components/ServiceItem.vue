@@ -70,10 +70,15 @@ onMounted(() => {
           </li>
         </ul>
       </p>
-      <div class="services-btn">
+<!--      <div class="services-btn">
         <RouterLink :to="{ path: '/service/' + data.slug }" class="read-more">
           <i class="bi bi-arrow-right-short"></i> Подробнее
         </RouterLink>
+      </div>-->
+      <div class="services-btn">
+        <span class="read-more" @click="handleClick">
+          <i class="bi bi-arrow-right-short"></i> Подробнее
+        </span>
       </div>
     </div>
   </div>

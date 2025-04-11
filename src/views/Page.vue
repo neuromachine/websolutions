@@ -1,49 +1,26 @@
 <script setup>
+import {computed} from "vue";
+
+import { useRoute } from "vue-router";
+const route = useRoute();
+
 import PageTitle from "@/components/PageTitle.vue";
+import Header from "@/components/Header.vue";
+
+import sourceData from "@/pages.json";
+const item = computed(() => sourceData.find((work) => work.slug === route.params.slug));
 </script>
 
 <template>
 
-  <PageTitle />
+  <Header />
+  <PageTitle :breadcrumbs="[
+  { title: 'Главная', link: '/' },
+  { title: item.title, link: '/page/'+item.slug }
 
-  <!-- Start Feature Section -->
-  <section class="feature-section pt-100">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-single-item">
-            <img src="/assets/img/icon/feature-icon-1.svg" alt="icon">
-            <h3>Flexibility & Responsive</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam</p>
-            <div class="feature-btn-box">
-              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-single-item">
-            <img src="/assets/img/icon/feature-icon-2.svg" alt="icon">
-            <h3>Dedicated Teams</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam</p>
-            <div class="feature-btn-box">
-              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="feature-single-item">
-            <img src="/assets/img/icon/feature-icon-3.svg" alt="icon">
-            <h3>Focusing on Business</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam</p>
-            <div class="feature-btn-box">
-              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Learn More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Feature Section -->
+]" />
+
+
 
   <!-- Start About Section -->
   <section class="about-area section-padding">
@@ -51,8 +28,10 @@ import PageTitle from "@/components/PageTitle.vue";
       <div class="row d-flex align-items-center">
         <div class="col-lg-6 col-md-12">
           <div class="about-content">
-            <h6 class="sub-title">About Our Company</h6>
-            <h2>Providing Your Business With A Quality IT Service is Our Passion</h2>
+            <h6 class="sub-title" v-if="item.class">{{item.class.join(' | ')}}</h6>
+
+            <h2>{{item.title}}</h2>
+            <div class="tiny" v-html="item.descr"></div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim</p>
             <div class="skills">
               <div class="skill-item">
@@ -92,6 +71,45 @@ import PageTitle from "@/components/PageTitle.vue";
     </div>
   </section>
   <!-- End About Section -->
+
+  <!-- Start Feature Section -->
+  <section class="feature-section pt-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-single-item">
+            <img src="/assets/img/icon/feature-icon-1.svg" alt="icon">
+            <h3>Flexibility & Responsive</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam</p>
+            <div class="feature-btn-box">
+              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-single-item">
+            <img src="/assets/img/icon/feature-icon-2.svg" alt="icon">
+            <h3>Dedicated Teams</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam</p>
+            <div class="feature-btn-box">
+              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="feature-single-item">
+            <img src="/assets/img/icon/feature-icon-3.svg" alt="icon">
+            <h3>Focusing on Business</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim veniam</p>
+            <div class="feature-btn-box">
+              <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Feature Section -->
 
   <!-- Start Counter Section -->
   <section class="counter-area section-padding">
