@@ -14,7 +14,7 @@ const routes = [
         component: () => import('@/views/ServicesList.vue'),
     },
     {
-        path: '/service/:id',
+        path: '/service/:slug',
         name: 'service_item',
         component: () => import('@/views/ServiceItem.vue'),
         // component: ServiceView

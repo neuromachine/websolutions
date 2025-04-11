@@ -79,6 +79,7 @@ onMounted(() => {
               </li>
               <li class="nav-item">
                 <!--                <RouterLink class="nav-link" to="/product-list">Услуги <i class="fas fa-chevron-down"></i></RouterLink>-->
+                <!--
                 <RouterLink class="nav-link" to="/services">Услуги <i class="fas fa-chevron-down"></i></RouterLink>
                 <ul class="dropdown-menu">
                   <li class="nav-item">
@@ -94,6 +95,8 @@ onMounted(() => {
                     <RouterLink to="/service/individual" class="nav-link">Индивидуально</RouterLink>
                   </li>
                 </ul>
+                -->
+                <RouterLink class="nav-link" to="/services">Услуги</RouterLink>
               </li>
               <li class="nav-item">
                 <RouterLink to="/portfolio" class="nav-link">Портфолио</RouterLink>
