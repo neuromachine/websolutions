@@ -29,4 +29,6 @@ coverage
 
 *.tsbuildinfo
 
+package-lock.json
+
 .htaccess
