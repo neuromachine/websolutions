@@ -1,1 +1,0 @@
-const s="/assets/img/icon/workprocess-icon-1.svg",o="/assets/img/icon/workprocess-icon-2.svg",c="/assets/img/icon/workprocess-icon-3.svg",i="/assets/img/icon/workprocess-icon-4.svg";export{s as _,o as a,c as b,i as c};
