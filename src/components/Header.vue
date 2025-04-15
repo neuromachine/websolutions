@@ -133,7 +133,7 @@ onMounted(() => {
                     <RouterLink to="/page/team" class="nav-link">Команда</RouterLink>
                   </li>
                   <li class="nav-item">
-                    <RouterLink to="/page/prices" class="nav-link">Цены</RouterLink>
+                    <RouterLink to="/price" class="nav-link">Цены</RouterLink>
                   </li>
                   <li class="nav-item">
                     <RouterLink to="/page/faq" class="nav-link">FAQ</RouterLink>

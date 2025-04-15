@@ -7,7 +7,7 @@ import Header from "@/components/Header.vue";
   <Header />
   <PageTitle :breadcrumbs="[
   { title: 'Главная', link: '/' },
-  { title: 'Блог', link: '/blog' },
+  { title: 'Цены', link: '/blog' },
  // { title: item.title, link: '/service/'+item.slug }
 ]" />
 

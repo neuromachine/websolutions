@@ -55,21 +55,21 @@ onMounted(() => {
       <div class="services-icon">
         <i class="flaticon-development"></i>
       </div>
-      <h3 @click="handleClick">{{data.title}}</h3>
-      <p v-for="(child, indexC) in data.childs" :key="indexC">
-        <span><h3>{{child.title}}</h3></span>
+      <h3 class="owner" @click="handleClick">{{data.title}}</h3>
+      <div v-for="(child, indexC) in data.childs" :key="indexC">
+        <div class="module">{{child.title}}</div>
         <ul class="subitems">
           <li v-for="(schild, indexS) in child.childs" :key="indexS">
-            <span>{{schild.title}}</span>
+            <div class="schild"><span class="title">{{schild.title}}</span>
 
             <span  class="lv3">{{schild.thumb}}</span>
             <span  class="lv3">{{schild.id}}</span>
             <span  class="lv3">{{schild.slug}}</span>
-
+            </div>
             <span  v-for="(tchild, index3) in schild.childs" :key="index3" class="lv3">{{tchild.title}}</span>
           </li>
         </ul>
-      </p>
+      </div>
 <!--      <div class="services-btn">
         <RouterLink :to="{ path: '/service/' + data.slug }" class="read-more">
           <i class="bi bi-arrow-right-short"></i> Подробнее
@@ -85,8 +85,18 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.lv3 { display: none;
-  }
+.lv3 {
 
-.subitems { display: flex; flex-direction: column; color: #c31010; margin-left: 1em; margin-right: 1em; }
+  display: none;
+  /*
+
+  color: #c31010;
+
+   */
+  }
+.owner { color: #c31010; font-size: 1.5em;}
+.module {color: #123d45; font-size: 1.3em; margin-left: 1em;}
+.subitems { display: flex; flex-direction: column;  margin-left: 2em; margin-right: 1em; }
+.schild { display: flex; flex-direction: column;}
+  .schild .title { font-size: 20px; margin-left: 1em;}
 </style>
