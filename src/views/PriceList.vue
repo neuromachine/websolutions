@@ -1,6 +1,29 @@
 <script setup>
+
+
+import {DialogModal} from "v-dialogs";
+
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
+
+import OverlayPage from "@/components/OverlayPage.vue";
+
+
+
+const data = {}
+
+function showOwerlay(slug) {
+
+  data.slug = slug
+  // console.log(slug)
+
+  DialogModal(OverlayPage, {
+    title: 'О услуге',
+    params: {
+      data
+    },
+  });
+}
 </script>
 
 <template>
@@ -44,7 +67,7 @@ import Header from "@/components/Header.vue";
               </ul>
             </div>
             <div class="price-btn">
-              <a href="#" class="price-btn-one">Подробнее</a>
+              <a href="#"  @click="showOwerlay('startsite')" class="price-btn-one">Подробнее</a>
             </div>
           </div>
         </div>

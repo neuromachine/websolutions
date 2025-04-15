@@ -70,4 +70,16 @@
 "date":null,
 "class":null,
 "groups":null
+},
+{ 
+"id":7,
+"title":"Посадочная страница",
+"slug":"startsite",
+"descr":null,
+"thumb":null,
+"mainimg":null,
+"announce":null,
+"date":null,
+"class":null,
+"groups":null
 }]
