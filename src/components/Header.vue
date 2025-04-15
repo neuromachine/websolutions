@@ -163,9 +163,12 @@ onMounted(() => {
 <style scoped>
 .logo_wrap { font-size: 0; line-height: 0;}
 .logo_wrap .white{ display: block}
+.index-navber .logo_wrap .white{ display: none}
 .logo_wrap .black{ display: none}
+.index-navber .logo_wrap .black{ display: block}
 .is-sticky .logo_wrap  .white {display: none}
 .is-sticky .logo_wrap  .black { display: block}
+.index-navber .index-navber {}
 .navbar-section {
   /* background: #FFF; */
 }
