@@ -87,7 +87,8 @@ onMounted(() => {
         <nav class="navbar navbar-expand-md navbar-light">
           <div class="nav_wrap">
             <RouterLink to="/" class="logo_wrap">
-              <img src="/assets/img/logo-black.png" alt="logo">
+<!--              <img src="/assets/img/logo-black.png" alt="logo">-->
+              <span class="logo_wrap"><img src="/assets/img/logo.png" alt="logo" class="white"><img src="/assets/img/logo-black.png" alt="logo" class="black"></span>
             </RouterLink>
             <!-- Иконка-бургер -->
             <button class="burger-button" @click="toggleMenu">
@@ -160,6 +161,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.logo_wrap { font-size: 0; line-height: 0;}
+.logo_wrap .white{ display: block}
+.logo_wrap .black{ display: none}
+.is-sticky .logo_wrap  .white {display: none}
+.is-sticky .logo_wrap  .black { display: block}
 .navbar-section {
   /* background: #FFF; */
 }

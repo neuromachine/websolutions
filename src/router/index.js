@@ -9,6 +9,11 @@ const routes = [
         component: () => import('@/views/Home.vue'),
     },
     {
+        path: '/compred',
+        name: 'compred',
+        component: () => import('@/views/Compred.vue'),
+    },
+    {
         path: '/page/:slug',
         name: 'page',
         component: () => import('@/views/Page.vue'),
