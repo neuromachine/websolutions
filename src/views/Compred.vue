@@ -3,7 +3,7 @@ import Header from "@/components/Header.vue";
 </script>
 
 <template>
-  <Header />
+  <Header :isNavi="true" />
 
   <!-- Start Home Section -->
   <div class="home-3 home-section">
@@ -15,16 +15,19 @@ import Header from "@/components/Header.vue";
             <div class="col-lg-6 col-md-12">
               <div class="main-banner-content">
                 <ul class="social-icon-list">
-                  <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                  <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                  <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                  <li><a href="https://t.me/Lola_06"><i class="fa-brands fa-telegram"></i></a></li>
                 </ul>
-                <h1>IT Solutions & Business Services Company</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor magna aliqua, magna aliqua. ipsum is simply dummy text of the printing.</p>
+                <h1>Коммерческое предложение </h1>
+                <p>🌴 Digital-решения для агентств недвижимости Паттайи</p>
+                <p>Рынок недвижимости Паттайи становится всё более конкурентным и динамичным: объекты быстро появляются и исчезают, покупатели становятся требовательнее, а внимание клиента нужно захватывать с первых секунд. В этой среде важно иметь не просто "сайт", а удобный, презентабельный и функциональный инструмент продаж.</p>
+                <p>Мы разработали три готовых решения под ключ, адаптированных под специфику риэлторского бизнеса Паттайи — будь вы небольшим агентом, развивающим личный бренд, или профессиональным офисом с десятками объектов и CRM-учётом.</p>
+                <p>🔹 Quick.Page — для быстрой презентации и привлечения первых лидов</p>
+                <p>🔹 Core.Site — для стабильного позиционирования и расширения базы</p>
+                <p>🔹 Smart.Catalog — как полноценная система продаж с каталогом, заявками и аналитикой</p>
+                <p>Каждое решение масштабируемо, адаптивно и может быть дополнено индивидуальными модулями по мере роста ваших задач.</p>
                 <div class="banner-btn">
-                  <a class="default-btn-one" href="services.html">Our Service <span></span></a>
-                  <a class="default-btn-two" href="contact.html">Contact Us <span></span></a>
+                  <a class="default-btn-one" href="https://t.me/Lola_06">Телеграм <span></span></a>
+                  <a class="default-btn-two"  href="tel:+79282619061">Позвонить <span></span></a>
                 </div>
               </div>
             </div>
@@ -39,4 +42,107 @@ import Header from "@/components/Header.vue";
     </div>
   </div>
   <!-- End Home Section -->
+
+  <!-- Start Pricing Section -->
+  <section class="price-area pt-100 pb-70">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">Востребованные пакеты</h6>
+            <h2>Наши предложения</h2>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-pricing-content">
+            <div class="price-tag">
+              <h3>Quick.Page</h3>
+            </div>
+            <div class="price-heading">
+              <div class="price-usd">
+                <h2>₽ 35.000<span class="price-small-text">Лэндинг для ваших продаж</span></h2>
+              </div>
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>Одностраничный сайт</li>
+                <li>Форма заявки</li>
+                <li>Интерактивная карта с отметками объектов</li>
+                <li>Мобильная адаптация</li>
+                <li>Подключение аналитики</li>
+                <li>Базовая SEO-структура</li>
+                <li>Установка и настройка домена/хостинга</li>
+                <li class="offer-list-none"><del>Панель управления контентом</del></li>
+                <li class="offer-list-none"><del>Фильтрация по объектам</del></li>
+                <li class="offer-list-none"><del>CRM или бронь онлайн</del></li>
+              </ul>
+            </div>
+            <div class="price-btn">
+              <a href="#"  @click="showOwerlay('startsite')" class="price-btn-one">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-pricing-content">
+            <div class="price-tag">
+              <h3>Core.Site</h3>
+            </div>
+            <div class="price-heading">
+              <div class="price-usd">
+                <h2>₽ 85.000<span class="price-small-text">Многостраничный корпоративный</span></h2>
+              </div>
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>До 10 типов страниц</li>
+                <li>Управление контентом через CMS</li>
+                <li>+1 специализированный инструмент на выбор</li>
+                <li>Интерактивная карта и форма заявки</li>
+                <li>SEO-структура</li>
+                <li>Подключение аналитики</li>
+
+                <li class="offer-list-none"><del>Онлайн-заказы и оплата</del></li>
+                <li class="offer-list-none"><del>Личный кабинет</del></li>
+                <li class="offer-list-none"><del>Система лояльности</del></li>
+
+              </ul>
+            </div>
+            <div class="price-btn">
+              <a href="#" class="price-btn-one">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-pricing-content">
+            <div class="price-tag">
+              <h3>Smart.Catalog</h3>
+            </div>
+            <div class="price-heading">
+              <div class="price-usd">
+                <h2>₽ 110.000<span class="price-small-text">Каталог + умные инструменты</span></h2>
+              </div>
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>До 15 шаблонов страниц</li>
+                <li>CMS-редактирование контента и структуры</li>
+                <li>Продвинутый каталог недвижимости с фильтрами</li>
+                <li>Интеграция с CRM-системой</li>
+                <li>Расширенная форма заявки</li>
+                <li>Онлайн-бронирование</li>
+                <li>Интерактивная карта</li>
+                <li>Уникальный дизайн</li>
+                <li class="offer-list-none"><del>Личный кабинет (можно добавить отдельно)</del></li>
+              </ul>
+            </div>
+            <div class="price-btn">
+              <a href="#" class="price-btn-one">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Pricing Section -->
+
 </template>

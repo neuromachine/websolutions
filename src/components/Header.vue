@@ -32,6 +32,7 @@ DialogModal(UserProfile, {
 
 defineProps({
   isMain: Boolean,
+  isNavi: Boolean
 })
 
 const uiStore = useUiStore(); // Инициализация стора
@@ -91,11 +92,11 @@ onMounted(() => {
               <span class="logo_wrap"><img src="/assets/img/logo.png" alt="logo" class="white"><img src="/assets/img/logo-black.png" alt="logo" class="black"></span>
             </RouterLink>
             <!-- Иконка-бургер -->
-            <button class="burger-button" @click="toggleMenu">
+            <button v-if="!isNavi" class="burger-button" @click="toggleMenu">
               <i :class="uiStore.isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
             </button>
           </div>
-          <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
+          <div v-if="!isNavi" class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
             <ul class="navbar-nav">
               <li class="nav-item">
                 <RouterLink to="/">Главная</RouterLink>
@@ -153,7 +154,7 @@ onMounted(() => {
             </div>
           </div>
         </nav>
-        <ResponsiveMenu v-if="uiStore.isOpen" :structure="structure" />
+        <ResponsiveMenu v-if="uiStore.isOpen && !isNavi" :structure="structure" />
       </div>
     </div>
   </div>

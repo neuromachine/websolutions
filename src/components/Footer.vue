@@ -1,5 +1,12 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted , computed} from 'vue'
+import {useRoute} from "vue-router";
+const route = useRoute();
+const isNavi = computed(() => {
+  if (route.path !== '/compred') return null;
+  return true;
+});
+
 import $ from 'jquery'
 // TODO: Refactoring
 onMounted(() => {
@@ -21,7 +28,7 @@ onMounted(() => {
   <!-- Start Footer & Subscribe Section -->
   <section class="footer-subscribe-wrapper">
     <!-- Start Subscribe Section -->
-    <div class="subscribe-area">
+    <div class="subscribe-area" v-if="!isNavi">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 col-md-6">
@@ -52,7 +59,7 @@ onMounted(() => {
               <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
               <ul class="footer-social">
                 <li>
-                  <a href="@Lola_06"> <i class="fa-brands fa-telegram"></i></a>
+                  <a href="https://t.me/Lola_06" target="_blank"> <i class="fa-brands fa-telegram"></i></a>
                 </li>
                 <!--
                                             <li>
@@ -68,7 +75,7 @@ onMounted(() => {
               </ul>
             </div>
           </div>
-          <div class="col-lg-2 col-md-6 col-sm-6">
+          <div  v-if="!isNavi" class="col-lg-2 col-md-6 col-sm-6">
             <div class="single-footer-widget">
               <div class="footer-heading">
                 <h3>Услуги</h3>
@@ -81,7 +88,7 @@ onMounted(() => {
               </ul>
             </div>
           </div>
-          <div class="col-lg-2 col-md-6 col-sm-6">
+          <div  v-if="!isNavi" class="col-lg-2 col-md-6 col-sm-6">
             <div class="single-footer-widget">
               <div class="footer-heading">
                 <h3>Инфо</h3>
@@ -102,12 +109,12 @@ onMounted(() => {
               <div class="footer-info-contact">
                 <i class="flaticon-phone-call"></i>
                 <h3>Телефон</h3>
-                <span><a href="tel:12345678">+7 928 261 9061</a></span>
+                <span><a href="tel:+79282619061">+7 928 261 9061</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
                 <h3>Email</h3>
-                <span><a href="mailto:info@nero1218.tech">info@nero1218.tech</a></span>
+                <span><a href="mailto:info@nero1218.tech">lili@ws-pro.ru</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-placeholder"></i>
@@ -124,7 +131,7 @@ onMounted(() => {
   <!-- End Footer & Subscribe Section -->
 
   <!-- Start Copy Right Section -->
-  <div class="copyright-area">
+  <div v-if="!isNavi" class="copyright-area">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 col-md-6">
