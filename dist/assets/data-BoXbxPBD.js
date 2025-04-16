@@ -1,1 +1,0 @@
-const n=[{id:1,title:"Авто-Кроватка",slug:"car",descr:"<p>Полное описание</p>",thumb:"thumb_1.jpg",mainimg:"work_1_1.png",announce:"announce",date:"2025-04-01 18:12:08"},{id:2,title:"TFF",slug:"tff",descr:"Описание",thumb:"thumb_2.jpg",mainimg:"work_1_1.png",announce:"Анонс",date:"2025-04-14 21:28:57"}];export{n as s};
