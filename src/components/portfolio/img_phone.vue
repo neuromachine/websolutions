@@ -1,5 +1,6 @@
 <script setup>
 defineProps({
+  slug: String,
   filename: String,
 })
 </script>
@@ -9,7 +10,7 @@ defineProps({
 
     <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200.14 375">
       <g id="IMG" class="img_wrap">
-        <image  class="image_p" :href="'/assets/img/portfolio/images/'+filename"/>
+        <image  class="image_p" :href="'/assets/img/portfolio/'+slug+'/'+filename"/>
       </g>
       <path id="uplayer" class="white" d="M0,0v375h200V0H0ZM194.14,334c0,15.46-12.54,28-28,28H30.14c-15.47,0-28-12.54-28-28V30C2.14,14.54,14.67,2,30.14,2h136c15.46,0,28,12.54,28,28v304Z"/>
       <rect id="frame_p" class="cls-3" x="3.35" y="2.89" width="192" height="360" rx="28" ry="28"/>

@@ -44,7 +44,11 @@ const item = computed(() => sourceData.find((work) => work.slug === route.params
         </div>
         <!--            <img :src="`/assets/img/portfolio/${item.mainimg}`" :alt="item.title">-->
         <div class="col-lg-12 col-md-12">
-          <img_phone  v-for="(phone, index) in item.phones" :key="index" :filename="phone" />
+          <img_phone  v-for="(phone, index) in item.phones"
+                      :key="index"
+                      :filename="phone"
+                      :slug="item.slug"
+          />
         </div>
         <div  class="col-lg-12 col-md-12">
           <div class="portfolios-details-desc" v-html="item.descr">

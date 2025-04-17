@@ -109,7 +109,8 @@ const data = data_json
           <div v-for="(item, index) in data" :key="index" :class="item.groups.join(' ')" class="col-lg-4 col-md-6 portfolio-grid-item all">
             <div class="portfolio-item">
               <RouterLink :to="{ path: '/portfolio/' + item.slug }">
-                <img v-bind="{src: '/assets/img/portfolio/'+item.thumb}" alt="image">
+                <img v-if="item.thumb" v-bind="{src: '/assets/img/portfolio/'+item.thumb}" alt="image">
+                <img v-else src="/assets/img/portfolio/replacement_thumb.jpg" alt="image">
               </RouterLink>
               <div class="portfolio-content-overlay">
                 <p>{{item.class.join(' | ')}}</p>

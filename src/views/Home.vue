@@ -23,10 +23,22 @@ import Counter from "@/components/Counter.vue";
                 <h6 class="text-gradient">Надёжные web-решения</h6>
                 <h1>Твой успешный бизнес,<br>Наша экспертная<br><span class="text-gradient">Web-поддержка.</span></h1>
                 <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
+                <!--
                 <div class="banner-btn">
                   <a class="default-btn-one" href="services.html">Смотреть видео<span></span></a>
                   <div class="video-box">
                     <a href="https://www.youtube.com/watch?v=G9TdA8d5aaU" class="popup-video video-btn"> <i class="fa fa-play"></i></a>
+                  </div>
+                </div>
+                -->
+                <div class="banner-btn">
+                  <RouterLink to="/page/about" class="default-btn-one">
+                    О компании<span></span>
+                  </RouterLink>
+                  <div class="video-box">
+                    <RouterLink to="/page/about" class="popup-video video-btn">
+                    <i class="fa fa-play"></i>
+                    </RouterLink>
                   </div>
                 </div>
               </div>
@@ -90,7 +102,7 @@ import Counter from "@/components/Counter.vue";
               <h3>Разработка сайтов</h3>
               <p>Создаём современные и удобные сайты — от лендингов до сложных платформ. Разрабатываем с нуля или дорабатываем существующие решения, адаптируя их под ваш бизнес</p>
               <div class="services-btn">
-                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
               </div>
             </div>
           </div>
@@ -109,7 +121,7 @@ import Counter from "@/components/Counter.vue";
               <h3>Хостинг и серверные решения</h3>
               <p>Надёжный хостинг и оптимизированные серверные решения для стабильной работы вашего проекта. Настроим, обезопасим и обеспечим бесперебойную поддержку</p>
               <div class="services-btn">
-                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
               </div>
             </div>
           </div>
@@ -128,7 +140,7 @@ import Counter from "@/components/Counter.vue";
               <h3>Поддержка и доработка</h3>
               <p>Обновляем, дорабатываем и оптимизируем сайты. Исправляем ошибки, ускоряем загрузку, улучшаем UX/UI и добавляем новые функции по запросу</p>
               <div class="services-btn">
-                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
               </div>
             </div>
           </div>
@@ -147,7 +159,7 @@ import Counter from "@/components/Counter.vue";
               <h3>Адаптация под устройства</h3>
               <p>Делаем сайты, которые работают на всех устройствах. Оптимизируем под мобильные, планшеты и десктопы, улучшая удобство и скорость работы</p>
               <div class="services-btn">
-                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
               </div>
             </div>
           </div>
@@ -166,7 +178,7 @@ import Counter from "@/components/Counter.vue";
               <h3>Безопасность и защита</h3>
               <p>Защищаем сайты от взломов, DDoS-атак и утечек данных. Настраиваем SSL, резервное копирование и средства мониторинга угроз.</p>
               <div class="services-btn">
-                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
               </div>
             </div>
           </div>
@@ -185,7 +197,7 @@ import Counter from "@/components/Counter.vue";
               <h3>Интеграции и API</h3>
               <p>Подключаем CRM, платёжные системы, маркетплейсы и сторонние сервисы. Делаем ваш сайт удобнее, автоматизируя ключевые процессы</p>
               <div class="services-btn">
-                <a href="#" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</a>
+                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
               </div>
             </div>
           </div>
