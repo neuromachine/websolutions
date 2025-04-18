@@ -7,8 +7,13 @@ const route = useRoute();
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
 
-import sourceData from "@/pages.json";
-const item = computed(() => sourceData.find((work) => work.slug === route.params.slug));
+
+import { useMainStore } from '@/stores/mainStore';
+const mainStore = useMainStore();
+const item = computed(() => {
+  return mainStore.getPageBySlug(route.params.slug)
+});
+
 </script>
 
 <template>

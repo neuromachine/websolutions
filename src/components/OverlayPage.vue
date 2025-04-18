@@ -1,6 +1,8 @@
 <script setup>
 import {computed} from "vue";
 
+import { useMainStore } from '@/stores/mainStore';
+const mainStore = useMainStore();
 
 const props = defineProps({
   data: {
@@ -9,8 +11,12 @@ const props = defineProps({
   }
 })
 
-import sourceData from "@/pages.json";
-const jsonData = computed(() => sourceData.find((work) => work.slug === props.data.slug));
+
+const jsonData = computed(() => {
+  // console.log(props.data.slug)
+  return mainStore.getPageBySlug(props.data.slug)
+});
+
 
 const emit = defineEmits(['close'])
 
@@ -21,10 +27,14 @@ const close = () => emit('close', 'message out')
 </script>
 
 <template>
-  <div>
-    <div>{{props.data}}</div>
-    <div>{{props.data.slug}}</div>
-    <div>{{jsonData}}</div>
+  <div class="overlay_page">
+
+    <div v-html="jsonData.descr"></div>
+
   </div>
 </template>
 
+<style scoped>
+  .overlay_page { margin: 2em}
+  .overlay_page .body_title { font-size: 20px !important;}
+</style>

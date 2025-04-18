@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import portfolio_json from "@/portfolio.json";
 import sourceData from '@/data.json';
 import servicesData from '@/data/services.json';
+import pagesData from '@/data/pages.json';
 import { slugify } from '@/utils/slugify'
 import { extractTitle } from '@/utils/extractTitle'
 
@@ -58,6 +59,7 @@ export const useMainStore = defineStore('main', {
         data: {
             portfolio : portfolio_json,
             services: sourceData,
+            pages: pagesData,
             tree: servicesData,
         }
     }),
@@ -67,8 +69,26 @@ export const useMainStore = defineStore('main', {
         getServiceBySlug: (state) => (slug) => {
             return state.data.services.find((service) => service.slug === slug);
         },
+        getPageBySlug: (state) => (slug) => {
+            const returnObj = state.data.pages.find((item) => item.slug === slug);
+            if(typeof returnObj === 'undefined') {
+                console.log('-NOT FOUND:',slug)
+              return  state.data.pages.find((item) => item.slug === 'error-404');
+            }
+            return returnObj
+        },
         geyServicesTree: (state) => (inputJson) => {
             return mapServicesToTree(inputJson)
+        },
+        // TODO: getServiceData LEGACY?
+        getServiceData: (state) => (input) => {
+            // console.log(input);
+           return {
+                id: 1000000000,
+                title: "Ресурс не найден",
+                descr: '<p>Раздел в стадии наполнения</p>',
+                slug: '404'
+            }
         }
     },
 });

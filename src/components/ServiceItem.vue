@@ -1,9 +1,13 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import {ref, onMounted, onUnmounted, computed} from 'vue'
 import { DialogModal, DialogAlert } from 'v-dialogs'
 
+import { useMainStore } from '@/stores/mainStore';
+const mainStore = useMainStore();
 
 import OverlayItem from '@/components/OverlayItem.vue'
+
+import OverlayPage from "@/components/OverlayPage.vue";
 
 const data = defineProps({
   id: {
@@ -37,6 +41,28 @@ function handleClick() {
   });
 }
 
+function handleChild(slug) {
+
+  // let item = {};
+  const item = mainStore.getPageBySlug(slug);
+  // if(typeof item === 'undefined') {
+  //   item = mainStore.getServiceData(404)
+  // }
+  console.log(item);
+  // console.log(item.slug);
+
+
+  DialogModal(OverlayPage, {
+    title: item.title,
+    params: {
+      data:{
+        slug: item.slug
+      }
+    },
+  });
+
+}
+
 onMounted(() => {
 
   // console.log(
@@ -57,10 +83,10 @@ onMounted(() => {
       </div>
       <h3 class="owner" @click="handleClick">{{data.title}}</h3>
       <div v-for="(child, indexC) in data.childs" :key="indexC">
-        <div class="module">{{child.title}}</div>
+        <div class="module"><a class="module" :href="'/page/'+child.slug" @click="handleChild(child.slug)">{{child.title}}</a></div>
         <ul class="subitems">
           <li v-for="(schild, indexS) in child.childs" :key="indexS">
-            <div class="schild"><span class="title">{{schild.title}}</span>
+            <div class="schild"><a class="title" :href="'/page/'+schild.slug" @click="handleChild(schild.slug)">{{schild.title}}</a>
 
             <span  class="lv3">{{schild.thumb}}</span>
             <span  class="lv3">{{schild.id}}</span>
@@ -98,5 +124,5 @@ onMounted(() => {
 .module {color: #123d45; font-size: 1.3em; margin-left: 1em;}
 .subitems { display: flex; flex-direction: column;  margin-left: 2em; margin-right: 1em; }
 .schild { display: flex; flex-direction: column;}
-  .schild .title { font-size: 20px; margin-left: 1em;}
+  .schild .title { font-size: 20px; margin-left: 1em; cursor: pointer; color: #}
 </style>
