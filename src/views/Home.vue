@@ -219,7 +219,9 @@ import Counter from "@/components/Counter.vue";
             <p>Мы создаём продуманные сайты и цифровые продукты, ориентированные на рост и удобство пользователей.</p>
             <p>Внимание к деталям, технологиям и дизайну — в основе каждого нашего проекта.</p>
             <div class="about-btn-box">
-              <a class="default-btn" href="about.html">Подробнее<span></span></a>
+              <RouterLink to="/page/about" class="default-btn">
+                Подробнее<span></span>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -316,7 +318,9 @@ import Counter from "@/components/Counter.vue";
             <p>Современный рынок требует скорости, удобства и технологичности. Мы создаём web-решения, которые упрощают процессы, привлекают клиентов и помогают вам масштабироваться. Готовы сделать следующий шаг?</p>
             <div class="hire-btn">
               <a class="default-btn" href="tel:+79282619061">Позвоните<span></span></a>
-              <a class="default-btn-one" href="/contact.html">Свяжитесь<span></span></a>
+              <RouterLink to="/page/contact" class="default-btn-one">
+                Свяжитесь<span></span>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -325,7 +329,7 @@ import Counter from "@/components/Counter.vue";
   </section>
   <!-- End Hire Section -->
 
-  <!-- Start Blog Section -->
+  <!-- Start Blog Section
   <section class="blog-section bg-grey pt-100 pb-70">
     <div class="container">
       <div class="row">
@@ -427,6 +431,7 @@ import Counter from "@/components/Counter.vue";
       </div>
     </div>
   </section>
+  -->
   <!-- End Blog Section -->
 
   <!-- Start Partner section -->

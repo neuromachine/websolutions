@@ -48,11 +48,14 @@ function handleChild(slug) {
   // if(typeof item === 'undefined') {
   //   item = mainStore.getServiceData(404)
   // }
-  console.log(item);
+  //console.log(item);
   // console.log(item.slug);
 
 
   DialogModal(OverlayPage, {
+    maxButton: false,
+    fullscreen: true,
+    //header: false,
     title: item.title,
     params: {
       data:{
@@ -60,6 +63,8 @@ function handleChild(slug) {
       }
     },
   });
+
+  return false
 
 }
 
@@ -83,10 +88,17 @@ onMounted(() => {
       </div>
       <h3 class="owner" @click="handleClick">{{data.title}}</h3>
       <div v-for="(child, indexC) in data.childs" :key="indexC">
-        <div class="module"><a class="module" :href="'/page/'+child.slug" @click="handleChild(child.slug)">{{child.title}}</a></div>
+<!--        <div class="module"><a class="module" :href="'/page/'+child.slug" @click="handleChild(child.slug)">{{child.title}}</a></div>-->
+        <div class="module">
+          <span class="title" @click="handleChild(child.slug)">
+            {{child.title}}
+          </span>
+        </div>
         <ul class="subitems">
           <li v-for="(schild, indexS) in child.childs" :key="indexS">
-            <div class="schild"><a class="title" :href="'/page/'+schild.slug" @click="handleChild(schild.slug)">{{schild.title}}</a>
+            <div class="schild">
+<!--              <a class="title" :href="'/page/'+schild.slug" @click="handleChild(schild.slug)">{{schild.title}}</a>-->
+              <span class="title" @click="handleChild(schild.slug)">{{schild.title}}</span>
 
             <span  class="lv3">{{schild.thumb}}</span>
             <span  class="lv3">{{schild.id}}</span>
@@ -121,7 +133,8 @@ onMounted(() => {
    */
   }
 .owner { color: #c31010; font-size: 1.5em;}
-.module {color: #123d45; font-size: 1.3em; margin-left: 1em;}
+.module {color: #123d45; font-size: 1.3em; margin-left: 1em; display: flex; flex-direction: column;}
+.owner .module .title { font-weight: bold; color: #282D77; cursor: pointer; display: block;}
 .subitems { display: flex; flex-direction: column;  margin-left: 2em; margin-right: 1em; }
 .schild { display: flex; flex-direction: column;}
   .schild .title { font-size: 20px; margin-left: 1em; cursor: pointer; color: #}

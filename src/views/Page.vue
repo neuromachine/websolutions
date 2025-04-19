@@ -31,14 +31,16 @@ const item = computed(() => {
   <section class="about-area section-padding">
     <div class="container">
       <div class="row d-flex align-items-center">
-        <div class="col-lg-6 col-md-12">
+        <div class="col-lg-12 col-md-12">
           <div class="about-content">
+            <div class="tiny" v-html="item.descr"></div>
+            <!--
             <h6 class="sub-title" v-if="item.class">{{item.class.join(' | ')}}</h6>
-
             <h2>{{item.title}}</h2>
             <div class="tiny" v-html="item.descr"></div>
             <p v-html="item.descr"></p>
             <div class="data">{{item}}</div>
+            -->
           </div>
         </div>
       </div>

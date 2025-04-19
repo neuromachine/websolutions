@@ -28,9 +28,7 @@ const close = () => emit('close', 'message out')
 
 <template>
   <div class="overlay_page">
-
-    <div v-html="jsonData.descr"></div>
-
+    <div class="tiny" v-html="jsonData.descr"></div>
   </div>
 </template>
 

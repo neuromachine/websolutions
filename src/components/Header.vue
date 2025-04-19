@@ -101,9 +101,9 @@ onMounted(() => {
               <li class="nav-item">
                 <RouterLink to="/">Главная</RouterLink>
               </li>
-              <li class="nav-item">
-                <RouterLink to="/page/about" class="nav-link">О нас</RouterLink>
-              </li>
+<!--              <li class="nav-item">-->
+<!--                <RouterLink to="/page/about" class="nav-link">О нас</RouterLink>-->
+<!--              </li>-->
               <li class="nav-item">
                 <!--                <RouterLink class="nav-link" to="/product-list">Услуги <i class="fas fa-chevron-down"></i></RouterLink>-->
                 <!--
@@ -148,15 +148,16 @@ onMounted(() => {
                   </li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <RouterLink to="/blog/contact" class="nav-link">Блог</RouterLink>
-              </li>
+<!--              <li class="nav-item">-->
+<!--                <RouterLink to="/blog/contact" class="nav-link">Блог</RouterLink>-->
+<!--              </li>-->
               <li class="nav-item">
                 <RouterLink to="/page/contact" class="nav-link">Контакты</RouterLink>
               </li>
             </ul>
             <div class="other-option">
-              <a class="default-btn" href="mailto:sales@nero1218.tech">Связаться <span></span></a>
+<!--              <a class="default-btn" href="mailto:sales@nero1218.tech">Связаться <span></span></a>-->
+              <a class="default-btn" href="tel:+79282619061">Позвонить<span></span></a>
             </div>
           </div>
         </nav>
