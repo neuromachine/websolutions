@@ -2412,6 +2412,45 @@ p:last-child {
 /***********************************
  ** - 07 - About Section CSS
  ***********************************/
+.tiny {}
+
+
+.tiny h1 {
+	color: #282D77;
+	font-size: 28px;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #282D77;
+	padding-bottom: 10px;
+}
+.tiny h2 {
+	color: #393091;
+	font-size: 22px;
+	margin-top: 30px;
+}
+.tiny p {
+	margin-bottom: 15px;
+}
+.tiny .service-card {
+	background-color: #9B87F0;
+	border-left: 4px solid #7B68EE;
+	padding: 15px;
+	margin-bottom: 20px;
+	border-radius: 0 4px 4px 0;
+}
+.tiny .service-title {
+	font-weight: bold;
+	font-size: 18px;
+	color: #282D77;
+	margin-bottom: 8px;
+}
+.tiny .service-description {
+	font-size: 16px;
+}
+.tiny .highlight {
+	background-color: #9B87F0;
+	padding: 2px 4px;
+	border-radius: 3px;
+}
 .about-area {
 	position: relative;
 	z-index: 1;
@@ -4396,6 +4435,7 @@ blockquote::after, .blockquote::after {
 
 .item-bg2 {
 	background-image: url(../img/page-title-bg-3.jpg);
+	background-position: bottom center;
 }
 
 /**********************************
