@@ -4,6 +4,7 @@ import { useUiStore } from '@/stores/uiStore'; // Импорт стора
 import $ from 'jquery'
 // import MeanMenu from "@/components/MeanMenu.vue";
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
+import Logo from '@/components/Logo.vue';
 
 import structure from "@/structure.json";
 // const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
@@ -88,8 +89,7 @@ onMounted(() => {
         <nav class="navbar navbar-expand-md navbar-light">
           <div class="nav_wrap">
             <RouterLink to="/" class="logo_wrap">
-<!--              <img src="/assets/img/logo-black.png" alt="logo">-->
-              <span class="logo_wrap"><img src="/assets/img/logo.png" alt="logo" class="white"><img src="/assets/img/logo-black.png" alt="logo" class="black"></span>
+              <Logo />
             </RouterLink>
             <!-- Иконка-бургер -->
             <button v-if="!isNavi" class="burger-button" @click="toggleMenu">
@@ -169,13 +169,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.logo_wrap { font-size: 0; line-height: 0;}
-.logo_wrap .white{ display: block}
-.index-navber .logo_wrap .white{ display: none}
-.logo_wrap .black{ display: none}
-.index-navber .logo_wrap .black{ display: block}
-.is-sticky .logo_wrap  .white {display: none}
-.is-sticky .logo_wrap  .black { display: block}
 .index-navber .index-navber {}
 .navbar-section {
   /* background: #FFF; */
