@@ -4,7 +4,7 @@ import { useUiStore } from '@/stores/uiStore'; // Импорт стора
 import $ from 'jquery'
 // import MeanMenu from "@/components/MeanMenu.vue";
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
-import Logo from '@/components/Logo.vue';
+import Logo from '@/components/Logo_png.vue';
 
 import structure from "@/structure.json";
 // const items = computed(() => sourceData.find((work) => work.slug === route.params.slug));
