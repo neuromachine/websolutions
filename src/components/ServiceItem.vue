@@ -1,13 +1,11 @@
 <script setup>
-import {ref, onMounted, onUnmounted, computed} from 'vue'
 import { DialogModal, DialogAlert } from 'v-dialogs'
 
 import { useMainStore } from '@/stores/mainStore';
 const mainStore = useMainStore();
 
 import OverlayItem from '@/components/OverlayItem.vue'
-
-import OverlayPage from "@/components/OverlayPage.vue";
+import OverlayPage from "@/components/OverlayPage.vue"; //Legacy
 
 const data = defineProps({
   id: {
@@ -30,9 +28,9 @@ const data = defineProps({
 })
 
 
-
+// Legacy
 function handleClick() {
-  //console.log(data.title);
+  console.log(data.slug);
   DialogModal(OverlayItem, {
     title: 'INFO',
     params: {
@@ -42,19 +40,10 @@ function handleClick() {
 }
 
 function handleChild(slug) {
-
-  // let item = {};
   const item = mainStore.getPageBySlug(slug);
-  // if(typeof item === 'undefined') {
-  //   item = mainStore.getServiceData(404)
-  // }
-  //console.log(item);
-  // console.log(item.slug);
-
-
   DialogModal(OverlayPage, {
     maxButton: false,
-    fullscreen: true,
+    //fullscreen: true,
     //header: false,
     title: item.title,
     params: {
@@ -63,21 +52,8 @@ function handleChild(slug) {
       }
     },
   });
-
   return false
-
 }
-
-onMounted(() => {
-
-  // console.log(
-  //     data
-  // );
-
-});
-
-
-
 </script>
 
 <template>
@@ -86,7 +62,8 @@ onMounted(() => {
       <div class="services-icon">
         <i class="flaticon-development"></i>
       </div>
-      <h3 class="owner" @click="handleClick">{{data.title}}</h3>
+<!--      <h3 class="owner" @click="handleClick">{{data.title}}</h3>-->
+      <h3 class="owner" @click="handleChild(data.slug)">{{data.title}}</h3>
       <div v-for="(child, indexC) in data.childs" :key="indexC">
 <!--        <div class="module"><a class="module" :href="'/page/'+child.slug" @click="handleChild(child.slug)">{{child.title}}</a></div>-->
         <div class="module">
@@ -125,7 +102,7 @@ onMounted(() => {
 <style scoped>
 .lv3 {
 
-  display: none;
+  //display: none;
   /*
 
   color: #c31010;
@@ -137,5 +114,5 @@ onMounted(() => {
 .owner .module .title { font-weight: bold; color: #282D77; cursor: pointer; display: block;}
 .subitems { display: flex; flex-direction: column;  margin-left: 2em; margin-right: 1em; }
 .schild { display: flex; flex-direction: column;}
-  .schild .title { font-size: 20px; margin-left: 1em; cursor: pointer; color: #}
+  .schild .title { font-size: 20px; margin-left: 1em; cursor: pointer; }
 </style>
