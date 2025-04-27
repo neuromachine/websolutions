@@ -1,6 +1,7 @@
 <script setup>
 import {computed} from "vue";
 import ServiceItem from "@/components/ServiceItem.vue";
+import componentWrap from "@/components/blocks/services/wrap.vue";
 /*
 import data_json from "@/services.json";
 onMounted(() => {
@@ -25,6 +26,7 @@ const tree = computed(() => {
 </script>
 
 <template>
+  <componentWrap />
   <!-- Start Services Section -->
   <section class="services-section section-padding">
     <div class="container">
@@ -39,6 +41,7 @@ const tree = computed(() => {
     </div>
   </section>
   <!-- End Services Section -->
+
 </template>
 
 <style scoped>
