@@ -1,6 +1,8 @@
 <script setup>
 import {computed} from "vue";
 
+
+
 import { useMainStore } from '@/stores/mainStore';
 const mainStore = useMainStore();
 
@@ -29,6 +31,9 @@ const close = () => emit('close', 'message out')
 <template>
   <div class="overlay_page">
     <div class="tiny" v-html="jsonData.descr"></div>
+    <div class="more">
+      <RouterLink to="/">Страница</RouterLink>
+    </div>
   </div>
 </template>
 

@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import portfolio_json from "@/portfolio.json";
 import sourceData from '@/data.json';
 import servicesData from '@/data/services.json';
+// import servicesData from '@/data/services_v0.2.json';
 import pagesData from '@/data/pages.json';
 import { slugify } from '@/utils/slugify'
 import { extractTitle } from '@/utils/extractTitle'
@@ -60,12 +61,18 @@ export const useMainStore = defineStore('main', {
             portfolio : portfolio_json,
             services: sourceData,
             pages: pagesData,
-            tree: servicesData,
+            tree: mapServicesToTree(servicesData),
         }
     }),
     actions: {
     },
     getters: {
+        getOwnerTree: (state) => (slug) => {
+            const root = state.data.tree.find(item => item.slug === slug);
+            if (!root) return [];
+
+            return root.childs || [];
+        },
         getServiceBySlug: (state) => (slug) => {
             return state.data.services.find((service) => service.slug === slug);
         },
@@ -78,7 +85,8 @@ export const useMainStore = defineStore('main', {
             return returnObj
         },
         geyServicesTree: (state) => (inputJson) => {
-            return mapServicesToTree(inputJson)
+            //return mapServicesToTree(inputJson)
+            return state.data.tree
         },
         // TODO: getServiceData LEGACY?
         getServiceData: (state) => (input) => {
