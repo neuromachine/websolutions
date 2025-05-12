@@ -7,6 +7,9 @@ import pagesData from '@/data/pages.json';
 import { slugify } from '@/utils/slugify'
 import { extractTitle } from '@/utils/extractTitle'
 
+
+import api from '@/utils/api';
+
 let idCounter = 0
 function generateId() {
     return `srv-${++idCounter}`
@@ -65,9 +68,20 @@ export const useMainStore = defineStore('main', {
         }
     }),
     actions: {
+        async fetchSomething() {
+            try {
+                const res = await api.get('/test');
+                console.log(res.data);
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            }
+        }
     },
     getters: {
         getOwnerTree: (state) => (slug) => {
+            state.fetchSomething()
+            console.log("_test_");
+
             const root = state.data.tree.find(item => item.slug === slug);
             if (!root) return [];
 

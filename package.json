@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.9.0",
     "counterup2": "^2.0.2",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
