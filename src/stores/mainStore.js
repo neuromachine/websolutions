@@ -65,13 +65,15 @@ export const useMainStore = defineStore('main', {
             services: sourceData,
             pages: pagesData,
             tree: mapServicesToTree(servicesData),
+            catalog: null,
         }
     }),
     actions: {
-        async fetchSomething() {
+        async fetchCategory(slug) {
             try {
-                const res = await api.get('/test');
-                console.log(res.data);
+                // const res = await api.get('/dictionaries/'+slug+'/categories/tree');
+                const res = await api.get('/tree');
+                //console.log(res.data);
             } catch (err) {
                 console.error('Ошибка API:', err);
             }
@@ -79,9 +81,6 @@ export const useMainStore = defineStore('main', {
     },
     getters: {
         getOwnerTree: (state) => (slug) => {
-            state.fetchSomething()
-            console.log("_test_");
-
             const root = state.data.tree.find(item => item.slug === slug);
             if (!root) return [];
 
