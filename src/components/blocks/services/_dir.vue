@@ -1,4 +1,9 @@
 <script setup>
+import {computed} from "vue";
+
+import { useMainStore } from '@/stores/mainStore';
+const mainStore = useMainStore();
+
 const props = defineProps({
   slug: {
     type: String,
@@ -9,6 +14,11 @@ const props = defineProps({
     required: true
   },
 })
+
+const jsonData = computed(() => {
+  return mainStore.getPageBySlug(props.slug)
+});
+
 </script>
 
 <template>
@@ -22,12 +32,11 @@ const props = defineProps({
       </div>
     </div>
     <div class="services-two-content">
-      <h3>{{props.slug}}1</h3>
-      <p>123123</p>
-<!--      <div>{{props.childs}}</div>-->
+      <h3>{{jsonData.title}}</h3>
+      <p>{{jsonData.announce}}</p>
       <ul class="features-list">
         <li v-for="(schild, indexS) in props.childs" :key="indexS">
-          <RouterLink :to="{ path: '/group/' + schild.key }">{{schild.name}}</RouterLink>
+          <RouterLink :to="{ path: '/page/' + schild.slug }">{{schild.title}}</RouterLink>
         </li>
       </ul>
       <div class="services-btn">
@@ -38,10 +47,5 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.features-list {
-  /*
-  display: none
-
-   */
-}
+.features-list { display: none}
 </style>

@@ -37,13 +37,16 @@ const routes = [
         path: '/direction/:slug',
         name: 'direction',
         component: () => import('@/views/Direction.vue'),
-        // component: ServiceView
+    },
+    {
+        path: '/group/:slug',
+        name: 'group',
+        component: () => import('@/views/Group.vue'),
     },
     {
         path: '/service/:slug',
         name: 'service_item',
         component: () => import('@/views/ServiceItem.vue'),
-        // component: ServiceView
     },
     {
         path: '/blog',
@@ -74,16 +77,16 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    $('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер
+/*    $('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер*/
     const uiStore = useUiStore(); // Получаем доступ к стору
     uiStore.setIsOpen(false); // Устанавливаем isOpen в false перед каждым переходом
     next(); // Продолжаем навигацию
 });
 
 router.afterEach(() => {
-    setTimeout(() => {
+/*    setTimeout(() => {
         $('.preloader').addClass('preloader-deactivate'); // Скрываем прелоадер после завершения перехода
-    }, 500); // Даем небольшой запас, если надо
+    }, 500); // Даем небольшой запас, если надо*/
 
     setTimeout(() => {
         $("html, body").animate({ scrollTop: "0" }, 100); // Прокручиваем к верхнему краю страницы

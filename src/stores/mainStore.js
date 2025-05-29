@@ -89,6 +89,7 @@ export const useMainStore = defineStore('main', {
         getServiceBySlug: (state) => (slug) => {
             return state.data.services.find((service) => service.slug === slug);
         },
+        // Legacy
         getPageBySlug: (state) => (slug) => {
             const returnObj = state.data.pages.find((item) => item.slug === slug);
             if(typeof returnObj === 'undefined') {

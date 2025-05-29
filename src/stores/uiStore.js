@@ -7,21 +7,14 @@ export const useUiStore = defineStore('ui', {
         isLoading: false, // status of global loading
         data: null,
         list: null,
+        item: null,
         filter: '*',
     }),
     getters:{
         filteredItems(state) {
-            // console.log('Items:', state.list?.items)
-            // console.log('Filter:', state.filter)
-            // console.log('Items count:', state.list.items.length)
-
-
             if (state.filter === '*') return state.list.items
             return state.list.items.filter(item => {
-                //console.log('Item:', item)
-                console.log('Item Key:', item.properties?.workclass?.key)
-                console.log('Active F:', state.filter)
-                return item.properties.workclass.key == state.filter
+                return item.properties.workclass.key === state.filter
             })
         }
     },
@@ -29,11 +22,24 @@ export const useUiStore = defineStore('ui', {
         setIsOpen(value) {
             this.isOpen = value; // Метод для изменения состояния
         },
+        setIsLoading(value) {
+            this.isLoading = value; // Установка статуса загрузки страницы
+        },
+        // TODO: ввести проверку поступивших данных, а так же ввести типовой формат ответа
+        async fetchItem(slug) {
+            try {
+                this.isLoading = true;
+                this.item = (await api.get('/item/'+slug)).data;
+                this.isLoading = false;
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            }
+        },
         // TODO: ввести проверку поступивших данных, а так же ввести типовой формат ответа
         async fetchCategory(slug) {
             try {
                 this.isLoading = true;
-                this.data = (await api.get('/tree')).data;
+                this.data = (await api.get('/tree/'+slug)).data;
                 this.isLoading = false;
             } catch (err) {
                 console.error('Ошибка API:', err);
