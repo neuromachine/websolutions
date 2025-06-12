@@ -4,6 +4,7 @@ import api from "@/utils/api.js";
 export const useCalcStore = defineStore('CalcStore', {
     state: () => ({
         tree: null,
+        structure: null,
         isLoading: false, // status of global loading
         data: null,
         list: null,
@@ -34,9 +35,33 @@ export const useCalcStore = defineStore('CalcStore', {
                 state.data !== null &&
                 Object.keys(state.data).length
             );
-        }
+        },
+        isStrReady(state) {
+            if(
+                !state.isLoading &&
+                state.structure !== null &&
+                state.structure.child &&
+                Object.keys(state.structure.child).length
+            )
+            {
+                return true
+            }
+            else return false
+        },
     },
     actions: {
+        async fetchStructure()
+        {
+            try {
+                this.isLoading = true;
+                this.structure = (await api.get('blocks/categories/structure/root')).data;
+                this.isLoading = false;
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            } finally {
+                this.isLoading = false;
+            }
+        },
         async fetchTree(slug) {
             try {
                 this.isLoading = true;
