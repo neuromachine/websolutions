@@ -3,16 +3,14 @@ import {onMounted} from "vue";
 import group from "@/components/blocks/services/chips/group.vue";
 import { useCalcStore } from '@/stores/calcStore';
 const calcStore = useCalcStore();
-
 onMounted(() => {
   calcStore.fetchTree('scope')
   calcStore.fetchStructure();
 });
 </script>
-
 <template>
   <!-- Start Services Three Section -->
-  <section id="list_services" class="list_s services-section-three section-padding">
+  <section id="list_services" class="services-section-three section-padding">
     <div class="container">
       <div class="row" v-if="calcStore.isStrReady">
         <group v-for="(item, index) in calcStore.structure.child" :key="index"
@@ -22,28 +20,9 @@ onMounted(() => {
                :childs="item.child"
                :slug="item.key"
         />
-        {{calcStore.structure}}
       </div>
       <div v-else class="row row_load">Loading Structure</div>
     </div>
-<!--    <div class="container">-->
-<!--      <div class="row" v-if=calcStore.isTreeReady>-->
-<!--        <group v-for="(item, index) in calcStore.tree.children" :key="index"-->
-<!--          :id="item.id"-->
-<!--          :slug="item.key"-->
-<!--          :title="item.name"-->
-<!--          :description="item.description"-->
-<!--          :childs="item.children"-->
-<!--        />-->
-<!--      </div>-->
-<!--      <div v-else>-->
-<!--        Loading list-->
-<!--      </div>-->
-<!--    </div>-->
   </section>
   <!-- End Services Three Section -->
 </template>
-
-<style scoped>
-.list_s {}
-</style>
