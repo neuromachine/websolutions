@@ -4,7 +4,7 @@ import group from "@/components/blocks/services/chips/group.vue";
 import { useCalcStore } from '@/stores/calcStore';
 const calcStore = useCalcStore();
 onMounted(() => {
-  calcStore.fetchTree('scope')
+  //calcStore.fetchTree('scope')
   calcStore.fetchStructure();
 });
 </script>
