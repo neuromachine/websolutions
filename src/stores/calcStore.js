@@ -22,12 +22,6 @@ export const useCalcStore = defineStore('CalcStore', {
                 return true
             }
             else return false
-
-            // return !!(!state.isLoading
-            //     && state.tree !== null
-            //     && Object.keys(state.tree.children).length);
-
-
         },
         isDataReady(state) {
             return !!(
@@ -54,7 +48,7 @@ export const useCalcStore = defineStore('CalcStore', {
         {
             try {
                 this.isLoading = true;
-                this.structure = (await api.get('blocks/categories/structure/root')).data;
+                this.structure = (await api.get('blocks/categories/structure/services')).data.data;
                 this.isLoading = false;
             } catch (err) {
                 console.error('Ошибка API:', err);
