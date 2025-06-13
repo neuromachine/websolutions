@@ -110,5 +110,13 @@ export const useCalcStore = defineStore('CalcStore', {
                 return null;
             }
         },
+        async fetchBlockCategory(slug) {
+            try {
+                return (await api.get('blocks/categories/'+slug)).data.data;
+            } catch (err) {
+                console.error('Ошибка API:', err);
+                return null;
+            }
+        },
     }
 });

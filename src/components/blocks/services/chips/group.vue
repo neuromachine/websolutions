@@ -40,8 +40,9 @@ const props = defineProps({
 })
 
 async function handleChild(slug) {
-  const result = await calcStore.fetchCategoryFromApi(slug);
-  console.log(result)
+  // const result = await calcStore.fetchCategoryFromApi(slug);
+  const result = await calcStore.fetchBlockCategory(slug);
+  //console.log(result)
 
   if (!result) return false; // TODO: Проверить что данные не пришли - дял overlay
 
@@ -67,13 +68,13 @@ async function handleChild(slug) {
       />
       <div class="services-three-content">
         <h3 @click="handleChild(props.slug)" class="overlay_action_dir">{{props.title}}</h3>
-        <p>{{props.description}} </p>
+        <p>{{props.description}}</p>
         <ul class="features-list">
           <li v-for="(schild, indexS) in props.childs" :key="indexS">
             <span>{{schild.name}}</span>
             <ul>
-              <li v-for="offer in schild.children" @click="handleChild(offer.key)" class="overlay_action_offer">
-                <span class="title">{{offer.name}}</span>
+              <li v-for="offer in schild.child" @click="handleChild(offer.key)" class="overlay_action_offer">
+                <span class="title">{{offer.name}}</span><br>
                 <span class="descr" v-html="offer.description"></span>
               </li>
             </ul>
