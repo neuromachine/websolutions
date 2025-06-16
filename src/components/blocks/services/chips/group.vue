@@ -42,15 +42,16 @@ const props = defineProps({
 async function handleChild(slug) {
   // const result = await calcStore.fetchCategoryFromApi(slug);
   const result = await calcStore.fetchBlockCategory(slug);
-  //console.log(result)
+  console.log(result)
 
+  // TODO: calcStore.isCatReady
   if (!result) return false; // TODO: Проверить что данные не пришли - дял overlay
 
   DialogModal(Overlay, {
     maxButton: false,
-    title: result.name,
+    title: calcStore.category.name,
     params: {
-      data: result
+      data: calcStore.category
     },
   });
   return false

@@ -3,8 +3,9 @@ import api from "@/utils/api.js";
 
 export const useCalcStore = defineStore('CalcStore', {
     state: () => ({
-        tree: null,
         structure: null,
+        category: null,
+        tree: null,
         isLoading: false, // status of global loading
         data: null,
         list: null,
@@ -42,13 +43,27 @@ export const useCalcStore = defineStore('CalcStore', {
             }
             else return false
         },
+        isCatReady(state) { return !state.isLoading && state.category !== null },
+        isItemReady(state) { return !state.isLoading && state.item !== null },
+        // TODO: уточнить зачем state - нельзя работать с this?
+        isHaveItems(state){
+            if(
+            state.category !== null &&
+            state.category.blocks &&
+                // TODO: не верная статика - 0
+            state.category.blocks[0] &&
+            state.category.blocks[0].items &&
+            Object.keys(state.category.blocks[0].items).length
+            ) return true
+            else return false
+        },
     },
     actions: {
-        async fetchStructure()
+        async fetchStructure(slug)
         {
             try {
                 this.isLoading = true;
-                this.structure = (await api.get('blocks/categories/structure/services')).data.data;
+                this.structure = (await api.get('blocks/categories/structure/'+slug)).data.data;
                 this.isLoading = false;
             } catch (err) {
                 console.error('Ошибка API:', err);
@@ -56,6 +71,33 @@ export const useCalcStore = defineStore('CalcStore', {
                 this.isLoading = false;
             }
         },
+        async fetchBlockCategory(slug)
+        {
+            try {
+                this.isLoading = true;
+                this.category = (await api.get('blocks/categories/'+slug)).data.data;
+                this.isLoading = false;
+                return true
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            } finally {
+                this.isLoading = false;
+            }
+        },
+        async fetchBlockItem(slug)
+        {
+            try {
+                this.isLoading = true;
+                this.item = (await api.get('blocks/items/'+slug)).data.data;
+                this.isLoading = false;
+                return true
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            } finally {
+                this.isLoading = false;
+            }
+        },
+        // TODO: legacy from list.vue
         async fetchTree(slug) {
             try {
                 this.isLoading = true;
@@ -90,6 +132,7 @@ export const useCalcStore = defineStore('CalcStore', {
             }
         },
         // TODO: ввести проверку поступивших данных, а так же ввести типовой формат ответа
+        // TODO: Legacy ? см. .item
         async fetchItem(slug) {
             try {
                 this.isLoading = true;
@@ -110,6 +153,7 @@ export const useCalcStore = defineStore('CalcStore', {
                 return null;
             }
         },
+        /*
         async fetchBlockCategory(slug) {
             try {
                 return (await api.get('blocks/categories/'+slug)).data.data;
@@ -118,5 +162,6 @@ export const useCalcStore = defineStore('CalcStore', {
                 return null;
             }
         },
+         */
     }
 });

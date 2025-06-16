@@ -43,10 +43,15 @@ const routes = [
         name: 'group',
         component: () => import('@/views/Group.vue'),
     },
+    // {
+    //     path: '/service/:slug',
+    //     name: 'service_item',
+    //     component: () => import('@/views/ServiceItem.vue'),
+    // },
     {
-        path: '/service/:slug',
-        name: 'service_item',
-        component: () => import('@/views/ServiceItem.vue'),
+        path: '/blocks/item/:slug',
+        name: 'blocks_item',
+        component: () => import('@/views/blocks/Item.vue'),
     },
     {
         path: '/blog',

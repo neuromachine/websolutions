@@ -59,19 +59,14 @@ onMounted(() => {
               <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
               <ul class="footer-social">
                 <li>
-                  <a href="https://t.me/Lola_06" target="_blank"> <i class="fa-brands fa-telegram"></i></a>
+                  <a href="https://t.me/Lola_06" target="_blank"><i class="fa-brands fa-telegram"></i></a>
                 </li>
-                <!--
-                                            <li>
-                                                <a href="#"> <i class="fa-brands fa-x-twitter"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"> <i class="fab fa-youtube"></i></a>
-                                            </li>
-                                            <li>
-                                                <a href="#"> <i class="fab fa-linkedin"></i></a>
-                                            </li>
-                -->
+                <li>
+                  <a href="https://t.me/websolutionspro" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                </li>
               </ul>
             </div>
           </div>
