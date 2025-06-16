@@ -1,5 +1,7 @@
 <script setup>
 import {onMounted} from "vue";
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
 import { useCalcStore } from '@/stores/calcStore';
 const calcStore = useCalcStore();
 import {useRoute} from "vue-router";
@@ -18,9 +20,16 @@ onMounted(() => {
       <div class="row">
         <div class="col-lg-8 col-md-12">
           <div class="services-details-content">
-            <div v-for="img in calcStore.item.properties.image" class="services-details-image">
-              <img v-bind="{src:'/assets/img/services/'+img}" alt="">
+            <div class="services-details-image">
+              <Swiper :loop="true" class="my-swiper">
+                <SwiperSlide v-for="(img, idx) in calcStore.item.properties.image" :key="idx">
+                  <img :src="'/assets/img/services/'+img" class="w-full h-auto" />
+                </SwiperSlide>
+              </Swiper>
             </div>
+<!--            <div v-for="img in calcStore.item.properties.image" class="services-details-image">-->
+<!--              <img v-bind="{src:'/assets/img/services/'+img}" alt="">-->
+<!--            </div>-->
             <h3>{{calcStore.item.properties.title}}</h3>
             <p>{{calcStore.item.properties.descr}}</p>
             <div class="features-text" v-html="calcStore.item.properties.content"></div>
