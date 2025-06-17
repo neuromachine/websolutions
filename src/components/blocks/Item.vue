@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted} from "vue";
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import {  Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import { useCalcStore } from '@/stores/calcStore';
 const calcStore = useCalcStore();
@@ -21,7 +22,22 @@ onMounted(() => {
         <div class="col-lg-8 col-md-12">
           <div class="services-details-content">
             <div class="services-details-image">
-              <Swiper :loop="true" class="my-swiper">
+              <Swiper :loop="true"
+                      :modules="[Autoplay]"
+                      :slides-per-view="1"
+                      :autoplay="{ delay: 3000 }"
+                      :breakpoints="{
+                      0: {
+                        slidesPerView: 1,
+                      },
+                      768: {
+                        slidesPerView: 1,
+                      },
+                      1200: {
+                        slidesPerView: 1,
+                      }
+                    }"
+                      class="my-swiper">
                 <SwiperSlide v-for="(img, idx) in calcStore.item.properties.image" :key="idx">
                   <img :src="'/assets/img/services/'+img" class="w-full h-auto" />
                 </SwiperSlide>
@@ -46,11 +62,19 @@ onMounted(() => {
               </ul>
             </section>
             <section v-else class="row row_load"></section>
-            <section class="widget widget_download_btn">
-              <h3 class="widget-title">Company Profile</h3>
+            <section v-if="calcStore.item.properties.files?.length" class="widget widget_download_btn">
+              <h3 class="widget-title">Документы</h3>
               <div class="download-btn-box">
-                <a href="#" class="default-btn">Download PDF <span></span></a>
-                <a href="#" class="default-btn" >Download Word File <span></span></a>
+                <a
+                    v-for="(file, idx) in calcStore.item.properties.files"
+                    :key="idx"
+                    :href="'/assets/img/services/' + file.src"
+                    class="default-btn"
+                    target="_blank"
+                    rel="noopener"
+                >
+                  {{ file.title }}<span></span>
+                </a>
               </div>
             </section>
           </aside>
@@ -63,6 +87,5 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
-
+@import 'swiper/swiper-bundle.css';
 </style>

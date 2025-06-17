@@ -4,9 +4,11 @@ import api from "@/utils/api.js";
 export const useCalcStore = defineStore('CalcStore', {
     state: () => ({
         structure: null,
+        overlay: null,
         category: null,
         tree: null,
         isLoading: false, // status of global loading
+        OverlayLoading: false, // status of overlay window loading
         data: null,
         list: null,
         item: null,
@@ -45,6 +47,7 @@ export const useCalcStore = defineStore('CalcStore', {
         },
         isCatReady(state) { return !state.isLoading && state.category !== null },
         isItemReady(state) { return !state.isLoading && state.item !== null },
+        isOverlayReady(state) { return !state.OverlayLoading && state.overlay !== null },
         // TODO: уточнить зачем state - нельзя работать с this?
         isHaveItems(state){
             if(
@@ -59,6 +62,18 @@ export const useCalcStore = defineStore('CalcStore', {
         },
     },
     actions: {
+        async fetchOverlayCategory(slug)
+        {
+            try {
+                this.OverlayLoading = true;
+                this.overlay = (await api.get('blocks/categories/'+slug)).data.data; // TODO: разработать механизм (сервис) для повторяющихся запросов
+                this.OverlayLoading = false;
+            } catch (err) {
+                console.error('Ошибка API:', err); // TODO: разработать механизм (сервис) для повторяющихся состояний
+            } finally {
+                this.OverlayLoading = false;
+            }
+        },
         async fetchStructure(slug)
         {
             try {

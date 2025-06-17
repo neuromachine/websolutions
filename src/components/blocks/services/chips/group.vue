@@ -41,17 +41,21 @@ const props = defineProps({
 
 async function handleChild(slug) {
   // const result = await calcStore.fetchCategoryFromApi(slug);
-  const result = await calcStore.fetchBlockCategory(slug);
-  console.log(result)
+  //const result = await calcStore.fetchBlockCategory(slug);
+  //console.log(result)
 
   // TODO: calcStore.isCatReady
-  if (!result) return false; // TODO: Проверить что данные не пришли - дял overlay
+  //if (!result) return false; // TODO: Проверить что данные не пришли - дял overlay
 
   DialogModal(Overlay, {
     maxButton: false,
-    title: calcStore.category.name,
+    // title: calcStore.category.name,
+    title: 'Загрузка',
     params: {
-      data: calcStore.category
+      //data: calcStore.category
+      data: {
+        'slug': slug
+      },
     },
   });
   return false
@@ -71,15 +75,15 @@ async function handleChild(slug) {
         <h3 @click="handleChild(props.slug)" class="overlay_action_dir">{{props.title}}</h3>
         <p>{{props.description}}</p>
         <ul class="features-list">
-          <li v-for="(schild, indexS) in props.childs" :key="indexS">
-            <span>{{schild.name}}</span>
+          <li v-for="schild in props.childs">
+            <span><RouterLink :to="{ path: '/group/' + schild.key }">{{schild.name}}</RouterLink></span>
             <ul>
               <li v-for="offer in schild.child" @click="handleChild(offer.key)" class="overlay_action_offer">
                 <span class="title">{{offer.name}}</span><br>
                 <span class="descr" v-html="offer.description"></span>
               </li>
             </ul>
-            <RouterLink :to="{ path: '/page/' + schild.slug }">{{schild.title}}</RouterLink>
+<!--            <RouterLink :to="{ path: '/page/' + schild.slug }">{{schild.title}}</RouterLink>-->
           </li>
         </ul>
         <div class="services-btn">

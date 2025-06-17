@@ -1,28 +1,28 @@
 <script setup>
-import {useRoute} from "vue-router";
-
 const props = defineProps({
   data: {
     type: Object,
     required: true
   }
 })
-
 const emit = defineEmits(['close'])
-
-// const profile = getUserProfile()
-
 // emit `close` event to close Modal dialog
 const close = () => emit('close', 'message out')
+import {onMounted} from "vue";
+import { useCalcStore } from '@/stores/calcStore';
+const calcStore = useCalcStore();
+onMounted(() => {
+  calcStore.fetchOverlayCategory(props.data.slug);
+});
 </script>
 
 <template>
-  <div class="overlay_page">
+  <div v-if="calcStore.isOverlayReady" class="overlay_page">
     <div class="category">
-      <div class="descr tiny" v-html="props.data.description"></div>
+      <div class="descr tiny" v-html="calcStore.overlay.description"></div>
   <!--    <div class="check">{{props.data.blocks}}</div>-->
       <div class="blocks">
-        <div class="block" v-for="block in props.data.blocks">
+        <div class="block" v-for="block in calcStore.overlay.blocks">
           <div class="head">{{block.name}}</div>
   <!--        <div class="head">{{block.items}}</div>-->
           <div class="items_list">
@@ -44,6 +44,7 @@ const close = () => emit('close', 'message out')
 <!--      <RouterLink :to="{ path: '/direction/' + props.slug }" class="read-more">Страница</RouterLink>-->
 <!--    </div>-->
   </div>
+  <div v-else class="container"><div class="row row_load">Loading Overlay</div></div>
 </template>
 
 <style scoped>
