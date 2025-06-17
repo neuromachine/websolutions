@@ -14,7 +14,7 @@ const props = defineProps({
   },
   childs: {
     type: Array,
-    required: true
+    required: false
   },
 })
 </script>
@@ -32,8 +32,7 @@ const props = defineProps({
     <div class="services-two-content">
       <h3>{{props.name}}</h3>
       <p>{{props.descr}}</p>
-<!--      <div>{{props.childs}}</div>-->
-      <ul class="list_services">
+      <ul v-if="props.childs && props.childs?.length" class="list_services">
         <li v-for="(schild, indexS) in props.childs" :key="indexS">
           <RouterLink :to="{ path: '/group/' + schild.key }">{{schild.name}}</RouterLink>
         </li>

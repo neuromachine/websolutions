@@ -60,6 +60,14 @@ export const useCalcStore = defineStore('CalcStore', {
             ) return true
             else return false
         },
+        isHaveSubCat(state){
+            if(
+                state.category !== null &&
+                state.category.children &&
+                Object.keys(state.category.children).length
+            ) return true
+            else return false
+        },
     },
     actions: {
         async fetchOverlayCategory(slug)
