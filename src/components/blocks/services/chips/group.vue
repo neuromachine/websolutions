@@ -50,7 +50,7 @@ async function handleChild(slug) {
   DialogModal(Overlay, {
     maxButton: false,
     // title: calcStore.category.name,
-    title: 'Загрузка',
+    title: 'Инфо',
     params: {
       //data: calcStore.category
       data: {

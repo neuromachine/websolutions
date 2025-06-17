@@ -1,5 +1,6 @@
 <script setup>
 const props = defineProps({
+  title: String,
   data: {
     type: Object,
     required: true

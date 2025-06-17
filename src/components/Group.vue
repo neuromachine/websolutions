@@ -11,7 +11,9 @@ onMounted(() => {calcStore.fetchBlockCategory(route.params.slug);});
   <!-- Start Services Section -->
   <section class="services-section section-padding">
     <div v-if="calcStore.isCatReady" class="container">
+      <div>{{calcStore.category.children}}</div>
       <div v-if="calcStore.isHaveItems" class="row">
+<!--        <div v-for="item in calcStore.category.blocks[0].items" class="col-lg-4 col-md-6">-->
         <div v-for="item in calcStore.category.blocks[0].items" class="col-lg-4 col-md-6">
           <div class="single-services-item">
             <div class="services-icon">
