@@ -33,14 +33,15 @@ function setFilter(filterKey) {
           <div class="portfolio-list">
             <ul class="nav" id="portfolio-flters">
               <li class="filter filter-active" @click="setFilter('*')">Все</li>
-              <li v-for="item in calcStore.category.blocks[0].items" @click="setFilter(item.properties.workclass[0].key)">{{item.properties.workclass[0].label}}</li>
+<!--              <li v-for="item in calcStore.category.blocks[0].items" @click="setFilter(item.properties.workclass[0].key)">{{item.properties.workclass[0].label}}</li>-->
+              <li @click="setFilter('develop')">Разработка</li>
+              <li @click="setFilter('html')">Верстка</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="portfolio-container">
         <TransitionGroup name="fade" tag="div" class="grid row">
-
           <div v-for="item in calcStore.filteredItems" :key="item.id" :class="item.properties.workclass.key" class="col-lg-4 col-md-6 portfolio-grid-item all">
             <div class="portfolio-item">
               <RouterLink :to="{ path: '/portfolio/item/' + item.key }">
@@ -54,7 +55,6 @@ function setFilter(filterKey) {
               </div>
             </div>
           </div>
-
         </TransitionGroup>
       </div>
     </div>
@@ -67,7 +67,7 @@ function setFilter(filterKey) {
 .grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 0px;
 }
 
 .item {
