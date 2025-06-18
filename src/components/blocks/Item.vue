@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref} from "vue";
+import {onMounted, ref, computed} from "vue";
 import { Swiper, SwiperSlide, } from 'swiper/vue'
 import {  Autoplay,Zoom } from 'swiper/modules'
 import { useCalcStore } from '@/stores/calcStore';
@@ -22,6 +22,9 @@ function toggleZoom() {
     swiperInstance.value.zoom.in()
   }
 }
+function onSwiperInit(swiper) {
+  swiperInstance.value = swiper
+}
 </script>
 
 <template>
@@ -33,6 +36,7 @@ function toggleZoom() {
           <div class="services-details-content">
             <div class="services-details-image">
               <Swiper :loop="true"
+                      @swiper="onSwiperInit"
                       :modules="[Autoplay,Zoom]"
                       :slides-per-view="1"
                       :autoplay="{ delay: 3000 }"
