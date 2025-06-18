@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted} from "vue";
-import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Swiper, SwiperSlide, } from 'swiper/vue'
+import { Zoom } from 'swiper/modules'
 import {  Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import { useCalcStore } from '@/stores/calcStore';
@@ -23,9 +24,10 @@ onMounted(() => {
           <div class="services-details-content">
             <div class="services-details-image">
               <Swiper :loop="true"
-                      :modules="[Autoplay]"
+                      :modules="[Autoplay,Zoom]"
                       :slides-per-view="1"
                       :autoplay="{ delay: 3000 }"
+                      :zoom="true"
                       :breakpoints="{
                       0: {
                         slidesPerView: 1,
@@ -39,7 +41,9 @@ onMounted(() => {
                     }"
                       class="my-swiper">
                 <SwiperSlide v-for="(img, idx) in calcStore.item.properties.image" :key="idx">
-                  <img :src="'/assets/img/services/'+img" class="w-full h-auto" />
+                  <div class="swiper-zoom-container">
+                    <img :src="'/assets/img/services/'+img" class="w-full h-auto" />
+                  </div>
                 </SwiperSlide>
               </Swiper>
             </div>

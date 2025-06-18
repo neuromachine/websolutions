@@ -1,11 +1,22 @@
 <script setup>
-import {onMounted} from "vue";
+import { onMounted, watch } from "vue";
 import catClass from "@/components/blocks/services/catClass.vue";
 import { useCalcStore } from '@/stores/calcStore';
 const calcStore = useCalcStore();
 import {useRoute} from "vue-router";
 const route = useRoute();
-onMounted(() => {calcStore.fetchBlockCategory(route.params.slug);});
+function load() {
+  calcStore.fetchBlockCategory(route.params.slug);
+}
+onMounted(() => {load()});
+watch(
+    () => route.params.slug,
+    (newSlug, oldSlug) => {
+      if (newSlug !== oldSlug) {
+        load()
+      }
+    }
+)
 </script>
 
 <template>
