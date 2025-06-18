@@ -1,9 +1,7 @@
 <script setup>
-import {onMounted} from "vue";
+import {onMounted, ref} from "vue";
 import { Swiper, SwiperSlide, } from 'swiper/vue'
-import { Zoom } from 'swiper/modules'
-import {  Autoplay } from 'swiper/modules'
-import 'swiper/css'
+import {  Autoplay,Zoom } from 'swiper/modules'
 import { useCalcStore } from '@/stores/calcStore';
 const calcStore = useCalcStore();
 import {useRoute} from "vue-router";
@@ -13,6 +11,17 @@ onMounted(() => {
       calcStore.fetchStructure('services');
     }
 );
+const swiperInstance = ref(null)
+function toggleZoom() {
+  if (!swiperInstance.value) return
+
+  // Если уже увеличено — сбросить, иначе — увеличить
+  if (swiperInstance.value.zoom.scale > 1) {
+    swiperInstance.value.zoom.out()
+  } else {
+    swiperInstance.value.zoom.in()
+  }
+}
 </script>
 
 <template>
@@ -27,7 +36,7 @@ onMounted(() => {
                       :modules="[Autoplay,Zoom]"
                       :slides-per-view="1"
                       :autoplay="{ delay: 3000 }"
-                      :zoom="true"
+                      :zoom="{ maxRatio: 3 }"
                       :breakpoints="{
                       0: {
                         slidesPerView: 1,
@@ -41,7 +50,7 @@ onMounted(() => {
                     }"
                       class="my-swiper">
                 <SwiperSlide v-for="(img, idx) in calcStore.item.properties.image" :key="idx">
-                  <div class="swiper-zoom-container">
+                  <div @click="toggleZoom" class="swiper-zoom-container">
                     <img :src="'/assets/img/services/'+img" class="w-full h-auto" />
                   </div>
                 </SwiperSlide>
@@ -92,4 +101,7 @@ onMounted(() => {
 
 <style scoped>
 @import 'swiper/swiper-bundle.css';
+.swiper-zoom-container img {
+  cursor: zoom-in;
+}
 </style>
