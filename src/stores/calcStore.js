@@ -12,6 +12,7 @@ export const useCalcStore = defineStore('CalcStore', {
         data: null,
         list: null,
         item: null,
+        filter: null,
     }),
     getters:{
         isTreeReady(state) {
@@ -68,6 +69,12 @@ export const useCalcStore = defineStore('CalcStore', {
             ) return true
             else return false
         },
+        filteredItems(state) {
+            if (state.filter === '*') return state.category.blocks[0].items
+            return state.filter(item => {
+                return item.properties.workclass.key === state.filter
+            })
+        }
     },
     actions: {
         async fetchOverlayCategory(slug)

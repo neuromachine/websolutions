@@ -1,28 +1,32 @@
 <script setup>
 import {onMounted} from "vue";
-import { useUiStore } from '@/stores/uiStore';
-const uiStore = useUiStore();
 
-onMounted(() => {
+import { useCalcStore } from '@/stores/calcStore';
+const calcStore = useCalcStore();
+
+//import { useUiStore } from '@/stores/uiStore';
+//const uiStore = useUiStore();
+function load() {
+  calcStore.fetchBlockCategory('portfolio');
+}
+/*onMounted(() => {
   uiStore.fetchCategory('portfolio');
   uiStore.fetchAllPortfolio();
-});
+});*/
+
+onMounted(() => {load()});
 
 function setFilter(filterKey) {
-  uiStore.filter = filterKey
+  calcStore.filter = filterKey
 }
 </script>
 
 <template>
-  <!-- Start Portfolio Section -->
-  <section class="portfolio-area section-padding" v-if=
-               "
-                 !uiStore.isLoading
-                 && uiStore.data !== null
-                 && Object.keys(uiStore.data.children).length
-                 && uiStore.list !== null
-                 && Object.keys(uiStore.list.items).length
-               ">
+  <div v-if="calcStore.isCatReady" class="row">
+    {{calcStore.category}}
+  </div>
+  <!-- Start Portfolio Section-->
+  <section v-if="calcStore.isCatReady" class="portfolio-area section-padding">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -35,15 +39,15 @@ function setFilter(filterKey) {
           <div class="portfolio-list">
             <ul class="nav" id="portfolio-flters">
               <li class="filter filter-active" @click="setFilter('*')">Все</li>
-              <li v-for="cat in uiStore.data.children" @click="setFilter(cat.key)">{{cat.name}}</li>
+              <li v-for="item in calcStore.category.blocks[0].items" @click="setFilter(item.key)">{{item.name}}</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="portfolio-container">
         <TransitionGroup name="fade" tag="div" class="grid row">
-          <!--cell-->
-          <div v-for="(item, index) in uiStore.filteredItems" :key="item.id" :class="item.properties.workclass.key" class="col-lg-4 col-md-6 portfolio-grid-item all">
+
+          <div v-for="item in calcStore.filteredItems" :key="item.id" :class="item.properties.workclass.key" class="col-lg-4 col-md-6 portfolio-grid-item all">
             <div class="portfolio-item">
               <RouterLink :to="{ path: '/portfolio/' + item.key }">
                 <img v-if="!item.properties.thumb" v-bind="{src: '/assets/img/portfolio/'+item.properties.thumb}" alt="image">
@@ -56,11 +60,12 @@ function setFilter(filterKey) {
               </div>
             </div>
           </div>
-          <!--/cell-->
+
         </TransitionGroup>
       </div>
     </div>
   </section>
+
   <!-- End Portfolio Section -->
 </template>
 
