@@ -1,28 +1,19 @@
 <script setup>
 
 import { computed,onMounted } from "vue";
-import { useRoute } from "vue-router";
 
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
-import img_phone from "@/components/portfolio/img_phone.vue";
-import img_desctop from "@/components/portfolio/img_desctop.vue";
 
-// import sourceData from "@/data.json";//TODO: вернуться -1
-import sourceData from "@/portfolio.json";
-import ServiceItem from "@/components/ServiceItem.vue";
-//TODO: вернуться -1
-
+import { useRoute } from "vue-router";
 const route = useRoute();
 
-// Ищем объект в массиве по slug
-//const item = computed(() => sourceData.find((work) => work.slug === route.params.slug));
 
+import { useCalcStore } from '@/stores/calcStore';
+const calcStore = useCalcStore();
 
-import { useUiStore } from '@/stores/uiStore';
-const uiStore = useUiStore();
 onMounted(() => {
-  uiStore.fetchItem('shincenter');
+  //uiStore.fetchItem('shincenter');
 });
 
 </script>

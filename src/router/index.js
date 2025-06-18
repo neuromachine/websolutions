@@ -23,10 +23,15 @@ const routes = [
         name: 'portfolio_list',
         component: () => import('@/views/PortfolioList.vue'),
     },
-    {
+/*    {
         path: '/portfolio/:slug',
         name: 'portfolio_item',
         component: () => import('@/views/PortfolioItem.vue'),
+    },*/
+    {
+        path: '/portfolio/item/:slug',
+        name: 'portfolio_item',
+        component: () => import('@/views/portfolio/Item.vue'),
     },
     {
         path: '/services',

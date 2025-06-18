@@ -8,7 +8,6 @@ function load() {
   calcStore.fetchBlockCategory('portfolio');
 }
 
-
 onMounted(() => {load()});
 
 function setFilter(filterKey) {
@@ -17,9 +16,9 @@ function setFilter(filterKey) {
 </script>
 
 <template>
-  <div v-if="calcStore.isCatReady" class="row">
+<!--  <div v-if="calcStore.isCatReady" class="row">
     {{calcStore.category}}
-  </div>
+  </div>-->
   <!-- Start Portfolio Section-->
   <section v-if="calcStore.isCatReady" class="portfolio-area section-padding">
     <div class="container">
@@ -44,14 +43,14 @@ function setFilter(filterKey) {
 
           <div v-for="item in calcStore.filteredItems" :key="item.id" :class="item.properties.workclass.key" class="col-lg-4 col-md-6 portfolio-grid-item all">
             <div class="portfolio-item">
-              <RouterLink :to="{ path: '/portfolio/' + item.key }">
-                <img v-if="!item.properties.thumb" v-bind="{src: '/assets/img/portfolio/'+item.properties.thumb}" alt="image">
+              <RouterLink :to="{ path: '/portfolio/item/' + item.key }">
+                <img v-if="item.properties.thumb" v-bind="{src: '/assets/img/portfolio/'+item.properties.thumb}" alt="image">
                 <img v-else src="/assets/img/portfolio/replacement_thumb.jpg" alt="image">
               </RouterLink>
               <div class="portfolio-content-overlay">
                 <p>{{item.properties.workclass.label}}</p>
-                <h3><RouterLink :to="{ path: '/portfolio/' + item.key }">{{item.properties.title}}</RouterLink></h3>
-                <RouterLink :to="{ path: '/portfolio/' + item.key }" class="portfolio-link-icon"><i class="bi bi-arrow-right"></i></RouterLink>
+                <h3><RouterLink :to="{ path: '/portfolio/item/' + item.key }">{{item.properties.title}}</RouterLink></h3>
+                <RouterLink :to="{ path: '/portfolio/item/' + item.key }" class="portfolio-link-icon"><i class="bi bi-arrow-right"></i></RouterLink>
               </div>
             </div>
           </div>
