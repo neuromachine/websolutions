@@ -4,15 +4,10 @@ import {onMounted} from "vue";
 import { useCalcStore } from '@/stores/calcStore';
 const calcStore = useCalcStore();
 
-//import { useUiStore } from '@/stores/uiStore';
-//const uiStore = useUiStore();
 function load() {
   calcStore.fetchBlockCategory('portfolio');
 }
-/*onMounted(() => {
-  uiStore.fetchCategory('portfolio');
-  uiStore.fetchAllPortfolio();
-});*/
+
 
 onMounted(() => {load()});
 
@@ -39,7 +34,7 @@ function setFilter(filterKey) {
           <div class="portfolio-list">
             <ul class="nav" id="portfolio-flters">
               <li class="filter filter-active" @click="setFilter('*')">Все</li>
-              <li v-for="item in calcStore.category.blocks[0].items" @click="setFilter(item.key)">{{item.name}}</li>
+              <li v-for="item in calcStore.category.blocks[0].items" @click="setFilter(item.properties.workclass[0].key)">{{item.properties.workclass[0].label}}</li>
             </ul>
           </div>
         </div>

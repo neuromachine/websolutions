@@ -12,7 +12,7 @@ export const useCalcStore = defineStore('CalcStore', {
         data: null,
         list: null,
         item: null,
-        filter: null,
+        filter: '*',
     }),
     getters:{
         isTreeReady(state) {
@@ -70,13 +70,24 @@ export const useCalcStore = defineStore('CalcStore', {
             else return false
         },
         filteredItems(state) {
-            if (state.filter === '*') return state.category.blocks[0].items
-            return state.filter(item => {
-                return item.properties.workclass.key === state.filter
+            const items = state.category.blocks?.[0]?.items || []
+
+            // если “все”
+            if (state.filter === '*') {
+                return items
+            }
+
+            // иначе — ищем, есть ли в массиве workclass нужный key
+            return items.filter(item => {
+                const classes = item.properties?.workclass || []
+                return classes.some(c => c.key === state.filter)
             })
         }
     },
     actions: {
+        setFilter(key) {
+            this.filter = key
+        },
         async fetchOverlayCategory(slug)
         {
             try {
