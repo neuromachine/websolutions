@@ -15,7 +15,7 @@ export default defineConfig({
   plugins: [
     vue(),
     vueDevTools(),
-    tailwindcss(),
+    tailwindcss({ config: './tailwind.config.js' }),
   ],
   resolve: {
     alias: {

@@ -17,7 +17,6 @@
     "jquery": "^3.7.1",
     "pinia": "^3.0.1",
     "swiper": "^11.2.8",
-    "tailwindcss": "^4.1.10",
     "v-dialogs": "^3.0.3",
     "vue": "^3.5.13",
     "vue-owl-carousel": "^2.0.3",
@@ -25,7 +24,9 @@
     "waypoints": "^4.0.1"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.10",
     "@vitejs/plugin-vue": "^5.2.1",
+    "tailwindcss": "^4.1.10",
     "vite": "^6.2.1",
     "vite-plugin-vue-devtools": "^7.7.2"
   }

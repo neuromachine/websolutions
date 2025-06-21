@@ -24,6 +24,7 @@ import router from '@/router'
 // const app = createApp(App)
     //.use($) // TODO: разобраться с этим, возможно рефакторинг с новыми вводными при глобальной регистрации jquery
 
+import './index.css';
 import './assets/styles/style.css'; // Template CSS
 import './assets/styles/responsive.css'; // Responsive CSS
 import './assets/styles/wspro.css'; // Individual CSS

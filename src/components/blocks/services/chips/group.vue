@@ -80,7 +80,9 @@ async function handleChild(slug) {
             <ul>
               <li v-for="offer in schild.child" @click="handleChild(offer.key)" class="overlay_action_offer">
                 <span class="title">{{offer.name}}</span><br>
-                <span class="descr" v-html="offer.description"></span>
+<!--                <button class="bg-sky-500 hover:bg-sky-700">{{offer.name}}</button>-->
+<!--                <span class="descr" v-html="offer.description"></span>-->
+                <span class="bg-brand-aqua text-brand-deep p-4" v-html="offer.description"></span>
               </li>
             </ul>
 <!--            <RouterLink :to="{ path: '/page/' + schild.slug }">{{schild.title}}</RouterLink>-->
@@ -100,5 +102,13 @@ async function handleChild(slug) {
   .overlay_action_dir { }
   .overlay_action_dir:hover { text-decoration: underline; cursor: pointer;}
   .overlay_action_offer {}
+
   .overlay_action_offer .title:hover {text-decoration: underline; cursor: pointer;}
+
+  .overlay_action_offer .descr {
+    display: none;
+    /*color: #0a1f44*/
+  }
+  .overlay_action_offer:hover .descr { display: flex; }
+
 </style>
