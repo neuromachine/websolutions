@@ -8,27 +8,39 @@ export const useCalcStore = defineStore('CalcStore', {
         overlay: null,
         category: null,
         tree: null,
-        isLoading: false, // status of global loading
+
         OverlayLoading: false, // status of overlay window loading
         data: null,
         list: null,
         item: null,
         filter: '*',
+
+        isLoading: false, // status of global loading
+        strReady: false,
+        catReady: false,
+        itemReady: false,
+        loading: false
     }),
     getters:{
-        // возвращает массив «хлебных крошек»
-        getBreadcrumbs: (state) => {
-            const crumbs = [
-                { title: 'Главная', link: '/' }
-            ]
+        breadcrumbs: (state) => {
+            const crumbs = [{ title: 'Главная', link: '/' }]
 
-            if (state.bread) {
+            if (state.strReady && state.structure?.name && state.structure?.key) {
                 crumbs.push({
-                    title: state.bread.name,
-                    link: '/' + state.bread.key
+                    title: state.structure.name,
+                    link: `/${state.structure.key}`
                 })
             }
-            console.log('Крошки:', crumbs)
+
+            if (state.itemReady && state.item?.properties?.title) {
+                crumbs.push({ title: state.item.properties.title, link: null })
+            } else if (state.catReady && state.category?.name && state.category?.key) {
+                crumbs.push({
+                    title: state.category.name,
+                    link: `/${state.structure?.key}/${state.category.key}`
+                })
+            }
+
             return crumbs
         },
         isTreeReady(state) {
@@ -119,48 +131,42 @@ export const useCalcStore = defineStore('CalcStore', {
                 this.OverlayLoading = false;
             }
         },
-        async fetchStructure(slug)
-        {
+        async fetchStructure(slug) {
+            this.loading = true
             try {
-                this.isLoading = true
-                // this.structure = (await api.get('blocks/categories/structure/'+slug)).data.data
-                const response = await api.get('blocks/categories/structure/' + slug)
-                const data = response.data.data
-                console.log('API ответ structure:', data)
+                const { data: { data } } = await api.get(`blocks/categories/structure/${slug}`)
                 this.structure = data
-                this.bread =  data // передаем в хл. крошки
-                console.log('После setBread, state.bread =', this.bread)
-                this.isLoading = false
+                this.strReady = true
             } catch (err) {
-                console.error('Ошибка API:', err)
+                console.error('Ошибка fetchStructure:', err)
             } finally {
-                this.isLoading = false
+                this.loading = false
             }
         },
-        async fetchBlockCategory(slug)
-        {
+
+        async fetchBlockCategory(slug) {
+            this.loading = true
             try {
-                this.isLoading = true;
-                this.category = (await api.get('blocks/categories/'+slug)).data.data;
-                this.isLoading = false;
-                return true
+                const { data: { data } } = await api.get(`blocks/categories/${slug}`)
+                this.category = data
+                this.catReady = true
             } catch (err) {
-                console.error('Ошибка API:', err);
+                console.error('Ошибка fetchBlockCategory:', err)
             } finally {
-                this.isLoading = false;
+                this.loading = false
             }
         },
-        async fetchBlockItem(slug)
-        {
+
+        async fetchBlockItem(slug) {
+            this.loading = true
             try {
-                this.isLoading = true;
-                this.item = (await api.get('blocks/items/'+slug)).data.data;
-                this.isLoading = false;
-                return true
+                const { data: { data } } = await api.get(`blocks/items/${slug}`)
+                this.item = data
+                this.itemReady = true
             } catch (err) {
-                console.error('Ошибка API:', err);
+                console.error('Ошибка fetchBlockItem:', err)
             } finally {
-                this.isLoading = false;
+                this.loading = false
             }
         },
         // TODO: legacy from list.vue

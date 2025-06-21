@@ -10,10 +10,9 @@ import Item from "@/components/portfolio/Item.vue";
 const route = useRoute()
 const calcStore = useCalcStore()
 
-onMounted(() => {
-  calcStore.fetchStructure('portfolio')
-  console.log('isStrReady после fetchStructure():', calcStore.isStrReady)
-  calcStore.fetchBlockItem(route.params.slug)
+onMounted(async () => {
+  await calcStore.fetchStructure('portfolio')
+  await calcStore.fetchBlockItem(route.params.slug)
 })
 </script>
 
@@ -21,4 +20,5 @@ onMounted(() => {
   <Header />
   <PageTitle />
   <Item  v-if="calcStore.isItemReady" />
+  <div v-else>Loading item…</div>
 </template>

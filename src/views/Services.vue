@@ -7,27 +7,17 @@ import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
 import Main from "@/components/blocks/services/main.vue";
 
-const route = useRoute()
 const calcStore = useCalcStore()
 
-onMounted(() => {
-  calcStore.fetchStructure('services')
-  calcStore.fetchBlockItem(route.params.slug)
+onMounted(async () => {
+  await calcStore.fetchStructure('services')
+  await calcStore.fetchBlockCategory('services')
 })
-
-const breadcrumbs = computed(() => [
-  { title: 'Главная', link: '/' },
-  { title: 'Услуги', link: '/services' },
-  {
-    title: calcStore.structure.name,
-    link: null
-  }
-])
-
 </script>
 
 <template>
   <Header />
-  <PageTitle v-if="calcStore.isItemReady" :breadcrumbs="breadcrumbs" />
-  <Main v-if="calcStore.item" />
+  <PageTitle />
+  <Main v-if="calcStore.isCatReady" />
+  <div v-else>Loading item…</div>
 </template>

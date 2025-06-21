@@ -1,18 +1,7 @@
 <script setup>
-import {onMounted} from "vue";
 import group from "@/components/blocks/services/chips/group.vue";
 import { useCalcStore } from '@/stores/calcStore';
 const calcStore = useCalcStore();
-
-// TODO: make dynamic
-// import {useRoute} from "vue-router";
-// const route = useRoute();
-
-onMounted(() => {
-  //console.log(route.params.slug);
-  // calcStore.fetchStructure(route.params.slug);
-  //calcStore.fetchStructure('services');
-});
 </script>
 <template>
   <!-- Start List -->
