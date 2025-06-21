@@ -1,0 +1,20 @@
+.content_wrap { padding: 0 0 60px 0;}
+  .content_wrap a {color: #7b68ee; text-decoration: none; }
+  .content_wrap h6 { font-size: 1.5em;}
+  .content_wrap p { padding: 10px 0 10px 0;}
+  .content_wrap ul { margin: 10px 0 10px 0}
+  .content_wrap ul li { padding-left: 10px; list-style: inside disc;}
+
+.c_body { padding: 20px 0 20px 0;}
+
+
+.p_item_descr { text-align: center; font-size: 1.2em; padding: 20px 0 20px 0;}
+.portfolio_slider_wrap { margin: 0px 0 20px 0;}
+
+
+
+.item-bg2 {
+  /*background-image: url('/assets/img/header_back.jpg');*/
+  background-image: url('/assets/img/header_back.png');
+  background-position: bottom center;
+}
