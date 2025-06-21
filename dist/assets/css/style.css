@@ -4433,11 +4433,6 @@ blockquote::after, .blockquote::after {
 	background-image: url(../img/page-title-bg-2.jpg);
 }
 
-.item-bg2 {
-	background-image: url(../img/page-title-bg-3.jpg);
-	background-position: bottom center;
-}
-
 /**********************************
  ** - 23 - Contact Page CSS
  **********************************/

@@ -10,3 +10,11 @@
 
 .p_item_descr { text-align: center; font-size: 1.2em; padding: 20px 0 20px 0;}
 .portfolio_slider_wrap { margin: 0px 0 20px 0;}
+
+
+
+.item-bg2 {
+  /*background-image: url('/assets/img/header_back.jpg');*/
+  background-image: url('/assets/img/header_back.png');
+  background-position: bottom center;
+}
