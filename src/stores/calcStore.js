@@ -3,6 +3,7 @@ import api from "@/utils/api.js";
 
 export const useCalcStore = defineStore('CalcStore', {
     state: () => ({
+        bread: null,
         structure: null,
         overlay: null,
         category: null,
@@ -15,6 +16,21 @@ export const useCalcStore = defineStore('CalcStore', {
         filter: '*',
     }),
     getters:{
+        // возвращает массив «хлебных крошек»
+        getBreadcrumbs: (state) => {
+            const crumbs = [
+                { title: 'Главная', link: '/' }
+            ]
+
+            if (state.bread) {
+                crumbs.push({
+                    title: state.bread.name,
+                    link: '/' + state.bread.key
+                })
+            }
+            console.log('Крошки:', crumbs)
+            return crumbs
+        },
         isTreeReady(state) {
             if(
                 !state.isLoading &&
@@ -106,13 +122,19 @@ export const useCalcStore = defineStore('CalcStore', {
         async fetchStructure(slug)
         {
             try {
-                this.isLoading = true;
-                this.structure = (await api.get('blocks/categories/structure/'+slug)).data.data;
-                this.isLoading = false;
+                this.isLoading = true
+                // this.structure = (await api.get('blocks/categories/structure/'+slug)).data.data
+                const response = await api.get('blocks/categories/structure/' + slug)
+                const data = response.data.data
+                console.log('API ответ structure:', data)
+                this.structure = data
+                this.bread =  data // передаем в хл. крошки
+                console.log('После setBread, state.bread =', this.bread)
+                this.isLoading = false
             } catch (err) {
-                console.error('Ошибка API:', err);
+                console.error('Ошибка API:', err)
             } finally {
-                this.isLoading = false;
+                this.isLoading = false
             }
         },
         async fetchBlockCategory(slug)

@@ -35,8 +35,8 @@ const routes = [
     },
     {
         path: '/services',
-        name: 'services_list',
-        component: () => import('@/views/ServicesList.vue'),
+        name: 'services',
+        component: () => import('@/views/Services.vue'),
     },
     {
         path: '/direction/:slug',

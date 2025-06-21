@@ -1,23 +1,20 @@
 <script setup>
-defineProps({
-  breadcrumbs: Array
-});
+import { useCalcStore } from '@/stores/calcStore'
+const calcStore = useCalcStore()
 </script>
 
 <template>
-  <!-- Start Page Title Section -->
   <div class="page-title-area item-bg2">
     <div class="d-table">
       <div class="d-table-cell">
         <div class="container">
-          <div class="page-title-content">
-            <h2>{{ breadcrumbs.at(-1)?.title }}</h2>
+          <div v-if="calcStore.bread" class="page-title-content">
+            <h2>{{calcStore.bread.name}}</h2>
             <ul>
-              <li v-for="(crumb, index) in breadcrumbs" :key="index">
-                <RouterLink v-if="crumb.link && index !== breadcrumbs.length - 1" :to="crumb.link">
+              <li v-for="(crumb, index) in calcStore.getBreadcrumbs" :key="index">
+                <RouterLink :to="crumb.link">
                   {{ crumb.title }}
                 </RouterLink>
-                <span v-else>{{ crumb.title }}</span>
               </li>
             </ul>
           </div>
@@ -25,9 +22,8 @@ defineProps({
       </div>
     </div>
   </div>
-  <!-- End Page Title Section -->
 </template>
 
 <style scoped>
-/* Можно добавить стили для хлебных крошек */
+
 </style>

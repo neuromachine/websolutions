@@ -11,11 +11,11 @@ const calcStore = useCalcStore();
 onMounted(() => {
   //console.log(route.params.slug);
   // calcStore.fetchStructure(route.params.slug);
-  calcStore.fetchStructure('services');
+  //calcStore.fetchStructure('services');
 });
 </script>
 <template>
-  <!-- Start Services Three Section -->
+  <!-- Start List -->
   <section id="list_services" class="services-section-three section-padding">
     <div class="container">
       <div class="row" v-if="calcStore.isStrReady">
@@ -30,5 +30,5 @@ onMounted(() => {
       <div v-else class="row row_load">Loading Structure</div>
     </div>
   </section>
-  <!-- End Services Three Section -->
+  <!-- End List -->
 </template>
