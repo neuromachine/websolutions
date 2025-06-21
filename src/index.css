@@ -1,3 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@layer utilities {
+    .bg-brand-light { background-color: #E5F7FD; }
+    .bg-brand-aqua  { background-color: #00D9EA; }
+    .bg-brand-sky   { background-color: #0C90C7; }
+    .bg-brand-deep  { background-color: #223A76; }
+    .bg-brand-sun1  { background-color: #FFE265; }
+    .bg-brand-sun2  { background-color: #FFC500; }
+    .bg-brand-alert { background-color: #FF5A5F; }
+
+    .text-brand-light { color: #E5F7FD; }
+    .text-brand-aqua  { color:#00D9EA; }
+    .text-brand-sky   { color:#0C90C7; }
+    .text-brand-deep  { color:#223A76; }
+    .text-brand-sun1  { color:#FFE265; }
+    .text-brand-sun2  { color:#FFC500; }
+    .text-brand-alert { color:#FF5A5F; }
+}
+
