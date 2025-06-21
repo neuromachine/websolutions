@@ -24,10 +24,9 @@ import router from '@/router'
 // const app = createApp(App)
     //.use($) // TODO: разобраться с этим, возможно рефакторинг с новыми вводными при глобальной регистрации jquery
 
-// import './assets/styles/styles.css';
-// import './assets/styles/wspro.css';
-// import 'assets/styles/style.css'
-// import 'assets/styles/wspro.css'
+import './assets/styles/style.css'; // Template CSS
+import './assets/styles/responsive.css'; // Responsive CSS
+import './assets/styles/wspro.css'; // Individual CSS
 
 const app = createApp(App);
 const pinia = createPinia(); // Создаём экземпляр Pinia

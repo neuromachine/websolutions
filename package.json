@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.1.10",
     "axios": "^1.9.0",
     "counterup2": "^2.0.2",
     "imagesloaded": "^5.0.0",
@@ -16,6 +17,7 @@
     "jquery": "^3.7.1",
     "pinia": "^3.0.1",
     "swiper": "^11.2.8",
+    "tailwindcss": "^4.1.10",
     "v-dialogs": "^3.0.3",
     "vue": "^3.5.13",
     "vue-owl-carousel": "^2.0.3",

@@ -82,6 +82,9 @@ export const useCalcStore = defineStore('CalcStore', {
                 const classes = item.properties?.workclass || []
                 return classes.some(c => c.key === state.filter)
             })
+        },
+        getItemPrice(state) {
+            return Math.floor(state.item?.properties?.price / 10000) || 0;
         }
     },
     actions: {

@@ -75,18 +75,18 @@ function onSwiperInit(swiper) {
                 <span><RouterLink :to="{ path: '/direction/razrabotka' }">Разработка</RouterLink></span>
               </div>
               <div class="single-info-box">
-                <h4>Выполнил</h4>
-                <span>Nero</span>
+                <h4>Стоимость</h4>
+                <span>{{calcStore.getItemPrice}} т.р.</span>
               </div>
               <div class="single-info-box">
                 <h4>Дата</h4>
-                <span>Июнь, 2023</span>
+                <span>{{calcStore.item.properties.date}}</span>
               </div>
               <div class="single-info-box">
                 <h4>Соц. сети</h4>
                 <ul class="social">
-                  <li><a href="https://t.me/websolutionspro"><i class="fa-brands fa-telegram"></i></a></li>
-                  <li><a href="https://www.instagram.com/websn.pro/"><i class="fab fa-instagram"></i></a></li>
+                  <li><a href="https://t.me/websolutionspro" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+                  <li><a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fab fa-instagram"></i></a></li>
                 </ul>
               </div>
               <div class="single-info-box">
