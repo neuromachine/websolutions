@@ -5,7 +5,7 @@ import Header from "@/components/Header.vue";
 import Faq from "@/components/Faq.vue";
 import Testimonial from "@/components/Testimonial.vue";
 import Counter from "@/components/Counter.vue";
-
+import Footer from '@/components/Footer.vue'
 
 
 </script>
@@ -493,4 +493,5 @@ import Counter from "@/components/Counter.vue";
   </section>
   -->
   <!-- End Partner section -->
+  <Footer />
 </template>
