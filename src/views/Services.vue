@@ -6,6 +6,7 @@ import { useCalcStore } from '@/stores/calcStore'
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
 import Main from "@/components/blocks/services/main.vue";
+import Footer from '@/components/Footer.vue'
 
 const calcStore = useCalcStore()
 const route = useRoute()
@@ -21,4 +22,5 @@ onMounted(async () => {
   <PageTitle />
   <Main v-if="calcStore.isCatReady" />
   <div v-else>Loading item…</div>
+  <Footer />
 </template>
