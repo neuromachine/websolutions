@@ -1,4 +1,7 @@
-@import "tailwindcss";
+/*@import "tailwindcss";*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @layer utilities {
     .bg-brand-light { background-color: #E5F7FD; }
     .bg-brand-aqua  { background-color: #00D9EA; }

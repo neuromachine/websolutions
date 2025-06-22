@@ -27,11 +27,12 @@ import router from '@/router'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import './assets/styles/style.css'; // Template CSS
-import './assets/styles/responsive.css'; // Responsive CSS
+
 
 import './index.css'; // TailWind
 
+import './assets/styles/style.css'; // Template CSS
+import './assets/styles/responsive.css'; // Responsive CSS
 import './assets/styles/wspro.css'; // Individual CSS
 
 const app = createApp(App);

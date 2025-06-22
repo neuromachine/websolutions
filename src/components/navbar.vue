@@ -4,8 +4,8 @@
 </script>
 
 <template>
-    <ul class="navbar-nav hidden lg:block">
-      <li class="hidden lg:block nav-item">
+    <ul class="navbar-nav md:flex">
+      <li class="nav-item">
         <RouterLink to="/">Главная</RouterLink>
       </li>
       <li class="nav-item">
