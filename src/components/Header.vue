@@ -67,7 +67,7 @@ onMounted(() => {
           <div class="navbar-collapse mean-menu" id="navbarSupportedContent">
             <Navbar />
             <div class="other-option">
-              <a class="default-btn" href="tel:+79282619061">Позвонить<span></span></a>
+              <a class="default-btn" href="https://t.me/Lola_06">Позвонить<span></span></a>
             </div>
           </div>
 
