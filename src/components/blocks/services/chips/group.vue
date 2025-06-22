@@ -82,7 +82,7 @@ async function handleChild(slug) {
                 <span class="title">{{offer.name}}</span><br>
 <!--                <button class="bg-sky-500 hover:bg-sky-700">{{offer.name}}</button>-->
 <!--                <span class="descr" v-html="offer.description"></span>-->
-                <span class="text-brand-deep" v-html="offer.description"></span>
+                <i class="bi bi-arrow-right text-brand-deep"></i> <span class="text-brand-deep" v-html="offer.description"></span>
               </li>
             </ul>
 <!--            <RouterLink :to="{ path: '/page/' + schild.slug }">{{schild.title}}</RouterLink>-->
