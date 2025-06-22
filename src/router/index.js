@@ -20,8 +20,8 @@ const routes = [
     },
     {
         path: '/portfolio',
-        name: 'portfolio_list',
-        component: () => import('@/views/PortfolioList.vue'),
+        name: 'portfolio',
+        component: () => import('@/views/Portfolio.vue'),
     },
 /*    {
         path: '/portfolio/:slug',
