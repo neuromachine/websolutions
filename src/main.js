@@ -25,7 +25,8 @@ import router from '@/router'
     //.use($) // TODO: разобраться с этим, возможно рефакторинг с новыми вводными при глобальной регистрации jquery
 
 
-import './assets/styles/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import './index.css';
 import './assets/styles/style.css'; // Template CSS
