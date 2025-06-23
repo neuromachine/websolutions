@@ -1,9 +1,7 @@
 <script setup>
 import { useCalcStore } from '@/stores/calcStore'
-
 const calcStore = useCalcStore()
 </script>
-
 <template v-if="calcStore.strReady">
   <div class="page-title-area item-bg2">
     <div class="d-table">
@@ -31,7 +29,3 @@ const calcStore = useCalcStore()
     </div>
   </div>
 </template>
-
-<style scoped>
-/* Добавьте стили при необходимости */
-</style>

@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from 'vue'
 import group from "@/components/blocks/services/chips/group.vue";
 import { useCalcStore } from '@/stores/calcStore';
 const calcStore = useCalcStore();

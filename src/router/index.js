@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory} from 'vue-router'
-import { useUiStore } from '@/stores/uiStore'; // Импорт стора
+import { useUiStore } from '@/stores/uiStore';
+import { useCalcStore } from '@/stores/calcStore';
 import $ from 'jquery'
 
 const routes = [
@@ -87,15 +88,25 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    $('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер
+
+    //$('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер
+    const calcStore = useCalcStore();
+    calcStore.setLoading(true);
+
     const uiStore = useUiStore(); // Получаем доступ к стору
     uiStore.setIsOpen(false); // Устанавливаем isOpen в false перед каждым переходом
+
+
+
     next(); // Продолжаем навигацию
 });
 
 router.afterEach(() => {
     setTimeout(() => {
-        $('.preloader').addClass('preloader-deactivate'); // Скрываем прелоадер после завершения перехода
+        //$('.preloader').addClass('preloader-deactivate'); // Скрываем прелоадер после завершения перехода
+        //const calcStore = useCalcStore();
+
+        //calcStore.setLoading(false);
     }, 500); // Даем небольшой запас, если надо
 
     setTimeout(() => {

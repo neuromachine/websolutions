@@ -113,9 +113,15 @@ export const useCalcStore = defineStore('CalcStore', {
         },
         getItemPrice(state) {
             return Math.floor(state.item?.properties?.price / 10000) || 0;
-        }
+        },
+        getLoadingStatus(state) {
+            return state.isLoading;
+        },
     },
     actions: {
+        setLoading(status) {
+            this.isLoading = status;
+        },
         setFilter(key) {
             this.filter = key
         },
@@ -132,7 +138,7 @@ export const useCalcStore = defineStore('CalcStore', {
             }
         },
         async fetchStructure(slug) {
-            this.loading = true
+            this.setLoading(true)
             try {
                 const { data: { data } } = await api.get(`blocks/categories/structure/${slug}`)
                 this.structure = data
@@ -140,12 +146,11 @@ export const useCalcStore = defineStore('CalcStore', {
             } catch (err) {
                 console.error('Ошибка fetchStructure:', err)
             } finally {
-                this.loading = false
+                this.setLoading(false)
             }
         },
-
         async fetchBlockCategory(slug) {
-            this.loading = true
+            this.setLoading(true)
             try {
                 const { data: { data } } = await api.get(`blocks/categories/${slug}`)
                 this.category = data
@@ -153,12 +158,11 @@ export const useCalcStore = defineStore('CalcStore', {
             } catch (err) {
                 console.error('Ошибка fetchBlockCategory:', err)
             } finally {
-                this.loading = false
+                this.setLoading(false)
             }
         },
-
         async fetchBlockItem(slug) {
-            this.loading = true
+            this.setLoading(true)
             try {
                 const { data: { data } } = await api.get(`blocks/items/${slug}`)
                 this.item = data
@@ -166,7 +170,7 @@ export const useCalcStore = defineStore('CalcStore', {
             } catch (err) {
                 console.error('Ошибка fetchBlockItem:', err)
             } finally {
-                this.loading = false
+                this.setLoading(false)
             }
         },
         // TODO: legacy from list.vue

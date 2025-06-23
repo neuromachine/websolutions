@@ -43,7 +43,7 @@ onMounted(() => {
 <template>
   <!-- Start Preloader Section -->
 <!--  <div class="preloader" :class="{ 'preloader-deactivate': !calcStore.isLoading }">-->
-  <div class="preloader">
+  <div class="preloader" :class="{ 'preloader-deactivate': !calcStore.getLoadingStatus }">
     <div class="loader">
       <div class="shadow"></div>
       <div class="box"></div>

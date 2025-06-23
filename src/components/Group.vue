@@ -28,6 +28,7 @@ watch(
       <div class="row">
         <div class="name">{{calcStore.category.name}}</div>
         <div class="descr">{{calcStore.category.description}}</div>
+        <div class="content" v-html="calcStore.category.content"></div>
       </div>
 
       <div v-if="calcStore.isHaveSubCat" class="row">
