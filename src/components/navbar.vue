@@ -1,10 +1,10 @@
 <script setup>
-
-
+import { useUiStore } from '@/stores/uiStore';
+const uiStore = useUiStore();
 </script>
 
 <template>
-    <ul class="navbar-nav md:flex">
+    <ul :class="uiStore.isOpen ? 'open' : 'close'" class="navbar-nav">
       <li class="nav-item">
         <RouterLink to="/">Главная</RouterLink>
       </li>
@@ -34,7 +34,9 @@
 <!--          </li>-->
 <!--        </ul>-->
 <!--      </li>-->
-
+      <li class="nav-item">
+        <RouterLink to="/page/about" class="nav-link">О нас</RouterLink>
+      </li>
       <li class="nav-item">
         <RouterLink to="/page/contact" class="nav-link">Контакты</RouterLink>
       </li>
@@ -42,5 +44,8 @@
 </template>
 
 <style scoped>
-
+@media screen and (max-width: 991px) {
+  .close { display: none}
+  .open { display: none}
+}
 </style>
