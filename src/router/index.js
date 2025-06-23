@@ -90,10 +90,11 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
 
     //$('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер
-    const calcStore = useCalcStore();
-    calcStore.setLoading(true);
+    // const calcStore = useCalcStore();
+    // calcStore.setLoading(true);
 
     const uiStore = useUiStore(); // Получаем доступ к стору
+    uiStore.startGlobalLoading()
     uiStore.setIsOpen(false); // Устанавливаем isOpen в false перед каждым переходом
 
 
@@ -107,6 +108,9 @@ router.afterEach(() => {
         //const calcStore = useCalcStore();
 
         //calcStore.setLoading(false);
+
+
+
     }, 500); // Даем небольшой запас, если надо
 
     setTimeout(() => {

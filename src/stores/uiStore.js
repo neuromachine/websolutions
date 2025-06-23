@@ -1,59 +1,39 @@
 import { defineStore } from 'pinia';
-import api from "@/utils/api.js";
+import { useCalcStore} from '@/stores/calcStore';
 
-export const useUiStore = defineStore('ui', {
+export const useUiStore = defineStore('UiStore', {
     state: () => ({
-        isOpen: false, // status of menu
-        isLoading: false, // status of global loading
-        data: null,
-        list: null,
-        item: null,
-        filter: '*',
+        isGlobalLoading: false,
+        isOpen: false, // status of Expand Menu
     }),
     getters:{
-        filteredItems(state) {
-            if (state.filter === '*') return state.list.items
-            return state.list.items.filter(item => {
-                return item.properties.workclass.key === state.filter
-            })
+        getGlobalLoading(state) {
+            const calcStore = useCalcStore();
+            return state.isGlobalLoading || calcStore.getLoadingStatus; // Комбинируем состояния: если хоть где-то загрузка, возвращаем true
         }
     },
     actions: {
         setIsOpen(value) {
-            this.isOpen = value; // Метод для изменения состояния
+            this.isOpen = value
         },
-        setIsLoading(value) {
-            this.isLoading = value; // Установка статуса загрузки страницы
+        setGlobalLoading(value) {
+            this.isGlobalLoading = value;
         },
-        // TODO: ввести проверку поступивших данных, а так же ввести типовой формат ответа
-        async fetchItem(slug) {
-            try {
-                this.isLoading = true;
-                this.item = (await api.get('/item/'+slug)).data;
-                this.isLoading = false;
-            } catch (err) {
-                console.error('Ошибка API:', err);
-            }
+        startGlobalLoading() {
+            this.isGlobalLoading = true;
         },
-        // TODO: ввести проверку поступивших данных, а так же ввести типовой формат ответа
-        async fetchCategory(slug) {
-            try {
-                this.isLoading = true;
-                this.data = (await api.get('/tree/'+slug)).data;
-                this.isLoading = false;
-            } catch (err) {
-                console.error('Ошибка API:', err);
-            }
+        stopGlobalLoading() {
+            this.isGlobalLoading = false;
         },
-        // TODO: ввести проверку поступивших данных, а так же ввести типовой формат ответа
-        async fetchAllPortfolio() {
-            try {
-                this.isLoading = true;
-                this.list = (await api.get('/dictionaries/portfolio_item/items')).data;
-                this.isLoading = false;
-            } catch (err) {
-                console.error('Ошибка API:', err);
-            }
+        setup() {
+            const calcStore = useCalcStore();
+            // Подписываемся на изменения isLoading в CalcStore
+            watch(
+                () => calcStore.isLoading,
+                (newValue) => {
+                    this.isGlobalLoading = newValue; // Обновляем состояние UiStore
+                }
+            );
         }
     }
 });

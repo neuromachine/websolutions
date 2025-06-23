@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { useUiStore } from '@/stores/uiStore';
 import api from "@/utils/api.js";
 
 export const useCalcStore = defineStore('CalcStore', {
@@ -15,7 +16,7 @@ export const useCalcStore = defineStore('CalcStore', {
         item: null,
         filter: '*',
 
-        isLoading: false, // status of global loading
+        isLoading: false, // status of LOCAL loading
         strReady: false,
         catReady: false,
         itemReady: false,
@@ -138,6 +139,8 @@ export const useCalcStore = defineStore('CalcStore', {
             }
         },
         async fetchStructure(slug) {
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
             this.setLoading(true)
             try {
                 const { data: { data } } = await api.get(`blocks/categories/structure/${slug}`)
@@ -146,10 +149,13 @@ export const useCalcStore = defineStore('CalcStore', {
             } catch (err) {
                 console.error('Ошибка fetchStructure:', err)
             } finally {
+                uiStore.stopGlobalLoading()
                 this.setLoading(false)
             }
         },
         async fetchBlockCategory(slug) {
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
             this.setLoading(true)
             try {
                 const { data: { data } } = await api.get(`blocks/categories/${slug}`)
@@ -158,10 +164,13 @@ export const useCalcStore = defineStore('CalcStore', {
             } catch (err) {
                 console.error('Ошибка fetchBlockCategory:', err)
             } finally {
+                uiStore.stopGlobalLoading()
                 this.setLoading(false)
             }
         },
         async fetchBlockItem(slug) {
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
             this.setLoading(true)
             try {
                 const { data: { data } } = await api.get(`blocks/items/${slug}`)
@@ -170,6 +179,7 @@ export const useCalcStore = defineStore('CalcStore', {
             } catch (err) {
                 console.error('Ошибка fetchBlockItem:', err)
             } finally {
+                uiStore.stopGlobalLoading()
                 this.setLoading(false)
             }
         },
