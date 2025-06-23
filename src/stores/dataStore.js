@@ -1,0 +1,168 @@
+import { defineStore } from 'pinia';
+import { useUiStore } from '@/stores/uiStore';
+import api from "@/utils/api.js";
+
+export const useDataStore = defineStore('DataStore', {
+    state: () => ({
+        bread: null,
+        structure: null,
+        overlay: null,
+        category: null,
+        tree: null,
+
+        OverlayLoading: false, // status of overlay window loading
+        data: null,
+        list: null,
+        item: null,
+        filter: '*',
+
+        isLoading: false, // status of LOCAL loading
+        strReady: false,
+        catReady: false,
+        itemReady: false,
+        loading: false
+    }),
+    getters:{
+        breadcrumbs: (state) => {
+            const crumbs = [{ title: 'Главная', link: '/' }]
+
+            if (state.strReady && state.structure?.name && state.structure?.key) {
+                crumbs.push({
+                    title: state.structure.name,
+                    link: `/${state.structure.key}`
+                })
+            }
+
+            if (state.itemReady && state.item?.properties?.title) {
+                crumbs.push({ title: state.item.properties.title, link: null })
+            } else if (state.catReady && state.category?.name && state.category?.key) {
+                crumbs.push({
+                    title: state.category.name,
+                    link: `/${state.structure?.key}/${state.category.key}`
+                })
+            }
+
+            return crumbs
+        },
+        isStrReady(state) {
+            if(
+                !state.isLoading &&
+                state.structure !== null &&
+                state.structure.child &&
+                Object.keys(state.structure.child).length
+            )
+            {
+                return true
+            }
+            else return false
+        },
+        isCatReady(state) { return !state.isLoading && state.category !== null },
+        isItemReady(state) { return !state.isLoading && state.item !== null },
+        isOverlayReady(state) { return !state.OverlayLoading && state.overlay !== null },
+        // TODO: уточнить зачем state - нельзя работать с this?
+        isHaveItems(state){
+            if(
+            state.category !== null &&
+            state.category.blocks &&
+                // TODO: не верная статика - 0
+            state.category.blocks[0] &&
+            state.category.blocks[0].items &&
+            Object.keys(state.category.blocks[0].items).length
+            ) return true
+            else return false
+        },
+        isHaveSubCat(state){
+            if(
+                state.category !== null &&
+                state.category.children &&
+                Object.keys(state.category.children).length
+            ) return true
+            else return false
+        },
+        filteredItems(state) {
+            const items = state.category.blocks?.[0]?.items || []
+
+            // если “все”
+            if (state.filter === '*') {
+                return items
+            }
+
+            // иначе — ищем, есть ли в массиве workclass нужный key
+            return items.filter(item => {
+                const classes = item.properties?.workclass || []
+                return classes.some(c => c.key === state.filter)
+            })
+        },
+        getItemPrice(state) {
+            return Math.floor(state.item?.properties?.price / 10000) || 0;
+        },
+        getLoadingStatus(state) {
+            return state.isLoading;
+        },
+    },
+    actions: {
+        setLoading(status) {
+            this.isLoading = status;
+        },
+        setFilter(key) {
+            this.filter = key
+        },
+        async fetchOverlayCategory(slug)
+        {
+            try {
+                this.OverlayLoading = true;
+                this.overlay = (await api.get('blocks/categories/'+slug)).data.data; // TODO: разработать механизм (сервис) для повторяющихся запросов
+                this.OverlayLoading = false;
+            } catch (err) {
+                console.error('Ошибка API:', err); // TODO: разработать механизм (сервис) для повторяющихся состояний
+            } finally {
+                this.OverlayLoading = false;
+            }
+        },
+        async fetchStructure(slug) {
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
+            this.setLoading(true)
+            try {
+                const { data: { data } } = await api.get(`blocks/categories/structure/${slug}`)
+                this.structure = data
+                this.strReady = true
+            } catch (err) {
+                console.error('Ошибка fetchStructure:', err)
+            } finally {
+                uiStore.stopGlobalLoading()
+                this.setLoading(false)
+            }
+        },
+        async fetchBlockCategory(slug) {
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
+            this.setLoading(true)
+            try {
+                const { data: { data } } = await api.get(`blocks/categories/${slug}`)
+                this.category = data
+                this.catReady = true
+            } catch (err) {
+                console.error('Ошибка fetchBlockCategory:', err)
+            } finally {
+                uiStore.stopGlobalLoading()
+                this.setLoading(false)
+            }
+        },
+        async fetchBlockItem(slug) {
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
+            this.setLoading(true)
+            try {
+                const { data: { data } } = await api.get(`blocks/items/${slug}`)
+                this.item = data
+                this.itemReady = true
+            } catch (err) {
+                console.error('Ошибка fetchBlockItem:', err)
+            } finally {
+                uiStore.stopGlobalLoading()
+                this.setLoading(false)
+            }
+        },
+    }
+});

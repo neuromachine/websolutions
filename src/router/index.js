@@ -88,31 +88,13 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-
-    //$('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер
-    // const calcStore = useCalcStore();
-    // calcStore.setLoading(true);
-
     const uiStore = useUiStore(); // Получаем доступ к стору
     uiStore.startGlobalLoading()
     uiStore.setIsOpen(false); // Устанавливаем isOpen в false перед каждым переходом
-
-
-
     next(); // Продолжаем навигацию
 });
 
 router.afterEach(() => {
-    setTimeout(() => {
-        //$('.preloader').addClass('preloader-deactivate'); // Скрываем прелоадер после завершения перехода
-        //const calcStore = useCalcStore();
-
-        //calcStore.setLoading(false);
-
-
-
-    }, 500); // Даем небольшой запас, если надо
-
     setTimeout(() => {
         $("html, body").animate({ scrollTop: "0" }, 100); // Прокручиваем к верхнему краю страницы
     }, 100); // Даем небольшой запас, если надо

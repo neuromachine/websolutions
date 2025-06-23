@@ -1,21 +1,21 @@
 <script setup>
-import { useCalcStore } from '@/stores/calcStore'
-const calcStore = useCalcStore()
+import { useDataStore } from '@/stores/dataStore'
+const dataStore = useDataStore()
 </script>
-<template v-if="calcStore.strReady">
+<template v-if="dataStore.strReady">
   <div class="page-title-area item-bg2">
     <div class="d-table">
       <div class="d-table-cell">
         <div class="container">
           <div class="page-title-content">
             <!-- Заголовок последней крошки -->
-            <h2 v-if="calcStore.breadcrumbs.length">{{ calcStore.breadcrumbs.at(-1)?.title }}</h2>
+            <h2 v-if="dataStore.breadcrumbs.length">{{ dataStore.breadcrumbs.at(-1)?.title }}</h2>
 
             <!-- Список хлебных крошек -->
             <ul>
-              <li v-for="(crumb, index) in calcStore.breadcrumbs" :key="index">
+              <li v-for="(crumb, index) in dataStore.breadcrumbs" :key="index">
                 <RouterLink
-                    v-if="crumb.link && index !== calcStore.breadcrumbs.length - 1"
+                    v-if="crumb.link && index !== dataStore.breadcrumbs.length - 1"
                     :to="crumb.link"
                 >
                   {{ crumb.title }}

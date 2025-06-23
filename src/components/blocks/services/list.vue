@@ -1,15 +1,15 @@
 <script setup>
 import { onMounted } from 'vue'
 import group from "@/components/blocks/services/chips/group.vue";
-import { useCalcStore } from '@/stores/calcStore';
-const calcStore = useCalcStore();
+import { useDataStore } from '@/stores/dataStore';
+const dataStore = useDataStore();
 </script>
 <template>
   <!-- Start List -->
   <section id="list_services" class="services-section-three section-padding">
     <div class="container">
-      <div class="row" v-if="calcStore.isStrReady">
-        <group v-for="(item, index) in calcStore.structure.child" :key="index"
+      <div class="row" v-if="dataStore.isStrReady">
+        <group v-for="(item, index) in dataStore.structure.child" :key="index"
                :id="item.id"
                :title="item.name"
                :description="item.description"

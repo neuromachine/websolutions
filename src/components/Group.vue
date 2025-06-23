@@ -1,12 +1,12 @@
 <script setup>
 import { onMounted, watch } from "vue";
 import catClass from "@/components/blocks/services/catClass.vue";
-import { useCalcStore } from '@/stores/calcStore';
-const calcStore = useCalcStore();
+import { useDataStore } from '@/stores/dataStore';
+const calcStore = useDataStore();
 import {useRoute} from "vue-router";
 const route = useRoute();
 function load() {
-  calcStore.fetchBlockCategory(route.params.slug);
+  dataStore.fetchBlockCategory(route.params.slug);
 }
 onMounted(() => {load()});
 watch(
@@ -23,16 +23,16 @@ watch(
   <!-- Start Services Section -->
   <section class="services-section section-padding">
 
-    <div v-if="calcStore.isCatReady" class="container">
+    <div v-if="dataStore.isCatReady" class="container">
 
       <div class="row">
-        <div class="name">{{calcStore.category.name}}</div>
-        <div class="descr">{{calcStore.category.description}}</div>
-        <div class="content" v-html="calcStore.category.content"></div>
+        <div class="name">{{dataStore.category.name}}</div>
+        <div class="descr">{{dataStore.category.description}}</div>
+        <div class="content" v-html="dataStore.category.content"></div>
       </div>
 
-      <div v-if="calcStore.isHaveSubCat" class="row">
-        <div v-for="(item, index) in calcStore.category.children" :key="index" class="col-lg-4 col-md-6">
+      <div v-if="dataStore.isHaveSubCat" class="row">
+        <div v-for="(item, index) in dataStore.category.children" :key="index" class="col-lg-4 col-md-6">
           <catClass
               :slug=item.key
               :name=item.name
@@ -42,8 +42,8 @@ watch(
         </div>
       </div>
 
-      <div v-if="calcStore.isHaveItems" class="row">
-        <div v-for="item in calcStore.category.blocks[0].items" class="col-lg-4 col-md-6">
+      <div v-if="dataStore.isHaveItems" class="row">
+        <div v-for="item in dataStore.category.blocks[0].items" class="col-lg-4 col-md-6">
           <div class="single-services-item">
             <div class="services-icon">
               <i class="flaticon-development"></i>
