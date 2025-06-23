@@ -87,16 +87,16 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-/*    $('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер*/
+    $('.preloader').removeClass('preloader-deactivate'); // Показываем прелоадер
     const uiStore = useUiStore(); // Получаем доступ к стору
     uiStore.setIsOpen(false); // Устанавливаем isOpen в false перед каждым переходом
     next(); // Продолжаем навигацию
 });
 
 router.afterEach(() => {
-/*    setTimeout(() => {
+    setTimeout(() => {
         $('.preloader').addClass('preloader-deactivate'); // Скрываем прелоадер после завершения перехода
-    }, 500); // Даем небольшой запас, если надо*/
+    }, 500); // Даем небольшой запас, если надо
 
     setTimeout(() => {
         $("html, body").animate({ scrollTop: "0" }, 100); // Прокручиваем к верхнему краю страницы

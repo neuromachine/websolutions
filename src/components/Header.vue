@@ -1,6 +1,7 @@
 <script setup>
 import {ref, onMounted, getCurrentInstance, onUnmounted, computed} from 'vue'
 import { useUiStore } from '@/stores/uiStore'; // Импорт стора
+import { useCalcStore} from '@/stores/calcStore'; // Импорт стора
 import $ from 'jquery'
 // import MeanMenu from "@/components/MeanMenu.vue";
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
@@ -14,7 +15,9 @@ defineProps({
   isNavi: Boolean
 })
 
-const uiStore = useUiStore(); // Инициализация стора
+const uiStore = useUiStore();
+const calcStore = useCalcStore();
+
 
 
 const isOpen = uiStore.isOpen
@@ -39,7 +42,8 @@ onMounted(() => {
 
 <template>
   <!-- Start Preloader Section -->
-  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.isLoading }">
+<!--  <div class="preloader" :class="{ 'preloader-deactivate': !calcStore.isLoading }">-->
+  <div class="preloader">
     <div class="loader">
       <div class="shadow"></div>
       <div class="box"></div>
