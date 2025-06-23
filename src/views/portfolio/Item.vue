@@ -5,7 +5,9 @@ import { useCalcStore } from '@/stores/calcStore'
 
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
+import Footer from '@/components/Footer.vue'
 import Item from "@/components/portfolio/Item.vue";
+
 
 const route = useRoute()
 const calcStore = useCalcStore()
@@ -19,6 +21,6 @@ onMounted(async () => {
 <template>
   <Header />
   <PageTitle />
-  <Item  v-if="calcStore.isItemReady" />
-  <div v-else>Loading item…</div>
+  <Item />
+  <Footer />
 </template>

@@ -34,34 +34,7 @@ function onSwiperInit(swiper) {
   <!-- Start Portfolio Details Section -->
   <section class="portfolio-details-area">
 
-    <div class="p_item_descr">{{calcStore.item.properties.descr}}</div>
-
-    <div class="portfolio_slider_wrap"  v-if="calcStore.isItemReady">
-      <Swiper :loop="true"
-              @swiper="onSwiperInit"
-              :modules="[Autoplay,Zoom]"
-              :slides-per-view="1"
-              :autoplay="{ delay: 5000 }"
-              :zoom="{ maxRatio: 3 }"
-              :breakpoints="{
-                      0: {
-                        slidesPerView: 1,
-                      },
-                      768: {
-                        slidesPerView: 1,
-                      },
-                      1200: {
-                        slidesPerView: 1,
-                      }
-                    }"
-              class="my-swiper">
-        <SwiperSlide v-for="(img, idx) in calcStore.item.properties.image" :key="idx">
-          <div v-if="calcStore.item.properties.image?.length" @click="toggleZoom" class="swiper-zoom-container">
-            <img :src="'/assets/img/portfolio/'+img" class="w-full h-auto" />
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
+<!--    <div class="p_item_descr">{{calcStore.item.properties.descr}}</div>-->
 
     <div class="container">
       <div v-if="!calcStore.isItemReady" class="row">Loading item data</div>
@@ -98,6 +71,34 @@ function onSwiperInit(swiper) {
         </div>
       </div>
     </div>
+
+    <div class="portfolio_slider_wrap"  v-if="calcStore.isItemReady">
+      <Swiper :loop="true"
+              @swiper="onSwiperInit"
+              :modules="[Autoplay,Zoom]"
+              :slides-per-view="1"
+              :autoplay="{ delay: 5000 }"
+              :zoom="{ maxRatio: 3 }"
+              :breakpoints="{
+                      0: {
+                        slidesPerView: 1,
+                      },
+                      768: {
+                        slidesPerView: 1,
+                      },
+                      1200: {
+                        slidesPerView: 1,
+                      }
+                    }"
+              class="my-swiper">
+        <SwiperSlide v-for="(img, idx) in calcStore.item.properties.image" :key="idx">
+          <div v-if="calcStore.item.properties.image?.length" @click="toggleZoom" class="swiper-zoom-container">
+            <img :src="'/assets/img/portfolio/'+img" class="w-full h-auto" />
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
+
   </section>
   <!-- End Portfolio Details Section -->
 
