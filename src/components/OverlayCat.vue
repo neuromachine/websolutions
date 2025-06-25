@@ -10,20 +10,20 @@ const emit = defineEmits(['close'])
 // emit `close` event to close Modal dialog
 const close = () => emit('close', 'message out')
 import {onMounted} from "vue";
-import { useCalcStore } from '@/stores/calcStore';
-const calcStore = useCalcStore();
+import { useDataStore } from '@/stores/dataStore';
+const dataStore = useDataStore();
 onMounted(() => {
-  calcStore.fetchOverlayCategory(props.data.slug);
+  dataStore.fetchOverlayCategory(props.data.slug);
 });
 </script>
 
 <template>
-  <div v-if="calcStore.isOverlayReady" class="overlay_page">
+  <div v-if="dataStore.isOverlayReady" class="overlay_page">
     <div class="category">
-      <div class="descr tiny" v-html="calcStore.overlay.description"></div>
+      <div class="descr tiny" v-html="dataStore.overlay.description"></div>
   <!--    <div class="check">{{props.data.blocks}}</div>-->
       <div class="blocks">
-        <div class="block" v-for="block in calcStore.overlay.blocks">
+        <div class="block" v-for="block in dataStore.overlay.blocks">
           <div class="head">{{block.name}}</div>
   <!--        <div class="head">{{block.items}}</div>-->
           <div class="items_list">

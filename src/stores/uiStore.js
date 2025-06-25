@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { useCalcStore} from '@/stores/calcStore';
+import { useDataStore} from '@/stores/dataStore.js';
 
 export const useUiStore = defineStore('UiStore', {
     state: () => ({
@@ -8,8 +8,8 @@ export const useUiStore = defineStore('UiStore', {
     }),
     getters:{
         getGlobalLoading(state) {
-            const calcStore = useCalcStore();
-            return state.isGlobalLoading || calcStore.getLoadingStatus; // Комбинируем состояния: если хоть где-то загрузка, возвращаем true
+            const dataStore = useDataStore();
+            return state.isGlobalLoading || dataStore.getLoadingStatus; // Комбинируем состояния: если хоть где-то загрузка, возвращаем true
         }
     },
     actions: {
@@ -26,10 +26,10 @@ export const useUiStore = defineStore('UiStore', {
             this.isGlobalLoading = false;
         },
         setup() {
-            const calcStore = useCalcStore();
-            // Подписываемся на изменения isLoading в CalcStore
+            const dataStore = useDataStore();
+            // Подписываемся на изменения isLoading в dataStore
             watch(
-                () => calcStore.isLoading,
+                () => dataStore.isLoading,
                 (newValue) => {
                     this.isGlobalLoading = newValue; // Обновляем состояние UiStore
                 }

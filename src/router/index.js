@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory} from 'vue-router'
 import { useUiStore } from '@/stores/uiStore';
-import { useCalcStore } from '@/stores/calcStore';
 import $ from 'jquery'
 
 const routes = [
@@ -8,6 +7,21 @@ const routes = [
         path: '/',
         name: 'home',
         component: () => import('@/views/Home.vue'),
+    },
+    {
+        path: '/services',
+        name: 'services',
+        component: () => import('@/views/Services.vue'),
+    },
+    {
+        path: '/group/:slug',
+        name: 'group',
+        component: () => import('@/views/Group.vue'),
+    },
+    {
+        path: '/portfolio',
+        name: 'portfolio',
+        component: () => import('@/views/Portfolio.vue'),
     },
     {
         path: '/compred',
@@ -19,11 +33,7 @@ const routes = [
         name: 'page',
         component: () => import('@/views/Page.vue'),
     },
-    {
-        path: '/portfolio',
-        name: 'portfolio',
-        component: () => import('@/views/Portfolio.vue'),
-    },
+
 /*    {
         path: '/portfolio/:slug',
         name: 'portfolio_item',
@@ -35,19 +45,9 @@ const routes = [
         component: () => import('@/views/portfolio/Item.vue'),
     },
     {
-        path: '/services',
-        name: 'services',
-        component: () => import('@/views/Services.vue'),
-    },
-    {
         path: '/direction/:slug',
         name: 'direction',
         component: () => import('@/views/Direction.vue'),
-    },
-    {
-        path: '/group/:slug',
-        name: 'group',
-        component: () => import('@/views/Group.vue'),
     },
     // {
     //     path: '/service/:slug',

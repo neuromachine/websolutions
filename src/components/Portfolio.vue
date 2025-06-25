@@ -1,26 +1,26 @@
 <script setup>
 import {onMounted} from "vue";
 
-import { useCalcStore } from '@/stores/calcStore';
-const calcStore = useCalcStore();
+import { useDataStore } from '@/stores/DataStore';
+const DataStore = useDataStore();
 
 function load() {
-  calcStore.fetchBlockCategory('portfolio');
+  DataStore.fetchBlockCategory('portfolio');
 }
 
 onMounted(() => {load()});
 
 function setFilter(filterKey) {
-  calcStore.filter = filterKey
+  DataStore.filter = filterKey
 }
 </script>
 
 <template>
-<!--  <div v-if="calcStore.isCatReady" class="row">
-    {{calcStore.category}}
+<!--  <div v-if="DataStore.isCatReady" class="row">
+    {{DataStore.category}}
   </div>-->
   <!-- Start Portfolio Section-->
-  <section v-if="calcStore.isCatReady" class="portfolio-area section-padding">
+  <section v-if="DataStore.isCatReady" class="portfolio-area section-padding">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -33,7 +33,7 @@ function setFilter(filterKey) {
           <div class="portfolio-list">
             <ul class="nav" id="portfolio-flters">
               <li class="filter filter-active" @click="setFilter('*')">Все</li>
-<!--              <li v-for="item in calcStore.category.blocks[0].items" @click="setFilter(item.properties.workclass[0].key)">{{item.properties.workclass[0].label}}</li>-->
+<!--              <li v-for="item in DataStore.category.blocks[0].items" @click="setFilter(item.properties.workclass[0].key)">{{item.properties.workclass[0].label}}</li>-->
               <li @click="setFilter('develop')">Разработка</li>
               <li @click="setFilter('html')">Верстка</li>
             </ul>
@@ -42,7 +42,7 @@ function setFilter(filterKey) {
       </div>
       <div class="portfolio-container">
         <TransitionGroup name="fade" tag="div" class="grid row">
-          <div v-for="item in calcStore.filteredItems" :key="item.id" :class="item.properties.workclass.key" class="col-lg-4 col-md-6 portfolio-grid-item all">
+          <div v-for="item in DataStore.filteredItems" :key="item.id" :class="item.properties.workclass.key" class="col-lg-4 col-md-6 portfolio-grid-item all">
             <div class="portfolio-item">
               <RouterLink :to="{ path: '/portfolio/item/' + item.key }">
                 <img v-if="item.properties.thumb" v-bind="{src: '/assets/img/portfolio/'+item.properties.thumb}" alt="image">

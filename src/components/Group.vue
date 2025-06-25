@@ -2,7 +2,7 @@
 import { onMounted, watch } from "vue";
 import catClass from "@/components/blocks/services/catClass.vue";
 import { useDataStore } from '@/stores/dataStore';
-const calcStore = useDataStore();
+const dataStore = useDataStore();
 import {useRoute} from "vue-router";
 const route = useRoute();
 function load() {

@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
-import group from "@/components/blocks/services/chips/group.vue";
+import group from "@/components/blocks/services/presentation/group.vue";
 import { useDataStore } from '@/stores/dataStore';
 const dataStore = useDataStore();
 </script>

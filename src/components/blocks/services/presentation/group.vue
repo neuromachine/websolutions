@@ -1,24 +1,10 @@
 <script setup>
-import {computed, onMounted} from "vue";
-
 import { DialogModal} from 'v-dialogs'
-
 import Overlay from "@/components/OverlayCat.vue"; //Legacy
-
-import Icon from "@/components/blocks/services/chips/icon.vue"
-
-import { useCalcStore } from '@/stores/calcStore.js';
-const calcStore = useCalcStore();
-
-onMounted(() => {
-  // calcStore.fetchItem(props.slug)
-  // calcStore.fetchItem(props.slug)
-});
-
+import Icon from "@/components/blocks/services/micro/icon.vue"
 const props = defineProps({
   id: {
     type: Number,
-    // type: Number,
     required: true
   },
   title: {
@@ -38,15 +24,10 @@ const props = defineProps({
     required: true
   },
 })
-
 async function handleChild(slug) {
-  // const result = await calcStore.fetchCategoryFromApi(slug);
-  //const result = await calcStore.fetchBlockCategory(slug);
-  //console.log(result)
-
   // TODO: calcStore.isCatReady
+  // TODO: переход на compositon overlay
   //if (!result) return false; // TODO: Проверить что данные не пришли - дял overlay
-
   DialogModal(Overlay, {
     maxButton: false,
     // title: calcStore.category.name,
@@ -60,11 +41,7 @@ async function handleChild(slug) {
   });
   return false
 }
-
-
-
 </script>
-
 <template>
   <div class="col-lg-4 col-md-6">
     <div class="single-services-three-item">
@@ -97,18 +74,14 @@ async function handleChild(slug) {
     </div>
   </div>
 </template>
-
 <style scoped>
   .overlay_action_dir { }
   .overlay_action_dir:hover { text-decoration: underline; cursor: pointer;}
   .overlay_action_offer {}
-
   .overlay_action_offer .title:hover {text-decoration: underline; cursor: pointer;}
-
   .overlay_action_offer .descr {
     display: none;
     /*color: #0a1f44*/
   }
   .overlay_action_offer:hover .descr { display: flex; }
-
 </style>

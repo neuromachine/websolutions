@@ -8,21 +8,16 @@ const dataStore = useDataStore()
       <div class="d-table-cell">
         <div class="container">
           <div class="page-title-content">
-            <!-- Заголовок последней крошки -->
-            <h2 v-if="dataStore.breadcrumbs.length">{{ dataStore.breadcrumbs.at(-1)?.title }}</h2>
-
-            <!-- Список хлебных крошек -->
+            <h2>{{dataStore.uiMainVars.page.title}}</h2>
+<!--            <div>{{dataStore.uiMainVars.page.breadcrumbs}}</div>-->
+<!--
             <ul>
-              <li v-for="(crumb, index) in dataStore.breadcrumbs" :key="index">
-                <RouterLink
-                    v-if="crumb.link && index !== dataStore.breadcrumbs.length - 1"
-                    :to="crumb.link"
-                >
-                  {{ crumb.title }}
-                </RouterLink>
-                <span v-else>{{ crumb.title }}</span>
+              <li v-for="(item, index) in dataStore.uiMainVars.page.breadcrumbs" :key="index">
+                <RouterLink :to="{ path: '/group/' + item.key }">{{ item.title }} {{item.key}}</RouterLink>
               </li>
+              <li>{{dataStore.uiMainVars.page.title}}</li>
             </ul>
+-->
           </div>
         </div>
       </div>
