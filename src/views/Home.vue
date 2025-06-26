@@ -32,11 +32,11 @@ import Footer from '@/components/Footer.vue'
                 </div>
                 -->
                 <div class="banner-btn">
-                  <RouterLink to="/page/about" class="default-btn-one">
+                  <RouterLink to="/pages/about" class="default-btn-one">
                     О компании<span></span>
                   </RouterLink>
                   <div class="video-box">
-                    <RouterLink to="/page/about" class="popup-video video-btn">
+                    <RouterLink to="/pages/about" class="popup-video video-btn">
                     <i class="fa fa-play"></i>
                     </RouterLink>
                   </div>
@@ -219,7 +219,7 @@ import Footer from '@/components/Footer.vue'
             <p>Мы создаём продуманные сайты и цифровые продукты, ориентированные на рост и удобство пользователей.</p>
             <p>Внимание к деталям, технологиям и дизайну — в основе каждого нашего проекта.</p>
             <div class="about-btn-box">
-              <RouterLink to="/page/about" class="default-btn">
+              <RouterLink to="/pages/about" class="default-btn">
                 Подробнее<span></span>
               </RouterLink>
             </div>
@@ -317,8 +317,8 @@ import Footer from '@/components/Footer.vue'
             <h2>Цифровая трансформация - путь к росту вашего бизнеса</h2>
             <p>Современный рынок требует скорости, удобства и технологичности. Мы создаём web-решения, которые упрощают процессы, привлекают клиентов и помогают вам масштабироваться. Готовы сделать следующий шаг?</p>
             <div class="hire-btn">
-              <a class="default-btn" href="tel:+79282619061">Позвоните<span></span></a>
-              <RouterLink to="/page/contact" class="default-btn-one">
+              <a class="default-btn" href="tel:+66637307104">Позвоните<span></span></a>
+              <RouterLink to="/pages/contacts" class="default-btn-one">
                 Свяжитесь<span></span>
               </RouterLink>
             </div>

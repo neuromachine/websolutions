@@ -58,15 +58,10 @@ onMounted(() => {
               </a>
               <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
               <ul class="footer-social">
-                <li>
-                  <a href="https://t.me/Lola_06" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-                </li>
-                <li>
-                  <a href="https://t.me/websolutionspro" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-                </li>
+                <li><a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://t.me/websolutionspro" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+                <li><a href="https://vk.com/websn" target="_blank"><i class="fa-brands fa-vk"></i></a></li>
+                <li><a href="https://t.me/Lola_06" target="_blank"><i class="fa-solid fa-message"></i></a></li>
               </ul>
             </div>
           </div>
@@ -76,10 +71,10 @@ onMounted(() => {
                 <h3>Услуги</h3>
               </div>
               <ul class="footer-quick-links">
-                <li><a href="#">Разработка</a></li>
-                <li><a href="#">Продвижение</a></li>
-                <li><a href="#">Сопровождение</a></li>
-                <li><a href="#">Индивидуально</a></li>
+                <li><a href="/services">Разработка</a></li>
+                <li><a href="/services">Продвижение</a></li>
+                <li><a href="/services">Сопровождение</a></li>
+                <li><a href="/services">Индивидуально</a></li>
               </ul>
             </div>
           </div>
@@ -104,7 +99,7 @@ onMounted(() => {
               <div class="footer-info-contact">
                 <i class="flaticon-phone-call"></i>
                 <h3>Телефон</h3>
-                <span><a href="tel:+79282619061">+7 928 261 9061</a></span>
+                <span><a href="tel:+66637307104">+66 63 730 7104</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
@@ -134,8 +129,8 @@ onMounted(() => {
         </div>
         <div class="col-lg-6 col-md-6">
           <ul>
-            <li><a href="terms-condition.html">Соглашения</a></li>
-            <li><a href="privacy-policy.html">Политика конфеденциальности</a></li>
+            <li><a href="/pages/agreements">Соглашения</a></li>
+            <li><a href="/pages/privacypolicy">Политика конфеденциальности</a></li>
           </ul>
         </div>
       </div>

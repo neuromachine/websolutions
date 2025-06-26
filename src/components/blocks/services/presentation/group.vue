@@ -25,15 +25,15 @@ const props = defineProps({
   },
 })
 async function handleChild(slug) {
-  // TODO: calcStore.isCatReady
+  // TODO: dataStore.isCatReady
   // TODO: переход на compositon overlay
   //if (!result) return false; // TODO: Проверить что данные не пришли - дял overlay
   DialogModal(Overlay, {
     maxButton: false,
-    // title: calcStore.category.name,
+    // title: dataStore.category.name,
     title: 'Инфо',
     params: {
-      //data: calcStore.category
+      //data: dataStore.category
       data: {
         'slug': slug
       },

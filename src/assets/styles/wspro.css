@@ -20,3 +20,27 @@
   background-image: url('@/assets/images/header_back.png');
   background-position: bottom center;
 }
+
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px;
+}
+
+.item {
+  padding: 10px;
+  background: #ddd;
+  width: 100px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Transition classes */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.4s, transform 0.4s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}

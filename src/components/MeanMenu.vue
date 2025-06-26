@@ -65,7 +65,7 @@ onMounted(() => {
                 <RouterLink to="/">Главная</RouterLink>
               </li>
               <li class="nav-item">
-                <RouterLink to="/page/about" class="nav-link">О нас</RouterLink>
+                <RouterLink to="/pages/about" class="nav-link">О нас</RouterLink>
               </li>
               <li class="nav-item">
                 <!--                <RouterLink class="nav-link" to="/product-list">Услуги <i class="fas fa-chevron-down"></i></RouterLink>-->
@@ -106,7 +106,7 @@ onMounted(() => {
                 <a href="#" class="nav-link">Блог</a>
               </li>
               <li class="nav-item">
-                <RouterLink to="/page/contact" class="nav-link">Контакты</RouterLink>
+                <RouterLink to="/pages/contact" class="nav-link">Контакты</RouterLink>
               </li>
             </ul>
             <div class="other-option">

@@ -13,7 +13,7 @@ const route = useRoute()
 
 onMounted(async () => {
   await dataStore.fetchStructure(route.name)
-  //await calcStore.fetchBlockCategory(route.name)
+  //await dataStore.fetchBlockCategory(route.name)
 })
 </script>
 

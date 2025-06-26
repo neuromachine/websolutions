@@ -2,13 +2,13 @@
 import {onMounted, ref, computed} from "vue";
 import { Swiper, SwiperSlide, } from 'swiper/vue'
 import {  Autoplay,Zoom } from 'swiper/modules'
-import { useCalcStore } from '@/stores/calcStore';
-const calcStore = useCalcStore();
+import { useDataStore } from '@/stores/dataStore';
+const dataStore = useDataStore();
 import {useRoute} from "vue-router";
 const route = useRoute();
 onMounted(() => {
-      calcStore.fetchBlockItem(route.params.slug);
-      calcStore.fetchStructure('services');
+      dataStore.fetchBlockItem(route.params.slug);
+      dataStore.fetchStructure('services');
     }
 );
 const swiperInstance = ref(null)
@@ -30,7 +30,7 @@ function onSwiperInit(swiper) {
 <template>
   <!-- Start Services Details Section -->
   <section class="services-details-area section-padding">
-    <div v-if="calcStore.isItemReady" class="container">
+    <div v-if="dataStore.isItemReady" class="container">
       <div class="row">
         <div class="col-lg-8 col-md-12">
           <div class="services-details-content">
@@ -53,37 +53,37 @@ function onSwiperInit(swiper) {
                       }
                     }"
                       class="my-swiper">
-                <SwiperSlide v-for="(img, idx) in calcStore.item.properties.image" :key="idx">
+                <SwiperSlide v-for="(img, idx) in dataStore.item.properties.image" :key="idx">
                   <div @click="toggleZoom" class="swiper-zoom-container">
                     <img :src="'/assets/img/services/'+img" class="w-full h-auto" />
                   </div>
                 </SwiperSlide>
               </Swiper>
             </div>
-<!--            <div v-for="img in calcStore.item.properties.image" class="services-details-image">-->
+<!--            <div v-for="img in dataStore.item.properties.image" class="services-details-image">-->
 <!--              <img v-bind="{src:'/assets/img/services/'+img}" alt="">-->
 <!--            </div>-->
-            <h3>{{calcStore.item.properties.title}}</h3>
-            <p>{{calcStore.item.properties.descr}}</p>
-            <div class="features-text" v-html="calcStore.item.properties.content"></div>
+            <h3>{{dataStore.item.properties.title}}</h3>
+            <p>{{dataStore.item.properties.descr}}</p>
+            <div class="features-text" v-html="dataStore.item.properties.content"></div>
           </div>
         </div>
         <div class="col-lg-4 col-md-12">
           <aside class="services-widget">
-            <section v-if="calcStore.isStrReady" class="widget widget_categories">
+            <section v-if="dataStore.isStrReady" class="widget widget_categories">
               <h3 class="widget-title">Наши услуги</h3>
               <ul>
-                <li v-for="item in calcStore.structure.child">
+                <li v-for="item in dataStore.structure.child">
                   <RouterLink :to="{ path: '/direction/' + item.key }">{{item.name}}</RouterLink>
                 </li>
               </ul>
             </section>
             <section v-else class="row row_load"></section>
-            <section v-if="calcStore.item.properties.files?.length" class="widget widget_download_btn">
+            <section v-if="dataStore.item.properties.files?.length" class="widget widget_download_btn">
               <h3 class="widget-title">Документы</h3>
               <div class="download-btn-box">
                 <a
-                    v-for="(file, idx) in calcStore.item.properties.files"
+                    v-for="(file, idx) in dataStore.item.properties.files"
                     :key="idx"
                     :href="'/assets/img/services/' + file.src"
                     class="default-btn"

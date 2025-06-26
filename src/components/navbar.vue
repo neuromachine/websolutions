@@ -15,30 +15,30 @@ const uiStore = useUiStore();
         <RouterLink to="/portfolio" class="nav-link">Портфолио</RouterLink>
       </li>
 <!--      <li class="nav-item">-->
-<!--        <RouterLink to="/page/info" class="nav-link">Инфо <i class="fas fa-chevron-down"></i></RouterLink>-->
+<!--        <RouterLink to="/pages/info" class="nav-link">Инфо <i class="fas fa-chevron-down"></i></RouterLink>-->
 <!--        <ul class="dropdown-menu">-->
 <!--          <li class="nav-item">-->
 <!--            <RouterLink to="/compred" class="nav-link">КП</RouterLink>-->
 <!--          </li>-->
 <!--          <li class="nav-item">-->
-<!--            <RouterLink to="/page/team" class="nav-link">Команда</RouterLink>-->
+<!--            <RouterLink to="/pages/team" class="nav-link">Команда</RouterLink>-->
 <!--          </li>-->
 <!--          <li class="nav-item">-->
 <!--            <RouterLink to="/price" class="nav-link">Цены</RouterLink>-->
 <!--          </li>-->
 <!--          <li class="nav-item">-->
-<!--            <RouterLink to="/page/faq" class="nav-link">FAQ</RouterLink>-->
+<!--            <RouterLink to="/pages/faq" class="nav-link">FAQ</RouterLink>-->
 <!--          </li>-->
 <!--          <li class="nav-item">-->
-<!--            <RouterLink to="/page/about" class="nav-link">О нас</RouterLink>-->
+<!--            <RouterLink to="/pages/about" class="nav-link">О нас</RouterLink>-->
 <!--          </li>-->
 <!--        </ul>-->
 <!--      </li>-->
       <li class="nav-item">
-        <RouterLink to="/page/about" class="nav-link">О нас</RouterLink>
+        <RouterLink to="/pages/about" class="nav-link">О нас</RouterLink>
       </li>
       <li class="nav-item">
-        <RouterLink to="/page/contact" class="nav-link">Контакты</RouterLink>
+        <RouterLink to="/pages/contacts" class="nav-link">Контакты</RouterLink>
       </li>
     </ul>
 </template>

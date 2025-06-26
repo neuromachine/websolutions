@@ -5,6 +5,17 @@ export const useUiStore = defineStore('UiStore', {
     state: () => ({
         isGlobalLoading: false,
         isOpen: false, // status of Expand Menu
+
+        // UI переменные
+        uiMainVars: {
+            page: {
+                title: 'Заголовок',
+                key: '/',
+                breadcrumbs: [{key: '/', title: 'Главная'}],
+                parent: null,
+                children: []
+            },
+        },
     }),
     getters:{
         getGlobalLoading(state) {
@@ -13,6 +24,17 @@ export const useUiStore = defineStore('UiStore', {
         }
     },
     actions: {
+        // TODO: улучшить
+        setMainVars(dataObj) {
+            //console.log(dataObj);
+            this.uiMainVars.page = {
+                title: dataObj?.name || 'Заголовок',
+                key: dataObj?.key || '/',
+                breadcrumbs: dataObj?.breadcrumbs || [{ key: '/', title: 'Главная' }],
+                parent: dataObj?.parent || null,
+                children: dataObj?.children || []
+            }
+        },
         setIsOpen(value) {
             this.isOpen = value
         },

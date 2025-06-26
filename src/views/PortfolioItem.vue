@@ -9,8 +9,8 @@ import { useRoute } from "vue-router";
 const route = useRoute();
 
 
-import { useCalcStore } from '@/stores/calcStore';
-const calcStore = useCalcStore();
+import { useDataStore } from '@/stores/dataStore';
+const dataStore = useDataStore();
 
 onMounted(() => {
   //uiStore.fetchItem('shincenter');

@@ -1,6 +1,6 @@
 <script setup>
-import { useDataStore } from '@/stores/dataStore'
-const dataStore = useDataStore()
+import { useUiStore } from '@/stores/uiStore';
+const uiStore = useUiStore();
 </script>
 <template v-if="dataStore.strReady">
   <div class="page-title-area item-bg2">
@@ -8,7 +8,7 @@ const dataStore = useDataStore()
       <div class="d-table-cell">
         <div class="container">
           <div class="page-title-content">
-            <h2>{{dataStore.uiMainVars.page.title}}</h2>
+            <h2>{{uiStore.uiMainVars.page.title}}</h2>
 <!--            <div>{{dataStore.uiMainVars.page.breadcrumbs}}</div>-->
 <!--
             <ul>

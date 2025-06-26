@@ -14,6 +14,11 @@ const routes = [
         component: () => import('@/views/Services.vue'),
     },
     {
+        path: '/direction/:slug',
+        name: 'direction',
+        component: () => import('@/views/Direction.vue'),
+    },
+    {
         path: '/group/:slug',
         name: 'group',
         component: () => import('@/views/Group.vue'),
@@ -24,14 +29,22 @@ const routes = [
         component: () => import('@/views/Portfolio.vue'),
     },
     {
+        path: '/blocks/item/:slug',
+        name: 'blocks_item',
+        component: () => import('@/views/blocks/Item.vue'),
+    },
+    {
+        path: '/pages/:slug',
+        name: 'page',
+        component: () => import('@/views/blocks/Page.vue'),
+    },
+
+    /* legacy after here */
+
+    {
         path: '/compred',
         name: 'compred',
         component: () => import('@/views/Compred.vue'),
-    },
-    {
-        path: '/page/:slug',
-        name: 'page',
-        component: () => import('@/views/Page.vue'),
     },
 
 /*    {
@@ -44,21 +57,11 @@ const routes = [
         name: 'portfolio_item',
         component: () => import('@/views/portfolio/Item.vue'),
     },
-    {
-        path: '/direction/:slug',
-        name: 'direction',
-        component: () => import('@/views/Direction.vue'),
-    },
     // {
     //     path: '/service/:slug',
     //     name: 'service_item',
     //     component: () => import('@/views/ServiceItem.vue'),
     // },
-    {
-        path: '/blocks/item/:slug',
-        name: 'blocks_item',
-        component: () => import('@/views/blocks/Item.vue'),
-    },
     {
         path: '/blog',
         name: 'blog_list',

@@ -1,73 +1,125 @@
 import { defineStore } from 'pinia';
 import { useUiStore } from '@/stores/uiStore';
-import api from '@/utils/api.js';
+import api from "@/utils/api.js";
 
-export const useDataStore = defineStore('DataStore', {
+export const useDataStore = defineStore('dataStore', {
     state: () => ({
-        // Основные данные
+        bread: null,
         structure: null,
-        category: null,
-        item: null,
         overlay: null,
+        category: null,
+        tree: null,
 
-        // Статусы загрузки
-        isLoading: false,
-        OverlayLoading: false,
+        OverlayLoading: false, // status of overlay window loading
+        data: null,
+        list: null,
+        item: null,
+        filter: '*',
+
+        isLoading: false, // status of LOCAL loading
         strReady: false,
         catReady: false,
         itemReady: false,
-        overlayReady: false,
-
-        // UI переменные
-        uiMainVars: {
-            page: {
-                title: 'Главная',
-                key: '/',
-                breadcrumbs: [{ key: '/', title: 'Главная' }],
-                parent: null,
-                children: []
-            },
-            overlay: null
-        }
+        loading: false,
     }),
+    getters:{
+        breadcrumbs: (state) => {
+            const crumbs = [{ title: 'Главная', link: '/' }]
 
-    getters: {
+            if (state.strReady && state.structure?.name && state.structure?.key) {
+                crumbs.push({
+                    title: state.structure.name,
+                    link: `/${state.structure.key}`
+                })
+            }
+
+            if (state.itemReady && state.item?.properties?.title) {
+                crumbs.push({ title: state.item.properties.title, link: null })
+            } else if (state.catReady && state.category?.name && state.category?.key) {
+                crumbs.push({
+                    title: state.category.name,
+                    link: `/${state.structure?.key}/${state.category.key}`
+                })
+            }
+
+            return crumbs
+        },
+        isTreeReady(state) {
+            if(
+                !state.isLoading &&
+                state.tree !== null &&
+                state.tree.children &&
+                Object.keys(state.tree.children).length
+            )
+            {
+                return true
+            }
+            else return false
+        },
+        isDataReady(state) {
+            return !!(
+                !state.isLoading &&
+                state.data !== null &&
+                Object.keys(state.data).length
+            );
+        },
         isStrReady(state) {
-            return (
+            if(
                 !state.isLoading &&
                 state.structure !== null &&
                 state.structure.child &&
-                Object.keys(state.structure.child).length > 0
-            );
+                Object.keys(state.structure.child).length
+            )
+            {
+                return true
+            }
+            else return false
         },
-        isCatReady(state) {
-            return !state.isLoading && state.category !== null;
+        isCatReady(state) { return !state.isLoading && state.category !== null },
+        isItemReady(state) { return !state.isLoading && state.item !== null },
+        isOverlayReady(state) { return !state.OverlayLoading && state.overlay !== null },
+        // TODO: уточнить зачем state - нельзя работать с this?
+        isHaveItems(state){
+            if(
+                state.category !== null &&
+                state.category.blocks &&
+                // TODO: не верная статика - 0
+                state.category.blocks[0] &&
+                state.category.blocks[0].items &&
+                Object.keys(state.category.blocks[0].items).length
+            ) return true
+            else return false
         },
-        isItemReady(state) {
-            return !state.isLoading && state.item !== null;
+        isHaveSubCat(state){
+            if(
+                state.category !== null &&
+                state.category.children &&
+                Object.keys(state.category.children).length
+            ) return true
+            else return false
         },
-        isOverlayReady(state) {
-            return !state.OverlayLoading && state.overlay !== null;
-        }
-    },
+        filteredItems(state) {
+            const items = state.category.blocks?.[0]?.items || []
 
+            // если “все”
+            if (state.filter === '*') {
+                return items
+            }
+
+            // иначе — ищем, есть ли в массиве workclass нужный key
+            return items.filter(item => {
+                const classes = item.properties?.workclass || []
+                return classes.some(c => c.key === state.filter)
+            })
+        },
+        getItemPrice(state) {
+            return Math.floor(state.item?.properties?.price / 10000) || 0;
+        },
+        getLoadingStatus(state) {
+            return state.isLoading;
+        },
+    },
     actions: {
-        setLoading(status) {
-            this.isLoading = status;
-        },
-        setOverlayLoading(status) {
-            this.OverlayLoading = status;
-        },
-        // Действие установки главной страницы
-        setHome() {
-            this.uiMainVars.page = {
-                title: 'Главная',
-                key: '/',
-                breadcrumbs: [{ key: '/', title: 'Главная' }],
-                parent: null,
-                children: []
-            };
-        },
         // Обновление UI основных переменных страницы
         updatePageVars() {
             const crumbs = [{ key: '/', title: 'Главная' }];
@@ -104,95 +156,140 @@ export const useDataStore = defineStore('DataStore', {
             } else if (this.catReady && !this.itemReady) {
                 children = Object.values(this.category.children || {}).map(node => node.key);
             }
-
-            this.uiMainVars.page = {
-                title,
-                key,
-                breadcrumbs: crumbs,
-                parent,
-                children
-            };
+            const uiStore = useUiStore()
+            uiStore.setMainVars(title,key,crumbs,parent,children)
         },
-        // Обновление UI переменных overlay
-        updateOverlayVars() {
-            if (!this.isOverlayReady) {
-                this.uiMainVars.overlay = null;
-                return;
-            }
-            const title = this.overlay.name || '';
-            this.uiMainVars.overlay = {
-                title,
-                key: this.overlay.key || '',
-                breadcrumbs: [
-                    { key: '/', title: 'Главная' },
-                    { key: this.overlay.key || '', title }
-                ],
-                parent: { key: '/', title: 'Главная' },
-                children: []
-            };
+        setLoading(status) {
+            this.isLoading = status;
         },
-
-        // Получение данных
-        async fetchStructure(slug) {
-            const uiStore = useUiStore();
-            uiStore.startGlobalLoading();
-            this.setLoading(true);
+        setFilter(key) {
+            this.filter = key
+        },
+        async fetchOverlayCategory(slug)
+        {
             try {
-                const { data: { data } } = await api.get(`blocks/categories/structure/${slug}`);
-                this.structure = data;
-                this.strReady = true;
-                this.updatePageVars();
+                this.OverlayLoading = true;
+                this.overlay = (await api.get('blocks/categories/'+slug)).data.data; // TODO: разработать механизм (сервис) для повторяющихся запросов
+                this.OverlayLoading = false;
             } catch (err) {
-                console.error('Ошибка fetchStructure:', err);
+                console.error('Ошибка API:', err); // TODO: разработать механизм (сервис) для повторяющихся состояний
             } finally {
-                uiStore.stopGlobalLoading();
-                this.setLoading(false);
+                this.OverlayLoading = false;
+            }
+        },
+        async fetchStructure(slug) {
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
+            this.setLoading(true)
+            try {
+                const { data: { data } } = await api.get(`blocks/categories/structure/${slug}`)
+                uiStore.setMainVars(data)
+                this.structure = data
+                this.strReady = true
+            } catch (err) {
+                console.error('Ошибка fetchStructure:', err)
+            } finally {
+                uiStore.stopGlobalLoading()
+                this.setLoading(false)
             }
         },
         async fetchBlockCategory(slug) {
-            const uiStore = useUiStore();
-            uiStore.startGlobalLoading();
-            this.setLoading(true);
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
+            this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`blocks/categories/${slug}`);
-                this.category = data;
-                this.catReady = true;
-                this.updatePageVars();
+                const { data: { data } } = await api.get(`blocks/categories/${slug}`)
+                uiStore.setMainVars(data)
+                this.category = data
+                this.catReady = true
             } catch (err) {
-                console.error('Ошибка fetchBlockCategory:', err);
+                console.error('Ошибка fetchBlockCategory:', err)
             } finally {
-                uiStore.stopGlobalLoading();
-                this.setLoading(false);
+                uiStore.stopGlobalLoading()
+                this.setLoading(false)
             }
         },
         async fetchBlockItem(slug) {
-            const uiStore = useUiStore();
-            uiStore.startGlobalLoading();
-            this.setLoading(true);
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
+            this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`blocks/items/${slug}`);
-                this.item = data;
-                this.itemReady = true;
-                this.updatePageVars();
+                const { data: { data } } = await api.get(`blocks/items/${slug}`)
+                uiStore.setMainVars(data)
+                this.item = data
+                this.itemReady = true
             } catch (err) {
-                console.error('Ошибка fetchBlockItem:', err);
+                console.error('Ошибка fetchBlockItem:', err)
             } finally {
-                uiStore.stopGlobalLoading();
-                this.setLoading(false);
+                uiStore.stopGlobalLoading()
+                this.setLoading(false)
             }
         },
-        async fetchOverlayCategory(slug) {
+        // TODO: legacy from list.vue
+        async fetchTree(slug) {
             try {
-                this.setOverlayLoading(true);
-                const { data: { data } } = await api.get(`blocks/categories/${slug}`);
-                this.overlay = data;
-                this.overlayReady = true;
-                this.updateOverlayVars();
+                this.isLoading = true;
+                this.tree = (await api.get('/tree/'+slug)).data;
+                this.isLoading = false;
             } catch (err) {
-                console.error('Ошибка fetchOverlayCategory:', err);
+                console.error('Ошибка API:', err);
             } finally {
-                this.setOverlayLoading(false);
+                this.isLoading = false;
             }
-        }
+        },
+        async fetchGroup(slug) {
+            try {
+                this.isLoading = true;
+                this.data = (await api.get('/group/offers/'+slug)).data;
+                this.isLoading = false;
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            } finally {
+                this.isLoading = false;
+            }
+        },
+        async fetchCategory(slug) {
+            try {
+                //this.isLoading = true;
+                const res = (await api.get('/dictionaries/'+slug+'/categories/tree')).data;
+                // this.isLoading = false;
+                console.log(res);
+                return res;
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            }
+        },
+        // TODO: ввести проверку поступивших данных, а так же ввести типовой формат ответа
+        // TODO: Legacy ? см. .item
+        async fetchItem(slug) {
+            try {
+                this.isLoading = true;
+                this.item = (await api.get('/item/'+slug)).data; // TODO: дублирование см. fetchItemFromApi
+                this.isLoading = false;
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            }
+        },
+        async fetchItemFromApi(slug) {
+            return (await api.get('/item/'+slug)).data;
+        },
+        async fetchCategoryFromApi(slug) {
+            try {
+                return (await api.get('/cat/'+slug)).data;
+            } catch (err) {
+                console.error('Ошибка API:', err);
+                return null;
+            }
+        },
+        /*
+        async fetchBlockCategory(slug) {
+            try {
+                return (await api.get('blocks/categories/'+slug)).data.data;
+            } catch (err) {
+                console.error('Ошибка API:', err);
+                return null;
+            }
+        },
+         */
     }
 });

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useCalcStore } from '@/stores/calcStore'
+import { useDataStore } from '@/stores/dataStore'
 
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
@@ -10,11 +10,11 @@ import Item from "@/components/portfolio/Item.vue";
 
 
 const route = useRoute()
-const calcStore = useCalcStore()
+const dataStore = useDataStore()
 
 onMounted(async () => {
-  await calcStore.fetchStructure('portfolio')
-  await calcStore.fetchBlockItem(route.params.slug)
+  await dataStore.fetchStructure('portfolio')
+  await dataStore.fetchBlockItem(route.params.slug)
 })
 </script>
 

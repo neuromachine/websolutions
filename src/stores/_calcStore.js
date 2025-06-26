@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { useUiStore } from '@/stores/uiStore';
 import api from "@/utils/api.js";
 
-export const useCalcStore = defineStore('CalcStore', {
+export const useDataStore = defineStore('dataStore', {
     state: () => ({
         bread: null,
         structure: null,
