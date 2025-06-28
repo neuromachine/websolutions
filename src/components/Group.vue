@@ -2,6 +2,7 @@
 import { onMounted, watch } from "vue";
 import catClass from "@/components/blocks/services/catClass.vue";
 import item from "@/components/blocks/services/presentation/item.vue"
+import content from "@/components/blocks/services/presentation/content.vue"
 import { useDataStore } from '@/stores/dataStore';
 const dataStore = useDataStore();
 import {useRoute} from "vue-router";
@@ -21,15 +22,13 @@ watch(
 </script>
 
 <template>
-  <section class="services-section section-padding">
+  <section class="py-[100px]">
 
     <div v-if="dataStore.isCatReady" class="container">
 
-      <div class="row">
-<!--        <div class="name">{{dataStore.category.name}}</div>-->
-<!--        <div class="descr">{{dataStore.category.description}}</div>-->
-        <div class="content" v-html="dataStore.category.content"></div>
-      </div>
+      <content
+        :content="dataStore.category.content"
+      />
 
       <div v-if="dataStore.isHaveSubCat" class="row">
         <div v-for="(item, index) in dataStore.category.children" :key="index" class="col-lg-4 col-md-6">
@@ -55,8 +54,3 @@ watch(
   </section>
 
 </template>
-
-<style scoped>
-
-
-</style>

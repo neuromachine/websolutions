@@ -22,8 +22,10 @@ const props = defineProps({
         <i class="flaticon-development"></i>
       </div>
       <h3>{{props.name}}</h3>
+      <p>{{props.properties.descr}}</p>
+      <p>Цена от: {{props.properties.price}}</p>
 <!--      <div>{{props.properties}}</div>-->
-      <p v-for="(value, key) in props.properties">{{key}} - {{value}}</p>
+<!--      <p v-for="(value, key) in props.properties">{{key}} - {{value}}</p>-->
       <div class="services-btn">
         <RouterLink class="read-more" :to="{ path: '/blocks/item/' + props.key }"><i class="bi bi-arrow-right-short"></i> Подробнее</RouterLink>
       </div>
