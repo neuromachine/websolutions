@@ -91,9 +91,25 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+
+    // Отправка события hit для текущей страницы
+    window.ym?.(103176474, 'hit', to.path);
+
+    // Отправка цели для конкретной страницы, например, /services
+    if (to.path === '/') {
+        window.ym?.(103176474, 'reachGoal', '443585915');
+    }
+    if (to.path === '/services') {
+        window.ym?.(103176474, 'reachGoal', '443586111');
+    }
+    if (to.path === '/pages/contacts') {
+        window.ym?.(103176474, 'reachGoal', '443586377');
+    }
+
     const uiStore = useUiStore(); // Получаем доступ к стору
     uiStore.startGlobalLoading()
     uiStore.setIsOpen(false); // Устанавливаем isOpen в false перед каждым переходом
+
     next(); // Продолжаем навигацию
 });
 

@@ -21,7 +21,19 @@ const props = defineProps({
 
 <template>
   <div class="single-services-two-item">
-    <div class="services-icon-box">
+    <div v-if="props.slug ==='posadocnaia-stranica'" class="services-icon-box">
+      <i class="bi bi-window"></i>
+    </div>
+    <div v-else-if="props.slug ==='korporativnyi-sait'" class="services-icon-box">
+      <i class="bi bi-building"></i>
+    </div>
+    <div v-else-if="props.slug ==='internet-katalog'" class="services-icon-box">
+      <i class="bi bi-list-ul"></i>
+    </div>
+    <div v-else-if="props.slug ==='internet-magazin'" class="services-icon-box">
+      <i class="bi bi-cart"></i>
+    </div>
+    <div v-else class="services-icon-box">
       <div class="default-icon">
         <img src="/assets/img/icon/services-icon-1.svg" alt="svg icon">
       </div>
@@ -45,6 +57,10 @@ const props = defineProps({
 </template>
 
 <style scoped>
+
+.services-icon-box i { font-size: 50px; color: #223A76}
+.single-services-two-item:hover .services-icon-box i { color: #FFF;}
+
 .list_services {
   padding: 5px 0;
   /*  border-top: 2px solid #e6e5f1;

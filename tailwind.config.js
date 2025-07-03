@@ -5,6 +5,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            fontSize: {
+                '3xl': '1.875rem', // 30px
+            },
             colors: {
                 'brand-light': '#E5F7FD',
                 'brand-aqua':  '#00D9EA',

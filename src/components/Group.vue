@@ -2,6 +2,7 @@
 import { onMounted, watch } from "vue";
 import catClass from "@/components/blocks/services/catClass.vue";
 import item from "@/components/blocks/services/presentation/item.vue"
+import service from "@/components/blocks/services/presentation/service.vue"
 import content from "@/components/blocks/services/presentation/content.vue"
 import { useDataStore } from '@/stores/dataStore';
 const dataStore = useDataStore();
@@ -42,7 +43,12 @@ watch(
       </div>
 
       <div v-if="dataStore.isHaveItems" class="row">
-        <item v-for="item in dataStore.category.blocks[0].items"
+<!--        <item v-for="item in dataStore.category.blocks[0].items"
+              :slug="item.key"
+              :name="item.name"
+              :properties="item.properties"
+        />-->
+        <service v-for="item in dataStore.category.blocks[0].items"
               :slug="item.key"
               :name="item.name"
               :properties="item.properties"
