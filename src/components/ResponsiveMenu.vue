@@ -2,25 +2,22 @@
   <nav class="responsive-menu">
     <ul>
       <li v-for="(item, index) in structure" :key="index">
-        <RouterLink v-if="item.slug" :to="item.slug || '/'">{{ item.title }}</RouterLink>
-        <span v-else>{{ item.title }}</span>
+        <RouterLink :to="item.slug" :class="item.class || ''">{{ item.title }}</RouterLink>
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup>
-import {defineProps, toRefs} from 'vue';
-import {RouterLink} from 'vue-router';
+import { RouterLink } from 'vue-router';
 
-const props = defineProps({
-  structure: {
-    type: Array,
-    required: true
-  }
-});
-
-const {structure} = toRefs(props);
+const structure = [
+  { title: 'Главная', slug: '/' },
+  { title: 'Услуги', slug: '/services', class: 'nav-link' },
+  { title: 'Портфолио', slug: '/portfolio', class: 'nav-link' },
+  { title: 'О нас', slug: '/pages/about', class: 'nav-link' },
+  { title: 'Контакты', slug: '/pages/contacts', class: 'nav-link' },
+];
 </script>
 
 <style scoped>
