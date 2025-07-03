@@ -84,10 +84,11 @@ onMounted(() => {
                 <h3>Инфо</h3>
               </div>
               <ul class="footer-quick-links">
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="portfolio.html">Команда</a></li>
+                <li><a href="/pages/about">О нас</a></li>
+                <li><a href="/pages/contacts">Контакты</a></li>
+<!--                <li><a href="portfolio.html">Команда</a></li>
                 <li><a href="contact.html">Цены</a></li>
-                <li><a href="privacy-policy.html">FAQ</a></li>
+                <li><a href="privacy-policy.html">FAQ</a></li>-->
               </ul>
             </div>
           </div>

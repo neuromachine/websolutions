@@ -49,7 +49,8 @@ async function handleChild(slug) {
           :slug="props.slug"
       />
       <div class="services-three-content">
-        <h3 @click="handleChild(props.slug)" class="head_action">{{props.title}}</h3>
+<!--        <h3 @click="handleChild(props.slug)" class="head_action">{{props.title}}</h3>-->
+        <h3 class="head_action">{{props.title}}</h3>
         <p>{{props.description}}</p>
         <ul class="features-list clases">
           <li v-for="schild in props.childs">
@@ -57,10 +58,15 @@ async function handleChild(slug) {
             <span class="block text-3xl" v-html="schild.description"></span>
             <ul class="groups">
               <li v-for="offer in schild.child">
-                <span class="block head_action" @click="handleChild(offer.key)">{{offer.name}}</span>
+<!--                <span class="block head_action" @click="handleChild(offer.key)">{{offer.name}}</span>-->
+                <span class="block head_action">
+                  <RouterLink class="float_link" :to="{ path: '/group/' + offer.key }">
+                  {{offer.name}}
+                    </RouterLink>
+                </span>
                 <span class="block" v-html="offer.description"></span>
                 <span class="block">
-                  <RouterLink class="float_link" :to="{ path: '/group/' + schild.key }">
+                  <RouterLink class="float_link" :to="{ path: '/group/' + offer.key }">
                     <i class="bi bi-arrow-right text-brand-deep"></i> Подробно
                   </RouterLink>
                 </span>

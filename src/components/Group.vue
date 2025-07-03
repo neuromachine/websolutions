@@ -48,9 +48,11 @@ watch(
               :name="item.name"
               :properties="item.properties"
         />-->
-        <service v-for="item in dataStore.category.blocks[0].items"
+        <service v-for="(item, index) in dataStore.category.blocks[0].items"
               :slug="item.key"
               :name="item.name"
+              :index="index"
+                 :owner="dataStore.category"
               :properties="item.properties"
         />
       </div>

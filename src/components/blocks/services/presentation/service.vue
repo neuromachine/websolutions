@@ -10,6 +10,14 @@ const props = defineProps({
     type: String,
     required: true
   },
+  index: {
+    type: String,
+    required: true
+  },
+  owner: {
+    type: Object,
+    required: true
+  },
   properties: {
     type: Object,
     required: true
@@ -22,28 +30,30 @@ const props = defineProps({
     <div class="service">
       <div class="icon">
         <Icon
-            :slug="props.slug"
+            :slug="props.index"
         />
       </div>
+<!--      <div class="title">
+        {{props.owner.name}} – {{props.name}}
+      </div>-->
       <div class="title">
-        Лэндинг пейдж – Старт
+        {{props.name}}
       </div>
       <div class="descr">
-        Для быстрого запуска и теста ниши
+        {{props.properties.descr}}
       </div>
       <div class="price roboto">
-        от <span class="sofia_bold">15 000</span> ₽
+        бюджет <span class="sofia_bold">{{props.properties.price}}</span> ₽
       </div>
       <div class="term roboto">
-        срок <span class="sofia_bold">от 1 до 2 недель</span>
+        срок <span class="sofia_bold">{{props.properties.timeline}}</span>недель
       </div>
       <ul class="conditions">
-        <li>Адаптивность</li>
-        <li>Базовые функции</li>
-        <li>Одно изменение ТЗ</li>
+        <li v-for="item in props.properties.features">{{item}}</li>
       </ul>
       <div class="b_wrap">
-        <RouterLink class="know_price" :to="{ path: '/blocks/item/' + props.key }">Узнать точную цену</RouterLink>
+<!--        <RouterLink class="know_price" :to="{ path: '/blocks/item/' + props.key }">Узнать точную цену</RouterLink>-->
+        <RouterLink class="know_price" to="/pages/contacts">Узнать точную цену</RouterLink>
       </div>
     </div>
   </div>

@@ -19,11 +19,17 @@ const props = defineProps({
     <div v-if="props.slug ==='razrabotka'">
       <i class="bi bi-gear"></i>
     </div>
-    <div class="grad gra_w_to_s" v-else-if="props.slug ==='start'">
+    <div class="grad gra_w_to_s" v-else-if="props.slug =='0'">
       <i class="bi bi-star"></i>
     </div>
-    <div class="grad gra_y_to_o" v-else-if="props.slug ==='premium'">
+    <div class="grad gra_s_to_b" v-else-if="props.slug =='1'">
+      <i class="bi bi-stars"></i>
+    </div>
+    <div class="grad gra_y_to_o" v-else-if="props.slug =='2'">
       <i class="bi bi-trophy"></i>
+    </div>
+    <div class="grad gra_o_to_r" v-else-if="props.slug =='3'">
+      <i class="bi bi-award"></i>
     </div>
     <div v-else-if="props.slug ==='prodvizenie'">
       <i class="bi bi-megaphone"></i>
