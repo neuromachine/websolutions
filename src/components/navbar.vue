@@ -14,6 +14,9 @@ const uiStore = useUiStore();
       <li class="nav-item">
         <RouterLink to="/portfolio" class="nav-link">Портфолио</RouterLink>
       </li>
+      <li class="nav-item">
+        <RouterLink to="/pages/price" class="nav-link">Цены</RouterLink>
+      </li>
 <!--      <li class="nav-item">-->
 <!--        <RouterLink to="/pages/info" class="nav-link">Инфо <i class="fas fa-chevron-down"></i></RouterLink>-->
 <!--        <ul class="dropdown-menu">-->

@@ -38,6 +38,17 @@ const routes = [
         name: 'page',
         component: () => import('@/views/blocks/Page.vue'),
     },
+    // test
+    {
+        path: '/price',
+        name: 'price_list',
+        component: () => import('@/views/PriceList.vue'),
+    },
+    {
+        path: '/price/:slug',
+        name: 'price_item',
+        component: () => import('@/views/PriceItem.vue'),
+    },
 
     /* legacy after here */
 
@@ -73,16 +84,7 @@ const routes = [
         component: () => import('@/views/BlogItem.vue'),
         // component: ServiceView
     },
-    {
-        path: '/price',
-        name: 'price_list',
-        component: () => import('@/views/PriceList.vue'),
-    },
-    {
-        path: '/price/:slug',
-        name: 'price_item',
-        component: () => import('@/views/PriceItem.vue'),
-    },
+
 ]
 
 const router = createRouter({

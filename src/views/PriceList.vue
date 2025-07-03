@@ -1,37 +1,16 @@
 <script setup>
-
-
-import {DialogModal} from "v-dialogs";
-
-import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
+import PageTitle from "@/components/PageTitle.vue";
+import Footer from "@/components/Footer.vue";
+import Item from "@/components/blocks/pages/item.vue";
 
-import OverlayPage from "@/components/OverlayPage.vue";
 
-
-
-const data = {}
-
-function showOwerlay(slug) {
-
-  data.slug = slug
-  // console.log(slug)
-
-  DialogModal(OverlayPage, {
-    title: 'О услуге',
-    params: {
-      data
-    },
-  });
-}
 </script>
 
 <template>
   <Header />
-  <PageTitle :breadcrumbs="[
-  { title: 'Главная', link: '/' },
-  { title: 'Цены', link: '/prices' },
-]" />
+  <PageTitle />
+  <Item />
 
   <!-- Start Pricing Section -->
   <section class="price-area pt-100 pb-70">
@@ -136,4 +115,5 @@ function showOwerlay(slug) {
     </div>
   </section>
   <!-- End Pricing Section -->
+  <Footer />
 </template>
