@@ -15,6 +15,7 @@ const structure = [
   { title: 'Главная', slug: '/' },
   { title: 'Услуги', slug: '/services', class: 'nav-link' },
   { title: 'Портфолио', slug: '/portfolio', class: 'nav-link' },
+  { title: 'Цены', slug: '/pages/price', class: 'nav-link' },
   { title: 'О нас', slug: '/pages/about', class: 'nav-link' },
   { title: 'Контакты', slug: '/pages/contacts', class: 'nav-link' },
 ];
