@@ -100,17 +100,17 @@ onMounted(() => {
               <div class="footer-info-contact">
                 <i class="flaticon-phone-call"></i>
                 <h3>Телефон</h3>
-                <span><a href="tel:+66637307104">+66 63 730 7104</a></span>
+                <span><a href="tel:+79282619061">+7(928)261-90-61</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
                 <h3>Email</h3>
-                <span><a href="mailto:info@nero1218.tech">lili@ws-pro.ru</a></span>
+                <span><a href="mailto:lili@ws-pro.ru">lili@ws-pro.ru</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-placeholder"></i>
                 <h3>Адрес</h3>
-                <span>Паттайя, Bang Lamung District, Chon Buri 20150 Laguna Beach Resort 3 The Maldives 164/1151</span>
+                <span>г. Краснодар. Ул. Сормовская 7 лит. Г</span>
               </div>
             </div>
           </div>
