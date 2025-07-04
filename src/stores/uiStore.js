@@ -13,7 +13,10 @@ export const useUiStore = defineStore('UiStore', {
                 key: '/',
                 breadcrumbs: [{key: '/', title: 'Главная'}],
                 parent: null,
-                children: []
+                children: [],
+                contacts:{
+                    phone: 79282619061,
+                }
             },
         },
     }),
@@ -32,7 +35,10 @@ export const useUiStore = defineStore('UiStore', {
                 key: dataObj?.key || '/',
                 breadcrumbs: dataObj?.breadcrumbs || [{ key: '/', title: 'Главная' }],
                 parent: dataObj?.parent || null,
-                children: dataObj?.children || []
+                children: dataObj?.children || [],
+                contacts:{
+                    phone: 79282619061,
+                }
             }
         },
         setIsOpen(value) {

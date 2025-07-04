@@ -49,14 +49,15 @@ const routes = [
         name: 'price_item',
         component: () => import('@/views/PriceItem.vue'),
     },
-
-    /* legacy after here */
-
     {
         path: '/compred',
         name: 'compred',
         component: () => import('@/views/Compred.vue'),
     },
+
+    /* legacy after here */
+
+
 
 /*    {
         path: '/portfolio/:slug',
