@@ -15,6 +15,9 @@
 .portfolio-details-info { margin-bottom: 30px;}
 
 
+.service_section .content { padding: 60px 0;}
+.service_section .items_list { padding-bottom: 60px;}
+.service_section .groups_list { padding-bottom: 60px;}
 
 .item-bg2 {
   background-image: url('@/assets/images/header_back.png');

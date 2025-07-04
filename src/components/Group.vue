@@ -23,7 +23,7 @@ watch(
 </script>
 
 <template>
-  <section class="py-[100px]">
+  <section class="service_section">
 
     <div v-if="dataStore.isCatReady" class="container">
 
@@ -31,7 +31,7 @@ watch(
         :content="dataStore.category.content"
       />
 
-      <div v-if="dataStore.isHaveSubCat" class="row">
+      <div v-if="dataStore.isHaveSubCat" class="row groups_list">
         <div v-for="(item, index) in dataStore.category.children" :key="index" class="col-lg-4 col-md-6">
           <catClass
               :slug=item.key
@@ -42,7 +42,7 @@ watch(
         </div>
       </div>
 
-      <div v-if="dataStore.isHaveItems" class="row">
+      <div v-if="dataStore.isHaveItems" class="row items_list">
 <!--        <item v-for="item in dataStore.category.blocks[0].items"
               :slug="item.key"
               :name="item.name"

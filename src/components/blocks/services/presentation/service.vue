@@ -1,5 +1,5 @@
 <script setup>
-import Icon from "@/components/blocks/services/micro/icon.vue";
+import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
 
 const props = defineProps({
   slug: {
@@ -11,7 +11,7 @@ const props = defineProps({
     required: true
   },
   index: {
-    type: String,
+    type: Number,
     required: true
   },
   owner: {
@@ -29,8 +29,9 @@ const props = defineProps({
   <div class="col-lg-3 col-md-6">
     <div class="service">
       <div class="icon">
-        <Icon
-            :slug="props.index"
+        <IconOffer
+            :index="props.index"
+            :properties="props.properties"
         />
       </div>
 <!--      <div class="title">
@@ -43,10 +44,10 @@ const props = defineProps({
         {{props.properties.descr}}
       </div>
       <div class="price roboto">
-        бюджет <span class="sofia_bold">{{props.properties.price}}</span> ₽
+        бюджет <span class="sofia_bold">{{props.properties.price[0]}} - {{props.properties.price[1]}}</span> ₽
       </div>
       <div class="term roboto">
-        срок <span class="sofia_bold">{{props.properties.timeline}}</span>недель
+        срок <span class="sofia_bold">{{props.properties.timeline[0]}} - {{props.properties.timeline[1]}}</span>недель
       </div>
       <ul class="conditions">
         <li v-for="item in props.properties.features">{{item}}</li>

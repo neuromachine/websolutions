@@ -34,13 +34,16 @@ const props = defineProps({
       <i class="bi bi-cart"></i>
     </div>
     <div v-else class="services-icon-box">
+      <i class="bi bi-box-seam"></i>
+    </div>
+<!--    <div v-else class="services-icon-box">
       <div class="default-icon">
         <img src="/assets/img/icon/services-icon-1.svg" alt="svg icon">
       </div>
       <div class="hover-icon">
         <img src="/assets/img/icon/services-icon-hover-1.svg" alt="svg icon">
       </div>
-    </div>
+    </div>-->
     <div class="services-two-content">
       <h3>{{props.name}}</h3>
       <p>{{props.descr}}</p>
