@@ -70,7 +70,7 @@ onMounted(() => {
           <div class="navbar-collapse mean-menu" id="navbarSupportedContent">
             <Navbar />
             <div class="other-option">
-              <a class="default-btn" href="https://t.me/Lola_06">Позвонить<span></span></a>
+              <a class="default-btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i> Написать ТГ <i class="bi bi-flower1"></i><span></span></a>
             </div>
           </div>
 
