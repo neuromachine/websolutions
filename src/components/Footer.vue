@@ -1,24 +1,25 @@
 <script setup>
 import { ref, onMounted, onUnmounted , computed} from 'vue'
 import {useUiStore} from "@/stores/uiStore.js";
+import {useRoute} from "vue-router";
+import $ from 'jquery'
 
 defineProps({
-  isMain: false,
-  isNavi: Boolean
-})
-
-
-const uiStore = useUiStore();
-import {useRoute} from "vue-router";
-
-const route = useRoute();
-const isNavi = computed(() => {
-  if (route.path !== '/compred') return null;
-  return true;
+  isMain: { type: Boolean, default: false },
+  isNavi: Boolean,
 });
 
 
-import $ from 'jquery'
+const uiStore = useUiStore();
+const route = useRoute();
+
+const isNavi = computed(() => route.path === '/compred');
+const formattedPhone = computed(() => {
+  const inputDigits = String(uiStore.uiMainVars.page.contacts.phone);
+  const num = inputDigits.replace(/\D/g, '');
+  return num.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/, '+7 ($2) $3-$4-$5');
+});
+
 
 // TODO: Refactoring
 onMounted(() => {
@@ -112,7 +113,7 @@ onMounted(() => {
               <div class="footer-info-contact">
                 <i class="flaticon-phone-call"></i>
                 <h3>Телефон</h3>
-                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{uiStore.uiMainVars.page.contacts.phone}}+7(928)261-90-61</a></span>
+                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{ formattedPhone }}</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
