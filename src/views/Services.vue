@@ -1,9 +1,10 @@
 <script setup>
 import { onMounted } from 'vue'
-import debug from "@/components/Debug.vue";
+
 import { useRoute } from 'vue-router'
 import { useDataStore } from '@/stores/dataStore'
 
+import debug from "@/components/Debug.vue";
 import Header from "@/components/Header.vue";
 import Footer from '@/components/Footer.vue'
 import PageTitle from "@/components/PageTitle.vue";
@@ -19,11 +20,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <!--start-->
-  <!--DEBGGGGHEEEREEEE-->
-  <debug />
-  <!--/DEBGGGG DEAD-->
-  <!--Start <Header />-->
+  <debug/>
   <Header />
   <PageTitle />
   <Index />

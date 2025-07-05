@@ -1,22 +1,28 @@
 <script setup>
-import { computed, onMounted, watch } from "vue";
+import {computed, onMounted, onUnmounted, watch} from "vue";
 import debug from "@/components/Debug.vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import { useUiStore } from "@/stores/uiStore.js";
+import {useUiStore} from "@/stores/uiStore.js";
+
 const uiStore = useUiStore();
-import { useDataStore } from '@/stores/dataStore';
+import {useDataStore} from '@/stores/dataStore';
+
 const dataStore = useDataStore();
-import { useRoute } from "vue-router";
+import {useRoute} from "vue-router";
+
 const route = useRoute();
+
 
 function load() {
   dataStore.fetchBlockItem(route.params.slug);
-  dataStore.fetchStructure('services');
-  console.log('here-1');
+  dataStore.fetchStructure('services'); // TODO: services - > wrong:
 }
 
-onMounted(() => { load() });
+onMounted(() => {
+  uiStore.setHeaderVars('menu', false);
+  load()
+});
 
 watch(
     () => route.params.slug,
@@ -27,29 +33,22 @@ watch(
     }
 );
 
-const isToggled = computed({
-  get() {
-    const value = uiStore.uiMainVars.menu;
-    console.log('GET menu =', value);
-    return value;
-  },
-  set(value) {
-    console.log('SET menu =', value);
-    uiStore.setUiVars('menu', value);
-  },
-});
+
+
 </script>
 
 <template>
-  <div style="z-index: 9999999999999999999;">
-    <label class="switch">
-      <input @click="isToggled = !$event.target.checked" type="checkbox" v-model="isToggled" />
-      <span class="slider"></span>
-    </label>
-  </div>
 
-  <debug />
-  <Header />
+
+
+
+  <debug/>
+
+
+
+  <Header/>
+
+
 
   <div v-if="dataStore.isStrReady" id="compred" class="home-3 home-section">
     <div id="particles-js"></div>
@@ -61,7 +60,7 @@ const isToggled = computed({
               <div class="main-banner-content">
                 <ul v-if="route.params.slug !== 'erir'" class="social-icon-list">
                   <li>
-                    <a @click="uiStore.setMenu(false)" href="https://t.me/websolutionspro">
+                    <a href="https://t.me/websolutionspro">
                       <i class="fa-brands fa-telegram"></i>
                     </a>
                   </li>
@@ -70,13 +69,15 @@ const isToggled = computed({
                 <div class="content_wrap" v-html="dataStore.item.properties.content"></div>
                 <div v-if="route.params.slug === 'erir'" class="banner-btn buttons">
                   <a class="default-btn-one btn_compred" href="https://t.me/Lola_06">Напиши в директ<span></span></a>
-                  <a class="default-btn-two btn_compred button_compred_phone" :href="'tel:+' + uiStore.uiMainVars.page.contacts.phone">
+                  <a class="default-btn-two btn_compred button_compred_phone"
+                     :href="'tel:+' + uiStore.uiMainVars.page.contacts.phone">
                     <div class="txt_wrap">Подберем решение под твой проект<span></span></div>
                   </a>
                 </div>
                 <div v-else class="banner-btn buttons">
                   <a class="default-btn-one btn_compred" href="https://t.me/Lola_06">Телеграм <span></span></a>
-                  <a class="default-btn-two btn_compred button_compred_phone" :href="'tel:+' + uiStore.uiMainVars.page.contacts.phone">
+                  <a class="default-btn-two btn_compred button_compred_phone"
+                     :href="'tel:+' + uiStore.uiMainVars.page.contacts.phone">
                     <div class="txt_wrap">
                       Позвонить Lili
                       <i class="bi bi-flower1"></i> +{{ uiStore.uiMainVars.page?.contacts?.phone }}
@@ -88,7 +89,7 @@ const isToggled = computed({
             </div>
             <div class="col-lg-6 col-md-12" data-tilt>
               <div class="banner-image">
-                <img src="/assets/img/home-font-3.png" alt="image" />
+                <img src="/assets/img/home-font-3.png" alt="image"/>
               </div>
             </div>
           </div>
@@ -115,55 +116,105 @@ const isToggled = computed({
     </div>
   </section>
 
+  <!-- Start Pricing Section -->
   <section class="price-area pt-100 pb-70">
     <div class="container">
       <div class="row">
-        <!-- Тарифы -->
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">Востребованные пакеты</h6>
+            <h2>Наши предложения</h2>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-pricing-content">
+            <div class="price-tag">
+              <h3>Лендинг "Старт"</h3>
+            </div>
+            <div class="price-heading">
+              <div class="price-usd">
+                <h2>₽ 35.000<span class="price-small-text">Быстрый запуск для продаж</span></h2>
+              </div>
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>Одностраничный сайт (Landing Page)</li>
+                <li>Адаптивный дизайн для мобильных устройств</li>
+                <li>Форма обратной связи</li>
+                <li>Подключение базовой аналитики (Яндекс.Метрика/Google Analytics)</li>
+                <li>Установка и настройка домена/хостинга</li>
+                <li>Базовая SEO-оптимизация</li>
+                <li class="offer-list-none"><del>Система управления контентом (CMS)</del></li>
+                <li class="offer-list-none"><del>Интеграции с CRM/бронированием</del></li>
+                <li class="offer-list-none"><del>Многостраничная структура</del></li>
+              </ul>
+            </div>
+            <div class="price-btn">
+              <a href="https://t.me/Lola_06" target="_blank" class="price-btn-one">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-pricing-content">
+            <div class="price-tag">
+              <h3>Корпоративный "Оптимум"</h3>
+            </div>
+            <div class="price-heading">
+              <div class="price-usd">
+                <h2>₽ 85.000<span class="price-small-text">Полноценный сайт для бизнеса</span></h2>
+              </div>
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>Многостраничный сайт (до 10 страниц)</li>
+                <li>Система управления контентом (CMS)</li>
+                <li>Адаптивный дизайн для мобильных устройств</li>
+                <li>Форма обратной связи и интерактивная карта</li>
+                <li>Подключение расширенной аналитики</li>
+                <li>Расширенная SEO-структура</li>
+                <li>Выбор 1 дополнительного модуля (например, блог, новости, фотогалерея)</li>
+                <li class="offer-list-none"><del>Онлайн-оплата или личный кабинет</del></li>
+                <li class="offer-list-none"><del>Продвинутый каталог товаров/услуг</del></li>
+              </ul>
+            </div>
+            <div class="price-btn">
+              <a href="https://t.me/Lola_06" target="_blank" class="price-btn-one">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-pricing-content">
+            <div class="price-tag">
+              <h3>Каталог "Профи"</h3>
+            </div>
+            <div class="price-heading">
+              <div class="price-usd">
+                <h2>₽ 110.000<span class="price-small-text">Сайт с каталогом и CRM</span></h2>
+              </div>
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>Полноценный сайт с каталогом (до 15 шаблонов страниц)</li>
+                <li>Система управления контентом (CMS) с расширенными возможностями</li>
+                <li>Адаптивный дизайн для мобильных устройств</li>
+                <li>Продвинутый каталог с фильтрами и поиском</li>
+                <li>Интеграция с CRM-системой</li>
+                <li>Онлайн-бронирование или корзина/оплата</li>
+                <li>Расширенная форма заявки и интерактивная карта</li>
+                <li>Полная SEO-оптимизация</li>
+                <li><i>Возможность добавления личного кабинета (опционально)</i></li>
+              </ul>
+            </div>
+            <div class="price-btn">
+              <a href="https://t.me/Lola_06" target="_blank" class="price-btn-one">Подробнее</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+  <!-- End Pricing Section -->
 
-  <Footer />
+  <Footer/>
 </template>
 
-<style scoped>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 20px;
-}
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: 0.3s;
-  border-radius: 20px;
-}
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 2px;
-  bottom: 2px;
-  background-color: white;
-  transition: 0.3s;
-  border-radius: 50%;
-}
-input:checked + .slider {
-  background-color: #2196F3;
-}
-input:checked + .slider:before {
-  transform: translateX(20px);
-}
-</style>

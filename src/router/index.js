@@ -112,6 +112,7 @@ router.beforeEach((to, from, next) => {
     const uiStore = useUiStore(); // Получаем доступ к стору
     uiStore.startGlobalLoading()
     uiStore.setIsOpen(false); // Устанавливаем isOpen в false перед каждым переходом
+    uiStore.setHeaderVars('menu', true);// TODO: разобраться - рефакторинг
 
     next(); // Продолжаем навигацию
 });

@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div :key="props.id" :class="props.properties.workclass.key" class="col-lg-4 col-md-6 portfolio-grid-item all">
+  <div v-if="props.properties?.workclass" :key="props.id" :class="props.properties.workclass.key" class="col-lg-4 col-md-6 portfolio-grid-item all">
     <div class="portfolio-item">
       <RouterLink :to="{ path: '/portfolio/item/' + props.slug }">
         <img v-if="props.properties.thumb" v-bind="{src: '/assets/img/portfolio/'+props.properties.thumb}" alt="image">
