@@ -118,6 +118,9 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach(() => {
+    if (import.meta.env.VITE_PROD === 'true' && typeof ym === 'function') {
+        ym(103176474, 'hit', to.fullPath)
+    }
     setTimeout(() => {
         $("html, body").animate({ scrollTop: "0" }, 100); // Прокручиваем к верхнему краю страницы
     }, 100); // Даем небольшой запас, если надо
