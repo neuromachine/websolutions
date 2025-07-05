@@ -8,8 +8,14 @@ export const useUiStore = defineStore('UiStore', {
 
         // UI переменные
         uiMainVars: {
-            menu: true,
-            head: false,
+            debug: true,
+            menu: false,
+            header: {
+                head: true,
+                navbar: true,
+                block:{},
+            },
+            compred: true,
             page: {
                 title: 'Заголовок',
                 key: '/',
@@ -29,8 +35,10 @@ export const useUiStore = defineStore('UiStore', {
         }
     },
     actions: {
-        setMenu(value) {
-            this.uiMainVars.menu = value
+        setUiVars(key, value) {
+            console.log('debug:setUiVars', key, value);
+            console.log('debug:setUiVars - Setting menu to:', value);
+            this.uiMainVars[key] = value;
         },
         // TODO: улучшить
         setMainVars(dataObj) {

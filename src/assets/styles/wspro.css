@@ -43,7 +43,7 @@
 }
 
 #page_head .page-title-area::before { background-color: #E5F7FD; }
-
+#DebugPanel { display: block; /*background-color: #E5F7FD;*/ background-color: #223A76; }
 
 .item-bg2 {
   background-image: url('@/assets/images/header_back.png');

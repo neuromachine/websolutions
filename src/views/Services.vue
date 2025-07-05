@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted } from 'vue'
+import debug from "@/components/Debug.vue";
 import { useRoute } from 'vue-router'
 import { useDataStore } from '@/stores/dataStore'
 
@@ -18,6 +19,11 @@ onMounted(async () => {
 </script>
 
 <template>
+  <!--start-->
+  <!--DEBGGGGHEEEREEEE-->
+  <debug />
+  <!--/DEBGGGG DEAD-->
+  <!--Start <Header />-->
   <Header />
   <PageTitle />
   <Index />

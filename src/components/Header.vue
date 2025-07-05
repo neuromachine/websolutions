@@ -51,12 +51,9 @@ onMounted(() => {
   <!-- End Preloader Section -->
 
   <!-- Start Navbar Section -->
-  <div class="navbar-section">
-
-
-
+  <div  v-if="uiStore.uiMainVars.header?.navbar === true" class="navbar-section">
     <div class="techvio-nav" :class="{ 'index-navber': isMain }">
-      <div v-if="uiStore.uiMainVars.head" class="container">
+      <div v-if="uiStore.uiMainVars?.block" class="container">
         <nav class="navbar navbar-expand-md navbar-light">
           <div class="nav_wrap">
             <RouterLink to="/" class="logo_wrap">
