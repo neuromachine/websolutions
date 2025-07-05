@@ -67,7 +67,7 @@ onMounted(() => {
               <i :class="uiStore.isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
             </button>
           </div>
-          <div class="navbar-collapse mean-menu" id="navbarSupportedContent">
+          <div v-if="uiStore.uiMainVars.menu" class="navbar-collapse mean-menu" id="navbarSupportedContent">
             <Navbar />
             <div class="other-option">
               <a class="default-btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i> Написать ТГ <i class="bi bi-flower1"></i><span></span></a>

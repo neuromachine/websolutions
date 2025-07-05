@@ -8,6 +8,7 @@ export const useUiStore = defineStore('UiStore', {
 
         // UI переменные
         uiMainVars: {
+            menu: true,
             page: {
                 title: 'Заголовок',
                 key: '/',
@@ -27,6 +28,9 @@ export const useUiStore = defineStore('UiStore', {
         }
     },
     actions: {
+        setMenu(value) {
+            this.uiMainVars.menu = value
+        },
         // TODO: улучшить
         setMainVars(dataObj) {
             //console.log(dataObj);

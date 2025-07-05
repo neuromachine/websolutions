@@ -11,6 +11,7 @@ const route = useRoute();
 function load() {
   dataStore.fetchBlockItem(route.params.slug);
   dataStore.fetchStructure('services');
+  uiStore.setMenu(false);
 }
 onMounted(() => {load()});
 watch(
@@ -36,12 +37,20 @@ watch(
           <div class="row align-items-center">
             <div class="col-lg-6 col-md-12">
               <div class="main-banner-content">
-                <ul class="social-icon-list">
+                <ul  v-if="route.params.slug !== 'erir'" class="social-icon-list">
                   <li><a href="https://t.me/websolutionspro"><i class="fa-brands fa-telegram"></i></a></li>
                 </ul>
                 <h1>{{dataStore.item.properties.title}}</h1>
                 <div class="content_wrap" v-html="dataStore.item.properties.content"></div>
-                <div class="banner-btn buttons">
+                <div v-if="route.params.slug === 'erir'" class="banner-btn buttons">
+                  <a class="default-btn-one btn_compred" href="https://t.me/Lola_06">Напиши в директ<span></span></a>
+                  <a class="default-btn-two btn_compred button_compred_phone"  :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">
+                    <div class="txt_wrap">Подберем решение под твой проект
+                      <span></span>
+                    </div>
+                  </a>
+                </div>
+                <div v-else class="banner-btn buttons">
                   <a class="default-btn-one btn_compred" href="https://t.me/Lola_06">Телеграм <span></span></a>
                   <a class="default-btn-two btn_compred button_compred_phone"  :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">
                     <div class="txt_wrap">Позвонить Lili
@@ -64,6 +73,21 @@ watch(
   </div>
   <div v-else class="container"><div class="row row_load">Loading Item</div></div>
   <!-- End Home Section -->
+
+  <!-- Start Services Details Section -->
+  <section class="services-details-area section-padding">
+    <div v-if="dataStore.isItemReady" class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="services-details-content">
+            <div class="features-text" v-html="dataStore.item.properties.acticle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-else class="container"><div class="row row_load">Loading Item</div></div>
+  </section>
+  <!-- End Services Details Section -->
 
   <!-- Start Pricing Section -->
   <section class="price-area pt-100 pb-70">
