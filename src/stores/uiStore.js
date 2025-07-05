@@ -9,6 +9,7 @@ export const useUiStore = defineStore('UiStore', {
         // UI переменные
         uiMainVars: {
             menu: true,
+            head: false,
             page: {
                 title: 'Заголовок',
                 key: '/',

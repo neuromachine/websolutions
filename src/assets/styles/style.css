@@ -4358,7 +4358,7 @@ blockquote::after, .blockquote::after {
 	position: relative;
 	z-index: 1;
 	height: 400px;
-	background-image: url(../img/page-title-bg.jpg);
+	background-image: url(@/assets/img/compred_bg.jpg);
 	background-position: center center;
 	background-size: cover;
 	background-repeat: no-repeat;

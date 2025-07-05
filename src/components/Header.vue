@@ -56,7 +56,7 @@ onMounted(() => {
 
 
     <div class="techvio-nav" :class="{ 'index-navber': isMain }">
-      <div class="container">
+      <div v-if="uiStore.uiMainVars.head" class="container">
         <nav class="navbar navbar-expand-md navbar-light">
           <div class="nav_wrap">
             <RouterLink to="/" class="logo_wrap">
@@ -67,7 +67,7 @@ onMounted(() => {
               <i :class="uiStore.isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
             </button>
           </div>
-          <div v-if="uiStore.uiMainVars.menu" class="navbar-collapse mean-menu" id="navbarSupportedContent">
+          <div class="navbar-collapse mean-menu" id="navbarSupportedContent">
             <Navbar />
             <div class="other-option">
               <a class="default-btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i> Написать ТГ <i class="bi bi-flower1"></i><span></span></a>
@@ -77,9 +77,32 @@ onMounted(() => {
         </nav>
         <ResponsiveMenu v-if="uiStore.isOpen && !isNavi" :structure="structure" />
       </div>
+      <div v-else class="container">
+        <nav class="navbar navbar-expand-md navbar-light">
+          <div class="nav_wrap">
+            <RouterLink to="/" class="logo_wrap">
+              <Logo />
+            </RouterLink>
+            <!-- Иконка-бургер -->
+            <button v-if="!isNavi" class="burger-button" @click="toggleMenu">
+              <i :class="uiStore.isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
+            </button>
+          </div>
+          <div class="navbar-collapse mean-menu" id="navbarSupportedContent">
+            <Navbar />
+            <div class="other-option">
+              <a class="default-btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i> Написать ТГ <i class="bi bi-flower1"></i><span></span></a>
+            </div>
+          </div>
+
+        </nav>
+        <ResponsiveMenu v-if="uiStore.isOpen && !isNavi" :structure="structure" />
+
+
+      </div>
     </div>
   </div>
-  <!-- End Navbar Section -->
+
 </template>
 
 <style scoped>

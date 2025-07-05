@@ -27,7 +27,7 @@ const props = defineProps({
 
 <template>
   <div class="col-lg-3 col-md-6">
-    <div class="service">
+    <div class="service" v-if="props.properties?.timeline">
       <div class="icon">
         <IconOffer
             :index="props.index"

@@ -35,6 +35,15 @@
 #compred .content_wrap ul {
   color: #FFF;}
 
+#page_head.item-bg2 {
+  //background-image: url('@/assets/images/header_default.png');
+  background-image: none;
+  height: 200px;
+  background-color: #E5F7FD;
+}
+
+#page_head .page-title-area::before { background-color: #E5F7FD; }
+
 
 .item-bg2 {
   background-image: url('@/assets/images/header_back.png');
