@@ -50,7 +50,7 @@ const routes = [
         component: () => import('@/views/PriceItem.vue'),
     },
     {
-        path: '/compred',
+        path: '/compred/:slug',
         name: 'compred',
         component: () => import('@/views/Compred.vue'),
     },

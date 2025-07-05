@@ -30,6 +30,10 @@
 
 #compred .buttons {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
 #compred .buttons .btn_compred { flex-grow: 1; flex-shrink: 0;}
+#compred h1 { font-size: 45px;}
+#compred strong {color:#00D9EA;}
+#compred .content_wrap ul {
+  color: #FFF;}
 
 
 .item-bg2 {
