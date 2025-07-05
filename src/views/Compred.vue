@@ -28,7 +28,7 @@ watch(
 
 
   <!-- Start Home Section -->
-  <div v-if="dataStore.isStrReady" class="home-3 home-section">
+  <div v-if="dataStore.isStrReady" id="compred" class="home-3 home-section">
     <div id="particles-js"></div>
     <div class="d-table">
       <div class="d-table-cell">
@@ -53,9 +53,9 @@ watch(
                 <p>🔹 Core.Site — для стабильного позиционирования и расширения базы</p>
                 <p>🔹 Smart.Catalog — как полноценная система продаж с каталогом, заявками и аналитикой</p>
                 <p>Каждое решение масштабируемо, адаптивно и может быть дополнено индивидуальными модулями по мере роста ваших задач.</p>
-                <div class="banner-btn">
-                  <a class="default-btn-one" href="https://t.me/Lola_06">Телеграм <span></span></a>
-                  <a class="default-btn-two button_compred_phone"  :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">
+                <div class="banner-btn buttons">
+                  <a class="default-btn-one btn_compred" href="https://t.me/Lola_06">Телеграм <span></span></a>
+                  <a class="default-btn-two btn_compred button_compred_phone"  :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">
                     <div class="txt_wrap">Позвонить Lili
                     <i class="bi bi-flower1"></i> +{{uiStore.uiMainVars.page?.contacts?.phone}}
                       <span></span>
@@ -112,7 +112,8 @@ watch(
               </ul>
             </div>
             <div class="price-btn">
-              <a href="#"  @click="showOwerlay('startsite')" class="price-btn-one">Подробнее</a>
+<!--              <a href="https://t.me/Lola_06" target="_blank"  @click="showOwerlay('startsite')" class="price-btn-one">Подробнее</a>-->
+              <a href="https://t.me/Lola_06" target="_blank" class="price-btn-one">Подробнее</a>
             </div>
           </div>
         </div>
@@ -142,7 +143,7 @@ watch(
               </ul>
             </div>
             <div class="price-btn">
-              <a href="#" class="price-btn-one">Подробнее</a>
+              <a href="https://t.me/Lola_06" target="_blank" class="price-btn-one">Подробнее</a>
             </div>
           </div>
         </div>
@@ -170,7 +171,7 @@ watch(
               </ul>
             </div>
             <div class="price-btn">
-              <a href="#" class="price-btn-one">Подробнее</a>
+              <a href="https://t.me/Lola_06" target="_blank" class="price-btn-one">Подробнее</a>
             </div>
           </div>
         </div>

@@ -22,13 +22,15 @@
 
 .main-banner-content .social-icon-list {}
 .main-banner-content .social-icon-list li a {font-size: 58px; width: 60px; height: 60px;}
-.banner-btn {
-  display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
-.banner-btn .default-btn-one { flex-grow: 1; flex-shrink: 0;}
-.banner-btn .default-btn-two { flex-grow: 1; flex-shrink: 0;}
+
+
 .txt_wrap { width: 100%  ;flex-grow: 1; flex-shrink: 0;}
 .txt_wrap .button_compred_phone { width: auto; display: flex; flex-direction: row; flex-wrap: nowrap; }
 .head_button { text-transform: uppercase; letter-spacing: 1px;}
+
+#compred .buttons {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
+#compred .buttons .btn_compred { flex-grow: 1; flex-shrink: 0;}
+
 
 .item-bg2 {
   background-image: url('@/assets/images/header_back.png');
