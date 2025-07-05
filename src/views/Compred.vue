@@ -102,56 +102,24 @@ watch(
         <div class="col-lg-4 col-md-6">
           <div class="single-pricing-content">
             <div class="price-tag">
-              <h3>Quick.Page</h3>
+              <h3>Лендинг "Старт"</h3>
             </div>
             <div class="price-heading">
               <div class="price-usd">
-                <h2>₽ 35.000<span class="price-small-text">Лэндинг для ваших продаж</span></h2>
+                <h2>₽ 35.000<span class="price-small-text">Быстрый запуск для продаж</span></h2>
               </div>
             </div>
             <div class="price-body">
               <ul>
-                <li>Одностраничный сайт</li>
-                <li>Форма заявки</li>
-                <li>Интерактивная карта с отметками объектов</li>
-                <li>Мобильная адаптация</li>
-                <li>Подключение аналитики</li>
-                <li>Базовая SEO-структура</li>
+                <li>Одностраничный сайт (Landing Page)</li>
+                <li>Адаптивный дизайн для мобильных устройств</li>
+                <li>Форма обратной связи</li>
+                <li>Подключение базовой аналитики (Яндекс.Метрика/Google Analytics)</li>
                 <li>Установка и настройка домена/хостинга</li>
-                <li class="offer-list-none"><del>Панель управления контентом</del></li>
-                <li class="offer-list-none"><del>Фильтрация по объектам</del></li>
-                <li class="offer-list-none"><del>CRM или бронь онлайн</del></li>
-              </ul>
-            </div>
-            <div class="price-btn">
-<!--              <a href="https://t.me/Lola_06" target="_blank"  @click="showOwerlay('startsite')" class="price-btn-one">Подробнее</a>-->
-              <a href="https://t.me/Lola_06" target="_blank" class="price-btn-one">Подробнее</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-pricing-content">
-            <div class="price-tag">
-              <h3>Core.Site</h3>
-            </div>
-            <div class="price-heading">
-              <div class="price-usd">
-                <h2>₽ 85.000<span class="price-small-text">Многостраничный корпоративный</span></h2>
-              </div>
-            </div>
-            <div class="price-body">
-              <ul>
-                <li>До 10 типов страниц</li>
-                <li>Управление контентом через CMS</li>
-                <li>+1 специализированный инструмент на выбор</li>
-                <li>Интерактивная карта и форма заявки</li>
-                <li>SEO-структура</li>
-                <li>Подключение аналитики</li>
-
-                <li class="offer-list-none"><del>Онлайн-заказы и оплата</del></li>
-                <li class="offer-list-none"><del>Личный кабинет</del></li>
-                <li class="offer-list-none"><del>Система лояльности</del></li>
-
+                <li>Базовая SEO-оптимизация</li>
+                <li class="offer-list-none"><del>Система управления контентом (CMS)</del></li>
+                <li class="offer-list-none"><del>Интеграции с CRM/бронированием</del></li>
+                <li class="offer-list-none"><del>Многостраничная структура</del></li>
               </ul>
             </div>
             <div class="price-btn">
@@ -162,24 +130,52 @@ watch(
         <div class="col-lg-4 col-md-6">
           <div class="single-pricing-content">
             <div class="price-tag">
-              <h3>Smart.Catalog</h3>
+              <h3>Корпоративный "Оптимум"</h3>
             </div>
             <div class="price-heading">
               <div class="price-usd">
-                <h2>₽ 110.000<span class="price-small-text">Каталог + умные инструменты</span></h2>
+                <h2>₽ 85.000<span class="price-small-text">Полноценный сайт для бизнеса</span></h2>
               </div>
             </div>
             <div class="price-body">
               <ul>
-                <li>До 15 шаблонов страниц</li>
-                <li>CMS-редактирование контента и структуры</li>
-                <li>Продвинутый каталог недвижимости с фильтрами</li>
+                <li>Многостраничный сайт (до 10 страниц)</li>
+                <li>Система управления контентом (CMS)</li>
+                <li>Адаптивный дизайн для мобильных устройств</li>
+                <li>Форма обратной связи и интерактивная карта</li>
+                <li>Подключение расширенной аналитики</li>
+                <li>Расширенная SEO-структура</li>
+                <li>Выбор 1 дополнительного модуля (например, блог, новости, фотогалерея)</li>
+                <li class="offer-list-none"><del>Онлайн-оплата или личный кабинет</del></li>
+                <li class="offer-list-none"><del>Продвинутый каталог товаров/услуг</del></li>
+              </ul>
+            </div>
+            <div class="price-btn">
+              <a href="https://t.me/Lola_06" target="_blank" class="price-btn-one">Подробнее</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-pricing-content">
+            <div class="price-tag">
+              <h3>Каталог "Профи"</h3>
+            </div>
+            <div class="price-heading">
+              <div class="price-usd">
+                <h2>₽ 110.000<span class="price-small-text">Сайт с каталогом и CRM</span></h2>
+              </div>
+            </div>
+            <div class="price-body">
+              <ul>
+                <li>Полноценный сайт с каталогом (до 15 шаблонов страниц)</li>
+                <li>Система управления контентом (CMS) с расширенными возможностями</li>
+                <li>Адаптивный дизайн для мобильных устройств</li>
+                <li>Продвинутый каталог с фильтрами и поиском</li>
                 <li>Интеграция с CRM-системой</li>
-                <li>Расширенная форма заявки</li>
-                <li>Онлайн-бронирование</li>
-                <li>Интерактивная карта</li>
-                <li>Уникальный дизайн</li>
-                <li class="offer-list-none"><del>Личный кабинет (можно добавить отдельно)</del></li>
+                <li>Онлайн-бронирование или корзина/оплата</li>
+                <li>Расширенная форма заявки и интерактивная карта</li>
+                <li>Полная SEO-оптимизация</li>
+                <li><i>Возможность добавления личного кабинета (опционально)</i></li>
               </ul>
             </div>
             <div class="price-btn">
@@ -191,6 +187,7 @@ watch(
     </div>
   </section>
   <!-- End Pricing Section -->
+
 
 
   <Footer />
