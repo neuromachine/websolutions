@@ -36,7 +36,6 @@
   color: #FFF;}
 
 #page_head.item-bg2 {
-  //background-image: url('@/assets/images/header_default.png');
   background-image: none;
   height: 200px;
   background-color: #E5F7FD;
