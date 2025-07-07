@@ -28,6 +28,23 @@
 .txt_wrap .button_compred_phone { width: auto; display: flex; flex-direction: row; flex-wrap: nowrap; }
 .head_button { text-transform: uppercase; letter-spacing: 1px;}
 
+
+.package .head { display: flex; flex-direction: column;}
+.package .head .title {
+  color: #223A76;
+  font-size: 38px;
+  font-weight: 600;
+  padding: 0px 0 0 0px;
+  text-align: center
+
+}
+
+  .package .head .discount { color: #FFC500; font-size: 40px; font-weight: 900; text-align: center}
+  .package .head .discount_hi { color: #FF5A5F;}
+.package .descr {font-size: 20px; padding: 10px 0 10px 0; text-align: center}
+.package .oldprice { color: #666; font-size: 24px; text-decoration: line-through; text-align: center}
+.package .oldprice span {font-size: 20px; margin-right: 10px; text-decoration: none}
+
 #compred .buttons {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
 #compred .buttons .btn_compred { flex-grow: 1; flex-shrink: 0;}
 #compred h1 { font-size: 45px;}
@@ -41,8 +58,11 @@
   background-color: #E5F7FD;
 }
 
+.price_desc {padding:0px 0 0 0;}
+.price_desc h3 { padding:90px 0 0 0; font-size: 36px; color: #223A76; font-weight: 900; text-align: center}
+
 #page_head .page-title-area::before { background-color: #E5F7FD; }
-#DebugPanel { display: block; /*background-color: #E5F7FD;*/ background-color: #223A76; }
+#DebugPanel { display: block; /*background-color: #E5F7FD;*/ background-color: #223A76; margin: 0px 0; padding: 30px 0;}
 
 .item-bg2 {
   background-image: url('@/assets/images/header_back.png');
