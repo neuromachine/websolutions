@@ -66,7 +66,7 @@ watch(
 <!--                    </a>-->
 <!--                  </li>-->
 <!--                </ul>-->
-                <h1><i class="bi bi-fire"></i> {{ dataStore.item.properties.title }} <i class="bi bi-sun"></i></h1>
+                <h1><!--<i class="bi bi-fire"></i> -->{{ dataStore.item.properties.title }} <i class="bi bi-sun"></i></h1>
                 <div class="content_wrap" v-html="dataStore.item.properties.content"></div>
                 <div v-if="route.params.slug === 'erir'" class="banner-btn buttons">
                   <a class="default-btn-one btn_compred" href="https://t.me/Lola_06">Напиши в директ<span></span></a>

@@ -22,7 +22,7 @@
 
 .main-banner-content .social-icon-list {}
 .main-banner-content .social-icon-list li a {font-size: 58px; width: 60px; height: 60px;}
-
+.home-3 .main-banner-content { padding-top: 30px}
 
 .txt_wrap { width: 100%  ;flex-grow: 1; flex-shrink: 0;}
 .txt_wrap .button_compred_phone { width: auto; display: flex; flex-direction: row; flex-wrap: nowrap; }
@@ -34,10 +34,11 @@
   color: #223A76;
   font-size: 38px;
   font-weight: 600;
-  padding: 0px 0 0 0px;
+  padding: 0px 0 0 30px;
   text-align: center
 
 }
+
 
   .package .head .discount { color: #FFC500; font-size: 40px; font-weight: 900; text-align: center}
   .package .head .discount_hi { color: #FF5A5F;}
@@ -45,7 +46,7 @@
 .package .oldprice { color: #666; font-size: 24px; text-decoration: line-through; text-align: center}
 .package .oldprice span {font-size: 20px; margin-right: 10px; text-decoration: none}
 
-#compred .buttons {display: flex; flex-direction: row; justify-content: space-between; align-items: center;}
+#compred .buttons {display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap; align-items: center;}
 #compred .buttons .btn_compred { flex-grow: 1; flex-shrink: 0;}
 #compred h1 { font-size: 45px;}
 #compred strong {color:#00D9EA;}
