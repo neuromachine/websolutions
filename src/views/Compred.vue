@@ -5,11 +5,11 @@ import Prices from "@/components/Prices.vue";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import {useUiStore} from "@/stores/uiStore.js";
-
 const uiStore = useUiStore();
-import {useDataStore} from '@/stores/dataStore';
 
+import {useDataStore} from '@/stores/dataStore';
 const dataStore = useDataStore();
+
 import {useRoute} from "vue-router";
 
 const route = useRoute();
