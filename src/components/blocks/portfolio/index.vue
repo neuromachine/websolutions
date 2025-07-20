@@ -40,6 +40,7 @@ function setFilter(filterKey) {
 <!--              <li v-for="item in dataStore.category.blocks[0].items" @click="setFilter(item.properties.workclass[0].key)">{{item.properties.workclass[0].label}}</li>-->
               <li @click="setFilter('develop')">Разработка</li>
               <li @click="setFilter('html')">Верстка</li>
+              <li @click="setFilter('design')">Дизайн</li>
             </ul>
           </div>
         </div>

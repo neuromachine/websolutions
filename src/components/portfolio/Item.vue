@@ -32,7 +32,7 @@ function onSwiperInit(swiper) {
 
 <template>
   <!-- Start Portfolio Details Section -->
-  <section class="portfolio-details-area">
+  <section id="portfolio_work" class="portfolio-details-area">
 
 <!--    <div class="p_item_descr">{{dataStore.item.properties.descr}}</div>-->
 
@@ -41,7 +41,9 @@ function onSwiperInit(swiper) {
       <div v-else class="row">
         <div class="col-lg-12 col-md-12">
           <div class="portfolios-details-desc">
-            <div v-html="dataStore.item.properties.content" class="features-text content_wrap"></div>
+            <div v-if="dataStore.item.properties.workdescr" v-html="dataStore.item.properties.workdescr" class="features-text work_descr"></div>
+            <div v-else v-html="dataStore.item.properties.content" class="features-text content_wrap"></div>
+
             <div class="portfolio-details-info">
               <div class="single-info-box">
                 <h4>Категория</h4>
@@ -51,7 +53,7 @@ function onSwiperInit(swiper) {
                 <h4>Стоимость</h4>
                 <span>{{dataStore.getItemPrice}} т.р.</span>
               </div>
-              <div class="single-info-box">
+              <div class="single-info-box" v-if="dataStore.item.properties.date">
                 <h4>Дата</h4>
                 <span>{{dataStore.item.properties.date}}</span>
               </div>
@@ -62,7 +64,7 @@ function onSwiperInit(swiper) {
                   <li><a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fab fa-instagram"></i></a></li>
                 </ul>
               </div>
-              <div class="single-info-box">
+              <div class="single-info-box" v-if="dataStore.item.properties.url && dataStore.item.properties.url != '-'">
                 <h4>Ссылка</h4>
                 <a :href="dataStore.item.properties.url" target="_blank" class="default-btn">Перейти <span></span></a>
               </div>
@@ -97,6 +99,16 @@ function onSwiperInit(swiper) {
           </div>
         </SwiperSlide>
       </Swiper>
+    </div>
+
+    <div class="container">
+      <div v-if="!dataStore.isItemReady" class="row">Loading item data</div>
+      <div v-else class="row">
+        <div class="col-lg-12 col-md-12">
+          <div v-if="dataStore.item.properties.targets" v-html="dataStore.item.properties.targets" class="features-text content_wrap work_list"></div>
+          <div v-if="dataStore.item.properties.tech" v-html="dataStore.item.properties.tech" class="features-text content_wrap work_list"></div>
+        </div>
+      </div>
     </div>
 
   </section>

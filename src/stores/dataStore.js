@@ -113,7 +113,7 @@ export const useDataStore = defineStore('dataStore', {
             })
         },
         getItemPrice(state) {
-            return Math.floor(state.item?.properties?.price / 10000) || 0;
+            return Math.floor(state.item?.properties?.price / 1000) || 0;
         },
         getLoadingStatus(state) {
             return state.isLoading;
