@@ -23,6 +23,7 @@ export const useUiStore = defineStore('UiStore', {
                 breadcrumbs: [{key: '/', title: 'Главная'}],
                 parent: null,
                 children: [],
+                version: 'full',
                 contacts:{
                     phone: 79282619061,
                 }
@@ -50,6 +51,11 @@ export const useUiStore = defineStore('UiStore', {
             //console.log('debug:setNavBarStatus', value);
             this.uiMainVars.header.navbar = value;
         },
+        setVersionFull(value)
+        {
+            console.log('debug:setVersionFull', value);
+            this.uiMainVars.page.version = value;
+        },
         // TODO: улучшить
         setMainVars(dataObj) {
             //console.log(dataObj);
@@ -59,6 +65,7 @@ export const useUiStore = defineStore('UiStore', {
                 breadcrumbs: dataObj?.breadcrumbs || [{ key: '/', title: 'Главная' }],
                 parent: dataObj?.parent || null,
                 children: dataObj?.children || [],
+                version: dataObj?.version || 'full',
                 contacts:{
                     phone: 79282619061,
                 }

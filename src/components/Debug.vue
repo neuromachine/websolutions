@@ -2,13 +2,13 @@
 import {computed,onMounted} from "vue";
 
 onMounted(() => {
-  /*
-  uiStore.setUiVars('debug', true);
+  /**/
+  uiStore.setUiVars('debug', false);
    uiStore.setNavBarStatus(true);
    uiStore.setUiVars('menu', true);
    uiStore.setHeaderVars('menu', true);
    
-   */
+
 });
 
 import { useDataStore } from '@/stores/dataStore';
@@ -45,6 +45,16 @@ const isNavBar = computed({
   },
   set(value) {
     uiStore.setNavBarStatus(value);
+  },
+});
+
+const isVersionFull = computed({
+  get() {
+    const value = uiStore.uiMainVars.page.version;
+    return value === 'full';
+  },
+  set(value) {
+    uiStore.setVersionFull(value);
   },
 });
 </script>
@@ -86,6 +96,12 @@ const isNavBar = computed({
           <span class="slider"></span>
         </label>
       </div>
+      <div class="row">
+        <label class="switch">
+          <input type="checkbox" v-model="isVersionFull"/>
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
 
   </div>
@@ -94,6 +110,7 @@ const isNavBar = computed({
     <div v-if="dataStore.isStrReady"><h1>{{ JSON.stringify(dataStore.getGlobalLoading, null, 2) }}<</h1></div>
     <div v-if="!uiStore.getGlobalLoading"><div>{{ JSON.stringify(uiStore.getGlobalLoading, null, 2) }}</div></div>
     <div v-if="dataStore.isStrReady">{{ JSON.stringify(dataStore.structure, null, 2) }}</div>
+<!--    <div v-if="uiStore.isVersionFull">{{ JSON.stringify(uiStore.page.version, null, 2) }}</div>-->
       </pre>
   </div>
 </template>
