@@ -2,13 +2,13 @@
 import {computed,onMounted} from "vue";
 
 onMounted(() => {
-  /**/
+  /*
   uiStore.setUiVars('debug', false);
    uiStore.setNavBarStatus(true);
    uiStore.setUiVars('menu', true);
    uiStore.setHeaderVars('menu', true);
    
-
+*/
 });
 
 import { useDataStore } from '@/stores/dataStore';

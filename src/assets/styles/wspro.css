@@ -34,6 +34,7 @@
 .txt_wrap { width: 100%  ;flex-grow: 1; flex-shrink: 0;}
 .txt_wrap .button_compred_phone { width: auto; display: flex; flex-direction: row; flex-wrap: nowrap; }
 .head_button { text-transform: uppercase; letter-spacing: 1px;}
+.head_button i { margin-right: 8px; font-size: 14px;}
 
 
 .package .head { display: flex; flex-direction: column;}
@@ -63,7 +64,7 @@
 #page_head.item-bg2 {
   background-image: none;
   height: 200px;
-  background-color: #E5F7FD;
+  background-color: #00D9EA;
 }
 
 .price_desc {padding:0px 0 0 0;}
@@ -172,4 +173,51 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(20px);
+}
+
+/* BUTTONS AND OTHER UI EL */
+.btn {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  padding-left: 35px;
+  padding-right: 35px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  border-radius: 5px;
+  display: inline-block;
+  background-color: #223A76;
+  box-shadow: 0 7px 25px rgb(12, 144, 199,0.25);
+  margin-top: 5px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border: none;
+}
+
+.btn span {
+  position: absolute;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  display: block;
+  border-radius: 30px;
+  color: #223A76;
+  background-image: -webkit-linear-gradient(45deg, #f44336 48%, #ff9800 56%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+  transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+}
+
+.btn:hover, .btn:focus {
+  color: #223A76;
+}
+
+.btn:hover span, .btn:focus span {
+  width: 200%;
+  height: 500px;
 }
