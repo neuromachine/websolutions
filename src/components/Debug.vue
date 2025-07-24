@@ -54,7 +54,16 @@ const isVersionFull = computed({
     return value === 'full';
   },
   set(value) {
-    uiStore.setVersionFull(value);
+    if(value === true)
+    {
+      console.log('value set FULL', value);
+      uiStore.setVersionFull('full');
+    }
+    else
+    {
+      console.log('value set SHORT', value);
+      uiStore.setVersionFull('short');
+    }
   },
 });
 </script>
