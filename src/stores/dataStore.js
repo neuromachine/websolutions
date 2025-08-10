@@ -165,6 +165,31 @@ export const useDataStore = defineStore('dataStore', {
         setFilter(key) {
             this.filter = key
         },
+        //async sendOfferRequest(id,contact)
+        async sendOfferRequest(contact)
+        {
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
+            this.setLoading(true)
+
+            //
+            const data = {
+                id: 1202,
+                contact: contact,
+            };
+
+            try {
+                const response = await api.post('offers/request', data);
+                const status = response.data.status;
+                console.log(status)
+                console.log(response)
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            } finally {
+                uiStore.stopGlobalLoading()
+                this.setLoading(false)
+            }
+        },
         async fetchOverlayCategory(slug)
         {
             try {

@@ -52,12 +52,13 @@ onMounted(() => {
             </div>
           </div>
           <div class="col-lg-6 col-md-6">
-<!--            <OfferRequestForm />-->
-
+            <OfferRequestForm />
+<!--
             <form class="newsletter-form">
               <input type="text" class="input-newsletter" name="email" placeholder="имя в мессенджере, телефон или e-mail" required autocomplete="off">
               <button type="submit">Отправить</button>
             </form>
+        -->
           </div>
         </div>
       </div>
