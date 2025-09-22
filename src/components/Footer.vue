@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted , computed} from 'vue'
-import OfferRequestForm from "@/components/OfferRequestForm.vue";
+import FeedbackForm from "@/components/FeedbackForm.vue";
+// import OfferRequestForm from "@/components/OfferRequestForm.vue";
 import {useUiStore} from "@/stores/uiStore.js";
 import {useRoute} from "vue-router";
 import $ from 'jquery'
@@ -52,7 +53,8 @@ onMounted(() => {
             </div>
           </div>
           <div class="col-lg-6 col-md-6">
-            <OfferRequestForm />
+            <FeedbackForm />
+<!--            <OfferRequestForm />-->
 <!--
             <form class="newsletter-form">
               <input type="text" class="input-newsletter" name="email" placeholder="имя в мессенджере, телефон или e-mail" required autocomplete="off">
