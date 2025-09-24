@@ -1,6 +1,6 @@
 <template>
   <Form v-slot="{ handleSubmit }" :validation-schema="validationSchema">
-    <form @submit.prevent="handleSubmit(onSubmit)" class="dynamic-form">
+    <form @submit.prevent="handleSubmit(onSubmit)" class="dynamic-form dynamic-form">
 
       <!-- Поля -->
       <div v-for="fieldDef in schema.fields" :key="fieldDef.name" class="form-field">
@@ -136,4 +136,34 @@ async function onSubmit(values) {
 .success-msg { color:green; }
 .error-msg { color:#b91c1c; }
 button[disabled] { opacity:.6; cursor:not-allowed; }
+
+.dynamic-form {
+  position: relative;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dynamic-form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 30px;
+  border-radius: 0px 5px 5px 0px;
+  text-transform: capitalize;
+  background-color: #7b68ee;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border: none;
+}
+
+.dynamic-form button:hover {
+  color: #ffffff;
+  background-color: #ff9800;
+}
+.dynamic-form .form-control { padding: 0; border: 0} /* TODO: исключить .form-control т.к. он наследуется от bootstrap */
 </style>
