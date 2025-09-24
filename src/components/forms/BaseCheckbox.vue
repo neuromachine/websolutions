@@ -1,34 +1,26 @@
 <template>
   <div class="form-control-checkbox">
-    <label :for="cbId" class="checkbox-label">
+    <label :for="id" class="checkbox-label">
       <input
-          :id="cbId"
+          :id="id"
           type="checkbox"
-          :checked="!!modelValue"
-          @change="onChange"
+          :checked="value"
+          @change="$emit('input', $event.target.checked)"
+          @blur="$emit('blur', $event)"
           v-bind="$attrs"
       />
       <span class="checkbox-text">{{ label }}</span>
     </label>
-
     <p v-if="error" class="field-error">{{ error }}</p>
   </div>
 </template>
 
 <script setup>
 const props = defineProps({
-  modelValue: [Boolean, String],
+  value: Boolean,
   label: String,
   error: [String, null],
-  id: { type: String, default: null },
-});
-const emit = defineEmits(['update:modelValue']);
-const cbId = props.id || `cb-${Math.random().toString(36).slice(2,9)}`;
-
-function onChange(e){ emit('update:modelValue', e.target.checked); }
+  id: { type: String, default: () => `cb-${Math.random().toString(36).slice(2,9)}` },
+})
+defineEmits(['input','blur'])
 </script>
-
-<style scoped>
-.form-control-checkbox { display:flex; align-items:center; gap:.5rem; }
-.checkbox-label { display:flex; align-items:center; gap:.5rem; cursor:pointer; }
-</style>
