@@ -1,4 +1,8 @@
 <script setup>
+import {computed, onMounted, onUnmounted, watch} from "vue";
+// import debug from "@/components/Debug.vue";
+// import Prices from "@/components/Prices.vue";
+// import Header from "@/components/Header.vue";
 import CPheader from "@/components/CPheader.vue";
 import CPimg from "@/components/CPimg.vue";
 import CPicon from "@/components/CPicon.vue";
@@ -15,109 +19,32 @@ import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
 
 const route = useRoute();
 
+function load() {
+  dataStore.fetchBlockItem(route.params.slug);
+  dataStore.fetchStructure('services'); // TODO: services - > wrong:
+}
 
+onMounted(() => {
+  uiStore.setHeaderVars('menu', false);
+  load()
+});
 
-
-const benefits = [
-  {
-    index: 1,
-    icon: 'graph-up-arrow',
-    title: 'Заявки',
-    text: 'Сайт структурирован под конверсию: чёткие пакеты, сроки, цены и понятный путь к бронированию.',
-  },
-  {
-    index: 2,
-    icon: 'search',
-    title: 'Видимость',
-    text: 'SEO-структура под запросы "fishing Nha Trang", "deep sea fishing Vietnam" и русскоязычную аудиторию.',
-  },
-  {
-    index: 3,
-    icon: 'images',
-    title: 'Доверие',
-    text: 'Акцент на фото трофеев, экипировку, команду и реальные отзывы клиентов.',
-  },
-  {
-    index: 4,
-    icon: 'calendar-check',
-    title: 'Бронирование',
-    text: 'Интеграция форм и удобного сценария записи с быстрым подтверждением.',
-  },
-]
-
-const plans = [
-  {
-    name: 'Старт',
-    price: '35 000',
-    term: '3 недели',
-    featured: false,
-    features: [
-      'Анализ конкурентов Нячанга',
-      'Структура продающего лендинга',
-      'Индивидуальный дизайн',
-      'До 6 информационных блоков',
-      'Описание пакетов рыбалки',
-      'Форма онлайн-заявки',
-      'Базовая SEO-оптимизация',
-      'Адаптация под мобильные',
-    ],
-  },
-  {
-    name: 'Трофей',
-    price: '95 000',
-    term: '5 недель',
-    featured: true,
-    features: [
-      'Всё из пакета «Старт»',
-      'Многостраничная структура',
-      'Страницы пакетов рыбалки',
-      'Галерея уловов',
-      'Блок отзывов клиентов',
-      'Двуязычная версия RU/EN',
-      'Расширенная SEO-настройка',
-      'Интеграция WhatsApp / Telegram',
-      'Подключение аналитики',
-    ],
-  },
-  {
-    name: 'Экспедиция',
-    price: 'от 190 000',
-    term: '2 месяца',
-    featured: false,
-    features: [
-      'Всё из пакета «Трофей»',
-      'Онлайн-календарь бронирования',
-      'Система предоплаты',
-      'Мультиязычность (3+ языка)',
-      'Видео-блоки с выходов',
-      'Автоматизация заявок',
-      'CRM-интеграция',
-      'Стратегия продвижения',
-      'Техническая поддержка 2 мес.',
-    ],
-  },
-]
-
-const includes = [
-  { index: 3, text: 'Исследование целевой аудитории туристов', icon: 'check-lg' },
-  { index: 3, text: 'Проработку конкурентных преимуществ',     icon: 'check-lg' },
-  { index: 3, text: 'Настройку аналитики и целей',             icon: 'check-lg' },
-  { index: 3, text: 'Консультацию по цифровой стратегии',      icon: 'check-lg' },
-]
+watch(
+    () => route.params.slug,
+    (newSlug, oldSlug) => {
+      if (newSlug !== oldSlug) {
+        load();
+      }
+    }
+);
 </script>
 
 <template>
-
-
+<!--  <debug/>-->
+<!--  <Header/>-->
   <CPheader />
-
-
-
-
-  <main class="page">
-
-
-    <!-- Start Home Section -->
+  <div v-if="dataStore.isStrReady">
+    <!-- HERO -->
     <div class="home-section home-2">
       <div class="d-table">
         <div class="d-table-cell">
@@ -125,18 +52,14 @@ const includes = [
             <div class="row align-items-center">
               <div class="col-lg-6 col-md-12">
                 <div class="main-banner-content">
-                  <h6 class="text-gradient">Туристы ищут рыбалку в Нячанге каждый день.</h6>
-
-                  <h1>Они выбирают не лодку. Они выбирают —<br><span class="text-gradient">Кому доверить свой трофей.</span></h1>
-                  <p>          Сегодня клиент принимает решение за минуты. Если ваш сайт не демонстрирует
-                    масштаб, безопасность и результат — он уходит к конкуренту. Мы создаём
-                    продающую цифровую площадку, которая превращает интерес туриста в оплаченный
-                    выход в море.</p>
+                  <h6 class="text-gradient">{{ dataStore.item.properties.hero.pretitle }}</h6>
+                  <h1>{{ dataStore.item.properties.hero.title }}<br><span class="text-gradient">{{ dataStore.item.properties.hero.focus }}</span></h1>
+                  <p>{{ dataStore.item.properties.hero.paragraph }}</p>
                 </div>
               </div>
               <div class="col-lg-6 col-md-12">
                 <div class="banner-image">
-                  <CPimg />
+                  <CPimg :svgkey="dataStore.item.key"/>
                 </div>
               </div>
             </div>
@@ -167,36 +90,24 @@ const includes = [
         </div>
       </div>
     </div>
-    <!-- End Home Section -->
-
-    <!-- Start Services Two Section -->
+    <!-- HERO -->
+    <!-- Benefits -->
     <section class="services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-title">
-              <h6 class="sub-title">Вы получаете</h6>
-              <h2>Рабочий инструмент продаж</h2>
+              <h6 class="sub-title">{{ dataStore.item.properties.benefits.pretitle }}</h6>
+              <h2>{{ dataStore.item.properties.benefits.title }}</h2>
             </div>
           </div>
-
-
-          <div class="col-lg-3 col-md-6"  v-for="b in benefits" :key="b.title">
+          <div class="col-lg-3 col-md-6"  v-for="b in dataStore.item.properties.benefits.items" :key="b.title">
             <div class="service">
               <div class="icon">
-                <!--
-                                <IconOffer
-                                    :index="props.index"
-                                    :properties="props.properties"
-                                />
-                -->
                 <IconOffer
                     :index="b.index"
                     :properties="b"
                 />
-
-
-<!--                <i class="bi" :class=b.icon></i>-->
               </div>
               <div class="title">
                 {{ b.title }}
@@ -206,15 +117,11 @@ const includes = [
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </section>
-    <!-- End Services Two Section -->
-
-
-    <!-- Start About Section -->
+    <!-- End Benefits -->
+    <!-- About -->
     <section class="about-area bg-grey section-padding">
       <div class="container">
         <div class="row d-flex align-items-center">
@@ -238,54 +145,44 @@ const includes = [
         </div>
       </div>
     </section>
-    <!-- End About Section -->
-
-
-    <!-- Start Services Two Section -->
+    <!-- End About -->
+    <!-- Packages -->
     <section class="services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-title">
-              <h6 class="sub-title">Стоимость</h6>
-              <h2>Морские решения</h2>
+              <h6 class="sub-title">{{ dataStore.item.properties.items.pretitle }}</h6>
+              <h2>{{ dataStore.item.properties.items.title }}</h2>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6"
-               v-for="plan in plans"
-          >
+          <div class="col-lg-4 col-md-6" v-for="item in dataStore.item.properties.items.items">
             <div class="service plan">
               <div class="visual">
-                <CPicon />
+                <CPicon :svgkey="dataStore.item.key"/>
               </div>
               <div class="title">
-                {{ plan.name }}
+                {{ item.name }}
               </div>
               <div class="price roboto">
-                бюджет <span class="sofia_bold">{{ plan.price }}</span> ₽
+                бюджет <span class="sofia_bold">{{ item.price }}</span> ₽
               </div>
               <div class="term roboto">
-                срок <span class="sofia_bold">{{ plan.term }}</span>
+                срок <span class="sofia_bold">{{ item.term }}</span>
               </div>
               <ul class="conditions">
-                <li v-for="f in plan.features" :key="f">{{ f }}</li>
+                <li v-for="f in item.features" :key="f">{{ f }}</li>
               </ul>
               <div class="b_wrap">
                 <RouterLink class="know_price" to="/pages/contacts">Обсудить план</RouterLink>
               </div>
             </div>
           </div>
-
-
-
         </div>
       </div>
     </section>
-    <!-- End Services Two Section -->
-
-
-    <!-- Start Services Two Section -->
+    <!-- End Packages -->
+    <!-- Includes -->
     <section class="services-section-two section-padding">
       <div class="container">
         <div class="row">
@@ -294,38 +191,27 @@ const includes = [
               <h6 class="sub-title">Все решения включают:</h6>
             </div>
           </div>
-
-          <div class="col-lg-3 col-md-6" v-for="item in includes" :key="item.text">
+          <div class="col-lg-3 col-md-6" v-for="item in dataStore.item.properties.includes" :key="item.text">
             <div class="service">
               <div class="icon">
-<!--                <i class="bi bi-check-lg"></i>-->
-
                 <IconOffer
                     :index="item.index"
                     :properties="item"
                 />
-
               </div>
               <div class="title">
                 {{ item.text }}
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </section>
-    <!-- End Services Two Section -->
-
-
-
-
-  </main>
-
-
-
-
+    <!-- End Includes -->
+  </div>
+  <div v-else class="container">
+    <div class="row row_load">Loading Item</div>
+  </div>
   <Footer/>
 </template>
 
