@@ -90,4 +90,10 @@ import WSpro from "@/components/WSpro.vue";
   padding-top: 16px;
   padding-bottom: 16px;
 }
+
+@media (max-width: 767px) {
+  .navbar-brand { margin: 0 auto 0 auto;}
+
+}
+
 </style>

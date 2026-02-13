@@ -349,6 +349,11 @@ const includes = [
 .service .know_price { color: #00D9EA; border: solid 1px #00D9EA; border-radius: 4px; padding: 18px 14px;}
 .service .know_price:hover { background-color: #00D9EA; color: #FFF; }
 
+@media (max-width: 767px) {
+  .home-section.home-2 {
+    padding-top: 40px;
+  }
 
+}
 
 </style>

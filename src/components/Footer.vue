@@ -120,12 +120,18 @@ onMounted(() => {
               <div class="footer-info-contact">
                 <i class="flaticon-phone-call"></i>
                 <h3>Телефон</h3>
-                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{ uiStore.uiMainVars.page.contacts.phone }}</a></span>
+<!--                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{ uiStore.uiMainVars.page.contacts.phone }}</a></span>-->
+                <span><a href="tel:+84845122254" target="_blank">0845122254</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
                 <h3>Email</h3>
-                <span><a href="mailto:lili@ws-pro.ru">lili@ws-pro.ru</a></span>
+                <span><a href="https://t.me/Lola_06" target="_blank">Lola_06</a></span>
+              </div>
+              <div class="footer-info-contact">
+                <i class="flaticon-envelope"></i>
+                <h3>Telegram</h3>
+                <span><a href="mailto:lili@ws-pro.ru" target="_blank">lili@ws-pro.ru</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-placeholder"></i>
