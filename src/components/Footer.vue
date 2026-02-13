@@ -17,11 +17,6 @@ const uiStore = useUiStore();
 const route = useRoute();
 
 const isNavi = computed(() => route.path === '/compred');
-const formattedPhone = computed(() => {
-  const inputDigits = String(uiStore.uiMainVars.page.contacts.phone);
-  const num = inputDigits.replace(/\D/g, '');
-  return num.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/, '+7 ($2) $3-$4-$5');
-});
 
 
 // TODO: Refactoring
@@ -86,7 +81,6 @@ onMounted(() => {
               <ul class="footer-social">
                 <li><a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                 <li><a href="https://t.me/websolutionspro" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
-                <li><a href="https://vk.com/websn" target="_blank"><i class="fa-brands fa-vk"></i></a></li>
                 <li><a href="https://t.me/Lola_06" target="_blank"><i class="fa-solid fa-message"></i></a></li>
               </ul>
             </div>
@@ -126,7 +120,7 @@ onMounted(() => {
               <div class="footer-info-contact">
                 <i class="flaticon-phone-call"></i>
                 <h3>Телефон</h3>
-                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{ formattedPhone }}</a></span>
+                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{ uiStore.uiMainVars.page.contacts.phone }}</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
@@ -152,13 +146,13 @@ onMounted(() => {
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 col-md-6">
-          <p><i class="far fa-copyright"></i> 2025 WebSoulutions - All Rights Reserved.</p>
+          <p><i class="far fa-copyright"></i> 2026 WebSoulutions - All Rights Reserved.</p>
         </div>
         <div class="col-lg-6 col-md-6">
-          <ul>
-            <li><a href="/pages/agreements">Соглашения</a></li>
-            <li><a href="/pages/privacypolicy">Политика конфеденциальности</a></li>
-          </ul>
+<!--          <ul>-->
+<!--            <li><a href="/pages/agreements">Соглашения</a></li>-->
+<!--            <li><a href="/pages/privacypolicy">Политика конфеденциальности</a></li>-->
+<!--          </ul>-->
         </div>
       </div>
     </div>
