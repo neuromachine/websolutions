@@ -126,12 +126,12 @@ onMounted(() => {
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
                 <h3>Email</h3>
-                <span><a href="https://t.me/Lola_06" target="_blank">Lola_06</a></span>
+                <span><a href="mailto:lili@ws-pro.ru" target="_blank">lili@ws-pro.ru</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
                 <h3>Telegram</h3>
-                <span><a href="mailto:lili@ws-pro.ru" target="_blank">lili@ws-pro.ru</a></span>
+                <span><a href="https://t.me/Lola_06" target="_blank">Lola_06</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-placeholder"></i>
