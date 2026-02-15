@@ -6,6 +6,7 @@ import OfferRequestForm from "@/components/OfferRequestForm.vue";
 import {useUiStore} from "@/stores/uiStore.js";
 import {useRoute} from "vue-router";
 import $ from 'jquery'
+import WSpro from "@/components/WSpro.vue";
 
 defineProps({
   isMain: { type: Boolean, default: false },
@@ -74,8 +75,9 @@ onMounted(() => {
         <div class="row">
           <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="single-footer-widget">
-              <a class="footer-logo" href="#">
-                <img src="/assets/img/logo.png" class="white-logo" alt="logo">
+              <a class="footer-logo" href="/">
+                <WSpro />
+<!--                <img src="/assets/img/logo.png" class="white-logo" alt="logo">-->
               </a>
               <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
               <ul class="footer-social">

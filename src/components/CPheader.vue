@@ -1,4 +1,34 @@
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useUiStore } from '@/stores/uiStore';
+const uiStore = useUiStore();
+import WSpro from "@/components/WSpro.vue";
+// const isScrolled = ref(false)
+// let headerHeight = 0
+//
+// // function onScroll() {
+// //   isScrolled.value = window.scrollY > headerHeight
+// // }
+//
+// onMounted(() => {
+//   headerHeight = document.querySelector('.site-header')?.offsetHeight ?? 0
+//   window.addEventListener('scroll', onScroll, { passive: true })
+// })
+//
+// onUnmounted(() => {
+//   window.removeEventListener('scroll', onScroll)
+// })
+</script>
+
 <template>
+  <!-- Start Preloader Section -->
+  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.getGlobalLoading }">
+    <div class="loader">
+      <div class="shadow"></div>
+      <div class="box"></div>
+    </div>
+  </div>
+  <!-- End Preloader Section -->
   <header class="site-header" >
     <div class="container-xxl">
       <nav class="navbar navbar-expand-lg">
@@ -34,26 +64,6 @@
     </div>
   </header>
 </template>
-
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import WSpro from "@/components/WSpro.vue";
-// const isScrolled = ref(false)
-// let headerHeight = 0
-//
-// // function onScroll() {
-// //   isScrolled.value = window.scrollY > headerHeight
-// // }
-//
-// onMounted(() => {
-//   headerHeight = document.querySelector('.site-header')?.offsetHeight ?? 0
-//   window.addEventListener('scroll', onScroll, { passive: true })
-// })
-//
-// onUnmounted(() => {
-//   window.removeEventListener('scroll', onScroll)
-// })
-</script>
 
 <style scoped>
 .site-header {

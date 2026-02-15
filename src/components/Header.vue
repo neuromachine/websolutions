@@ -9,6 +9,7 @@ import Navbar from '@/components/navbar.vue';
 import Logo from '@/components/Logo_png.vue';
 
 import structure from "@/structure.json";
+import WSpro from "@/components/WSpro.vue";
 
 defineProps({
   isMain: Boolean,
@@ -56,8 +57,9 @@ onMounted(() => {
       <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
           <div class="nav_wrap">
-            <RouterLink to="/" class="logo_wrap">
-              <Logo />
+            <RouterLink to="/">
+<!--              <Logo />-->
+              <WSpro />
             </RouterLink>
             <!-- Иконка-бургер -->
             <button v-if="!isNavi" class="burger-button" @click="toggleMenu">
