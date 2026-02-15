@@ -18,7 +18,7 @@ const currentComponent = computed(() =>
 </template>
 
 
-<style scoped>
+<style>
 .cp_hero_svg {
   width: 100%;
   display: flex;
@@ -26,13 +26,11 @@ const currentComponent = computed(() =>
   justify-content: center;
 }
 
-/* ── SVG sizing ─────────────────────────────────────────────── */
 .cp_hero_svg svg {
   width: 100%;
   height: auto;
   display: block;
 }
-
 @media (max-width: 767px) {
   .cp_hero_svg svg {
     max-width: 100%;
