@@ -18,6 +18,20 @@ const dataStore = useDataStore();
 import {useRoute} from "vue-router";
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
 
+import { useHead } from '@unhead/vue';
+useHead({
+  title: 'Коммерческое предложение',
+  meta: [
+    { name: 'description', content: 'Предложение от web solution' },
+    // Open Graph
+    { property: 'og:title', content: 'КП' },
+    { property: 'og:description', content: '-' },
+    { property: 'og:image', content: 'https://ws-pro.ru/assets/svg/window.png' },
+    { property: 'og:url', content: 'https://ws-pro.ru/' },
+    { property: 'og:type', content: 'website' },
+  ]
+});
+
 const route = useRoute();
 
 function load() {

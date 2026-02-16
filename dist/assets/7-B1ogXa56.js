@@ -1,1 +1,0 @@
-const s="/assets/img/shape/1.png",a="/assets/img/shape/2.png",p="/assets/img/shape/3.png",t="/assets/img/shape/4.png",e="/assets/img/shape/5.png",o="/assets/img/shape/6.png",_="/assets/img/shape/7.png";export{s as _,a,p as b,t as c,e as d,o as e,_ as f};

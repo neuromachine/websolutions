@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createHead } from '@unhead/vue/client'
 import { createPinia } from 'pinia'; // Импортируем Pinia
 import dialogs from 'v-dialogs'
 import App from './app.vue'
@@ -15,7 +16,9 @@ import './assets/styles/responsive.css'; // Responsive CSS
 import './assets/styles/wspro.css'; // Individual CSS
 
 const app = createApp(App);
+const head = createHead();
 const pinia = createPinia(); // Создаём экземпляр Pinia
+app.use(head);
 app.use(pinia); // Подключаем Pinia к приложению
 app.use(router); // Подключаем роутер
 app.use(dialogs);
