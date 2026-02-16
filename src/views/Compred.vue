@@ -7,6 +7,7 @@ import CPheader from "@/components/CPheader.vue";
 import CPimg from "@/components/CPimg.vue";
 import CPicon from "@/components/CPicon.vue";
 import WSteam from "@/components/WSteam.vue";
+import Portfolio from "@/components/Portfolio.vue"
 import Footer from "@/components/Footer.vue";
 import {useUiStore} from "@/stores/uiStore.js";
 const uiStore = useUiStore();
@@ -208,6 +209,7 @@ watch(
       </div>
     </section>
     <!-- End Includes -->
+    <Portfolio />
   </div>
   <div v-else class="container">
     <div class="row row_load">Loading Item</div>

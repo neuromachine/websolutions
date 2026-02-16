@@ -19,6 +19,10 @@ const currentComponent = computed(() =>
 
 
 <style>
+.home-section.home-2 .main-banner-content h1 {
+  font-size: 50px;
+}
+
 .cp_hero_svg {
   width: 100%;
   display: flex;
@@ -28,6 +32,7 @@ const currentComponent = computed(() =>
 
 .cp_hero_svg svg {
   width: 100%;
+  max-width: 450px;
   height: auto;
   display: block;
 }
