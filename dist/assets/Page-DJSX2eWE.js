@@ -1,0 +1,1 @@
+import{H as r}from"./Header-CtGY-865.js";import{_ as e}from"./PageTitle-BGjM1RDH.js";import{_ as m}from"./Footer-RXIzo3Qd.js";import{_ as o}from"./item-DawWIDhv.js";import{c as t,a as _,h as a,F as s}from"./index-DZry3SxR.js";import"./WSpro-DmKDqyKb.js";const g={__name:"Page",setup(c){return(n,p)=>(_(),t(s,null,[a(r),a(e),a(o),a(m)],64))}};export{g as default};

@@ -256,7 +256,7 @@ watch(
 </template>
 
 <style scoped>
-.compred_content { font-size: 20px}
+
 .service {
   display: flex;
   flex-direction: column;

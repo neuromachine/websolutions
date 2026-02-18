@@ -60,7 +60,8 @@
 #compred strong {color:#00D9EA;}
 #compred .content_wrap ul {
   color: #FFF;}
-
+a.blue_link {font-size: 20px; color: #223A76; text-decoration: underline}
+a.blue_link:hover { text-decoration: none}
 #page_head.item-bg2 {
   background-image: none;
   height: 200px;
