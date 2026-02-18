@@ -9,6 +9,7 @@ import CPicon from "@/components/CPicon.vue";
 import WSteam from "@/components/WSteam.vue";
 import Portfolio from "@/components/Portfolio.vue"
 import Footer from "@/components/Footer.vue";
+import content from "@/components/blocks/services/presentation/content.vue"
 import {useUiStore} from "@/stores/uiStore.js";
 const uiStore = useUiStore();
 
@@ -106,6 +107,18 @@ watch(
       </div>
     </div>
     <!-- HERO -->
+    <section v-if="dataStore.item.properties.content"  class="compred_content services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <content
+                :content="dataStore.item.properties.content"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Benefits -->
     <section class="services-section-two section-padding">
       <div class="container">
@@ -223,6 +236,17 @@ watch(
       </div>
     </section>
     <!-- End Includes -->
+    <section v-if="dataStore.item.properties.acticle"  class="compred_content services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <content
+                :content="dataStore.item.properties.acticle"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
     <Portfolio />
   </div>
   <div v-else class="container">
@@ -232,7 +256,7 @@ watch(
 </template>
 
 <style scoped>
-
+.compred_content { font-size: 20px}
 .service {
   display: flex;
   flex-direction: column;
