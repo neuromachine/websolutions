@@ -192,6 +192,9 @@ watch(
               <div class="title">
                 {{ item.name }}
               </div>
+              <div class="descr">
+                {{ item.desc }}
+              </div>
               <div class="price roboto">
                 бюджет <span class="sofia_bold">{{ item.price }}</span> ₽
               </div>
@@ -210,8 +213,9 @@ watch(
       </div>
     </section>
     <!-- End Packages -->
+
     <!-- Includes -->
-    <section class="services-section-two section-padding">
+    <section v-if="dataStore.item.properties.includes" class="services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -236,7 +240,9 @@ watch(
       </div>
     </section>
     <!-- End Includes -->
-    <section v-if="dataStore.item.properties.acticle"  class="compred_content services-section-two section-padding">
+
+    <!-- acticle -->
+    <section v-if="dataStore.item.properties.acticle"  class="acticle services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -247,6 +253,101 @@ watch(
         </div>
       </div>
     </section>
+    <!-- End acticle -->
+
+    <!-- reelsSystem -->
+    <section v-if="dataStore.item.properties.reelsSystem" class="services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h6 class="sub-title">{{ dataStore.item.properties.reelsSystem.pretitle }}</h6>
+              <h2>{{ dataStore.item.properties.reelsSystem.title }}</h2>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6"  v-for="b in dataStore.item.properties.reelsSystem.items" :key="b.title">
+            <div class="service">
+              <div class="icon">
+                <IconOffer
+                    :index="b.index"
+                    :properties="b"
+                />
+              </div>
+              <div class="title">
+                {{ b.title }}
+              </div>
+              <div class="descr">
+                {{ b.text }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End reelsSystem -->
+
+    <!-- extras -->
+    <section v-if="dataStore.item.properties.extras" class="services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h6 class="sub-title">{{ dataStore.item.properties.extras.pretitle }}</h6>
+              <h2>{{ dataStore.item.properties.extras.title }}</h2>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6"  v-for="b in dataStore.item.properties.extras.items" :key="b.title">
+            <div class="service">
+              <div class="icon">
+                <IconOffer
+                    :index="b.index"
+                    :properties="b"
+                />
+              </div>
+              <div class="title">
+                {{ b.title }}
+              </div>
+              <div class="descr">
+                {{ b.text }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End extras -->
+
+    <!-- important -->
+    <section v-if="dataStore.item.properties.important" class="services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h6 class="sub-title">{{ dataStore.item.properties.important.pretitle }}</h6>
+              <h2>{{ dataStore.item.properties.important.title }}</h2>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6"  v-for="b in dataStore.item.properties.important.items" :key="b.title">
+            <div class="service">
+              <div class="icon">
+                <IconOffer
+                    :index="b.index"
+                    :properties="b"
+                />
+              </div>
+              <div class="title">
+                {{ b.title }}
+              </div>
+              <div class="descr">
+                {{ b.text }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End important -->
+
     <Portfolio />
   </div>
   <div v-else class="container">
@@ -266,14 +367,16 @@ watch(
 }
 .service .icon { width: 50px; height: 50px;}
 .service .title { font-size: 16px; font-weight: bold; margin: 16px 0 16px 0;}
-.service .descr { font-size: 14px; line-height: 17px; color: #5F5F5F; margin: 0 0 16px 0;}
+.service .descr { font-size: 14px; line-height: 17px; color: #5F5F5F; margin: 0 0 16px 0; min-height: 85px;}
 .service .roboto { font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 11px; line-height: 22px; margin: 0 0 16px 0;}
 .service .sofia_bold { font-family: "Sofia Sans", sans-serif; font-size: 18px; font-weight: bold; margin: 0 10px 0 10px;}
-.service .conditions { padding: 0 0 0 16px; color: #5F5F5F;}
+.service .conditions { padding: 0 0 0 16px; color: #5F5F5F; min-height: 220px;}
 .service .conditions li { margin: 4px 0 4px 0; list-style: disc;}
 .service .b_wrap {  display: flex; margin: 16px 0 0 0;}
 .service .know_price { color: #00D9EA; border: solid 1px #00D9EA; border-radius: 4px; padding: 18px 14px;}
 .service .know_price:hover { background-color: #00D9EA; color: #FFF; }
+
+
 
 @media (max-width: 767px) {
   .home-section.home-2 {

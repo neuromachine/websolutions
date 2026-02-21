@@ -62,6 +62,9 @@
   color: #FFF;}
 a.blue_link {font-size: 20px; color: #223A76; text-decoration: underline}
 a.blue_link:hover { text-decoration: none}
+
+.acticle .content { font-size: 30px;}
+
 #page_head.item-bg2 {
   background-image: none;
   height: 200px;
