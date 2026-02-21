@@ -348,7 +348,7 @@ watch(
     </section>
     <!-- End important -->
 
-    <Portfolio />
+    <Portfolio v-if="dataStore.item.key !== 'smmfish'" />
   </div>
   <div v-else class="container">
     <div class="row row_load">Loading Item</div>
