@@ -33,8 +33,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Деплой на Vercel (только если push в main/develop или manual)
-      - name: Deploy to Vercel
+      - name: Deploy to Vercel (Production)
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -42,6 +41,4 @@ jobs:
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           npm install -g vercel@latest
-          vercel pull --yes --environment=production --token=$VERCEL_TOKEN
-          vercel build --token=$VERCEL_TOKEN
-          vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+          vercel --prod --token=$VERCEL_TOKEN
