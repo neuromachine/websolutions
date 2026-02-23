@@ -46,7 +46,7 @@ function setFilter(filterKey) {
             <div class="portfolio-item">
               <RouterLink :to="{ path: '/portfolio/item/' + item.key }">
                 <img v-if="item.properties.thumb" v-bind="{src: '/assets/img/portfolio/'+item.properties.thumb}" alt="image">
-                <img v-else src="/assets/img/portfolio/replacement_thumb.jpg" alt="image">
+                <img v-else src="@/assets/img/portfolio/replacement_thumb.jpg" alt="image">
               </RouterLink>
               <div class="portfolio-content-overlay">
                 <p>{{item.properties.workclass.label}}</p>

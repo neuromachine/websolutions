@@ -45,7 +45,7 @@ import Footer from '@/components/Footer.vue'
             </div>
             <div class="col-lg-6 col-md-12">
               <div class="banner-image">
-                <img src="/assets/img/home-font-2.png" alt="image">
+                <img src="@/assets/img/home-font-2.png" alt="image">
               </div>
             </div>
           </div>
@@ -54,25 +54,25 @@ import Footer from '@/components/Footer.vue'
     </div>
     <div class="home-shape-animation">
       <div class="shape-1">
-        <img src="/assets/img/shape/1.png" alt="shape image">
+        <img src="@/assets/img/shape/1.png" alt="shape image">
       </div>
       <div class="shape-2">
-        <img src="/assets/img/shape/2.png" alt="shape image">
+        <img src="@/assets/img/shape/2.png" alt="shape image">
       </div>
       <div class="shape-3">
-        <img src="/assets/img/shape/3.png" alt="shape image">
+        <img src="@/assets/img/shape/3.png" alt="shape image">
       </div>
       <div class="shape-4">
-        <img src="/assets/img/shape/4.png" alt="shape image">
+        <img src="@/assets/img/shape/4.png" alt="shape image">
       </div>
       <div class="shape-5">
-        <img src="/assets/img/shape/5.png" alt="shape image">
+        <img src="@/assets/img/shape/5.png" alt="shape image">
       </div>
       <div class="shape-6">
-        <img src="/assets/img/shape/6.png" alt="shape image">
+        <img src="@/assets/img/shape/6.png" alt="shape image">
       </div>
       <div class="shape-7">
-        <img src="/assets/img/shape/7.png" alt="shape image">
+        <img src="@/assets/img/shape/7.png" alt="shape image">
       </div>
     </div>
   </div>
@@ -92,10 +92,10 @@ import Footer from '@/components/Footer.vue'
           <div class="single-services-two-item">
             <div class="services-icon-box">
               <div class="default-icon">
-                <img src="/assets/img/icon/services-icon-1.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-1.svg" alt="svg icon">
               </div>
               <div class="hover-icon">
-                <img src="/assets/img/icon/services-icon-hover-1.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-hover-1.svg" alt="svg icon">
               </div>
             </div>
             <div class="services-two-content">
@@ -111,10 +111,10 @@ import Footer from '@/components/Footer.vue'
           <div class="single-services-two-item">
             <div class="services-icon-box">
               <div class="default-icon">
-                <img src="/assets/img/icon/services-icon-2.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-2.svg" alt="svg icon">
               </div>
               <div class="hover-icon">
-                <img src="/assets/img/icon/services-icon-hover-2.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-hover-2.svg" alt="svg icon">
               </div>
             </div>
             <div class="services-two-content">
@@ -130,10 +130,10 @@ import Footer from '@/components/Footer.vue'
           <div class="single-services-two-item">
             <div class="services-icon-box">
               <div class="default-icon">
-                <img src="/assets/img/icon/services-icon-3.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-3.svg" alt="svg icon">
               </div>
               <div class="hover-icon">
-                <img src="/assets/img/icon/services-icon-hover-3.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-hover-3.svg" alt="svg icon">
               </div>
             </div>
             <div class="services-two-content">
@@ -149,10 +149,10 @@ import Footer from '@/components/Footer.vue'
           <div class="single-services-two-item">
             <div class="services-icon-box">
               <div class="default-icon">
-                <img src="/assets/img/icon/services-icon-4.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-4.svg" alt="svg icon">
               </div>
               <div class="hover-icon">
-                <img src="/assets/img/icon/services-icon-hover-4.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-hover-4.svg" alt="svg icon">
               </div>
             </div>
             <div class="services-two-content">
@@ -168,10 +168,10 @@ import Footer from '@/components/Footer.vue'
           <div class="single-services-two-item">
             <div class="services-icon-box">
               <div class="default-icon">
-                <img src="/assets/img/icon/services-icon-5.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-5.svg" alt="svg icon">
               </div>
               <div class="hover-icon">
-                <img src="/assets/img/icon/services-icon-hover-5.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-hover-5.svg" alt="svg icon">
               </div>
             </div>
             <div class="services-two-content">
@@ -187,10 +187,10 @@ import Footer from '@/components/Footer.vue'
           <div class="single-services-two-item">
             <div class="services-icon-box">
               <div class="default-icon">
-                <img src="/assets/img/icon/services-icon-6.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-6.svg" alt="svg icon">
               </div>
               <div class="hover-icon">
-                <img src="/assets/img/icon/services-icon-hover-6.svg" alt="svg icon">
+                <img src="@/assets/img/icon/services-icon-hover-6.svg" alt="svg icon">
               </div>
             </div>
             <div class="services-two-content">
@@ -227,7 +227,7 @@ import Footer from '@/components/Footer.vue'
         </div>
         <div class="col-lg-6 col-md-12">
           <div class="about-image">
-            <img src="/assets/img/about-2.png" alt="About image">
+            <img src="@/assets/img/about-2.png" alt="About image">
           </div>
         </div>
       </div>
@@ -250,7 +250,7 @@ import Footer from '@/components/Footer.vue'
         <div class="col-lg-3 col-md-6">
           <div class="workprocess-single-item">
             <div class="workprocess-icon-box">
-              <img src="/assets/img/icon/workprocess-icon-1.svg" alt="icon">
+              <img src="@/assets/img/icon/workprocess-icon-1.svg" alt="icon">
             </div>
             <div class="workprocess-info">
               <h3>Изучаем и планируем</h3>
@@ -262,7 +262,7 @@ import Footer from '@/components/Footer.vue'
         <div class="col-lg-3 col-md-6">
           <div class="workprocess-single-item">
             <div class="workprocess-icon-box">
-              <img src="/assets/img/icon/workprocess-icon-2.svg" alt="icon">
+              <img src="@/assets/img/icon/workprocess-icon-2.svg" alt="icon">
             </div>
             <div class="workprocess-info">
               <h3>Дизайн и разработка</h3>
@@ -274,7 +274,7 @@ import Footer from '@/components/Footer.vue'
         <div class="col-lg-3 col-md-6">
           <div class="workprocess-single-item">
             <div class="workprocess-icon-box">
-              <img src="/assets/img/icon/workprocess-icon-3.svg" alt="icon">
+              <img src="@/assets/img/icon/workprocess-icon-3.svg" alt="icon">
             </div>
             <div class="workprocess-info">
               <h3>Публикация и тесты</h3>
@@ -286,7 +286,7 @@ import Footer from '@/components/Footer.vue'
         <div class="col-lg-3 col-md-6">
           <div class="workprocess-single-item">
             <div class="workprocess-icon-box">
-              <img src="/assets/img/icon/workprocess-icon-4.svg" alt="icon">
+              <img src="@/assets/img/icon/workprocess-icon-4.svg" alt="icon">
             </div>
             <div class="workprocess-info">
               <h3>Сопровождаем</h3>

@@ -51,7 +51,7 @@ const options = ref({
                 <p>Обратилась в Web Solution для создания сайта монобренда. Всё сделали быстро, качественно и по цене ниже, чем у конкурентов. Получила удобный, стильный сайт, полностью соответствующий моему бренду!</p>
               </div>
               <div class="avatar">
-                <img src="/assets/img/client/review_1.jpg" alt="testimonial images">
+                <img src="@/assets/img/client/review_1.jpg" alt="testimonial images">
               </div>
               <div class="testimonial-bio">
                 <div class="bio-info">
@@ -75,7 +75,7 @@ const options = ref({
                 <p>Сотрудничаем с Web Solution уже более 5 лет. За это время сайт прошёл множество модификаций, доработок и улучшений. Команда всегда оперативно решает задачи и предлагает грамотные решения!</p>
               </div>
               <div class="avatar">
-                <img src="/assets/img/client/review_2.jpg" alt="testimonial images">
+                <img src="@/assets/img/client/review_2.jpg" alt="testimonial images">
               </div>
               <div class="testimonial-bio">
                 <div class="bio-info">
@@ -99,7 +99,7 @@ const options = ref({
                 <p>Работали с Web Solution по ряду проектов. Нужно было создать удобные, конверсионные сайты для крупнейшего B2B-дилера шин. Задачи выполнены на высоком уровне, в срок и с учётом всех нюансов SEO.</p>
               </div>
               <div class="avatar">
-                <img src="/assets/img/client/review_3.jpg" alt="testimonial images">
+                <img src="@/assets/img/client/review_3.jpg" alt="testimonial images">
               </div>
               <div class="testimonial-bio">
                 <div class="bio-info">
@@ -123,7 +123,7 @@ const options = ref({
                 <p>За время работы с Web Solution реализовали множество сайтов для компании. Команда всегда на связи, быстро решает технические вопросы и обеспечивает стабильную поддержку на аутсорсе.</p>
               </div>
               <div class="avatar">
-                <img src="/assets/img/client/review_4.jpg" alt="testimonial images">
+                <img src="@/assets/img/client/review_4.jpg" alt="testimonial images">
               </div>
               <div class="testimonial-bio">
                 <div class="bio-info">

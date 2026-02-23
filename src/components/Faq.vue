@@ -23,7 +23,7 @@ onMounted( () => {
       <div class="row">
         <div class="col-lg-6 col-md-12">
           <div class="faq-img">
-            <img src="/assets/img/faq.png" alt="images">
+            <img src="@/assets/img/faq.png" alt="images">
           </div>
         </div>
         <div class="col-lg-6 col-md-12">

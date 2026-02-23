@@ -25,10 +25,10 @@ const jsonData = computed(() => {
   <div class="single-services-two-item">
     <div class="services-icon-box">
       <div class="default-icon">
-        <img src="/assets/img/icon/services-icon-1.svg" alt="svg icon">
+        <img src="@/assets/img/icon/services-icon-1.svg" alt="svg icon">
       </div>
       <div class="hover-icon">
-        <img src="/assets/img/icon/services-icon-hover-1.svg" alt="svg icon">
+        <img src="@/assets/img/icon/services-icon-hover-1.svg" alt="svg icon">
       </div>
     </div>
     <div class="services-two-content">

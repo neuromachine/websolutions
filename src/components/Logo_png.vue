@@ -4,7 +4,7 @@
 
 
 <template>
-  <span class="logo_wrap"><img src="/assets/img/logo.png" alt="logo" class="white"><img src="/assets/img/logo-black.png" alt="logo" class="black"></span>
+  <span class="logo_wrap"><img src="@/assets/img/logo.png" alt="logo" class="white"><img src="@/assets/img/logo-black.png" alt="logo" class="black"></span>
 </template>
 
 

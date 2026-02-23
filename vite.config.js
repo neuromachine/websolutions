@@ -26,6 +26,16 @@ export default defineConfig({
       minify: false
     }),
   ],
+    test: {
+        globals: true,
+        // environment: 'happy-dom',
+        environment: 'jsdom',
+        setupFiles: './tests/setup.ts',
+        coverage: {
+            provider: 'v8',
+            reporter: ['text', 'json', 'html'],
+        },
+    },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
