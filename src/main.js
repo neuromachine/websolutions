@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import { createHead } from '@unhead/vue/client'
 import { createPinia } from 'pinia'; // Импортируем Pinia
 import dialogs from 'v-dialogs'
-import App from './App.vue'
+import App from './App.vue' // Case sensivity fix
 import "waypoints/lib/noframework.waypoints.js"; //http://imakewebthings.com/waypoints/
 import router from '@/router'
 
