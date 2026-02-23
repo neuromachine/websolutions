@@ -127,3 +127,5 @@ router.afterEach(() => {
 });
 
 export default router
+
+export { routes }
