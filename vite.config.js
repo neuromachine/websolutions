@@ -1,13 +1,20 @@
 import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from 'vite'
+import { defineConfig,loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import tailwindcss from '@tailwindcss/vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => {
+    const env = loadEnv(mode, process.cwd(), '')
+    const target = env.VITE_DEPLOY_TARGET || 'local'
+
+    console.log('MODE:', mode)
+    console.log('TARGET:', target)
+
+    return {
   // define: {
   //   'window.jQuery': 'jquery',
   //   'jQuery': 'jquery',
@@ -17,15 +24,14 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     //tailwindcss({ config: './tailwind.config.js' }),
-    createHtmlPlugin({
-      inject: {
-        injectData: {
-          PROD: process.env.VITE_PROD,
-          VERSEL: process.env.VITE_VERSEL
-        }
-      },
-      minify: false
-    }),
+      createHtmlPlugin({
+          inject: {
+              data: {
+                  TARGET: target
+              }
+          },
+          minify: false
+      }),
   ],
     test: {
         globals: true,
@@ -43,4 +49,4 @@ export default defineConfig({
         '~tests': fileURLToPath(new URL('./tests', import.meta.url))
     },
   },
-})
+}})

@@ -118,7 +118,7 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach(() => {
-    if (import.meta.env.VITE_PROD === 'true' && typeof ym === 'function') {
+    if (import.meta.env.VITE_DEPLOY_TARGET === 'selfhosted' && typeof ym === 'function') {
         ym(103176474, 'hit', to.fullPath)
     }
     setTimeout(() => {
