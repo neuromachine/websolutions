@@ -20,7 +20,8 @@ export default defineConfig({
     createHtmlPlugin({
       inject: {
         injectData: {
-          PROD: process.env.VITE_PROD
+          PROD: process.env.VITE_PROD,
+          VERSEL: process.env.VITE_VERSEL
         }
       },
       minify: false
