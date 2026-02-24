@@ -2,9 +2,9 @@ name: Frontend CI/CD (Vercel)
 
 on:
   push:
-    branches: [master]
+    branches: [public]
   pull_request:
-    branches: [master]
+    branches: [public]
   workflow_dispatch:
 
 jobs:
