@@ -21,8 +21,8 @@ import Footer from '@/components/Footer.vue'
             <div class="col-lg-6 col-md-12">
               <div class="main-banner-content">
                 <h6 class="text-gradient">Надёжные web-решения</h6>
-                <h1>Твой успешный бизнес,<br>Наша экспертная<br><span class="text-gradient">Web-поддержка.</span></h1>
-                <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат!</p>
+                <h1>Твой успешный бизнес,<br>Наша экспертная<br><span class="text-gradient">Web-поддержка!</span></h1>
+                <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
                 <!--
                 <div class="banner-btn">
                   <a class="default-btn-one" href="services.html">Смотреть видео<span></span></a>

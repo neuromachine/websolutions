@@ -9,7 +9,7 @@ const dataStore = useDataStore();
 const route = useRoute()
 
 function load() {
-  dataStore.fetchBlockCategory(route.name);
+  dataStore.fetchBlockCategory('portfolio');
 }
 
 onMounted(() => {load()});

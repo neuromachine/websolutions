@@ -7,7 +7,8 @@ import CPheader from "@/components/CPheader.vue";
 import CPimg from "@/components/CPimg.vue";
 import CPicon from "@/components/CPicon.vue";
 import WSteam from "@/components/WSteam.vue";
-import Portfolio from "@/components/Portfolio.vue"
+// import Portfolio from "@/components/Portfolio.vue"
+import Portfolio from "@/components/blocks/portfolio/index.vue"
 import Footer from "@/components/Footer.vue";
 import content from "@/components/blocks/services/presentation/content.vue"
 import {useUiStore} from "@/stores/uiStore.js";
