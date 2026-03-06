@@ -38,7 +38,6 @@ const routes = [
         name: 'page',
         component: () => import('@/views/blocks/Page.vue'),
     },
-    // test
     {
         path: '/price',
         name: 'price_list',
@@ -54,36 +53,10 @@ const routes = [
         name: 'compred',
         component: () => import('@/views/Compred.vue'),
     },
-
-    /* legacy after here */
-
-
-
-/*    {
-        path: '/portfolio/:slug',
-        name: 'portfolio_item',
-        component: () => import('@/views/PortfolioItem.vue'),
-    },*/
     {
         path: '/portfolio/item/:slug',
         name: 'portfolio_item',
         component: () => import('@/views/portfolio/Item.vue'),
-    },
-    // {
-    //     path: '/service/:slug',
-    //     name: 'service_item',
-    //     component: () => import('@/views/ServiceItem.vue'),
-    // },
-    {
-        path: '/blog',
-        name: 'blog_list',
-        component: () => import('@/views/BlogList.vue'),
-    },
-    {
-        path: '/blog/:slug',
-        name: 'blog_item',
-        component: () => import('@/views/BlogItem.vue'),
-        // component: ServiceView
     },
 
 ]

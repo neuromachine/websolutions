@@ -1,6 +1,5 @@
 <script setup>
 import {onMounted} from "vue";
-// import Dir from "@/components/blocks/services/dir.vue";
 import catClass from "@/components/blocks/services/catClass.vue";
 import { useDataStore } from '@/stores/dataStore';
 const dataStore = useDataStore();
