@@ -8,7 +8,6 @@ import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
 import Navbar from '@/components/navbar.vue';
 import Logo from '@/components/Logo_png.vue';
 
-import structure from "@/structure.json";
 import WSpro from "@/components/WSpro.vue";
 
 defineProps({
@@ -74,7 +73,7 @@ onMounted(() => {
           </div>
 
         </nav>
-        <ResponsiveMenu v-if="uiStore.isOpen && !isNavi" :structure="structure" />
+        <ResponsiveMenu v-if="uiStore.isOpen && !isNavi" />
       </div>
     </div>
   </div>
