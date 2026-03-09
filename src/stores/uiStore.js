@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia';
+import { watch } from 'vue'
 import { useDataStore} from '@/stores/dataStore.js';
+import { SECTIONS_CONFIG, DEFAULT_SECTION, VALID_SECTIONS } from '@/config/sections.js'
 
 export const useUiStore = defineStore('UiStore', {
     state: () => ({
@@ -10,6 +12,7 @@ export const useUiStore = defineStore('UiStore', {
         uiMainVars: {
             debug: false,
             menu: false,
+            section: DEFAULT_SECTION,
             header: {
                 head: true,
                 navbar: true,
@@ -34,13 +37,29 @@ export const useUiStore = defineStore('UiStore', {
         getGlobalLoading(state) {
             const dataStore = useDataStore();
             return state.isGlobalLoading || dataStore.getLoadingStatus; // Комбинируем состояния: если хоть где-то загрузка, возвращаем true
-        }
+        },
+        // Полный конфиг текущей секции — задел под i18n и прочие расширения
+        currentSection(state) {
+            return SECTIONS_CONFIG[state.uiMainVars.section]
+                ?? SECTIONS_CONFIG[DEFAULT_SECTION]
+        },
+        // Удобный прямой доступ к locale — для vue-i18n в будущем
+        currentLocale() {
+            return this.currentSection.locale
+        },
     },
     actions: {
+        setSection(value) {
+            const normalized = String(value || '').trim()
+
+            // Fallback к default если секция не валидна или пустая
+            this.uiMainVars.section = VALID_SECTIONS.includes(normalized)
+                ? normalized
+                : DEFAULT_SECTION
+        },
         setUiVars(key, value) {
             //console.log('debug:setUiVars', key, value);
-            //console.log('debug:setUiVars - Setting menu to:', value);
-            this.uiMainVars[key] = value;
+            this.uiMainVars[key] = value
         },
         setHeaderVars(key, value) {
             //console.log('debug: setHeaderVars', key, value);
@@ -58,17 +77,16 @@ export const useUiStore = defineStore('UiStore', {
         },
         // TODO: улучшить
         setMainVars(dataObj) {
-            //console.log(dataObj);
             this.uiMainVars.page = {
-                title: dataObj?.name || 'Заголовок',
-                key: dataObj?.key || '/',
+                title:       dataObj?.name        || 'Заголовок',
+                key:         dataObj?.key         || '/',
                 breadcrumbs: dataObj?.breadcrumbs || [{ key: '/', title: 'Главная' }],
-                parent: dataObj?.parent || null,
-                children: dataObj?.children || [],
-                version: dataObj?.version || 'full',
-                contacts:{
+                parent:      dataObj?.parent      || null,
+                children:    dataObj?.children    || [],
+                version:     dataObj?.version     || 'full',
+                contacts: {
                     phone: 79282619061,
-                }
+                },
             }
         },
         setIsOpen(value) {

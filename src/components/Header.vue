@@ -7,6 +7,7 @@ import $ from 'jquery'
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
 import Navbar from '@/components/navbar.vue';
 import Logo from '@/components/Logo_png.vue';
+import SectionSwitch from "@/components/SectionSwitch.vue";
 
 import WSpro from "@/components/WSpro.vue";
 
@@ -67,7 +68,8 @@ onMounted(() => {
           </div>
           <div v-if="uiStore.uiMainVars.header.menu" class="navbar-collapse mean-menu" id="navbarSupportedContent">
             <Navbar />
-            <div class="other-option">
+            <SectionSwitch />
+            <div class="other-option mx-auto">
               <a class="btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i>Написать<span></span></a>
             </div>
           </div>

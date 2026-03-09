@@ -207,7 +207,7 @@ export const useDataStore = defineStore('dataStore', {
             uiStore.startGlobalLoading()
             this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`blocks/categories/structure/${slug}`)
+                const { data: { data } } = await api.get(`${uiStore.uiMainVars.section}/blocks/categories/structure/${slug}`)
                 uiStore.setMainVars(data)
                 this.structure = data
                 this.strReady = true
@@ -232,7 +232,7 @@ export const useDataStore = defineStore('dataStore', {
             uiStore.startGlobalLoading()
             this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`blocks/categories/${slug}`)
+                const { data: { data } } = await api.get(`${uiStore.uiMainVars.section}/blocks/categories/${slug}`)
                 uiStore.setMainVars(data)
                 this.category = data
                 this.catReady = true
@@ -248,7 +248,7 @@ export const useDataStore = defineStore('dataStore', {
             uiStore.startGlobalLoading()
             this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`blocks/items/${slug}`)
+                const { data: { data } } = await api.get(`${uiStore.uiMainVars.section}/blocks/items/${slug}`)
                 uiStore.setMainVars(data)
                 this.item = data
                 this.itemReady = true

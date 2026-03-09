@@ -15,6 +15,10 @@ import './assets/styles/style.css'; // Template CSS
 import './assets/styles/responsive.css'; // Responsive CSS
 import './assets/styles/wspro.css'; // Individual CSS
 
+import AppLink from '@/components/AppLink.vue'
+
+import { useUiStore } from '@/stores/uiStore'
+
 const app = createApp(App);
 const head = createHead();
 const pinia = createPinia(); // Создаём экземпляр Pinia
@@ -22,6 +26,11 @@ app.use(head);
 app.use(pinia); // Подключаем Pinia к приложению
 app.use(router); // Подключаем роутер
 app.use(dialogs);
+app.component('AppLink', AppLink)
+
+const uiStore = useUiStore()
+const saved = localStorage.getItem('section')
+if (saved) uiStore.setSection(saved)  // setSection сам валидирует и делает fallback
 
 // Waypoint уже есть в `window`, просто добавляем его в глобальные свойства
 app.config.globalProperties.$Waypoint = window.Waypoint;
