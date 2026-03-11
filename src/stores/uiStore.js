@@ -52,6 +52,8 @@ export const useUiStore = defineStore('UiStore', {
         setSection(value) {
             const normalized = String(value || '').trim()
 
+            console.info(normalized)
+
             // Fallback к default если секция не валидна или пустая
             this.uiMainVars.section = VALID_SECTIONS.includes(normalized)
                 ? normalized

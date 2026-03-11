@@ -28,7 +28,7 @@ watch(
     <div v-if="dataStore.isCatReady" class="container">
 
       <content
-        :content="dataStore.category.content"
+        :content="dataStore.category.content.content"
       />
 
       <div v-if="dataStore.isHaveSubCat" class="row groups_list">

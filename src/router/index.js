@@ -82,8 +82,11 @@ router.beforeEach((to, from, next) => {
     const uiStore = useUiStore()
     const routeSection = to.params.section ?? ''
 
+    console.log('Current section: ', routeSection)
+
     // setSection сам обработает fallback — дополнительной логики здесь не нужно
     if (routeSection !== uiStore.uiMainVars.section) {
+        console.log('SET section: ', routeSection)
         uiStore.setSection(routeSection)
     }
 

@@ -220,9 +220,12 @@ export const useDataStore = defineStore('dataStore', {
         },
         async fetchBlockCategory(slug) {
 
-            //console.log(this.category?.key,slug)
+
 
             const uiStore = useUiStore()
+
+            console.log(this.category?.key,slug,uiStore.uiMainVars.section)
+
             if (this.category?.key === slug)
             {
                 uiStore.stopGlobalLoading()

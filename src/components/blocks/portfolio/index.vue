@@ -27,6 +27,12 @@ function setFilter(filterKey) {
   <section v-if="dataStore.isCatReady" class="portfolio-area section-padding">
     <div class="container">
       <div class="row">
+        <div class="col-md-12"><h1>{{dataStore.category.content.title}}</h1></div>
+        <div class="col-md-12"><h3>{{dataStore.category.content.metadata}}</h3></div>
+        <div class="col-md-12">{{dataStore.category.blocks[1].items[0].properties.title}}</div>
+        <div class="col-md-12">{{dataStore.category.blocks[1].items[0].properties.metadata}}</div>
+      </div>
+      <div class="row">
         <div class="col-md-12">
           <div class="section-title">
             <h6 class="sub-title">Последние работы</h6>

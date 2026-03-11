@@ -5,8 +5,8 @@ export const SECTIONS_CONFIG = {
         label: 'RU',
         default: true,
     },
-    eng: {
-        code: 'eng',
+    en: {
+        code: 'en',
         locale: 'en-US',
         label: 'EN',
         default: false,
