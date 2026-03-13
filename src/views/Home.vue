@@ -7,7 +7,34 @@ import Testimonial from "@/components/Testimonial.vue";
 import Counter from "@/components/Counter.vue";
 import Footer from '@/components/Footer.vue'
 
+import { onMounted, watch } from "vue";
+import { useDataStore } from '@/stores/dataStore';
+const dataStore = useDataStore();
+import {useRoute} from "vue-router";
+const route = useRoute();
+function load() {
+  console.log("load - route.params.slug",route.params.slug,'route.name:',route.name);
 
+  if(route.params.slug == undefined)
+  {
+    dataStore.fetchBlockCategory(route.name);
+  }
+  else
+  {
+    dataStore.fetchBlockCategory(route.params.slug);
+  }
+
+}
+onMounted(() => {load()});
+watch(
+    () => route.params.slug,
+    (newSlug, oldSlug) => {
+      console.log(newSlug);
+      if (newSlug !== oldSlug) {
+        load()
+      }
+    }
+)
 </script>
 
 <template>
@@ -19,10 +46,10 @@ import Footer from '@/components/Footer.vue'
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-6 col-md-12">
-              <div class="main-banner-content">
-                <h6 class="text-gradient">Надёжные web-решения</h6>
-                <h1>Твой успешный бизнес,<br>Наша экспертная<br><span class="text-gradient">Web-поддержка!</span></h1>
-                <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
+              <div class="main-banner-content" v-if="dataStore.isCatReady">
+                <h6 class="text-gradient">{{dataStore.category.sections.hero.subtitle}}</h6>
+                <h1 v-html="dataStore.category.sections.hero.maintitle"></h1>
+                <p>{{dataStore.category.sections.hero.descr}}</p>
                 <!--
                 <div class="banner-btn">
                   <a class="default-btn-one" href="services.html">Смотреть видео<span></span></a>
@@ -79,125 +106,30 @@ import Footer from '@/components/Footer.vue'
   <!-- End Home Section -->
 
   <!-- Start Services Two Section -->
-  <section class="services-section-two section-padding">
+  <section class="services-section-two section-padding" v-if="dataStore.isCatReady">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="section-title">
-            <h6 class="sub-title">Что мы делаем</h6>
-            <h2>Наши услуги</h2>
+            <h6 class="sub-title">{{dataStore.category.sections.services.subtitle}}</h6>
+            <h2>{{dataStore.category.sections.services.title}}</h2>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6">
+        <div v-for="(item, index) in dataStore.category.sections.services.items" class="col-lg-4 col-md-6">
           <div class="single-services-two-item">
             <div class="services-icon-box">
               <div class="default-icon">
-                <img src="@/assets/img/icon/services-icon-1.svg" alt="svg icon">
+                <img :src="item.icon" alt="svg icon">
               </div>
               <div class="hover-icon">
-                <img src="@/assets/img/icon/services-icon-hover-1.svg" alt="svg icon">
+                <img :src="item.icon_h" alt="svg icon">
               </div>
             </div>
             <div class="services-two-content">
-              <h3>Разработка UI</h3>
-              <p>Создаём современные и удобные сайты — от лендингов до сложных платформ. Разрабатываем с нуля или дорабатываем существующие решения, адаптируя их под ваш бизнес</p>
+              <h3>{{item.title}}</h3>
+              <p>{{item.descr}}</p>
               <div class="services-btn">
-                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services-two-item">
-            <div class="services-icon-box">
-              <div class="default-icon">
-                <img src="@/assets/img/icon/services-icon-2.svg" alt="svg icon">
-              </div>
-              <div class="hover-icon">
-                <img src="@/assets/img/icon/services-icon-hover-2.svg" alt="svg icon">
-              </div>
-            </div>
-            <div class="services-two-content">
-              <h3>Хостинг и серверные решения</h3>
-              <p>Надёжный хостинг и оптимизированные серверные решения для стабильной работы вашего проекта. Настроим, обезопасим и обеспечим бесперебойную поддержку</p>
-              <div class="services-btn">
-                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services-two-item">
-            <div class="services-icon-box">
-              <div class="default-icon">
-                <img src="@/assets/img/icon/services-icon-3.svg" alt="svg icon">
-              </div>
-              <div class="hover-icon">
-                <img src="@/assets/img/icon/services-icon-hover-3.svg" alt="svg icon">
-              </div>
-            </div>
-            <div class="services-two-content">
-              <h3>Поддержка и доработка</h3>
-              <p>Обновляем, дорабатываем и оптимизируем сайты. Исправляем ошибки, ускоряем загрузку, улучшаем UX/UI и добавляем новые функции по запросу</p>
-              <div class="services-btn">
-                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services-two-item">
-            <div class="services-icon-box">
-              <div class="default-icon">
-                <img src="@/assets/img/icon/services-icon-4.svg" alt="svg icon">
-              </div>
-              <div class="hover-icon">
-                <img src="@/assets/img/icon/services-icon-hover-4.svg" alt="svg icon">
-              </div>
-            </div>
-            <div class="services-two-content">
-              <h3>Адаптация под устройства</h3>
-              <p>Делаем сайты, которые работают на всех устройствах. Оптимизируем под мобильные, планшеты и десктопы, улучшая удобство и скорость работы</p>
-              <div class="services-btn">
-                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services-two-item">
-            <div class="services-icon-box">
-              <div class="default-icon">
-                <img src="@/assets/img/icon/services-icon-5.svg" alt="svg icon">
-              </div>
-              <div class="hover-icon">
-                <img src="@/assets/img/icon/services-icon-hover-5.svg" alt="svg icon">
-              </div>
-            </div>
-            <div class="services-two-content">
-              <h3>Безопасность и защита</h3>
-              <p>Защищаем сайты от взломов, DDoS-атак и утечек данных. Настраиваем SSL, резервное копирование и средства мониторинга угроз.</p>
-              <div class="services-btn">
-                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="single-services-two-item">
-            <div class="services-icon-box">
-              <div class="default-icon">
-                <img src="@/assets/img/icon/services-icon-6.svg" alt="svg icon">
-              </div>
-              <div class="hover-icon">
-                <img src="@/assets/img/icon/services-icon-hover-6.svg" alt="svg icon">
-              </div>
-            </div>
-            <div class="services-two-content">
-              <h3>Интеграции и API</h3>
-              <p>Подключаем CRM, платёжные системы, маркетплейсы и сторонние сервисы. Делаем ваш сайт удобнее, автоматизируя ключевые процессы</p>
-              <div class="services-btn">
-                <RouterLink to="/services" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
+                <RouterLink :to="item.link" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
               </div>
             </div>
           </div>
@@ -235,7 +167,7 @@ import Footer from '@/components/Footer.vue'
   </section>
   <!-- End About Section -->
 
-  <Portfolio />
+<!--  <Portfolio />-->
 
   <!-- Start Works Process Section -->
   <section class="workprocess-section bg-grey section-padding">
