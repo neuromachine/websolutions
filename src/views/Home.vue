@@ -6,12 +6,22 @@ import Faq from "@/components/Faq.vue";
 import Testimonial from "@/components/Testimonial.vue";
 import Counter from "@/components/Counter.vue";
 import Footer from '@/components/Footer.vue'
-
-import { onMounted, watch } from "vue";
 import { useDataStore } from '@/stores/dataStore';
 const dataStore = useDataStore();
+
+
+
 import {useRoute} from "vue-router";
 const route = useRoute();
+
+import {usePageData} from "@/composables/usePageData.js";
+usePageData((route) => {
+  console.log('MAIN route.fullPath:',route.fullPath);
+  dataStore.fetchBlockCategory(route.params.slug ?? route.name)
+})
+
+/*
+import { onMounted, watch } from "vue";
 function load() {
   console.log("load - route.params.slug",route.params.slug,'route.name:',route.name);
 
@@ -35,6 +45,8 @@ watch(
       }
     }
 )
+
+ */
 </script>
 
 <template>

@@ -219,15 +219,15 @@ export const useDataStore = defineStore('dataStore', {
             }
         },
         async fetchBlockCategory(slug) {
-
-
-
             const uiStore = useUiStore()
 
-            console.log(this.category?.key,slug,uiStore.uiMainVars.section)
+            console.log('fetchBlockCategory - slug:',slug)
+            console.log('fetchBlockCategory - this.category?.key:',this.category?.key)
+            console.log('fetchBlockCategory - uiStore.uiMainVars.section:',uiStore.uiMainVars.section)
 
-            if (this.category?.key === slug)
+            if (this.category?.key === slug && this.category.section === uiStore.uiMainVars.section)
             {
+                console.log('fetchBlockCategory - OUT:',this.category?.key === slug)
                 uiStore.stopGlobalLoading()
                 return false
             }
