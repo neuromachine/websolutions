@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import {createApp, watch} from 'vue'
 import { createHead } from '@unhead/vue/client'
 import { createPinia } from 'pinia'; // Импортируем Pinia
 import dialogs from 'v-dialogs'
@@ -19,18 +19,29 @@ import AppLink from '@/components/AppLink.vue'
 
 import { useUiStore } from '@/stores/uiStore'
 
+import { i18n } from '@/i18n'
+
 const app = createApp(App);
 const head = createHead();
 const pinia = createPinia(); // Создаём экземпляр Pinia
 app.use(head);
 app.use(pinia); // Подключаем Pinia к приложению
 app.use(router); // Подключаем роутер
+app.use(i18n)
 app.use(dialogs);
 app.component('AppLink', AppLink)
 
 const uiStore = useUiStore()
 const saved = localStorage.getItem('section')
 if (saved) uiStore.setSection(saved)  // setSection сам валидирует и делает fallback
+
+watch(
+    () => uiStore.currentLocale,
+    (locale) => {
+        i18n.global.locale.value = locale
+    },
+    { immediate: true }
+)
 
 // Waypoint уже есть в `window`, просто добавляем его в глобальные свойства
 app.config.globalProperties.$Waypoint = window.Waypoint;

@@ -1,34 +1,3 @@
-<template>
-  <Form v-slot="{ handleSubmit }" :validation-schema="validationSchema">
-    <form @submit.prevent="handleSubmit(onSubmit)" class="dynamic-form dynamic-form">
-
-      <!-- Поля -->
-      <div v-for="fieldDef in schema.fields" :key="fieldDef.name" class="form-field">
-        <Field :name="fieldDef.name" v-slot="{ field, errors }">
-          <component
-              :is="resolveComponent(fieldDef.type)"
-              v-bind="mergeBindings(field, fieldDef)"
-              :error="errors?.[0] || null"
-          />
-        </Field>
-      </div>
-
-      <!-- Кнопка -->
-      <button type="submit" :disabled="isSubmitting">
-        {{ isSubmitting ? 'Отправка...' : 'Отправить' }}
-      </button>
-
-      <!-- Сообщения -->
-      <div v-if="submitStatus === 'success'" class="success-msg" role="status" aria-live="polite">
-        Спасибо! Ваша заявка принята (ID: {{ lastResponse?.id }})
-      </div>
-      <div v-if="submitStatus === 'error'" class="error-msg" role="alert">
-        Ошибка отправки: {{ lastResponse?.message || 'Попробуйте позже' }}
-      </div>
-    </form>
-  </Form>
-</template>
-
 <script setup>
 import { computed } from 'vue'
 import { Form, Field, useForm } from 'vee-validate'
@@ -40,6 +9,9 @@ import BaseInput from './BaseInput.vue'
 import BaseTextarea from './BaseTextarea.vue'
 import BaseSelect from './BaseSelect.vue'
 import BaseCheckbox from './BaseCheckbox.vue'
+
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 // props
 const props = defineProps({
@@ -130,6 +102,34 @@ async function onSubmit(values) {
   }
 }
 </script>
+
+<template>
+  <Form v-slot="{ handleSubmit }" :validation-schema="validationSchema">
+    <form @submit.prevent="handleSubmit(onSubmit)" class="dynamic-form dynamic-form">
+      <!-- fields -->
+      <div v-for="fieldDef in schema.fields" :key="fieldDef.name" class="form-field">
+        <Field :name="fieldDef.name" v-slot="{ field, errors }">
+          <component
+              :is="resolveComponent(fieldDef.type)"
+              v-bind="mergeBindings(field, fieldDef)"
+              :error="errors?.[0] || null"
+          />
+        </Field>
+      </div>
+      <!-- button -->
+      <button type="submit" :disabled="isSubmitting">
+        {{ isSubmitting ? t('form.sending') : t('form.send') }}
+      </button>
+      <!-- send result messages -->
+      <div v-if="submitStatus === 'success'" class="success-msg" role="status" aria-live="polite">
+        {{ t('send.send_result_ok')}} (ID: {{ lastResponse?.id }})
+      </div>
+      <div v-if="submitStatus === 'error'" class="error-msg" role="alert">
+        {{ t('form.send_fail_onserver') }} {{ lastResponse?.message || t('form.send_try_again') }}
+      </div>
+    </form>
+  </Form>
+</template>
 
 <style scoped>
 .dynamic-form { display:flex; flex-direction:column; gap:1rem; }

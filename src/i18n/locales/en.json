@@ -1,0 +1,15 @@
+{
+  "ui": {
+    "loading": "Loading..."
+  },
+  "form": {
+    "title": "Fill request form",
+    "desc": "Leave us your contact information and we will contact you",
+    "send": "Send",
+    "sending": "Sending...",
+    "send_fail_onserver": "Sending error:",
+    "send_try_again": "Please try again later",
+    "send_result_ok": "Thank you! Your application has been accepted",
+    "field_label": "Messenger name, phone number, or email"
+  }
+}

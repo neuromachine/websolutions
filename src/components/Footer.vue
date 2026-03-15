@@ -19,6 +19,9 @@ const route = useRoute();
 
 const isNavi = computed(() => route.path === '/compred');
 
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 
 // TODO: Refactoring
 onMounted(() => {
@@ -37,39 +40,26 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Start Footer & Subscribe Section -->
+  <!-- Start Footer Section -->
   <section class="footer-subscribe-wrapper">
-    <!-- Start Subscribe Section -->
+    <!-- Start Form Section -->
     <div class="subscribe-area" v-if="!isNavi">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 col-md-6">
             <div class="subscribe-content">
-              <h2>Заполните форму</h2>
-              <p>Оставьте нам свой контакт - свяжемся оперативно</p>
+              <h2>{{ t('form.title') }}</h2>
+              <p>{{ t('form.desc') }}</p>
             </div>
           </div>
           <div class="col-lg-6 col-md-6">
             <SimplifiedForm />
-            <!--
-                        <FeedbackForm />
-                        <hr/>
-
-                        <hr/>
-
-                        <OfferRequestForm />
-
-                        <form class="newsletter-form">
-                          <input type="text" class="input-newsletter" name="email" placeholder="имя в мессенджере, телефон или e-mail" required autocomplete="off">
-                          <button type="submit">Отправить</button>
-                        </form>
-                    -->
           </div>
         </div>
       </div>
     </div>
-    <!-- End Subscribe Section -->
-    <!-- Start Footer Section -->
+    <!-- End Form Section -->
+    <!-- Start Footer menu Section -->
     <div class="footer-area ptb-100">
       <div class="container">
         <div class="row">
@@ -145,9 +135,9 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <!-- End Footer Section -->
+    <!-- End Footer menu Section -->
   </section>
-  <!-- End Footer & Subscribe Section -->
+  <!-- End Footer Section -->
 
   <!-- Start Copy Right Section -->
   <div v-if="!isNavi" class="copyright-area">

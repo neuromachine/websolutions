@@ -28,7 +28,7 @@ export default {
         }
 
         try {
-            const { data: res } = await api.post('/forms/submit', payload)
+            const { data: res } = await api.post('ru/forms/submit', payload)
 
             // Ожидаемый успешный ответ: { success: true, id: 5, status: 'pending' }
             // Ожидаемая ошибка валидации: { success: false, errors: { name: ['msg'] } }
