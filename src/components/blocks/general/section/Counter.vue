@@ -1,15 +1,23 @@
 <script setup>
-import { ref, onMounted, getCurrentInstance } from "vue";
+import { ref, onMounted, getCurrentInstance, computed } from "vue";
 import CounterUp from "counterup2"; //https://github.com/bfintal/Counter-Up2
+
+const props = defineProps({
+  list: {
+    type: Object,
+    required: true
+  },
+})
 
 const counterRefs = ref([]); // Массив ссылок на все счетчики
 
-const counters = [
-  { value: 16, label: "Лет помогаем бизнесу" },
-  { value: 8, label: "Клиентов постоянно с нами" },
-  { value: 350, label: "Завершенных проектов" },
-  { value: 50, label: "Рекламных компаний" },
-];
+const counters = computed(() => {
+  const items = props.list.items || [];
+  return items.map((item) => ({
+    value: item.title,
+    label: item.descr,
+  }));
+});
 
 onMounted(() => {
   const instance = getCurrentInstance();
