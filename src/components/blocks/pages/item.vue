@@ -4,6 +4,12 @@ import { useDataStore } from '@/stores/dataStore';
 const dataStore = useDataStore();
 import {useRoute} from "vue-router";
 const route = useRoute();
+import {usePageData} from "@/composables/usePageData.js";
+usePageData((route) => {
+  console.log('Page route.fullPath:',route.fullPath,'route.params.slug: ',route.params.slug,'route.name: ',route.name);
+  dataStore.fetchBlockItem(route.params.slug ?? route.name)
+})
+/*
 function load() {
   dataStore.fetchBlockItem(route.params.slug);
   //dataStore.fetchStructure('services');
@@ -17,6 +23,7 @@ watch(
       }
     }
 )
+ */
 </script>
 <template>
   <!-- Start Services Details Section -->

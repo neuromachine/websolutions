@@ -120,6 +120,9 @@ export const useDataStore = defineStore('dataStore', {
         },
     },
     actions: {
+        resetCategory() {
+            this.category = null
+        },
         // Обновление UI основных переменных страницы
         updatePageVars() {
             const crumbs = [{ key: '/', title: 'Главная' }];
@@ -262,71 +265,5 @@ export const useDataStore = defineStore('dataStore', {
                 this.setLoading(false)
             }
         },
-        // TODO: legacy from list.vue
-        async fetchTree(slug) {
-            try {
-                this.isLoading = true;
-                this.tree = (await api.get('/tree/'+slug)).data;
-                this.isLoading = false;
-            } catch (err) {
-                console.error('Ошибка API:', err);
-            } finally {
-                this.isLoading = false;
-            }
-        },
-        async fetchGroup(slug) {
-            try {
-                this.isLoading = true;
-                this.data = (await api.get('/group/offers/'+slug)).data;
-                this.isLoading = false;
-            } catch (err) {
-                console.error('Ошибка API:', err);
-            } finally {
-                this.isLoading = false;
-            }
-        },
-        async fetchCategory(slug) {
-            try {
-                //this.isLoading = true;
-                const res = (await api.get('/dictionaries/'+slug+'/categories/tree')).data;
-                // this.isLoading = false;
-                console.log(res);
-                return res;
-            } catch (err) {
-                console.error('Ошибка API:', err);
-            }
-        },
-        // TODO: ввести проверку поступивших данных, а так же ввести типовой формат ответа
-        // TODO: Legacy ? см. .item
-        async fetchItem(slug) {
-            try {
-                this.isLoading = true;
-                this.item = (await api.get('/item/'+slug)).data; // TODO: дублирование см. fetchItemFromApi
-                this.isLoading = false;
-            } catch (err) {
-                console.error('Ошибка API:', err);
-            }
-        },
-        async fetchItemFromApi(slug) {
-            return (await api.get('/item/'+slug)).data;
-        },
-        async fetchCategoryFromApi(slug) {
-            try {
-                return (await api.get('/cat/'+slug)).data;
-            } catch (err) {
-                console.error('Ошибка API:', err);
-                return null;
-            }
-        },
-        /*
-        async fetchBlockCategory(slug) {
-            try {
-                return (await api.get('blocks/categories/'+slug)).data.data;
-            } catch (err) {
-                console.error('Ошибка API:', err);
-                return null;
-            }
-        },
-         */
     }
 });

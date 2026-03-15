@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { h } from 'vue'
 import { RouterView } from 'vue-router'
 import { useUiStore } from '@/stores/uiStore'
+import { useDataStore } from '@/stores/dataStore'
 import { analytics } from '@/analytics'
 import { portfolioRoutes } from './routes/portfolio'
 import $ from 'jquery'
@@ -42,32 +43,10 @@ const routes = [
                 component: () => import('@/views/blocks/Page.vue'),
             },
             {
-                path: 'price',
-                name: 'price_list',
-                component: () => import('@/views/PriceList.vue'),
-            },
-            {
-                path: 'price/:slug',
-                name: 'price_item',
-                component: () => import('@/views/PriceItem.vue'),
-            },
-            {
                 path: 'compred/:slug',
                 name: 'compred',
                 component: () => import('@/views/Compred.vue'),
             },
-            /*
-            {
-                path: 'portfolio',
-                name: 'portfolio',
-                component: () => import('@/views/Portfolio.vue'),
-            },
-            {
-                path: 'portfolio/item/:slug',
-                name: 'portfolio_item',
-                component: () => import('@/views/portfolio/Item.vue'),
-            },
-             */
             ...portfolioRoutes,
         ],
     },
@@ -82,7 +61,7 @@ router.beforeEach((to, from, next) => {
     const uiStore = useUiStore()
     const routeSection = to.params.section ?? ''
 
-    console.log('Current section: ', routeSection)
+    console.log('Router - current section: ', routeSection)
 
     // setSection сам обработает fallback — дополнительной логики здесь не нужно
     if (routeSection !== uiStore.uiMainVars.section) {
@@ -90,9 +69,14 @@ router.beforeEach((to, from, next) => {
         uiStore.setSection(routeSection)
     }
 
+    const dataStore = useDataStore()
+    dataStore.resetCategory()
+
     uiStore.startGlobalLoading()
     uiStore.setIsOpen(false)
     uiStore.setHeaderVars('menu', true) // TODO: refactor
+
+
 
     next()
 })

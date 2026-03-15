@@ -14,8 +14,9 @@ const dataStore = useDataStore();
 import {useRoute} from "vue-router";
 const route = useRoute();
 import {usePageData} from "@/composables/usePageData.js";
+console.log('MAIN start------------');
 usePageData((route) => {
-  console.log('MAIN route.fullPath:',route.fullPath);
+  console.log('MAIN - usePageData - route.fullPath:',route.fullPath);
   dataStore.fetchBlockCategory(route.params.slug ?? route.name)
 })
 
