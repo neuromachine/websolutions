@@ -1,6 +1,8 @@
 import {createApp, watch} from 'vue'
 import { createHead } from '@unhead/vue/client'
-import { createPinia } from 'pinia'; // Импортируем Pinia
+import { createPinia } from 'pinia';
+import { i18n } from '@/i18n'
+import { setupI18nSync } from '@/plugins/i18nSync'
 import dialogs from 'v-dialogs'
 import App from './App.vue' // Case sensivity fix
 import "waypoints/lib/noframework.waypoints.js"; //http://imakewebthings.com/waypoints/
@@ -19,22 +21,29 @@ import AppLink from '@/components/AppLink.vue'
 
 import { useUiStore } from '@/stores/uiStore'
 
-import { i18n } from '@/i18n'
+
 
 const app = createApp(App);
 const head = createHead();
-const pinia = createPinia(); // Создаём экземпляр Pinia
+const pinia = createPinia();
+
 app.use(head);
-app.use(pinia); // Подключаем Pinia к приложению
-app.use(router); // Подключаем роутер
+app.use(pinia);
 app.use(i18n)
+setupI18nSync(pinia)
+app.use(router);
 app.use(dialogs);
 app.component('AppLink', AppLink)
 
 const uiStore = useUiStore()
 const saved = localStorage.getItem('section')
-if (saved) uiStore.setSection(saved)  // setSection сам валидирует и делает fallback
-
+if (saved)
+{
+    console.log('localStorage - section: ' + saved);
+    // setSection сам валидирует и делает fallback
+    uiStore.setSection(saved)
+}
+/*
 watch(
     () => uiStore.currentLocale,
     (locale) => {
@@ -42,7 +51,7 @@ watch(
     },
     { immediate: true }
 )
-
+*/
 // Waypoint уже есть в `window`, просто добавляем его в глобальные свойства
 app.config.globalProperties.$Waypoint = window.Waypoint;
 
