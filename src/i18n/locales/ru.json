@@ -5,11 +5,21 @@
   "form": {
     "title": "Заполните форму",
     "desc": "Оставьте нам свой контакт - мы свяжемся с вами",
+    "contact": "Имя в мессенджере, телефон или e-mail",
     "send": "Отправить",
     "sending": "Отправка...",
     "send_fail_onserver": "Ошибка отправки:",
     "send_try_again": "Пожалуйста попробуйте снова позже",
     "send_result_ok": "Спасибо! Ваша заявка принята",
-    "field_label": "имя в мессенджере, телефон или e-mail"
+    "field_label": "имя в мессенджере, телефон или e-mail",
+    "field_is_required": "Required field"
+  },
+  "validation": {
+    "required": "Обязательное поле",
+    "email": "Некорректный email",
+    "format": "Неверный формат",
+    "min_chars": "Минимум {min} символов",
+    "max_chars": "Максимум {max} символов",
+    "min_number": "Минимум {min}"
   }
 }

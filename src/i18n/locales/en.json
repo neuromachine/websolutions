@@ -5,11 +5,21 @@
   "form": {
     "title": "Fill request form",
     "desc": "Leave us your contact information and we will contact you",
+    "contact": "Messenger name, phone or email",
     "send": "Send",
     "sending": "Sending...",
     "send_fail_onserver": "Sending error:",
     "send_try_again": "Please try again later",
     "send_result_ok": "Thank you! Your application has been accepted",
-    "field_label": "Messenger name, phone number, or email"
+    "field_label": "Messenger name, phone number, or email",
+    "field_is_required": "имя в мессенджере, телефон или e-mail"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Invalid email",
+    "format": "Invalid format",
+    "min_chars": "Minimum {min} characters",
+    "max_chars": "Maximum {max} characters",
+    "min_number": "Minimum {min}"
   }
 }

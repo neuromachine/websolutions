@@ -24,7 +24,7 @@ const store = useFormStore()
 // валидация: генерация yup-схемы из схемы формы (использует твою утилиту)
 const validationSchema = computed(() => {
   // если у тебя есть buildYupSchema — используй её
-  if (typeof buildYupSchema === 'function') return buildYupSchema(props.schema)
+  if (typeof buildYupSchema === 'function') return buildYupSchema(props.schema, t)
   // fallback: простая схема (не строгая)
   const shape = {}
   props.schema.fields.forEach(f => {
@@ -62,7 +62,7 @@ function mergeBindings(field, fieldDef) {
     // сначала все кастомные props (placeholder, id, class и т.д.)
     ...(fieldDef.props || {}),
     // передаём label как обычный проп (если указан)
-    ...(fieldDef.label ? { label: fieldDef.label } : {}),
+    ...(fieldDef.label ? { label: t(fieldDef.label) } : {}),
     // затем привязки vee-validate (value, name, onInput и пр.)
     ...field
   }
@@ -122,7 +122,7 @@ async function onSubmit(values) {
       </button>
       <!-- send result messages -->
       <div v-if="submitStatus === 'success'" class="success-msg" role="status" aria-live="polite">
-        {{ t('send.send_result_ok')}} (ID: {{ lastResponse?.id }})
+        {{ t('form.send_result_ok')}} (ID: {{ lastResponse?.id }})
       </div>
       <div v-if="submitStatus === 'error'" class="error-msg" role="alert">
         {{ t('form.send_fail_onserver') }} {{ lastResponse?.message || t('form.send_try_again') }}

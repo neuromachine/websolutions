@@ -12,10 +12,12 @@ export const useFormStore = defineStore('formStore', {
             const uiStore = useUiStore()
             uiStore.startGlobalLoading()
 
+            const section = uiStore.currentLocale
+
             this.forms[formKey] = { status: 'loading', response: null, errors: null }
 
             try {
-                const res = await formService.sendForm({ formKey, data, meta })
+                const res = await formService.sendForm({ formKey, data, section, meta })
                 this.forms[formKey] = { status: 'success', response: res, errors: null }
                 uiStore.stopGlobalLoading()
                 return res
