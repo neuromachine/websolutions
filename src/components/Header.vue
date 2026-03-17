@@ -3,6 +3,10 @@ import {ref, onMounted, getCurrentInstance, onUnmounted, computed} from 'vue'
 import { useUiStore } from '@/stores/uiStore'; // Импорт стора
 import { useDataStore} from '@/stores/dataStore';
 import $ from 'jquery'
+
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 // import MeanMenu from "@/components/MeanMenu.vue";
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
 import Navbar from '@/components/navbar.vue';
@@ -70,7 +74,7 @@ onMounted(() => {
             <Navbar />
             <SectionSwitch />
             <div class="other-option mx-auto">
-              <a class="btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i>Написать<span></span></a>
+              <a class="btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
             </div>
           </div>
 

@@ -1,4 +1,6 @@
 <script setup>
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 const props = defineProps({
   list: {
     type: Object,
@@ -32,7 +34,7 @@ const props = defineProps({
               <h3>{{item.title}}</h3>
               <p>{{item.descr}}</p>
               <div class="services-btn">
-                <RouterLink :to="item.link" class="read-more"><i class="bi bi-arrow-right-short"></i> Подробно</RouterLink>
+                <RouterLink :to="item.link" class="read-more"><i class="bi bi-arrow-right-short"></i> {{ t('ui.more')}}</RouterLink>
               </div>
             </div>
           </div>

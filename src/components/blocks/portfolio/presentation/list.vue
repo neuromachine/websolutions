@@ -6,7 +6,6 @@ const dataStore = useDataStore();
 
 <template>
   <div class="portfolio-container">
-<!--    <div>{{dataStore.filteredItems}}</div>-->
     <TransitionGroup name="fade" tag="div" class="grid row">
       <work v-for="item in dataStore.filteredItems"
             :key="item.id"

@@ -1,6 +1,8 @@
 {
   "ui": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "more": "more",
+    "cta_b_text": "Write to us"
   },
   "form": {
     "title": "Fill request form",
