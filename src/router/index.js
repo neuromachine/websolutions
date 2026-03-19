@@ -48,14 +48,13 @@ router.beforeEach(async(to, from, next) => {
 
     uiStore.setScope(newScope)
     await navStore.fetchNavigation(newScope || DEFAULT_SCOPE)
-
-/*    if (newScope !== uiStore.scope) {
+/*
+    if (newScope !== uiStore.scope) {
         uiStore.setScope(newScope)
         // навигация обновляется только при смене scope
         await navStore.fetchNavigation(newScope || DEFAULT_SCOPE)
-    }*/
-
-    uiStore.startGlobalLoading()
+    }
+*/
     uiStore.setIsOpen(false)
     uiStore.setHeaderVars('menu', true) // TODO: refactor
 

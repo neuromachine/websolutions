@@ -43,7 +43,7 @@ onMounted(() => {
 
 <template>
   <!-- Start Preloader Section -->
-  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.getGlobalLoading }">
+  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.isGlobalLoading }">
     <div class="loader">
       <div class="shadow"></div>
       <div class="box"></div>

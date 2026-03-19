@@ -6,7 +6,7 @@ import { SCOPES_CONFIG, DEFAULT_SCOPE, VALID_SCOPES } from '@/config/scopes.js'
 
 export const useUiStore = defineStore('UiStore', {
     state: () => ({
-        isGlobalLoading: false,
+        _loadingCount: 0,
         isOpen: false, // status of Expand Menu
 
         scope: DEFAULT_SCOPE,
@@ -37,11 +37,7 @@ export const useUiStore = defineStore('UiStore', {
         },
     }),
     getters:{
-        getGlobalLoading(state) {
-            // const dataStore = useDataStore();
-            const blockStore = useBlockStore('main')
-            return state.isGlobalLoading || blockStore.getLoadingStatus; // Комбинируем состояния: если хоть где-то загрузка, возвращаем true
-        },
+        isGlobalLoading: (state) => state._loadingCount > 0,
         currentScope(state) {
             return SCOPES_CONFIG[state.scope]
                 ?? SCOPES_CONFIG[DEFAULT_SCOPE]
@@ -52,7 +48,10 @@ export const useUiStore = defineStore('UiStore', {
         },
     },
     actions: {
+        startGlobalLoading() { this._loadingCount++ },
+        stopGlobalLoading()  { this._loadingCount = Math.max(0, this._loadingCount - 1) },
         buildPageVars({ structure = null, category = null, item = null }) {
+            console.info(structure, category, item);
             const crumbs = [{ key: '/', title: 'Главная' }]
             let title = 'Главная', key = '/', children = []
 
@@ -67,6 +66,7 @@ export const useUiStore = defineStore('UiStore', {
                 if (!item) children = Object.values(category.children || {}).map(n => n.key)
             }
             if (item) {
+                console.log(item.properties.title)
                 const itemTitle = item.properties?.title || title
                 crumbs.push({ key: item.slug || key, title: itemTitle })
                 title = itemTitle; key = item.slug || key
@@ -74,20 +74,6 @@ export const useUiStore = defineStore('UiStore', {
 
             const parent = crumbs.length > 1 ? crumbs[crumbs.length - 2] : null
             this.uiMainVars.page = { ...this.uiMainVars.page, title, key, breadcrumbs: crumbs, parent, children }
-        },
-        // TODO: улучшить
-        setMainVars(dataObj) {
-            this.uiMainVars.page = {
-                title:       dataObj?.name        || 'Заголовок',
-                key:         dataObj?.key         || '/',
-                breadcrumbs: dataObj?.breadcrumbs || [{ key: '/', title: 'Главная' }],
-                parent:      dataObj?.parent      || null,
-                children:    dataObj?.children    || [],
-                version:     dataObj?.version     || 'full',
-                contacts: {
-                    phone: 79282619061,
-                },
-            }
         },
         setScope(value) {
             const normalized = String(value || '').trim()
@@ -119,25 +105,5 @@ export const useUiStore = defineStore('UiStore', {
         setIsOpen(value) {
             this.isOpen = value
         },
-        setGlobalLoading(value) {
-            this.isGlobalLoading = value;
-        },
-        startGlobalLoading() {
-            this.isGlobalLoading = true;
-        },
-        stopGlobalLoading() {
-            this.isGlobalLoading = false;
-        },
-        setup() {
-            //const dataStore = useDataStore();
-            const blockStore = useBlockStore('main')
-            // Подписываемся на изменения isLoading в dataStore
-            watch(
-                () => blockStore.isLoading,
-                (newValue) => {
-                    this.isGlobalLoading = newValue; // Обновляем состояние UiStore
-                }
-            );
-        }
     }
 });

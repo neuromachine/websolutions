@@ -27,32 +27,31 @@ export const useNavigationStore = defineStore('navigationStore', {
             }
             else return false
         },
-        setLoading(status) {
-            this.isLoading = status;
-        },
         getLoadingStatus(state) {
             return state.isLoading;
         },
     },
     actions: {
+        setLoading(v)   { this.isLoading = v },
         async fetchStructure(slug) {
             const uiStore = useUiStore()
             uiStore.startGlobalLoading()
-            //this.setLoading(true)
+            this.setLoading(true)
             try {
                 const { data: { data } } = await api.get(`${uiStore.uiMainVars.section}/blocks/categories/structure/${slug}`)
-                uiStore.setMainVars(data)
                 this.structure = data
                 this.strReady = true
             } catch (err) {
                 console.error('Ошибка fetchStructure:', err)
             } finally {
                 uiStore.stopGlobalLoading()
-                //this.setLoading(false)
+                this.setLoading(false)
             }
         },
         async fetchNavigation(scope) {
             const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
+            this.setLoading(true)
             try {
                 const { data: { data } } = await api.get(`${scope}/blocks/blocks/navigation`)
                 const raw = data.content || []
@@ -65,6 +64,9 @@ export const useNavigationStore = defineStore('navigationStore', {
                 }));
             } catch (err) {
                 console.error('fetchNavigation:', err)
+            } finally {
+                uiStore.stopGlobalLoading()
+                this.setLoading(false)
             }
         },
     }
