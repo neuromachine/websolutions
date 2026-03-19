@@ -2,24 +2,24 @@
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useUiStore } from '@/stores/uiStore'
-import { SCOPES_CONFIG, VALID_SCOPES } from '@/config/sections.js'
+import { SCOPES_CONFIG, VALID_SCOPES } from '@/config/scopes.js'
 
 const uiStore = useUiStore()
 const router = useRouter()
 const route = useRoute()
 
-const current = computed(() => uiStore.uiMainVars.section)
+const current = computed(() => uiStore.scope)
 
-const switchSection = (code) => {
+const switchScope = (code) => {
   if (code === current.value) return
 
-  uiStore.setSection(code)
-  localStorage.setItem('section', code)
+  uiStore.setScope(code)
+  localStorage.setItem('scope', code)
 
   // Переходим на тот же маршрут, но с новой секцией
   router.replace({
     name: route.name,
-    params: { ...route.params, section: code },
+    params: { ...route.params, scope: code },
     query: route.query,
   })
 }
@@ -32,7 +32,7 @@ const switchSection = (code) => {
       <span
           class="switch-item"
           :class="{ active: current === code }"
-          @click="switchSection(code)"
+          @click="switchScope(code)"
       >{{ cfg.label }}</span>
       <span v-if="index < VALID_SCOPES.length - 1" class="divider">|</span>
     </template>

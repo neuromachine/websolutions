@@ -35,10 +35,10 @@ app.use(dialogs);
 app.component('AppLink', AppLink)
 
 const uiStore = useUiStore()
-const saved = localStorage.getItem('section')
+const saved = localStorage.getItem('scope')
 if (saved)
 {
-    uiStore.setSection(saved)
+    uiStore.setScope(saved)
 }
 // Waypoint уже есть в `window`, просто добавляем его в глобальные свойства
 app.config.globalProperties.$Waypoint = window.Waypoint;

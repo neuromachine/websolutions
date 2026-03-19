@@ -11,7 +11,7 @@ const { t } = useI18n()
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
 import Navbar from '@/components/navbar.vue';
 import Logo from '@/components/Logo_png.vue';
-import SectionSwitch from "@/components/SectionSwitch.vue";
+import ScopeSwitch from "@/components/ScopeSwitch.vue";
 
 import WSpro from "@/components/WSpro.vue";
 
@@ -68,7 +68,7 @@ onMounted(() => {
           </div>
           <div v-if="uiStore.uiMainVars.header.menu" class="navbar-collapse mean-menu" id="navbarSupportedContent">
             <Navbar />
-            <SectionSwitch />
+            <ScopeSwitch />
             <div class="other-option mx-auto">
               <a class="btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
             </div>

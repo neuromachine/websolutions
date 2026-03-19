@@ -3,7 +3,7 @@ import { useUiStore } from '@/stores/uiStore';
 import api from "@/utils/api.js";
 import {normalizeLink} from "@/utils/normalizeLink.js";
 
-import { SCOPES_CONFIG, VALID_SCOPES } from '@/config/sections.js'
+import { SCOPES_CONFIG, VALID_SCOPES } from '@/config/scopes.js'
 
 export const useNavigationStore = defineStore('navigationStore', {
     state: () => ({
@@ -56,6 +56,7 @@ export const useNavigationStore = defineStore('navigationStore', {
             try {
                 const { data: { data } } = await api.get(`${scope}/blocks/blocks/navigation`)
                 const raw = data.content || []
+                // TODO: refactor data assignment
                 this.nav = raw.map(item => ({
                     anchor: item.anchor,
                     path: normalizeLink(item.link, VALID_SCOPES),

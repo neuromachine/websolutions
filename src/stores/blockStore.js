@@ -34,6 +34,7 @@ export function useBlockStore(id) {
                     Object.keys(state.category.children).length
                 )
             },
+            // TODO: restructure the data format and filtering principle
             filteredItems(state) {
                 const works = state.category?.sections?.works || {}
                 // Конвертируем объект {slug: properties} → [{slug, ...properties}]
@@ -55,7 +56,7 @@ export function useBlockStore(id) {
                 const uiStore = useUiStore()
                 if (
                     this.category?.key === slug &&
-                    this.category.section === uiStore.uiMainVars.section
+                    this.category.scope === uiStore.scope
                 ) {
                     uiStore.stopGlobalLoading()
                     return false
@@ -64,7 +65,7 @@ export function useBlockStore(id) {
                 this.setLoading(true)
                 try {
                     const { data: { data } } = await api.get(
-                        `${uiStore.uiMainVars.section}/blocks/categories/${slug}`
+                        `${uiStore.scope}/blocks/categories/${slug}`
                     )
                     this.category = data
                     this.catReady = true
@@ -82,7 +83,7 @@ export function useBlockStore(id) {
                 this.setLoading(true)
                 try {
                     const { data: { data } } = await api.get(
-                        `${uiStore.uiMainVars.section}/blocks/items/${slug}`
+                        `${uiStore.scope}/blocks/items/${slug}`
                     )
                     this.item = data
                     this.itemReady = true
@@ -96,7 +97,7 @@ export function useBlockStore(id) {
             async fetchOverlayCategory(slug) {
                 this.OverlayLoading = true
                 try {
-                    this.overlay = (await api.get(`${uiStore.uiMainVars.section}/blocks/categories/${slug}`)).data.data
+                    this.overlay = (await api.get(`${uiStore.scope}/blocks/categories/${slug}`)).data.data
                 } catch (err) {
                     console.error('fetchOverlayCategory:', err)
                 } finally {

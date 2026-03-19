@@ -19,7 +19,7 @@ export default {
      * В случае server-side validation errors — выкидывает ошибку { type: 'validation', errors: {...} }
      * В случае других ошибок — выбрасывает { type: 'server', ... }
      */
-    async sendForm({ formKey, data, section, meta = {} }) {
+    async sendForm({ formKey, data, scope, meta = {} }) {
         const payload = {
             form_key: formKey,
             data,
@@ -27,7 +27,7 @@ export default {
         }
 
         try {
-            const { data: res } = await api.post(`${section}/forms/submit`, payload)
+            const { data: res } = await api.post(`${scope}/forms/submit`, payload)
 
             // Ожидаемый успешный ответ: { success: true, id: 5, status: 'pending' }
             // Ожидаемая ошибка валидации: { success: false, errors: { name: ['msg'] } }

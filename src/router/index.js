@@ -6,10 +6,13 @@ import { analytics } from '@/analytics'
 import { servicesRoutes } from './routes/services'
 import { portfolioRoutes } from './routes/portfolio'
 import $ from 'jquery'
+import {useNavigationStore} from "@/stores/navigationStore.js";
+
+import { DEFAULT_SCOPE } from '@/config/scopes.js'
 
 const routes = [
     {
-        path: '/:section([^/]+)?',
+        path: '/:scope([^/]+)?',
         component: { render: () => h(RouterView) },
         children: [
             {
@@ -38,16 +41,19 @@ const router = createRouter({
     routes,
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async(to, from, next) => {
     const uiStore = useUiStore()
-    const routeSection = to.params.section ?? ''
+    const navStore = useNavigationStore()
+    const newScope = to.params.scope ?? ''
 
-    if (routeSection !== uiStore.uiMainVars.section) {
-        uiStore.setSection(routeSection)
-    }
+    uiStore.setScope(newScope)
+    await navStore.fetchNavigation(newScope || DEFAULT_SCOPE)
 
-    // const dataStore = useDataStore()
-    // dataStore.resetCategory()
+/*    if (newScope !== uiStore.scope) {
+        uiStore.setScope(newScope)
+        // навигация обновляется только при смене scope
+        await navStore.fetchNavigation(newScope || DEFAULT_SCOPE)
+    }*/
 
     uiStore.startGlobalLoading()
     uiStore.setIsOpen(false)

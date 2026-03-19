@@ -2,12 +2,14 @@ import { defineStore } from 'pinia';
 import { watch } from 'vue'
 import { useBlockStore } from "@/stores/blockStore";
 
-import { SCOPES_CONFIG, DEFAULT_SCOPE, VALID_SCOPES } from '@/config/sections.js'
+import { SCOPES_CONFIG, DEFAULT_SCOPE, VALID_SCOPES } from '@/config/scopes.js'
 
 export const useUiStore = defineStore('UiStore', {
     state: () => ({
         isGlobalLoading: false,
         isOpen: false, // status of Expand Menu
+
+        scope: DEFAULT_SCOPE,
 
         // UI переменные
         uiMainVars: {
@@ -40,14 +42,13 @@ export const useUiStore = defineStore('UiStore', {
             const blockStore = useBlockStore('main')
             return state.isGlobalLoading || blockStore.getLoadingStatus; // Комбинируем состояния: если хоть где-то загрузка, возвращаем true
         },
-        // Полный конфиг текущей секции — задел под i18n и прочие расширения
-        currentSection(state) {
-            return SCOPES_CONFIG[state.uiMainVars.section]
+        currentScope(state) {
+            return SCOPES_CONFIG[state.scope]
                 ?? SCOPES_CONFIG[DEFAULT_SCOPE]
         },
         // Удобный прямой доступ к locale — для vue-i18n в будущем
         currentLocale() {
-            return this.currentSection.locale
+            return this.currentScope.locale
         },
     },
     actions: {
@@ -88,12 +89,12 @@ export const useUiStore = defineStore('UiStore', {
                 },
             }
         },
-        setSection(value) {
+        setScope(value) {
             const normalized = String(value || '').trim()
             //console.info(normalized)
 
             // Fallback к default если секция не валидна или пустая
-            this.uiMainVars.section = VALID_SCOPES.includes(normalized)
+            this.scope = VALID_SCOPES.includes(normalized)
                 ? normalized
                 : DEFAULT_SCOPE
         },
