@@ -9,7 +9,7 @@ export function setupI18nSync(pinia) {
     watch(
         () => uiStore.currentLocale,
         (locale) => {
-            console.log('i18n plugin watcher: ',locale);
+            console.log("\u{1F232} i18n plugin watcher: ",locale);
             i18n.global.locale.value = locale
         },
         { immediate: true }

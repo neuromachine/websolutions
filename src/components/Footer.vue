@@ -1,12 +1,13 @@
 <script setup>
-import { ref, onMounted, onUnmounted , computed} from 'vue'
-import FeedbackForm from "@/components/FeedbackForm.vue";
+import { onMounted , computed } from 'vue'
 import SimplifiedForm from "@/components/forms/SimplifiedForm.vue";
-import OfferRequestForm from "@/components/OfferRequestForm.vue";
+import WSpro from "@/components/WSpro.vue";
+// import FeedbackForm from "@/components/FeedbackForm.vue";
+// import OfferRequestForm from "@/components/OfferRequestForm.vue";
+
 import {useUiStore} from "@/stores/uiStore.js";
 import {useRoute} from "vue-router";
 import $ from 'jquery'
-import WSpro from "@/components/WSpro.vue";
 
 defineProps({
   isMain: { type: Boolean, default: false },
@@ -67,9 +68,8 @@ onMounted(() => {
             <div class="single-footer-widget">
               <a class="footer-logo" href="/">
                 <WSpro />
-<!--                <img src="/assets/img/logo.png" class="white-logo" alt="logo">-->
               </a>
-              <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
+              <p>{{ t('ui.slogan') }}</p>
               <ul class="footer-social">
                 <li><a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                 <li><a href="https://t.me/websolutionspro" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
@@ -80,7 +80,7 @@ onMounted(() => {
           <div  v-if="!isNavi" class="col-lg-2 col-md-6 col-sm-6">
             <div class="single-footer-widget">
               <div class="footer-heading">
-                <h3>Услуги</h3>
+                <h3>{{ t('ui.navi.groups.services') }}</h3>
               </div>
               <ul class="footer-quick-links">
                 <li><a href="/services">Разработка</a></li>
@@ -93,7 +93,7 @@ onMounted(() => {
           <div  v-if="!isNavi" class="col-lg-2 col-md-6 col-sm-6">
             <div class="single-footer-widget">
               <div class="footer-heading">
-                <h3>Инфо</h3>
+                <h3>{{ t('ui.navi.groups.info') }}</h3>
               </div>
               <ul class="footer-quick-links">
                 <li><a href="/pages/about">О нас</a></li>
@@ -107,28 +107,28 @@ onMounted(() => {
           <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="single-footer-widget">
               <div class="footer-heading">
-                <h3>Контакты</h3>
+                <h3>{{ t('ui.navi.groups.contacts') }}</h3>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-phone-call"></i>
-                <h3>Телефон</h3>
+                <h3>{{ t('ui.contacts.phone.name') }}</h3>
 <!--                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{ uiStore.uiMainVars.page.contacts.phone }}</a></span>-->
-                <span><a href="tel:+84845122254" target="_blank">0845122254</a></span>
+                <span><a :href="'tel:' + t('ui.contacts.phone.link')" target="_blank">{{ t('ui.contacts.phone.anchor') }}</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
-                <h3>Email</h3>
-                <span><a href="mailto:lili@ws-pro.ru" target="_blank">lili@ws-pro.ru</a></span>
+                <h3>{{ t('ui.contacts.email.name') }}</h3>
+                <span><a :href="'mailto:' + t('ui.contacts.email.link')" target="_blank">{{ t('ui.contacts.email.anchor') }}</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
-                <h3>Telegram</h3>
-                <span><a href="https://t.me/Lola_06" target="_blank">Lola_06</a></span>
+                <h3>{{ t('ui.contacts.messaging.name') }}</h3>
+                <span><a :href="'' + t('ui.contacts.messaging.link')" target="_blank">{{ t('ui.contacts.messaging.anchor') }}</a></span>
               </div>
               <div class="footer-info-contact">
-                <i class="flaticon-placeholder"></i>
-                <h3>Адрес</h3>
-                <span>г. Краснодар. Ул. Сормовская 7 лит. Г</span>
+                <i class="flaticon-location"></i>
+                <h3>{{ t('ui.contacts.location.name') }}</h3>
+                <span>{{ t('ui.contacts.location.anchor') }}</span>
               </div>
             </div>
           </div>

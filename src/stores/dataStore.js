@@ -4,11 +4,8 @@ import api from "@/utils/api.js";
 
 export const useDataStore = defineStore('dataStore', {
     state: () => ({
-        bread: null,
-        structure: null,
         overlay: null,
         category: null,
-        tree: null,
 
         OverlayLoading: false, // status of overlay window loading
         data: null,
@@ -17,63 +14,17 @@ export const useDataStore = defineStore('dataStore', {
         filter: '*',
 
         isLoading: false, // status of LOCAL loading
-        strReady: false,
         catReady: false,
         itemReady: false,
         loading: false,
     }),
     getters:{
-        breadcrumbs: (state) => {
-            const crumbs = [{ title: 'Главная', link: '/' }]
-
-            if (state.strReady && state.structure?.name && state.structure?.key) {
-                crumbs.push({
-                    title: state.structure.name,
-                    link: `/${state.structure.key}`
-                })
-            }
-
-            if (state.itemReady && state.item?.properties?.title) {
-                crumbs.push({ title: state.item.properties.title, link: null })
-            } else if (state.catReady && state.category?.name && state.category?.key) {
-                crumbs.push({
-                    title: state.category.name,
-                    link: `/${state.structure?.key}/${state.category.key}`
-                })
-            }
-
-            return crumbs
-        },
-        isTreeReady(state) {
-            if(
-                !state.isLoading &&
-                state.tree !== null &&
-                state.tree.children &&
-                Object.keys(state.tree.children).length
-            )
-            {
-                return true
-            }
-            else return false
-        },
         isDataReady(state) {
             return !!(
                 !state.isLoading &&
                 state.data !== null &&
                 Object.keys(state.data).length
             );
-        },
-        isStrReady(state) {
-            if(
-                !state.isLoading &&
-                state.structure !== null &&
-                state.structure.child &&
-                Object.keys(state.structure.child).length
-            )
-            {
-                return true
-            }
-            else return false
         },
         isCatReady(state) { return !state.isLoading && state.category !== null },
         isItemReady(state) { return !state.isLoading && state.item !== null },
@@ -123,45 +74,6 @@ export const useDataStore = defineStore('dataStore', {
         resetCategory() {
             this.category = null
         },
-        // Обновление UI основных переменных страницы
-        updatePageVars() {
-            const crumbs = [{ key: '/', title: 'Главная' }];
-            let title = 'Главная';
-            let key = '/';
-
-            // Структура уровня
-            if (this.strReady) {
-                crumbs.push({ key: this.structure.key, title: this.structure.name });
-                title = this.structure.name;
-                key = this.structure.key;
-            }
-            // Категория
-            if (this.catReady) {
-                crumbs.push({ key: this.category.key, title: this.category.name });
-                title = this.category.name;
-                key = this.category.key;
-            }
-            // Элемент
-            if (this.itemReady) {
-                const itemTitle = this.item.properties?.title || title;
-                crumbs.push({ key: this.item.slug || key, title: itemTitle });
-                title = itemTitle;
-                key = this.item.slug || key;
-            }
-
-            // Родитель — предпоследний crumb
-            const parent = crumbs.length > 1 ? crumbs[crumbs.length - 2] : null;
-
-            // Дочерние элементы
-            let children = [];
-            if (this.strReady && !this.catReady) {
-                children = Object.values(this.structure.child || {}).map(node => node.key);
-            } else if (this.catReady && !this.itemReady) {
-                children = Object.values(this.category.children || {}).map(node => node.key);
-            }
-            const uiStore = useUiStore()
-            uiStore.setMainVars(title,key,crumbs,parent,children)
-        },
         setLoading(status) {
             this.isLoading = status;
         },
@@ -169,6 +81,7 @@ export const useDataStore = defineStore('dataStore', {
             this.filter = key
         },
         //async sendOfferRequest(id,contact)
+        /*
         async sendOfferRequest(contact)
         {
             const uiStore = useUiStore()
@@ -193,6 +106,8 @@ export const useDataStore = defineStore('dataStore', {
                 this.setLoading(false)
             }
         },
+
+         */
         async fetchOverlayCategory(slug)
         {
             try {
@@ -203,22 +118,6 @@ export const useDataStore = defineStore('dataStore', {
                 console.error('Ошибка API:', err); // TODO: разработать механизм (сервис) для повторяющихся состояний
             } finally {
                 this.OverlayLoading = false;
-            }
-        },
-        async fetchStructure(slug) {
-            const uiStore = useUiStore()
-            uiStore.startGlobalLoading()
-            this.setLoading(true)
-            try {
-                const { data: { data } } = await api.get(`${uiStore.uiMainVars.section}/blocks/categories/structure/${slug}`)
-                uiStore.setMainVars(data)
-                this.structure = data
-                this.strReady = true
-            } catch (err) {
-                console.error('Ошибка fetchStructure:', err)
-            } finally {
-                uiStore.stopGlobalLoading()
-                this.setLoading(false)
             }
         },
         async fetchBlockCategory(slug) {

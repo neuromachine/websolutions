@@ -1,16 +1,20 @@
 <script setup>
 import work from "@/components/blocks/portfolio/presentation/work.vue";
-import { useDataStore } from '@/stores/dataStore';
-const dataStore = useDataStore();
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true,
+  }
+})
 </script>
 
 <template>
   <div class="portfolio-container">
     <TransitionGroup name="fade" tag="div" class="grid row">
-      <work v-for="item in dataStore.filteredItems"
-            :key="item.id"
-            :slug="item.key"
-            :properties="item.properties"
+      <work v-for="item in props.items"
+            :key="item.slug"
+            :slug="item.slug"
+            :properties="item"
       />
     </TransitionGroup>
   </div>

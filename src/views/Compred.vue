@@ -1,23 +1,14 @@
 <script setup>
-import {computed, onMounted, onUnmounted, watch} from "vue";
 // import debug from "@/components/Debug.vue";
-// import Prices from "@/components/Prices.vue";
 // import Header from "@/components/Header.vue";
 import CPheader from "@/components/CPheader.vue";
 import CPimg from "@/components/CPimg.vue";
 import CPicon from "@/components/CPicon.vue";
 import WSteam from "@/components/WSteam.vue";
-// import Portfolio from "@/components/Portfolio.vue"
 import Portfolio from "@/components/blocks/portfolio/index.vue"
 import Footer from "@/components/Footer.vue";
 import content from "@/components/blocks/services/presentation/content.vue"
-import {useUiStore} from "@/stores/uiStore.js";
-const uiStore = useUiStore();
 
-import {useDataStore} from '@/stores/dataStore';
-const dataStore = useDataStore();
-
-import {useRoute} from "vue-router";
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
 
 import { useHead } from '@unhead/vue';
@@ -34,33 +25,17 @@ useHead({
   ]
 });
 
-const route = useRoute();
-
-function load() {
-  dataStore.fetchBlockItem(route.params.slug);
-  dataStore.fetchStructure('services'); // TODO: services - > wrong:
-}
-
-onMounted(() => {
-  uiStore.setHeaderVars('menu', false);
-  load()
-});
-
-watch(
-    () => route.params.slug,
-    (newSlug, oldSlug) => {
-      if (newSlug !== oldSlug) {
-        load();
-      }
-    }
-);
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+const { blockStore } = usePageOrchestrator('cp', 'item', {
+  fetch: (route) => route.params.slug
+})
 </script>
 
 <template>
 <!--  <debug/>-->
 <!--  <Header/>-->
   <CPheader />
-  <div v-if="dataStore.isStrReady">
+  <div v-if="blockStore.isItemReady">
     <!-- HERO -->
     <div class="home-section home-2">
       <div class="d-table">
@@ -69,14 +44,14 @@ watch(
             <div class="row align-items-center">
               <div class="col-lg-6 col-md-12">
                 <div class="main-banner-content">
-                  <h6 class="text-gradient">{{ dataStore.item.properties.hero.pretitle }}</h6>
-                  <h1>{{ dataStore.item.properties.hero.title }}<br><span class="text-gradient">{{ dataStore.item.properties.hero.focus }}</span></h1>
-                  <p>{{ dataStore.item.properties.hero.paragraph }}</p>
+                  <h6 class="text-gradient">{{ blockStore.item.properties.hero.pretitle }}</h6>
+                  <h1>{{ blockStore.item.properties.hero.title }}<br><span class="text-gradient">{{ blockStore.item.properties.hero.focus }}</span></h1>
+                  <p>{{ blockStore.item.properties.hero.paragraph }}</p>
                 </div>
               </div>
               <div class="col-lg-6 col-md-12">
                 <div class="banner-image">
-                  <CPimg :svgkey="dataStore.item.key"/>
+                  <CPimg :svgkey="blockStore.item.key"/>
                 </div>
               </div>
             </div>
@@ -108,12 +83,12 @@ watch(
       </div>
     </div>
     <!-- HERO -->
-    <section v-if="dataStore.item.properties.content"  class="compred_content services-section-two section-padding">
+    <section v-if="blockStore.item.properties.content"  class="compred_content services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <content
-                :content="dataStore.item.properties.content"
+                :content="blockStore.item.properties.content"
             />
           </div>
         </div>
@@ -126,11 +101,11 @@ watch(
         <div class="row">
           <div class="col-md-12">
             <div class="section-title">
-              <h6 class="sub-title">{{ dataStore.item.properties.benefits.pretitle }}</h6>
-              <h2>{{ dataStore.item.properties.benefits.title }}</h2>
+              <h6 class="sub-title">{{ blockStore.item.properties.benefits.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.benefits.title }}</h2>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6"  v-for="b in dataStore.item.properties.benefits.items" :key="b.title">
+          <div class="col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.benefits.items" :key="b.title">
             <div class="service">
               <div class="icon">
                 <IconOffer
@@ -181,14 +156,14 @@ watch(
         <div class="row">
           <div class="col-md-12">
             <div class="section-title">
-              <h6 class="sub-title">{{ dataStore.item.properties.items.pretitle }}</h6>
-              <h2>{{ dataStore.item.properties.items.title }}</h2>
+              <h6 class="sub-title">{{ blockStore.item.properties.items.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.items.title }}</h2>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6" v-for="item in dataStore.item.properties.items.items">
+          <div class="col-lg-4 col-md-6" v-for="item in blockStore.item.properties.items.items">
             <div class="service plan">
               <div class="visual">
-                <CPicon :svgkey="dataStore.item.key"/>
+                <CPicon :svgkey="blockStore.item.key"/>
               </div>
               <div class="title">
                 {{ item.name }}
@@ -216,7 +191,7 @@ watch(
     <!-- End Packages -->
 
     <!-- Includes -->
-    <section v-if="dataStore.item.properties.includes" class="services-section-two section-padding">
+    <section v-if="blockStore.item.properties.includes" class="services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -224,7 +199,7 @@ watch(
               <h6 class="sub-title">Все решения включают:</h6>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" v-for="item in dataStore.item.properties.includes" :key="item.text">
+          <div class="col-lg-3 col-md-6" v-for="item in blockStore.item.properties.includes" :key="item.text">
             <div class="service">
               <div class="icon">
                 <IconOffer
@@ -243,12 +218,12 @@ watch(
     <!-- End Includes -->
 
     <!-- acticle -->
-    <section v-if="dataStore.item.properties.acticle"  class="acticle services-section-two section-padding">
+    <section v-if="blockStore.item.properties.acticle"  class="acticle services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <content
-                :content="dataStore.item.properties.acticle"
+                :content="blockStore.item.properties.acticle"
             />
           </div>
         </div>
@@ -257,16 +232,16 @@ watch(
     <!-- End acticle -->
 
     <!-- reelsSystem -->
-    <section v-if="dataStore.item.properties.reelsSystem" class="services-section-two section-padding">
+    <section v-if="blockStore.item.properties.reelsSystem" class="services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-title">
-              <h6 class="sub-title">{{ dataStore.item.properties.reelsSystem.pretitle }}</h6>
-              <h2>{{ dataStore.item.properties.reelsSystem.title }}</h2>
+              <h6 class="sub-title">{{ blockStore.item.properties.reelsSystem.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.reelsSystem.title }}</h2>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6"  v-for="b in dataStore.item.properties.reelsSystem.items" :key="b.title">
+          <div class="col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.reelsSystem.items" :key="b.title">
             <div class="service">
               <div class="icon">
                 <IconOffer
@@ -288,16 +263,16 @@ watch(
     <!-- End reelsSystem -->
 
     <!-- extras -->
-    <section v-if="dataStore.item.properties.extras" class="services-section-two section-padding">
+    <section v-if="blockStore.item.properties.extras" class="services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-title">
-              <h6 class="sub-title">{{ dataStore.item.properties.extras.pretitle }}</h6>
-              <h2>{{ dataStore.item.properties.extras.title }}</h2>
+              <h6 class="sub-title">{{ blockStore.item.properties.extras.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.extras.title }}</h2>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6"  v-for="b in dataStore.item.properties.extras.items" :key="b.title">
+          <div class="col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.extras.items" :key="b.title">
             <div class="service">
               <div class="icon">
                 <IconOffer
@@ -319,16 +294,16 @@ watch(
     <!-- End extras -->
 
     <!-- important -->
-    <section v-if="dataStore.item.properties.important" class="services-section-two section-padding">
+    <section v-if="blockStore.item.properties.important" class="services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <div class="section-title">
-              <h6 class="sub-title">{{ dataStore.item.properties.important.pretitle }}</h6>
-              <h2>{{ dataStore.item.properties.important.title }}</h2>
+              <h6 class="sub-title">{{ blockStore.item.properties.important.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.important.title }}</h2>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6"  v-for="b in dataStore.item.properties.important.items" :key="b.title">
+          <div class="col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.important.items" :key="b.title">
             <div class="service">
               <div class="icon">
                 <IconOffer
@@ -349,7 +324,7 @@ watch(
     </section>
     <!-- End important -->
 
-    <Portfolio v-if="dataStore.item.key !== 'smmfish'" />
+    <Portfolio v-if="blockStore.item.key !== 'smmfish'" />
   </div>
   <div v-else class="container">
     <div class="row row_load">Loading Item</div>

@@ -1,7 +1,7 @@
 <script setup>
-import {ref, onMounted, getCurrentInstance, onUnmounted, computed} from 'vue'
-import { useUiStore } from '@/stores/uiStore'; // Импорт стора
-import { useDataStore} from '@/stores/dataStore';
+import { onMounted } from 'vue'
+import { useUiStore } from '@/stores/uiStore';
+
 import $ from 'jquery'
 
 import { useI18n } from 'vue-i18n'
@@ -21,15 +21,11 @@ defineProps({
 })
 
 const uiStore = useUiStore();
-const dataStore = useDataStore();
-
-
 
 const isOpen = uiStore.isOpen
 const toggleMenu = () => {
-  uiStore.setIsOpen(!uiStore.isOpen); // Пример переключения состояния
+  uiStore.setIsOpen(!uiStore.isOpen);
 }
-
 
 onMounted(() => {
   // Header Sticky

@@ -2,7 +2,61 @@
   "ui": {
     "loading": "Loading...",
     "more": "more",
-    "cta_b_text": "Write to us"
+    "cta_b_text": "Write to us",
+    "slogan": "We create, refine, and improve web solutions that deliver results.",
+    "navi": {
+      "groups": {
+        "services":"Services",
+        "info":"Info",
+        "contacts":"Contacts"
+      }
+    },
+    "contacts": {
+      "phone": {
+        "name": "Phone",
+        "anchor": "0845122254 (Vietnam)",
+        "link": "+84845122254"
+      },
+      "email": {
+        "name": "Email",
+        "anchor": "manager\\@wspro.xyz",
+        "link": "manager\\@wspro.xyz"
+      },
+      "messaging": {
+        "name": "Facebook",
+        "anchor": "wspro.xyz",
+        "link": "https://m.me/wspro.xyz"
+      },
+      "location": {
+        "name": "Address",
+        "anchor": "We work all over the world",
+        "link": ""
+      }
+    }
+  },
+  "portfolio": {
+    "title": "Our portfolio",
+    "subtitle": "Recent works",
+    "currency": "usd",
+    "category": "Category",
+    "cost": "Price",
+    "date": "Date",
+    "social": "Social networks",
+    "link": "Link",
+    "linktext": "Go to"
+  },
+  "contacts": {
+    "email": "manager@wspro.xyz",
+    "social": {
+      "instagram": "wspro.xyz",
+      "message": "https://www.facebook.com/share/1DdBaqDVZr/"
+    }
+  },
+  "filter": {
+    "all":"All",
+    "develop":"Develop",
+    "html":"Markup",
+    "design":"Design"
   },
   "form": {
     "title": "Fill request form",

@@ -1,37 +1,15 @@
 <script setup>
-import { onMounted, watch} from "vue";
-import { useDataStore } from '@/stores/dataStore';
-const dataStore = useDataStore();
-import {useRoute} from "vue-router";
-const route = useRoute();
-import {usePageData} from "@/composables/usePageData.js";
-usePageData((route) => {
-  console.log('Page route.fullPath:',route.fullPath,'route.params.slug: ',route.params.slug,'route.name: ',route.name);
-  dataStore.fetchBlockItem(route.params.slug ?? route.name)
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+const { blockStore } = usePageOrchestrator('page', 'item', {
+  fetch: (route) => route.params.slug ?? route.name
 })
-/*
-function load() {
-  dataStore.fetchBlockItem(route.params.slug);
-  //dataStore.fetchStructure('services');
-}
-onMounted(() => {load()});
-watch(
-    () => route.params.slug,
-    (newSlug, oldSlug) => {
-      if (newSlug !== oldSlug) {
-        load()
-      }
-    }
-)
- */
 </script>
 <template>
   <!-- Start Services Details Section -->
   <section class="services-details-area section-padding">
-    <div v-if="dataStore.isItemReady" class="container">
+    <div v-if="blockStore.isItemReady" class="container">
       <div class="row">
-        <div v-if="route.params.slug==='price'" class="col-lg-12 col-md-12">
-<!--          <div class="info">route.params.slug: {{route.params.slug}}</div>-->
+        <div v-if="blockStore.item.key==='price'" class="col-lg-12 col-md-12">
           <!-- Start Pricing Section -->
           <section class="price-area pt-100 pb-70">
             <div class="container">
@@ -138,7 +116,7 @@ watch(
         </div>
         <div v-else class="col-lg-12 col-md-12">
           <div class="services-details-content">
-            <div class="features-text" v-html="dataStore.item.properties.content"></div>
+            <div class="features-text" v-html="blockStore.item.properties.content"></div>
           </div>
         </div>
       </div>

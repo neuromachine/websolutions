@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { watch } from 'vue'
-import { useDataStore} from '@/stores/dataStore.js';
+import { useBlockStore } from "@/stores/blockStore";
+
 import { SECTIONS_CONFIG, DEFAULT_SECTION, VALID_SECTIONS } from '@/config/sections.js'
 
 export const useUiStore = defineStore('UiStore', {
@@ -35,8 +36,9 @@ export const useUiStore = defineStore('UiStore', {
     }),
     getters:{
         getGlobalLoading(state) {
-            const dataStore = useDataStore();
-            return state.isGlobalLoading || dataStore.getLoadingStatus; // Комбинируем состояния: если хоть где-то загрузка, возвращаем true
+            // const dataStore = useDataStore();
+            const blockStore = useBlockStore('main')
+            return state.isGlobalLoading || blockStore.getLoadingStatus; // Комбинируем состояния: если хоть где-то загрузка, возвращаем true
         },
         // Полный конфиг текущей секции — задел под i18n и прочие расширения
         currentSection(state) {
@@ -49,10 +51,46 @@ export const useUiStore = defineStore('UiStore', {
         },
     },
     actions: {
+        buildPageVars({ structure = null, category = null, item = null }) {
+            const crumbs = [{ key: '/', title: 'Главная' }]
+            let title = 'Главная', key = '/', children = []
+
+            if (structure) {
+                crumbs.push({ key: structure.key, title: structure.name })
+                title = structure.name; key = structure.key
+                if (!category) children = Object.values(structure.child || {}).map(n => n.key)
+            }
+            if (category) {
+                crumbs.push({ key: category.key, title: category.name })
+                title = category.name; key = category.key
+                if (!item) children = Object.values(category.children || {}).map(n => n.key)
+            }
+            if (item) {
+                const itemTitle = item.properties?.title || title
+                crumbs.push({ key: item.slug || key, title: itemTitle })
+                title = itemTitle; key = item.slug || key
+            }
+
+            const parent = crumbs.length > 1 ? crumbs[crumbs.length - 2] : null
+            this.uiMainVars.page = { ...this.uiMainVars.page, title, key, breadcrumbs: crumbs, parent, children }
+        },
+        // TODO: улучшить
+        setMainVars(dataObj) {
+            this.uiMainVars.page = {
+                title:       dataObj?.name        || 'Заголовок',
+                key:         dataObj?.key         || '/',
+                breadcrumbs: dataObj?.breadcrumbs || [{ key: '/', title: 'Главная' }],
+                parent:      dataObj?.parent      || null,
+                children:    dataObj?.children    || [],
+                version:     dataObj?.version     || 'full',
+                contacts: {
+                    phone: 79282619061,
+                },
+            }
+        },
         setSection(value) {
             const normalized = String(value || '').trim()
-
-            console.info(normalized)
+            //console.info(normalized)
 
             // Fallback к default если секция не валидна или пустая
             this.uiMainVars.section = VALID_SECTIONS.includes(normalized)
@@ -77,20 +115,6 @@ export const useUiStore = defineStore('UiStore', {
             console.log('debug:setVersionFull', value);
             this.uiMainVars.page.version = value;
         },
-        // TODO: улучшить
-        setMainVars(dataObj) {
-            this.uiMainVars.page = {
-                title:       dataObj?.name        || 'Заголовок',
-                key:         dataObj?.key         || '/',
-                breadcrumbs: dataObj?.breadcrumbs || [{ key: '/', title: 'Главная' }],
-                parent:      dataObj?.parent      || null,
-                children:    dataObj?.children    || [],
-                version:     dataObj?.version     || 'full',
-                contacts: {
-                    phone: 79282619061,
-                },
-            }
-        },
         setIsOpen(value) {
             this.isOpen = value
         },
@@ -104,10 +128,11 @@ export const useUiStore = defineStore('UiStore', {
             this.isGlobalLoading = false;
         },
         setup() {
-            const dataStore = useDataStore();
+            //const dataStore = useDataStore();
+            const blockStore = useBlockStore('main')
             // Подписываемся на изменения isLoading в dataStore
             watch(
-                () => dataStore.isLoading,
+                () => blockStore.isLoading,
                 (newValue) => {
                     this.isGlobalLoading = newValue; // Обновляем состояние UiStore
                 }

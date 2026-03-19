@@ -1,4 +1,4 @@
-import {createApp, watch} from 'vue'
+import {createApp} from 'vue'
 import { createHead } from '@unhead/vue/client'
 import { createPinia } from 'pinia';
 import { i18n } from '@/i18n'
@@ -22,7 +22,6 @@ import AppLink from '@/components/AppLink.vue'
 import { useUiStore } from '@/stores/uiStore'
 
 
-
 const app = createApp(App);
 const head = createHead();
 const pinia = createPinia();
@@ -39,19 +38,8 @@ const uiStore = useUiStore()
 const saved = localStorage.getItem('section')
 if (saved)
 {
-    console.log('localStorage - section: ' + saved);
-    // setSection сам валидирует и делает fallback
     uiStore.setSection(saved)
 }
-/*
-watch(
-    () => uiStore.currentLocale,
-    (locale) => {
-        i18n.global.locale.value = locale
-    },
-    { immediate: true }
-)
-*/
 // Waypoint уже есть в `window`, просто добавляем его в глобальные свойства
 app.config.globalProperties.$Waypoint = window.Waypoint;
 
