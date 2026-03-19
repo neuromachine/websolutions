@@ -12,7 +12,7 @@ export const useFormStore = defineStore('formStore', {
             const uiStore = useUiStore()
             uiStore.startGlobalLoading()
 
-            const scope = uiStore.currentScope
+            const scope = uiStore.currentLocale // TODO: check
 
             this.forms[formKey] = { status: 'loading', response: null, errors: null }
 

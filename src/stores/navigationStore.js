@@ -3,7 +3,7 @@ import { useUiStore } from '@/stores/uiStore';
 import api from "@/utils/api.js";
 import {normalizeLink} from "@/utils/normalizeLink.js";
 
-import { SCOPES_CONFIG, VALID_SCOPES } from '@/config/scopes.js'
+import { VALID_SCOPES } from '@/config/scopes.js'
 
 export const useNavigationStore = defineStore('navigationStore', {
     state: () => ({
@@ -61,7 +61,8 @@ export const useNavigationStore = defineStore('navigationStore', {
                     anchor: item.anchor,
                     path: normalizeLink(item.link, VALID_SCOPES),
                     sort: Number(item.sort) || 99,
-                })).sort((a, b) => a.sort - b.sort)
+                // })).sort((a, b) => a.sort - b.sort)
+                }));
             } catch (err) {
                 console.error('fetchNavigation:', err)
             }
