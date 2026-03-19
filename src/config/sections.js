@@ -1,4 +1,4 @@
-export const SECTIONS_CONFIG = {
+export const SCOPES_CONFIG = {
     ru: {
         code: 'ru',
         // locale: 'ru-RU',
@@ -15,7 +15,7 @@ export const SECTIONS_CONFIG = {
     },
 }
 
-export const DEFAULT_SECTION = Object.keys(SECTIONS_CONFIG)
-    .find(key => SECTIONS_CONFIG[key].default)  // 'ru'
+export const DEFAULT_SCOPE = Object.keys(SCOPES_CONFIG)
+    .find(key => SCOPES_CONFIG[key].default)  // 'ru'
 
-export const VALID_SECTIONS = Object.keys(SECTIONS_CONFIG) // ['ru', 'en']
+export const VALID_SCOPES = Object.keys(SCOPES_CONFIG) // ['ru', 'en']

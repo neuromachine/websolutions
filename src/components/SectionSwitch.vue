@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { useUiStore } from '@/stores/uiStore'
-import { SECTIONS_CONFIG, VALID_SECTIONS } from '@/config/sections.js'
+import { SCOPES_CONFIG, VALID_SCOPES } from '@/config/sections.js'
 
 const uiStore = useUiStore()
 const router = useRouter()
@@ -28,13 +28,13 @@ const switchSection = (code) => {
 <template>
   <div class="section-switch d-flex align-items-center gap-1">
     <i class="bi bi-translate"></i>
-    <template v-for="(cfg, code, index) in SECTIONS_CONFIG" :key="code">
+    <template v-for="(cfg, code, index) in SCOPES_CONFIG" :key="code">
       <span
           class="switch-item"
           :class="{ active: current === code }"
           @click="switchSection(code)"
       >{{ cfg.label }}</span>
-      <span v-if="index < VALID_SECTIONS.length - 1" class="divider">|</span>
+      <span v-if="index < VALID_SCOPES.length - 1" class="divider">|</span>
     </template>
   </div>
 </template>

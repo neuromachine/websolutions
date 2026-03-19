@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { watch } from 'vue'
 import { useBlockStore } from "@/stores/blockStore";
 
-import { SECTIONS_CONFIG, DEFAULT_SECTION, VALID_SECTIONS } from '@/config/sections.js'
+import { SCOPES_CONFIG, DEFAULT_SCOPE, VALID_SCOPES } from '@/config/sections.js'
 
 export const useUiStore = defineStore('UiStore', {
     state: () => ({
@@ -13,7 +13,7 @@ export const useUiStore = defineStore('UiStore', {
         uiMainVars: {
             debug: false,
             menu: false,
-            section: DEFAULT_SECTION,
+            section: DEFAULT_SCOPE,
             header: {
                 head: true,
                 navbar: true,
@@ -42,8 +42,8 @@ export const useUiStore = defineStore('UiStore', {
         },
         // Полный конфиг текущей секции — задел под i18n и прочие расширения
         currentSection(state) {
-            return SECTIONS_CONFIG[state.uiMainVars.section]
-                ?? SECTIONS_CONFIG[DEFAULT_SECTION]
+            return SCOPES_CONFIG[state.uiMainVars.section]
+                ?? SCOPES_CONFIG[DEFAULT_SCOPE]
         },
         // Удобный прямой доступ к locale — для vue-i18n в будущем
         currentLocale() {
@@ -93,9 +93,9 @@ export const useUiStore = defineStore('UiStore', {
             //console.info(normalized)
 
             // Fallback к default если секция не валидна или пустая
-            this.uiMainVars.section = VALID_SECTIONS.includes(normalized)
+            this.uiMainVars.section = VALID_SCOPES.includes(normalized)
                 ? normalized
-                : DEFAULT_SECTION
+                : DEFAULT_SCOPE
         },
         setUiVars(key, value) {
             //console.log('debug:setUiVars', key, value);
