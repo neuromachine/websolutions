@@ -45,7 +45,7 @@ onMounted(() => {
 <!--  <debug/>-->
   <Header/>
 <!--  <CPheader />-->
-  <div v-if="blockStore.isItemReady">
+  <div id="compred" v-if="blockStore.isItemReady">
     <!-- HERO -->
     <div class="home-section home-2">
       <div class="d-table">
@@ -105,6 +105,7 @@ onMounted(() => {
       </div>
     </section>
 
+
     <!-- Benefits -->
     <section class="services-section-two section-padding">
       <div class="container">
@@ -115,7 +116,9 @@ onMounted(() => {
               <h2>{{ blockStore.item.properties.benefits.title }}</h2>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.benefits.items" :key="b.title">
+        </div>
+        <div class="row align-items-stretch">
+          <div class="d-flex col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.benefits.items" :key="b.title">
             <div class="service">
               <div class="icon">
                 <IconOffer
@@ -135,6 +138,7 @@ onMounted(() => {
       </div>
     </section>
     <!-- End Benefits -->
+
     <!-- About -->
     <section class="about-area bg-grey section-padding">
       <div class="container">
@@ -167,6 +171,7 @@ onMounted(() => {
       </div>
     </section>
     <!-- End About -->
+
     <!-- Packages -->
     <section class="services-section-two section-padding">
       <div class="container">
@@ -177,10 +182,18 @@ onMounted(() => {
               <h2>{{ blockStore.item.properties.items.title }}</h2>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6" v-for="item in blockStore.item.properties.items.items">
+        </div>
+        <div class="row align-items-stretch">
+          <div class="col-lg-4 col-md-6 d-flex" v-for="item in blockStore.item.properties.items.items">
             <div class="service plan">
-              <div class="visual">
+<!--              <div class="visual">
                 <CPicon :svgkey="blockStore.item.key"/>
+              </div>-->
+              <div class="icon">
+                <IconOffer
+                    :index="item.index"
+                    :properties="item"
+                />
               </div>
               <div class="title">
                 {{ item.name }}
@@ -208,7 +221,7 @@ onMounted(() => {
     <!-- End Packages -->
 
     <!-- Includes -->
-    <section v-if="blockStore.item.properties.includes" class="services-section-two section-padding">
+    <section v-if="blockStore.item.properties.includes" class="services-section-two">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -216,7 +229,9 @@ onMounted(() => {
               <h6 class="sub-title">{{ t('cp.includes.title') }}</h6>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6" v-for="item in blockStore.item.properties.includes" :key="item.text">
+        </div>
+        <div class="row align-items-stretch">
+          <div class="col-lg-3 col-md-6 d-flex" v-for="item in blockStore.item.properties.includes" :key="item.text">
             <div class="service">
               <div class="icon">
                 <IconOffer
@@ -234,19 +249,36 @@ onMounted(() => {
     </section>
     <!-- End Includes -->
 
-    <!-- acticle -->
-    <section v-if="blockStore.item.properties.acticle"  class="acticle services-section-two section-padding">
+    <!-- important -->
+    <section v-if="blockStore.item.properties.important" class="services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <content
-                :content="blockStore.item.properties.acticle"
-            />
+            <div class="section-title">
+              <h6 class="sub-title">{{ blockStore.item.properties.important.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.important.title }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-stretch">
+          <div class="col d-flex" v-for="b in blockStore.item.properties.important.items" :key="b.title">
+            <div class="service">
+              <div class="icon">
+                <IconOffer
+                    :index="b.index"
+                    :properties="b"
+                />
+              </div>
+              <div class="title">
+                {{ b.title }}
+              </div>
+              <div class="descr" v-html="b.text"></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- End acticle -->
+    <!-- End important -->
 
     <!-- reelsSystem -->
     <section v-if="blockStore.item.properties.reelsSystem" class="services-section-two section-padding">
@@ -310,38 +342,23 @@ onMounted(() => {
     </section>
     <!-- End extras -->
 
-    <!-- important -->
-    <section v-if="blockStore.item.properties.important" class="services-section-two section-padding">
+    <!-- acticle -->
+    <section v-if="blockStore.item.properties.acticle"  class="acticle services-section-two section-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <div class="section-title">
-              <h6 class="sub-title">{{ blockStore.item.properties.important.pretitle }}</h6>
-              <h2>{{ blockStore.item.properties.important.title }}</h2>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.important.items" :key="b.title">
-            <div class="service">
-              <div class="icon">
-                <IconOffer
-                    :index="b.index"
-                    :properties="b"
-                />
-              </div>
-              <div class="title">
-                {{ b.title }}
-              </div>
-              <div class="descr">
-                {{ b.text }}
-              </div>
-            </div>
+            <content
+                :content="blockStore.item.properties.acticle"
+            />
           </div>
         </div>
       </div>
     </section>
-    <!-- End important -->
+    <!-- End acticle -->
 
-    <Portfolio v-if="blockStore.item.key !== 'smmfish'" />
+
+    <Portfolio />
+
   </div>
   <div v-else class="container">
     <div class="row row_load">Loading Item</div>
@@ -357,10 +374,12 @@ onMounted(() => {
   padding: 24px;
   color: #000;
   box-shadow: 5px 7px 15px 2px rgba(82, 90, 101, 0.12);
+  width: 100%;
 }
 .service .icon { width: 50px; height: 50px;}
 .service .title { font-size: 16px; font-weight: bold; margin: 16px 0 16px 0;}
-.service .descr { font-size: 14px; line-height: 17px; color: #5F5F5F; margin: 0 0 16px 0; min-height: 85px;}
+.service .descr { font-size: 14px; line-height: 17px; color: #5F5F5F; margin: 0 0 16px 0; }
+
 .service .roboto { font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 11px; line-height: 22px; margin: 0 0 16px 0;}
 .service .sofia_bold { font-family: "Sofia Sans", sans-serif; font-size: 18px; font-weight: bold; margin: 0 10px 0 10px;}
 .service .conditions { padding: 0 0 0 16px; color: #5F5F5F; min-height: 220px;}
@@ -375,7 +394,10 @@ onMounted(() => {
   .home-section.home-2 {
     padding-top: 40px;
   }
-
+  #compred .main-banner-content h6 { font-size: 14px;}
+  #compred .home-section.home-2 .main-banner-content h1 { font-size: 38px;}
+  #compred .section-title h2 { font-size: 27px;}
+  #compred .acticle .content { font-size: 25px;}
 }
 
 </style>
