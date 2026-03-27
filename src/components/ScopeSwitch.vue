@@ -41,9 +41,6 @@ const switchScope = (code) => {
 
 <style scoped>
 
-.section-switch { font-size: 0.9rem; cursor: default; margin: 0 30px 0 auto; display: flex; color: #FFF;}
-.index-navber .section-switch { color: #333;}
-.navbar-section.is-sticky .section-switch { color: #333;}
 .switch-item {
   cursor: pointer;
   opacity: 0.45;

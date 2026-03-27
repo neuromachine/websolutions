@@ -1,6 +1,4 @@
 import { defineStore } from 'pinia';
-import { watch } from 'vue'
-import { useBlockStore } from "@/stores/blockStore";
 
 import { SCOPES_CONFIG, DEFAULT_SCOPE, VALID_SCOPES } from '@/config/scopes.js'
 

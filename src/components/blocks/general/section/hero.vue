@@ -1,4 +1,6 @@
 <script setup>
+import AppLink from "@/components/AppLink.vue";
+
 const props = defineProps({
   hero: {
     type: Object,
@@ -28,13 +30,13 @@ const props = defineProps({
                 </div>
                 -->
                 <div class="banner-btn">
-                  <RouterLink :to="props.hero.link" class="default-btn-one">
+                  <AppLink :to="props.hero.link" class="default-btn-one">
                     {{props.hero.anchor}}<span></span>
-                  </RouterLink>
+                  </AppLink>
                   <div class="video-box">
-                    <RouterLink :to="props.hero.link" class="popup-video video-btn">
+                    <AppLink :to="props.hero.link" class="popup-video video-btn">
                       <i class="fa fa-play"></i>
-                    </RouterLink>
+                    </AppLink>
                   </div>
                 </div>
               </div>

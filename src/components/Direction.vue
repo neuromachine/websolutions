@@ -17,12 +17,13 @@ const { blockStore, navigationStore } = usePageOrchestrator('direction', 'struct
       </div>
     </div>
     <div v-else class="container"><div class="row row_load">Loading Block</div></div>
+    <!--
     <div  v-if=navigationStore.isStrReady class="container">
-<!--      <div class="row">
+      <div class="row">
         <h2>{{navigationStore.structure.name}}</h2>
         <div class="descr" v-html="navigationStore.structure.description"></div>
         <div class="content" v-html="navigationStore.structure.content"></div>
-      </div>-->
+      </div>
       <div class="row">
         <div v-for="(item, index) in navigationStore.structure.child" :key="index" class="col-lg-4 col-md-6">
           <catClass
@@ -34,8 +35,8 @@ const { blockStore, navigationStore } = usePageOrchestrator('direction', 'struct
         </div>
       </div>
     </div>
-<!--    <div class="strData">{{dataStore.structure}}</div>-->
     <div v-else class="container"><div class="row row_load">Loading Structure</div></div>
+    -->
   </section>
   <!-- End Services Two Section -->
 </template>
