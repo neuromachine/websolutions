@@ -1,14 +1,16 @@
 <script setup>
-import {ref, onMounted, getCurrentInstance, onUnmounted, computed} from 'vue'
-import { useUiStore } from '@/stores/uiStore'; // Импорт стора
-import { useDataStore} from '@/stores/dataStore';
+import { onMounted } from 'vue'
+import { useUiStore } from '@/stores/uiStore';
+
 import $ from 'jquery'
-// import MeanMenu from "@/components/MeanMenu.vue";
+
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
 import Navbar from '@/components/navbar.vue';
-import Logo from '@/components/Logo_png.vue';
+import ScopeSwitch from "@/components/ScopeSwitch.vue";
 
-import structure from "@/structure.json";
 import WSpro from "@/components/WSpro.vue";
 
 defineProps({
@@ -17,15 +19,11 @@ defineProps({
 })
 
 const uiStore = useUiStore();
-const dataStore = useDataStore();
-
-
 
 const isOpen = uiStore.isOpen
 const toggleMenu = () => {
-  uiStore.setIsOpen(!uiStore.isOpen); // Пример переключения состояния
+  uiStore.setIsOpen(!uiStore.isOpen);
 }
-
 
 onMounted(() => {
   // Header Sticky
@@ -43,7 +41,7 @@ onMounted(() => {
 
 <template>
   <!-- Start Preloader Section -->
-  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.getGlobalLoading }">
+  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.isGlobalLoading }">
     <div class="loader">
       <div class="shadow"></div>
       <div class="box"></div>
@@ -57,24 +55,24 @@ onMounted(() => {
       <div class="container">
         <nav class="navbar navbar-expand-md navbar-light">
           <div class="nav_wrap">
-            <RouterLink to="/">
-<!--              <Logo />-->
+            <AppLink :to="'/'" class="ws_logo_link">
               <WSpro />
-            </RouterLink>
+            </AppLink>
             <!-- Иконка-бургер -->
-            <button v-if="!isNavi" class="burger-button" @click="toggleMenu">
+            <button v-if="uiStore.uiMainVars.header.menu" class="burger-button" @click="toggleMenu">
               <i :class="uiStore.isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
             </button>
           </div>
-          <div v-if="uiStore.uiMainVars.header.menu" class="navbar-collapse mean-menu" id="navbarSupportedContent">
+          <div class="navbar-collapse mean-menu" id="navbarSupportedContent">
             <Navbar />
-            <div class="other-option">
-              <a class="btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i>Написать<span></span></a>
+            <ScopeSwitch />
+            <div class="cta_wrap">
+              <a class="btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
             </div>
           </div>
 
         </nav>
-        <ResponsiveMenu v-if="uiStore.isOpen && !isNavi" :structure="structure" />
+        <ResponsiveMenu v-if="uiStore.isOpen && uiStore.uiMainVars.header.menu" />
       </div>
     </div>
   </div>
@@ -82,6 +80,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.navbar .mean-menu { justify-content: right;}
+.cta_wrap { margin: 0 0 0 0;}
+.cta_wrap .btn { margin-top: 0 !important;}
+.ws_logo_link { border-radius: 5px; display: block; overflow: hidden; }
 .index-navber .index-navber {}
 .navbar-section {
   /* background: #FFF; */
@@ -110,5 +112,7 @@ onMounted(() => {
     display: block;
     margin: 0 1rem 0 0;
   }
+  .navbar .section-switch {display: none;}
+  .cta_wrap { display: none;}
 }
 </style>
