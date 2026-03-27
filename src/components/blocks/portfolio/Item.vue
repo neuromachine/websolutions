@@ -9,6 +9,9 @@ const { blockStore } = usePageOrchestrator('portfolio', 'item', {
   fetch: (route) => route.params.slug
 })
 
+import { useStorageUrl } from '@/composables/useStorageUrl';   // подкорректируй путь
+const { getStorageUrl } = useStorageUrl();
+
 import { Swiper, SwiperSlide, } from 'swiper/vue'
 import {  Autoplay,Zoom } from 'swiper/modules'
 const swiperInstance = ref(null)
@@ -94,7 +97,8 @@ function onSwiperInit(swiper) {
               class="my-swiper">
         <SwiperSlide v-for="(img, idx) in blockStore.item.properties.image" :key="idx">
           <div v-if="blockStore.item.properties.image?.length" @click="toggleZoom" class="swiper-zoom-container">
-            <img :src="'http://wsapi/storage/portfolio/'+blockStore.item.key+'/'+ img" class="w-full h-auto" />
+<!--            <img :src="'http://wsapi/storage/portfolio/'+blockStore.item.key+'/'+ img" class="w-full h-auto" />-->
+            <img :src="getStorageUrl(`portfolio/${blockStore.item.key}/${img}`)" class="w-full h-auto" />
 <!--            storage/portfolio/barma/barma_desctop_main.png-->
           </div>
         </SwiperSlide>
