@@ -116,7 +116,9 @@ onMounted(() => {
               <h2>{{ blockStore.item.properties.benefits.title }}</h2>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.benefits.items" :key="b.title">
+        </div>
+        <div class="row align-items-stretch">
+          <div class="d-flex col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.benefits.items" :key="b.title">
             <div class="service">
               <div class="icon">
                 <IconOffer
@@ -259,7 +261,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="row align-items-stretch">
-          <div class="col-lg-3 col-md-6 d-flex" v-for="b in blockStore.item.properties.important.items" :key="b.title">
+          <div class="col d-flex" v-for="b in blockStore.item.properties.important.items" :key="b.title">
             <div class="service">
               <div class="icon">
                 <IconOffer
@@ -277,20 +279,6 @@ onMounted(() => {
       </div>
     </section>
     <!-- End important -->
-
-    <!-- acticle -->
-    <section v-if="blockStore.item.properties.acticle"  class="acticle services-section-two section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <content
-                  :content="blockStore.item.properties.acticle"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End acticle -->
 
     <!-- reelsSystem -->
     <section v-if="blockStore.item.properties.reelsSystem" class="services-section-two section-padding">
@@ -354,6 +342,19 @@ onMounted(() => {
     </section>
     <!-- End extras -->
 
+    <!-- acticle -->
+    <section v-if="blockStore.item.properties.acticle"  class="acticle services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <content
+                :content="blockStore.item.properties.acticle"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End acticle -->
 
 
     <Portfolio />
@@ -396,6 +397,7 @@ onMounted(() => {
   #compred .main-banner-content h6 { font-size: 14px;}
   #compred .home-section.home-2 .main-banner-content h1 { font-size: 38px;}
   #compred .section-title h2 { font-size: 27px;}
+  #compred .acticle .content { font-size: 25px;}
 }
 
 </style>
