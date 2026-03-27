@@ -57,7 +57,7 @@
 #compred .buttons {display: flex; flex-direction: row; justify-content: space-between; flex-wrap: wrap; align-items: center;}
 #compred .buttons .btn_compred { flex-grow: 1; flex-shrink: 0;}
 #compred h1 { font-size: 45px;}
-#compred strong {color:#00D9EA;}
+#compred strong {color:#223A76;}
 #compred .content_wrap ul {
   color: #FFF;}
 a.blue_link {font-size: 20px; color: #223A76; text-decoration: underline}
@@ -223,6 +223,9 @@ a.blue_link:hover { text-decoration: none}
 }
 .content .avatar h4 { text-align: center;}
 
+
+.service ul {  margin: 0 0 10px 15px;}
+.service ul li { list-style: disc; font-size: 16px; line-height: 24px; padding: 0 0 0 5px;}
 
 
 

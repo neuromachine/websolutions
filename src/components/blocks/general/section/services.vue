@@ -20,7 +20,9 @@ const props = defineProps({
             <h2>{{props.list.title}}</h2>
           </div>
         </div>
-        <div v-for="(item, index) in props.list.items" class="col-lg-4 col-md-6">
+      </div>
+      <div class="row align-items-stretch">
+        <div v-for="(item, index) in props.list.items" class="d-flex col-lg-4 col-md-6">
           <div class="single-services-two-item">
             <div class="services-icon-box">
               <div class="default-icon">

@@ -1,5 +1,4 @@
 <script setup>
-import Icon from "@/components/blocks/services/micro/icon.vue";
 import Category from "@/components/blocks/services/presentation/category.vue";
 const props = defineProps({
   data: {
