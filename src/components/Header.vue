@@ -66,8 +66,11 @@ onMounted(() => {
           <div class="navbar-collapse mean-menu" id="navbarSupportedContent">
             <Navbar />
             <ScopeSwitch />
-            <div class="cta_wrap">
-              <a class="btn head_button" href="https://t.me/Lola_06"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
+            <div v-if="uiStore.scope ==='ru'" class="cta_wrap">
+              <a class="btn head_button" href="https://t.me/Lola_06" target="_blank"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
+            </div>
+            <div v-else class="cta_wrap">
+              <a class="btn head_button" href="https://m.me/wspro.xyz" target="_blank"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
             </div>
           </div>
 

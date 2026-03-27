@@ -185,7 +185,7 @@ onMounted(() => {
               <div class="title">
                 {{ item.name }}
               </div>
-              <div class="descr">
+              <div v-if="item.desc" class="descr">
                 {{ item.desc }}
               </div>
               <div class="price roboto">
