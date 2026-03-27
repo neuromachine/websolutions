@@ -10,7 +10,7 @@ const { blockStore,navigationStore } = usePageOrchestrator('services', 'structur
   <template v-if="blockStore.catReady && navigationStore.strReady">
     <section class="service_section mb-5">
       <Info :data="blockStore.category" />
-<!--      <List :items="navigationStore.structure?.child" />-->
+      <!--      <List :items="navigationStore.structure?.child" />-->
     </section>
   </template>
 </template>

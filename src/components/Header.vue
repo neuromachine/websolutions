@@ -94,7 +94,6 @@ onMounted(() => {
 .burger-button {
   background: none;
   border: none;
-  font-size: 1.8rem;
   color: #222;
   cursor: pointer;
   display: none; /* по умолчанию скрыт */
@@ -102,6 +101,10 @@ onMounted(() => {
 
 .burger-icon {
   transition: transform 0.3s ease;
+}
+
+.burger-button i {
+  font-size: 1.8rem; line-height: 35px;
 }
 
 /* Показывать бургер только на экранах меньше 991px */

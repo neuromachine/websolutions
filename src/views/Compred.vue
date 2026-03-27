@@ -11,7 +11,7 @@ import content from "@/components/blocks/services/presentation/content.vue"
 
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
 
-import { useHead } from '@unhead/vue';
+/*import { useHead } from '@unhead/vue';
 useHead({
   title: 'Коммерческое предложение',
   meta: [
@@ -23,7 +23,7 @@ useHead({
     { property: 'og:url', content: 'https://wspro.xyz/' },
     { property: 'og:type', content: 'website' },
   ]
-});
+});*/
 
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
