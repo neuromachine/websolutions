@@ -26,7 +26,7 @@ const switchScope = (code) => {
 </script>
 
 <template>
-  <div class="section-switch d-flex align-items-center gap-1">
+  <div v-if="uiStore.uiMainVars.header.menu" class="section-switch align-items-center gap-1">
     <i class="bi bi-translate"></i>
     <template v-for="(cfg, code, index) in SCOPES_CONFIG" :key="code">
       <span
@@ -40,7 +40,10 @@ const switchScope = (code) => {
 </template>
 
 <style scoped>
-.section-switch { font-size: 0.9rem; cursor: default; }
+
+.section-switch { font-size: 0.9rem; cursor: default; margin: 0 30px 0 auto; display: flex; color: #FFF;}
+.index-navber .section-switch { color: #333;}
+.navbar-section.is-sticky .section-switch { color: #333;}
 .switch-item {
   cursor: pointer;
   opacity: 0.45;

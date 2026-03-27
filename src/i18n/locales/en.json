@@ -34,6 +34,33 @@
       }
     }
   },
+  "services": {
+    "directions": {
+      "development": "Development",
+      "promotion": "Promotion",
+      "support": "Support",
+      "ai": "AI & ML",
+      "content": "Content and creativity",
+      "consulting": "Consulting and strategy"
+    }
+  },
+  "pages": {
+    "info": {
+      "about": "About Us",
+      "contacts": "Contacts",
+      "price": "Prices"
+    }
+  },
+  "cp": {
+    "packages": {
+      "budget": "budget",
+      "period": "period",
+      "button": "discuss"
+    },
+    "includes": {
+      "title": "All solutions include:"
+    }
+  },
   "portfolio": {
     "title": "Our portfolio",
     "subtitle": "Recent works",

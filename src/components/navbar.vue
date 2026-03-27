@@ -7,7 +7,7 @@ const navStore = useNavigationStore()
 </script>
 
 <template>
-  <ul :class="uiStore.isOpen ? 'open' : 'close'" class="navbar-nav">
+  <ul v-if="uiStore.uiMainVars.header.menu" :class="uiStore.isOpen ? 'open' : 'close'" class="navbar-nav">
     <li
         v-for="item in navStore.nav"
         :key="item.path"
@@ -17,3 +17,10 @@ const navStore = useNavigationStore()
     </li>
   </ul>
 </template>
+
+<style scoped>
+@media screen and (max-width: 991px) {
+  .close { display: none}
+  .open { display: none}
+}
+</style>

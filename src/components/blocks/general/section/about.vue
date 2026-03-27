@@ -26,7 +26,7 @@ const props = defineProps({
         </div>
         <div class="col-lg-6 col-md-12">
           <div class="about-image">
-            <img src="/assets/img/about-2.png" alt="About image">
+            <img src="@/assets/img/about-2.png" alt="About image">
           </div>
         </div>
       </div>

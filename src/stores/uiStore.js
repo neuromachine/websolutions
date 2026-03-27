@@ -63,13 +63,15 @@ export const useUiStore = defineStore('UiStore', {
             if (category) {
                 crumbs.push({ key: category.key, title: category.name })
                 title = category.name; key = category.key
+                if(category.content?.title) title = category.content.title // TODO: change
                 if (!item) children = Object.values(category.children || {}).map(n => n.key)
             }
             if (item) {
-                console.log(item.properties.title)
-                const itemTitle = item.properties?.title || title
+                const itemTitle = item?.name || item.properties?.title || title
                 crumbs.push({ key: item.slug || key, title: itemTitle })
                 title = itemTitle; key = item.slug || key
+                console.log('here',item.title);
+                if(item?.properties && item.properties?.title) title = item.properties.title // TODO: change
             }
 
             const parent = crumbs.length > 1 ? crumbs[crumbs.length - 2] : null
@@ -87,6 +89,10 @@ export const useUiStore = defineStore('UiStore', {
         setUiVars(key, value) {
             //console.log('debug:setUiVars', key, value);
             this.uiMainVars[key] = value
+        },
+        setPageTitle(value) {
+            console.log('setPageTitle:', value);
+            this.uiMainVars.page.title = value
         },
         setHeaderVars(key, value) {
             //console.log('debug: setHeaderVars', key, value);

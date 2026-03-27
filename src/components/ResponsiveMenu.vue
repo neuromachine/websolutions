@@ -1,25 +1,21 @@
+<script setup>
+import { useNavigationStore } from '@/stores/navigationStore'
+import ScopeSwitch from "@/components/ScopeSwitch.vue";
+const navStore = useNavigationStore()
+</script>
+
 <template>
   <nav class="responsive-menu">
     <ul>
-      <li v-for="(item, index) in structure" :key="index">
-        <RouterLink :to="item.slug" :class="item.class || ''">{{ item.title }}</RouterLink>
+      <li
+          v-for="item in navStore.nav"
+          :key="item.path">
+        <AppLink :to="item.path" class="nav-link">{{ item.anchor }}</AppLink>
       </li>
     </ul>
+    <ScopeSwitch />
   </nav>
 </template>
-
-<script setup>
-import { RouterLink } from 'vue-router';
-
-const structure = [
-  { title: 'Главная', slug: '/' },
-  { title: 'Услуги', slug: '/services', class: 'nav-link' },
-  { title: 'Портфолио', slug: '/portfolio', class: 'nav-link' },
-  { title: 'Цены', slug: '/pages/price', class: 'nav-link' },
-  { title: 'О нас', slug: '/pages/about', class: 'nav-link' },
-  { title: 'Контакты', slug: '/pages/contacts', class: 'nav-link' },
-];
-</script>
 
 <style scoped>
 .responsive-menu {

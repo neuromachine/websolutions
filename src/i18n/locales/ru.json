@@ -34,10 +34,37 @@
       }
     }
   },
+  "services": {
+    "directions": {
+      "development": "Разработка",
+      "promotion": "Продвижение",
+      "support": "Поддержка",
+      "ai": "AI и ML",
+      "content": "Контент и креатив",
+      "consulting": "Консалтинг и стратегия"
+    }
+  },
+  "pages": {
+    "info": {
+      "about": "О нас",
+      "contacts": "Контакты",
+      "price": "Цены"
+    }
+  },
+  "cp": {
+    "packages": {
+      "budget": "бюджет",
+      "period": "срок",
+      "button": "Обсудить план"
+    },
+    "includes": {
+      "title": "Все решения включают:"
+    }
+  },
   "portfolio": {
     "title": "Наше портфолио",
     "subtitle": "Последние работы",
-    "currency": "т.р.",
+    "currency": "руб.",
     "category": "Категория",
     "cost": "Стоимость",
     "date": "Дата",

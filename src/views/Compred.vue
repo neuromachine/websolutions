@@ -1,7 +1,7 @@
 <script setup>
 // import debug from "@/components/Debug.vue";
-// import Header from "@/components/Header.vue";
-import CPheader from "@/components/CPheader.vue";
+import Header from "@/components/Header.vue";
+// import CPheader from "@/components/CPheader.vue";
 import CPimg from "@/components/CPimg.vue";
 import CPicon from "@/components/CPicon.vue";
 import WSteam from "@/components/WSteam.vue";
@@ -19,22 +19,32 @@ useHead({
     // Open Graph
     { property: 'og:title', content: 'КП' },
     { property: 'og:description', content: '-' },
-    { property: 'og:image', content: 'https://ws-pro.ru/assets/svg/window.png' },
-    { property: 'og:url', content: 'https://ws-pro.ru/' },
+    { property: 'og:image', content: 'https://wspro.xyz/assets/svg/window.png' },
+    { property: 'og:url', content: 'https://wspro.xyz/' },
     { property: 'og:type', content: 'website' },
   ]
 });
 
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
 import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+import {onMounted} from "vue";
 const { blockStore } = usePageOrchestrator('cp', 'item', {
   fetch: (route) => route.params.slug
 })
+
+import { useUiStore } from '@/stores/uiStore';
+const uiStore = useUiStore();
+onMounted(() => {
+   uiStore.setHeaderVars('menu', false);
+});
 </script>
 
 <template>
 <!--  <debug/>-->
-<!--  <Header/>-->
-  <CPheader />
+  <Header/>
+<!--  <CPheader />-->
   <div v-if="blockStore.isItemReady">
     <!-- HERO -->
     <div class="home-section home-2">
@@ -130,7 +140,7 @@ const { blockStore } = usePageOrchestrator('cp', 'item', {
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-lg-6 col-md-12">
-            <div class="about-content">
+            <div v-if="uiStore.scope ==='ru'" class="about-content">
               <h6 class="sub-title">О нас</h6>
               <h2>Web Solution — решения с фокусом на результат</h2>
               <p class="about__text">Мы — международная digital-команда.</p>
@@ -139,6 +149,13 @@ const { blockStore } = usePageOrchestrator('cp', 'item', {
                 Фокус на удобстве пользователей, внимании к деталям и технологиях,
                 которые решают задачи.
               </p>
+            </div>
+            <div v-else class="about-content">
+              <h6 class="sub-title">About the studio</h6>
+              <h2>Results-focused web solutions</h2>
+              <p class="about__text">We develop web solutions that drive business forward.</p>
+              <p class="about__text">We create thoughtful websites and digital products <strong>focused on growth and user experience</strong>.</p>
+              <p class="about__text">Attention to detail, technology, and design are at the core of every project.</p>
             </div>
           </div>
           <div class="col-lg-6 col-md-12">
@@ -172,16 +189,16 @@ const { blockStore } = usePageOrchestrator('cp', 'item', {
                 {{ item.desc }}
               </div>
               <div class="price roboto">
-                бюджет <span class="sofia_bold">{{ item.price }}</span> ₽
+                {{ t('cp.packages.budget') }} <span class="sofia_bold">{{ item.price }}</span>
               </div>
               <div class="term roboto">
-                срок <span class="sofia_bold">{{ item.term }}</span>
+                {{ t('cp.packages.period') }} <span class="sofia_bold">{{ item.term }}</span>
               </div>
               <ul class="conditions">
                 <li v-for="f in item.features" :key="f">{{ f }}</li>
               </ul>
               <div class="b_wrap">
-                <RouterLink class="know_price" to="/pages/contacts">Обсудить план</RouterLink>
+                <AppLink :to="'/pages/contacts'" class="know_price">{{ t('cp.packages.button') }}</AppLink>
               </div>
             </div>
           </div>
@@ -196,7 +213,7 @@ const { blockStore } = usePageOrchestrator('cp', 'item', {
         <div class="row">
           <div class="col-md-12">
             <div class="section-title">
-              <h6 class="sub-title">Все решения включают:</h6>
+              <h6 class="sub-title">{{ t('cp.includes.title') }}</h6>
             </div>
           </div>
           <div class="col-lg-3 col-md-6" v-for="item in blockStore.item.properties.includes" :key="item.text">

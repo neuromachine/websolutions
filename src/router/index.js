@@ -58,6 +58,9 @@ router.beforeEach(async(to, from, next) => {
     uiStore.setIsOpen(false)
     uiStore.setHeaderVars('menu', true) // TODO: refactor
 
+    uiStore.setPageTitle('Загрузка')
+
+
     next()
 })
 

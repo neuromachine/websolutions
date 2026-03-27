@@ -2,7 +2,9 @@ import { defineStore } from 'pinia'
 import { useUiStore } from '@/stores/uiStore'
 import api from '@/utils/api.js'
 
-export function useBlockStore(id) {
+const _registry = new Map()
+
+function createBlockStoreDefinition(id) {
     return defineStore(`block/${id}`, {
         state: () => ({
             category: null,
@@ -45,12 +47,16 @@ export function useBlockStore(id) {
                     (item.workclass || []).some(c => c.key === state.filter)
                 )
             },
+            //getItemPrice: (s) => Math.floor(s.item?.properties?.price / 1000) || 0,
             getItemPrice: (s) => Math.floor(s.item?.properties?.price / 1000) || 0,
         },
         actions: {
             resetCategory() { this.category = null; this.catReady = false },
+            resetItem() { this.item = null; this.itemReady = false },
             setFilter(key)  { this.filter = key },
             setLoading(v)   { this.isLoading = v },
+
+
 
             async fetchBlockCategory(slug) {
                 const uiStore = useUiStore()
@@ -72,6 +78,7 @@ export function useBlockStore(id) {
                 } catch (err) {
                     console.error('fetchBlockCategory:', err)
                 } finally {
+                    this.resetItem()
                     uiStore.stopGlobalLoading()
                     this.setLoading(false)
                 }
@@ -105,5 +112,11 @@ export function useBlockStore(id) {
                 }
             },
         },
-    })()  // ← вызов defineStore сразу возвращает composable, () вызывает его
+    })
+}
+export function useBlockStore(id) {
+    if (!_registry.has(id)) {
+        _registry.set(id, createBlockStoreDefinition(id))
+    }
+    return _registry.get(id)()  // ← вызов useStore() — всегда тот же инстанс
 }

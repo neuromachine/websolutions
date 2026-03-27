@@ -38,7 +38,7 @@ export const useNavigationStore = defineStore('navigationStore', {
             uiStore.startGlobalLoading()
             this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`${uiStore.uiMainVars.section}/blocks/categories/structure/${slug}`)
+                const { data: { data } } = await api.get(`${uiStore.scope}/blocks/categories/structure/${slug}`)
                 this.structure = data
                 this.strReady = true
             } catch (err) {
@@ -53,7 +53,7 @@ export const useNavigationStore = defineStore('navigationStore', {
             uiStore.startGlobalLoading()
             this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`${scope}/blocks/blocks/navigation`)
+                const { data: { data } } = await api.get(`${uiStore.scope}/blocks/blocks/navigation`)
                 const raw = data.content || []
                 // TODO: refactor data assignment
                 this.nav = raw.map(item => ({

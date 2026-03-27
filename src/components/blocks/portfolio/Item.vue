@@ -49,11 +49,12 @@ function onSwiperInit(swiper) {
               </div>
               <div class="single-info-box">
                 <h4>{{ t('portfolio.cost') }}</h4>
-                <span>{{blockStore.getItemPrice}} {{ t('portfolio.currency') }}</span>
+<!--                <span>{{blockStore.getItemPrice}} {{ t('portfolio.currency') }}</span>-->
+                <span>{{blockStore.item.properties.price}} {{ t('portfolio.currency') }}</span>
               </div>
               <div class="single-info-box" v-if="blockStore.item.properties.date">
                 <h4>{{ t('portfolio.date') }}</h4>
-                <span>{{ blockStore.item.properties.date }} {{t('contacts.social.instagram')}}</span>
+                <span>{{ blockStore.item.properties.date }}</span>
               </div>
               <div class="single-info-box">
                 <h4>{{ t('portfolio.social') }}</h4>

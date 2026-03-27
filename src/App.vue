@@ -7,7 +7,7 @@ const route = useRoute()
 const uiStore = useUiStore()
 
 const routerKey = computed(() =>
-    `${uiStore.uiMainVars.section}::${route.fullPath}`
+    `${uiStore.scope}::${route.fullPath}`
 )
 </script>
 <template>

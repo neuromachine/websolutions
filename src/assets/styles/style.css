@@ -4588,7 +4588,7 @@ blockquote::after, .blockquote::after {
 }
 
 .price-heading {
-	text-align: center;
+	/*text-align: center;*/
 	margin-bottom: 20px;
 }
 
@@ -4615,7 +4615,7 @@ blockquote::after, .blockquote::after {
 }
 
 .single-pricing-content .price-body {
-	text-align: center;
+	/*text-align: center;*/
 }
 
 .price-body ul li:last-child {

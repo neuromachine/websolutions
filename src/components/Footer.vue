@@ -70,10 +70,16 @@ onMounted(() => {
                 <WSpro />
               </a>
               <p>{{ t('ui.slogan') }}</p>
-              <ul class="footer-social">
+              <!--TODO: Need make scope widget-->
+              <ul v-if="uiStore.scope ==='ru'" class="footer-social">
                 <li><a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                 <li><a href="https://t.me/websolutionspro" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
                 <li><a href="https://t.me/Lola_06" target="_blank"><i class="fa-solid fa-message"></i></a></li>
+              </ul>
+              <ul v-else class="footer-social">
+                <li><a href="https://www.instagram.com/wspro.xyz" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://www.facebook.com/share/189j8TnVn2/?mibextid=wwXIfr" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="https://m.me/wspro.xyz" target="_blank"><i class="fa-solid fa-message"></i></a></li>
               </ul>
             </div>
           </div>
@@ -82,11 +88,14 @@ onMounted(() => {
               <div class="footer-heading">
                 <h3>{{ t('ui.navi.groups.services') }}</h3>
               </div>
+              <!--TODO: Hard Links-->
               <ul class="footer-quick-links">
-                <li><a href="/services">Разработка</a></li>
-                <li><a href="/services">Продвижение</a></li>
-                <li><a href="/services">Сопровождение</a></li>
-                <li><a href="/services">Индивидуально</a></li>
+                <li><AppLink :to="'/direction/razrabotka'">{{ t('services.directions.development') }}</AppLink></li>
+                <li><AppLink :to="'/direction/prodvizenie'" >{{ t('services.directions.promotion') }}</AppLink></li>
+                <li><AppLink :to="'/direction/podderzka-i-soprovozdenie'" >{{ t('services.directions.support') }}</AppLink></li>
+                <li><AppLink :to="'/direction/ai'" >{{ t('services.directions.ai') }}</AppLink></li>
+                <li><AppLink :to="'/direction/kontent-i-kreativ'" >{{ t('services.directions.content') }}</AppLink></li>
+                <li><AppLink :to="'/direction/konsalting-i-strategiia'" >{{ t('services.directions.consulting') }}</AppLink></li>
               </ul>
             </div>
           </div>
@@ -96,8 +105,9 @@ onMounted(() => {
                 <h3>{{ t('ui.navi.groups.info') }}</h3>
               </div>
               <ul class="footer-quick-links">
-                <li><a href="/pages/about">О нас</a></li>
-                <li><a href="/pages/contacts">Контакты</a></li>
+                <li><AppLink :to="'/pages/about'">{{ t('pages.info.about') }}</AppLink></li>
+                <li><AppLink :to="'/pages/contacts'">{{ t('pages.info.contacts') }}</AppLink></li>
+                <li><AppLink :to="'/pages/price'">{{ t('pages.info.price') }}</AppLink></li>
 <!--                <li><a href="portfolio.html">Команда</a></li>
                 <li><a href="contact.html">Цены</a></li>
                 <li><a href="privacy-policy.html">FAQ</a></li>-->

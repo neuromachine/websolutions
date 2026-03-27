@@ -21,12 +21,12 @@ const uiStore = useUiStore();
         <div class="container">
           <div class="page-title-content">
             <h2>{{uiStore.uiMainVars.page.title}}</h2>
-              <ul>
+<!--              <ul>
                 <li v-for="(item, index) in uiStore.uiMainVars.page.breadcrumbs" :key="index">
                   <AppLink :to="'/'+item.key">{{ item.title }}</AppLink>
                 </li>
                 <li>{{uiStore.uiMainVars.page.title}}</li>
-              </ul>
+              </ul>-->
           </div>
         </div>
       </div>
