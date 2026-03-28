@@ -30,6 +30,10 @@ const routes = [
                 path: 'compred/:slug',
                 name: 'compred',
                 component: () => import('@/views/Compred.vue'),
+                meta: {
+                    title: 'Ком.пред',
+                    gaGoal: 'view_ind_offer', // GA
+                }
             },
             ...servicesRoutes,
             ...portfolioRoutes,
