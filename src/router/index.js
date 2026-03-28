@@ -37,6 +37,11 @@ const routes = [
             },
             ...servicesRoutes,
             ...portfolioRoutes,
+            {
+                path: '/:pathMatch(.*)*',
+                name: 'NotFound',
+                component: () => import('@/views/Notfound.vue'),
+            },
         ],
     },
 ]
