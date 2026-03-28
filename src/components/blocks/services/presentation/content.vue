@@ -7,5 +7,9 @@ const props = defineProps({
 })
 </script>
 <template>
-  <div class="content" v-html="props.content"></div>
+    <div class="container content" v-html="props.content"></div>
 </template>
+
+<style scoped>
+
+</style>

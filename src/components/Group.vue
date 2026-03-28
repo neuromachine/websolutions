@@ -1,38 +1,27 @@
 <script setup>
-import { onMounted, watch } from "vue";
 import catClass from "@/components/blocks/services/catClass.vue";
 import item from "@/components/blocks/services/presentation/item.vue"
 import service from "@/components/blocks/services/presentation/service.vue"
 import content from "@/components/blocks/services/presentation/content.vue"
-import { useDataStore } from '@/stores/dataStore';
-const dataStore = useDataStore();
-import {useRoute} from "vue-router";
-const route = useRoute();
-function load() {
-  dataStore.fetchBlockCategory(route.params.slug);
-}
-onMounted(() => {load()});
-watch(
-    () => route.params.slug,
-    (newSlug, oldSlug) => {
-      if (newSlug !== oldSlug) {
-        load()
-      }
-    }
-)
+
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+// const { blockStore, navigationStore } = usePageOrchestrator('group', 'structure+category', {
+const { blockStore } = usePageOrchestrator('group', 'category', {
+  fetch: (route) => route.params.slug
+})
 </script>
 
 <template>
   <section class="service_section">
 
-    <div v-if="dataStore.isCatReady" class="container">
+    <div v-if="blockStore.isCatReady" class="container">
 
       <content
-        :content="dataStore.category.content"
+        :content="blockStore.category.content.content"
       />
 
-      <div v-if="dataStore.isHaveSubCat" class="row groups_list">
-        <div v-for="(item, index) in dataStore.category.children" :key="index" class="col-lg-4 col-md-6">
+      <div v-if="blockStore.isHaveSubCat" class="row groups_list">
+        <div v-for="(item, index) in blockStore.category.children" :key="index" class="col-lg-4 col-md-6">
           <catClass
               :slug=item.key
               :name=item.name
@@ -42,17 +31,17 @@ watch(
         </div>
       </div>
 
-      <div v-if="dataStore.isHaveItems" class="row items_list">
-<!--        <item v-for="item in dataStore.category.blocks[0].items"
+      <div v-if="blockStore.isHaveItems" class="row items_list">
+<!--        <item v-for="item in blockStore.category.blocks[0].items"
               :slug="item.key"
               :name="item.name"
               :properties="item.properties"
         />-->
-        <service v-for="(item, index) in dataStore.category.blocks[0].items"
+        <service v-for="(item, index) in blockStore.category.blocks[0].items"
               :slug="item.key"
               :name="item.name"
               :index="index"
-                 :owner="dataStore.category"
+                 :owner="blockStore.category"
               :properties="item.properties"
         />
       </div>

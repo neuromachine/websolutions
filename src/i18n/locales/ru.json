@@ -1,0 +1,109 @@
+{
+  "ui": {
+    "sitename": "Web Solutions",
+    "loading": "Загрузка",
+    "more": "Подробно",
+    "cta_b_text": "Написать",
+    "slogan": "Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.",
+    "navi": {
+      "groups": {
+        "services": "Услуги",
+        "info": "Инфо",
+        "contacts": "Контакты"
+      }
+    },
+    "contacts": {
+      "phone": {
+        "name": "Телефон",
+        "anchor": "0845122254 (Вьетнам)",
+        "link": "+84845122254"
+      },
+      "email": {
+        "name": "Email",
+        "anchor": "manager\\@wspro.xyz",
+        "link": "manager\\@wspro.xyz"
+      },
+      "messaging": {
+        "name": "Telegram",
+        "anchor": "Lola_06",
+        "link": "https://t.me/Lola_06"
+      },
+      "location": {
+        "name": "Адрес",
+        "anchor": "Работаем по всему миру",
+        "link": ""
+      }
+    }
+  },
+  "services": {
+    "directions": {
+      "development": "Разработка",
+      "promotion": "Продвижение",
+      "support": "Поддержка",
+      "ai": "AI и ML",
+      "content": "Контент и креатив",
+      "consulting": "Консалтинг и стратегия"
+    }
+  },
+  "pages": {
+    "info": {
+      "about": "О нас",
+      "contacts": "Контакты",
+      "price": "Цены"
+    }
+  },
+  "cp": {
+    "packages": {
+      "budget": "бюджет",
+      "period": "срок",
+      "button": "Обсудить план"
+    },
+    "includes": {
+      "title": "Все решения включают:"
+    }
+  },
+  "portfolio": {
+    "title": "Наше портфолио",
+    "subtitle": "Последние работы",
+    "currency": "руб.",
+    "category": "Категория",
+    "cost": "Стоимость",
+    "date": "Дата",
+    "social": "Соц. сети",
+    "link": "Ссылка",
+    "linktext": "Перейти"
+  },
+  "contacts": {
+    "email": "manager@wspro.xyz",
+    "social": {
+      "instagram": "websn.pro",
+      "message": "https://t.me/websolutionspro"
+    }
+  },
+  "filter": {
+    "all":"Все",
+    "develop":"Разработка",
+    "html":"Верстка",
+    "design":"Дизайн"
+  },
+  "form": {
+    "title": "Заполните форму",
+    "desc": "Оставьте нам свой контакт - мы свяжемся с вами",
+    "contact": "Имя в мессенджере, телефон или e-mail",
+    "send": "Отправить",
+    "sending": "Отправка...",
+    "send_fail_onserver": "Ошибка отправки:",
+    "send_try_again": "Пожалуйста попробуйте снова позже",
+    "send_result_ok": "Спасибо! Ваша заявка принята",
+    "field_label": "имя в мессенджере, телефон или e-mail",
+    "field_is_required": "Required field"
+  },
+  "validation": {
+    "required": "Обязательное поле",
+    "email": "Некорректный email",
+    "format": "Неверный формат",
+    "min_chars": "Минимум {min} символов",
+    "max_chars": "Максимум {max} символов",
+    "min_number": "Минимум {min}"
+  }
+}

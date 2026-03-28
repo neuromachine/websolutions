@@ -1,49 +1,21 @@
 <script setup>
-import { useUiStore } from '@/stores/uiStore';
-const uiStore = useUiStore();
+import { useUiStore } from '@/stores/uiStore'
+import { useNavigationStore } from '@/stores/navigationStore'
+
+const uiStore = useUiStore()
+const navStore = useNavigationStore()
 </script>
 
 <template>
-    <ul :class="uiStore.isOpen ? 'open' : 'close'" class="navbar-nav">
-      <li class="nav-item">
-        <RouterLink to="/">Главная</RouterLink>
-      </li>
-      <li class="nav-item">
-        <RouterLink class="nav-link" to="/services">Услуги</RouterLink>
-      </li>
-      <li class="nav-item">
-        <RouterLink to="/portfolio" class="nav-link">Портфолио</RouterLink>
-      </li>
-      <li class="nav-item">
-        <RouterLink to="/pages/price" class="nav-link">Цены</RouterLink>
-      </li>
-<!--      <li class="nav-item">-->
-<!--        <RouterLink to="/pages/info" class="nav-link">Инфо <i class="fas fa-chevron-down"></i></RouterLink>-->
-<!--        <ul class="dropdown-menu">-->
-<!--          <li class="nav-item">-->
-<!--            <RouterLink to="/compred" class="nav-link">КП</RouterLink>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <RouterLink to="/pages/team" class="nav-link">Команда</RouterLink>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <RouterLink to="/price" class="nav-link">Цены</RouterLink>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <RouterLink to="/pages/faq" class="nav-link">FAQ</RouterLink>-->
-<!--          </li>-->
-<!--          <li class="nav-item">-->
-<!--            <RouterLink to="/pages/about" class="nav-link">О нас</RouterLink>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </li>-->
-      <li class="nav-item">
-        <RouterLink to="/pages/about" class="nav-link">О нас</RouterLink>
-      </li>
-      <li class="nav-item">
-        <RouterLink to="/pages/contacts" class="nav-link">Контакты</RouterLink>
-      </li>
-    </ul>
+  <ul v-if="uiStore.uiMainVars.header.menu" :class="uiStore.isOpen ? 'open' : 'close'" class="navbar-nav">
+    <li
+        v-for="item in navStore.nav"
+        :key="item.path"
+        class="nav-item"
+    >
+      <AppLink :to="item.path" class="nav-link">{{ item.anchor }}</AppLink>
+    </li>
+  </ul>
 </template>
 
 <style scoped>

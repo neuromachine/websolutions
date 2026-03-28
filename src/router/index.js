@@ -1,91 +1,49 @@
-import { createRouter, createWebHistory} from 'vue-router'
-import { useUiStore } from '@/stores/uiStore';
+import { createRouter, createWebHistory } from 'vue-router'
+import { h } from 'vue'
+import { RouterView } from 'vue-router'
+import { useUiStore } from '@/stores/uiStore'
+import { analytics } from '@/analytics'
+import { chat } from '@/chat'
+import { servicesRoutes } from './routes/services'
+import { portfolioRoutes } from './routes/portfolio'
 import $ from 'jquery'
+import {useNavigationStore} from "@/stores/navigationStore.js";
+
+import { DEFAULT_SCOPE } from '@/config/scopes.js'
 
 const routes = [
     {
-        path: '/',
-        name: 'home',
-        component: () => import('@/views/Home.vue'),
+        path: '/:scope([^/]+)?',
+        component: { render: () => h(RouterView) },
+        children: [
+            {
+                path: '',
+                name: 'main',
+                component: () => import('@/views/Home.vue'),
+            },
+            {
+                path: 'pages/:slug',
+                name: 'page',
+                component: () => import('@/views/blocks/Page.vue'),
+            },
+            {
+                path: 'compred/:slug',
+                name: 'compred',
+                component: () => import('@/views/Compred.vue'),
+                meta: {
+                    title: 'Ком.пред',
+                    gaGoal: 'view_ind_offer', // GA
+                }
+            },
+            ...servicesRoutes,
+            ...portfolioRoutes,
+            {
+                path: '/:pathMatch(.*)*',
+                name: 'NotFound',
+                component: () => import('@/views/Notfound.vue'),
+            },
+        ],
     },
-    {
-        path: '/services',
-        name: 'services',
-        component: () => import('@/views/Services.vue'),
-    },
-    {
-        path: '/direction/:slug',
-        name: 'direction',
-        component: () => import('@/views/Direction.vue'),
-    },
-    {
-        path: '/group/:slug',
-        name: 'group',
-        component: () => import('@/views/Group.vue'),
-    },
-    {
-        path: '/portfolio',
-        name: 'portfolio',
-        component: () => import('@/views/Portfolio.vue'),
-    },
-    {
-        path: '/blocks/item/:slug',
-        name: 'blocks_item',
-        component: () => import('@/views/blocks/Item.vue'),
-    },
-    {
-        path: '/pages/:slug',
-        name: 'page',
-        component: () => import('@/views/blocks/Page.vue'),
-    },
-    // test
-    {
-        path: '/price',
-        name: 'price_list',
-        component: () => import('@/views/PriceList.vue'),
-    },
-    {
-        path: '/price/:slug',
-        name: 'price_item',
-        component: () => import('@/views/PriceItem.vue'),
-    },
-    {
-        path: '/compred/:slug',
-        name: 'compred',
-        component: () => import('@/views/Compred.vue'),
-    },
-
-    /* legacy after here */
-
-
-
-/*    {
-        path: '/portfolio/:slug',
-        name: 'portfolio_item',
-        component: () => import('@/views/PortfolioItem.vue'),
-    },*/
-    {
-        path: '/portfolio/item/:slug',
-        name: 'portfolio_item',
-        component: () => import('@/views/portfolio/Item.vue'),
-    },
-    // {
-    //     path: '/service/:slug',
-    //     name: 'service_item',
-    //     component: () => import('@/views/ServiceItem.vue'),
-    // },
-    {
-        path: '/blog',
-        name: 'blog_list',
-        component: () => import('@/views/BlogList.vue'),
-    },
-    {
-        path: '/blog/:slug',
-        name: 'blog_item',
-        component: () => import('@/views/BlogItem.vue'),
-        // component: ServiceView
-    },
-
 ]
 
 const router = createRouter({
@@ -93,39 +51,42 @@ const router = createRouter({
     routes,
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async(to, from, next) => {
+    const uiStore = useUiStore()
+    const navStore = useNavigationStore()
+    const newScope = to.params.scope ?? ''
 
-    // Отправка события hit для текущей страницы
-    window.ym?.(103176474, 'hit', to.path);
-
-    // Отправка цели для конкретной страницы, например, /services
-    if (to.path === '/') {
-        window.ym?.(103176474, 'reachGoal', '443585915');
+    uiStore.setScope(newScope)
+    await navStore.fetchNavigation(newScope || DEFAULT_SCOPE)
+/*
+    if (newScope !== uiStore.scope) {
+        uiStore.setScope(newScope)
+        // навигация обновляется только при смене scope
+        await navStore.fetchNavigation(newScope || DEFAULT_SCOPE)
     }
-    if (to.path === '/services') {
-        window.ym?.(103176474, 'reachGoal', '443586111');
-    }
-    if (to.path === '/pages/contacts') {
-        window.ym?.(103176474, 'reachGoal', '443586377');
+*/
+    uiStore.setIsOpen(false)
+    uiStore.setHeaderVars('menu', true) // TODO: refactor
+
+    //uiStore.setPageTitle('Загрузка')
+
+
+    next()
+})
+
+router.afterEach((to) => {
+
+    analytics.hit(to)
+    analytics.goal(to)
+
+    if (!window.tidioChatApi) {   // простой чек
+        chat.init();
     }
 
-    const uiStore = useUiStore(); // Получаем доступ к стору
-    uiStore.startGlobalLoading()
-    uiStore.setIsOpen(false); // Устанавливаем isOpen в false перед каждым переходом
-    uiStore.setHeaderVars('menu', true);// TODO: разобраться - рефакторинг
-
-    next(); // Продолжаем навигацию
-});
-
-router.afterEach(() => {
-    if (import.meta.env.VITE_DEPLOY_TARGET === 'selfhosted' && typeof ym === 'function') {
-        ym(103176474, 'hit', to.fullPath)
-    }
     setTimeout(() => {
-        $("html, body").animate({ scrollTop: "0" }, 100); // Прокручиваем к верхнему краю страницы
-    }, 100); // Даем небольшой запас, если надо
-});
+        $('html, body').animate({ scrollTop: 0 }, 100)
+    }, 100)
+})
 
 export default router
-
 export { routes }
