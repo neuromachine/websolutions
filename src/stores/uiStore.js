@@ -24,6 +24,7 @@ export const useUiStore = defineStore('UiStore', {
             page: {
                 title: 'Заголовок',
                 key: '/',
+                meta: {},
                 breadcrumbs: [{key: '/', title: 'Главная'}],
                 parent: null,
                 children: [],

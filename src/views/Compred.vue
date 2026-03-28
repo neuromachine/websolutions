@@ -8,22 +8,8 @@ import WSteam from "@/components/WSteam.vue";
 import Portfolio from "@/components/blocks/portfolio/index.vue"
 import Footer from "@/components/Footer.vue";
 import content from "@/components/blocks/services/presentation/content.vue"
-
+import Benefits from "@/components/blocks/compred/presentation/benefits.vue";
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
-
-/*import { useHead } from '@unhead/vue';
-useHead({
-  title: 'Коммерческое предложение',
-  meta: [
-    { name: 'description', content: 'Предложение от web solution' },
-    // Open Graph
-    { property: 'og:title', content: 'КП' },
-    { property: 'og:description', content: '-' },
-    { property: 'og:image', content: 'https://wspro.xyz/assets/svg/window.png' },
-    { property: 'og:url', content: 'https://wspro.xyz/' },
-    { property: 'og:type', content: 'website' },
-  ]
-});*/
 
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
@@ -106,38 +92,7 @@ onMounted(() => {
     </section>
 
 
-    <!-- Benefits -->
-    <section class="services-section-two section-padding">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-title">
-              <h6 class="sub-title">{{ blockStore.item.properties.benefits.pretitle }}</h6>
-              <h2>{{ blockStore.item.properties.benefits.title }}</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row align-items-stretch">
-          <div class="d-flex col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.benefits.items" :key="b.title">
-            <div class="service">
-              <div class="icon">
-                <IconOffer
-                    :index="b.index"
-                    :properties="b"
-                />
-              </div>
-              <div class="title">
-                {{ b.title }}
-              </div>
-              <div class="descr">
-                {{ b.text }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End Benefits -->
+    <Benefits v-if="blockStore.item.properties.benefits" :data = "blockStore.item.properties.benefits" />
 
     <!-- About -->
     <section class="about-area bg-grey section-padding">
