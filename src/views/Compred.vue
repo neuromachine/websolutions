@@ -9,22 +9,7 @@ import Portfolio from "@/components/blocks/portfolio/index.vue"
 import Footer from "@/components/Footer.vue";
 import content from "@/components/blocks/services/presentation/content.vue"
 import Benefits from "@/components/blocks/compred/presentation/benefits.vue";
-
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
-
-/*import { useHead } from '@unhead/vue';
-useHead({
-  title: 'Коммерческое предложение',
-  meta: [
-    { name: 'description', content: 'Предложение от web solution' },
-    // Open Graph
-    { property: 'og:title', content: 'КП' },
-    { property: 'og:description', content: '-' },
-    { property: 'og:image', content: 'https://wspro.xyz/assets/svg/window.png' },
-    { property: 'og:url', content: 'https://wspro.xyz/' },
-    { property: 'og:type', content: 'website' },
-  ]
-});*/
 
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()

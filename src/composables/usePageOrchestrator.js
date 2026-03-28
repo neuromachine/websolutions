@@ -1,15 +1,38 @@
-import { onMounted, watch } from 'vue'
+import { onMounted, watch, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useUiStore } from '@/stores/uiStore'
 import { useBlockStore } from '@/stores/blockStore'
 import { useNavigationStore } from '@/stores/navigationStore'
+import { useHead } from '@unhead/vue'
+import { useI18n } from 'vue-i18n'
 
 export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
     const route = useRoute()
     const uiStore = useUiStore()
+    const { t } = useI18n()
 
     const blockStore      = blockId ? useBlockStore(blockId) : null
     const navigationStore = scheme.includes('structure') ? useNavigationStore() : null
+
+    const headConfig = computed(() => {
+        const page = uiStore.uiMainVars?.page || {}
+        // const slug = resolveFetch(route)
+
+        if (!page.title) {
+            return { title: t('ui.loading') }
+        }
+
+        return {
+            title: page.title+' | '+t('ui.sitename') || t('ui.sitename'),
+            meta: [
+                {
+                    name: 'description',
+                    content:  page.title+' | '+t('ui.sitename') || t('ui.sitename')
+                },
+            ],
+        }
+    })
+    useHead(headConfig)
 
     const load = async () => {
         const slug = resolveFetch(route)
