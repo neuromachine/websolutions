@@ -3,6 +3,7 @@ import { h } from 'vue'
 import { RouterView } from 'vue-router'
 import { useUiStore } from '@/stores/uiStore'
 import { analytics } from '@/analytics'
+import { chat } from '@/chat'
 import { servicesRoutes } from './routes/services'
 import { portfolioRoutes } from './routes/portfolio'
 import $ from 'jquery'
@@ -68,6 +69,10 @@ router.afterEach((to) => {
 
     analytics.hit(to)
     analytics.goal(to)
+
+    if (!window.tidioChatApi) {   // простой чек
+        chat.init();
+    }
 
     setTimeout(() => {
         $('html, body').animate({ scrollTop: 0 }, 100)
