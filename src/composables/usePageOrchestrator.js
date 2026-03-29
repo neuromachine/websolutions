@@ -5,6 +5,7 @@ import { useBlockStore } from '@/stores/blockStore'
 import { useNavigationStore } from '@/stores/navigationStore'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
+import { DEFAULT_SCOPE } from '@/config/scopes.js'
 
 export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
     const route = useRoute()
@@ -14,11 +15,13 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
     const isPageOwner = route.name === blockId || route.params.slug === blockId
 
     const blockStore      = blockId ? useBlockStore(blockId) : null
+    const navStore        = useNavigationStore()
     const navigationStore = scheme.includes('structure') ? useNavigationStore() : null
 
     const headConfig = computed(() => {
         const page = uiStore.uiMainVars?.page || {}
         // const slug = resolveFetch(route)
+        const lang =  uiStore.scope ? uiStore.scope: DEFAULT_SCOPE;
 
         if (!page.title) {
             return { title: t('ui.loading') }
@@ -31,7 +34,9 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
                     name: 'description',
                     content:  page.title+' | '+t('ui.sitename') || t('ui.sitename')
                 },
+
             ],
+            htmlAttrs: { lang: lang }
         }
     })
     useHead(headConfig)
@@ -41,10 +46,22 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
 
         console.info('\u{1F320} PageOrchestrator ->load:' , scheme, resolveFetch(route))
 
+        // Навигация — параллельно с контентом, не блокирует друг друга
+/*        const navPromise = navStore.nav.length === 0
+            ? navigationStore.fetchNavigation(uiStore.scope)
+            : Promise.resolve()*/
+
+        if(navStore.nav.length === 0)
+        {
+            await navStore.fetchNavigation(uiStore.scope)
+        }
+
+
         if (scheme.includes('structure'))         await navigationStore.fetchStructure(slug)
         if (scheme.includes('category') && blockStore) await blockStore.fetchBlockCategory(slug)
         if (scheme.includes('item') && blockStore)     await blockStore.fetchBlockItem(slug)
 
+        // await navPromise
 
         if (isPageOwner) {
             uiStore.buildPageVars({

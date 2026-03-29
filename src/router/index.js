@@ -7,7 +7,7 @@ import { chat } from '@/chat'
 import { servicesRoutes } from './routes/services'
 import { portfolioRoutes } from './routes/portfolio'
 import $ from 'jquery'
-import {useNavigationStore} from "@/stores/navigationStore.js";
+// import {useNavigationStore} from "@/stores/navigationStore.js";
 
 import { DEFAULT_SCOPE } from '@/config/scopes.js'
 
@@ -53,11 +53,11 @@ const router = createRouter({
 
 router.beforeEach(async(to, from, next) => {
     const uiStore = useUiStore()
-    const navStore = useNavigationStore()
+    // const navStore = useNavigationStore()
     const newScope = to.params.scope ?? ''
 
     uiStore.setScope(newScope)
-    await navStore.fetchNavigation(newScope || DEFAULT_SCOPE)
+
 /*
     if (newScope !== uiStore.scope) {
         uiStore.setScope(newScope)
@@ -79,8 +79,15 @@ router.afterEach((to) => {
     analytics.hit(to)
     analytics.goal(to)
 
+    // const lang = to.params.scope ? to.params.scope: DEFAULT_SCOPE;
+    //
+    //
+
+    const uiStore = useUiStore()
+    const currentScope = to.params.scope || uiStore.scope || DEFAULT_SCOPE;
+
     if (!window.tidioChatApi) {
-        chat.init();
+        chat.init(currentScope)
     }
 
     setTimeout(() => {

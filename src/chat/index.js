@@ -1,7 +1,7 @@
 import { tidioTracker } from '../chat/tidio'
 export const chat = {
-    async init() {
-        await tidioTracker.init();
+    async init(currentScope = 'en') {
+        await tidioTracker.init(currentScope);
     },
     open: () => tidioTracker.open(),
     close: () => tidioTracker.close(),
