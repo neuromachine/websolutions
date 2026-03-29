@@ -16,7 +16,7 @@ const { t } = useI18n()
 
 import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
 import {onMounted} from "vue";
-const { blockStore } = usePageOrchestrator('cp', 'item', {
+const { blockStore } = usePageOrchestrator('compred', 'item', {
   fetch: (route) => route.params.slug
 })
 
