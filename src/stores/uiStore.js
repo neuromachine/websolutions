@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia';
+import {defineStore} from 'pinia';
 
-import { SCOPES_CONFIG, DEFAULT_SCOPE, VALID_SCOPES } from '@/config/scopes.js'
+import {DEFAULT_SCOPE, SCOPES_CONFIG, VALID_SCOPES} from '@/config/scopes.js'
 
 export const useUiStore = defineStore('UiStore', {
     state: () => ({
@@ -50,9 +50,9 @@ export const useUiStore = defineStore('UiStore', {
         startGlobalLoading() { this._loadingCount++ },
         stopGlobalLoading()  { this._loadingCount = Math.max(0, this._loadingCount - 1) },
         buildPageVars({ structure = null, category = null, item = null }) {
-            console.info(structure, category, item);
+
             const crumbs = [{ key: '/', title: 'Главная' }]
-            let title = 'Главная', key = '/', children = []
+            let title = 'Главная', key = '/', children = [] // TODO: make using scopes
 
             if (structure) {
                 crumbs.push({ key: structure.key, title: structure.name })
@@ -66,10 +66,9 @@ export const useUiStore = defineStore('UiStore', {
                 if (!item) children = Object.values(category.children || {}).map(n => n.key)
             }
             if (item) {
-                const itemTitle = item?.name || item.properties?.title || title
-                crumbs.push({ key: item.slug || key, title: itemTitle })
-                title = itemTitle; key = item.slug || key
-                console.log('here',item.title);
+                crumbs.push({ key: item.slug || key, title: item.name })
+                title = item?.name || item.properties?.title || title;
+                key = item.slug || key;
                 if(item?.properties && item.properties?.title) title = item.properties.title // TODO: change
             }
 

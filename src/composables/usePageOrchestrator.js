@@ -11,6 +11,8 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
     const uiStore = useUiStore()
     const { t } = useI18n()
 
+    const isPageOwner = route.name === blockId || route.params.slug === blockId
+
     const blockStore      = blockId ? useBlockStore(blockId) : null
     const navigationStore = scheme.includes('structure') ? useNavigationStore() : null
 
@@ -43,11 +45,14 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
         if (scheme.includes('category') && blockStore) await blockStore.fetchBlockCategory(slug)
         if (scheme.includes('item') && blockStore)     await blockStore.fetchBlockItem(slug)
 
-        uiStore.buildPageVars({
-            structure: navigationStore?.structure ?? null,
-            category:  blockStore?.category ?? null,
-            item:      blockStore?.item ?? null,
-        })
+
+        if (isPageOwner) {
+            uiStore.buildPageVars({
+                structure: navigationStore?.structure ?? null,
+                category:  blockStore?.category ?? null,
+                item:      blockStore?.item ?? null,
+            })
+        }
     }
 
     onMounted(load)
