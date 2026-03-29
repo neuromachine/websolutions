@@ -68,7 +68,7 @@ router.beforeEach(async(to, from, next) => {
     uiStore.setIsOpen(false)
     uiStore.setHeaderVars('menu', true) // TODO: refactor
 
-    //uiStore.setPageTitle('Загрузка')
+    uiStore.setPageTitle('')
 
 
     next()
@@ -79,7 +79,7 @@ router.afterEach((to) => {
     analytics.hit(to)
     analytics.goal(to)
 
-    if (!window.tidioChatApi) {   // простой чек
+    if (!window.tidioChatApi) {
         chat.init();
     }
 

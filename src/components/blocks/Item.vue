@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide, } from 'swiper/vue'
 import {  Autoplay,Zoom } from 'swiper/modules'
 
 import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
-const { blockStore, navigationStore } = usePageOrchestrator('item', 'structure+item', {
+const { blockStore, navigationStore } = usePageOrchestrator('blocks_item', 'structure+item', {
   fetch: (route) => route.params.slug
 })
 const swiperInstance = ref(null)

@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
-const { blockStore } = usePageOrchestrator('portfolio', 'item', {
+const { blockStore } = usePageOrchestrator('portfolio_item', 'item', {
   fetch: (route) => route.params.slug
 })
 
