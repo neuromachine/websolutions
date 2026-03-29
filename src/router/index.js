@@ -83,8 +83,11 @@ router.afterEach((to) => {
     //
     //
 
+    const uiStore = useUiStore()
+    const currentScope = to.params.scope || uiStore.scope || DEFAULT_SCOPE;
+
     if (!window.tidioChatApi) {
-        chat.init();
+        chat.init(currentScope)
     }
 
     setTimeout(() => {

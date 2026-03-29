@@ -2,7 +2,7 @@ let tidioLoaded = false;
 let tidioScript = null;
 
 export const tidioTracker = {
-    async init() {
+    async init(currentScope = 'en') {
         if (tidioLoaded) return;
 
         return new Promise((resolve) => {
@@ -23,6 +23,13 @@ export const tidioTracker = {
 
             document.head.appendChild(tidioScript);
         });
+    },
+
+    refreshLanguage() {
+        if (window.tidioChatApi) {
+            // Tidio автоматически подхватит новый lang при следующем взаимодействии
+            console.info('🔄 Tidio language refresh triggered')
+        }
     },
 
     // Пример методов из Widget SDK Tidio (можно расширять)
