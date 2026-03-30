@@ -3,12 +3,13 @@ import { useUiStore } from '@/stores/uiStore';
 import api from "@/utils/api.js";
 import {normalizeLink} from "@/utils/normalizeLink.js";
 
-import { VALID_SCOPES } from '@/config/scopes.js'
+import {DEFAULT_SCOPE, VALID_SCOPES} from '@/config/scopes.js'
 
 export const useNavigationStore = defineStore('navigationStore', {
     state: () => ({
         structure: null,
         nav: [],
+        scope: DEFAULT_SCOPE,
 
         isLoading: false,
         strReady: false,
@@ -33,6 +34,7 @@ export const useNavigationStore = defineStore('navigationStore', {
     },
     actions: {
         setLoading(v)   { this.isLoading = v },
+        setScope(v)   { this.scope = v },
         async fetchStructure(slug) {
             const uiStore = useUiStore()
             uiStore.startGlobalLoading()
@@ -51,9 +53,12 @@ export const useNavigationStore = defineStore('navigationStore', {
         async fetchNavigation(scope) {
             const uiStore = useUiStore()
             uiStore.startGlobalLoading()
+
+            //const scope = uiStore.scope;
+
             this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`${uiStore.scope}/blocks/blocks/navigation`)
+                const { data: { data } } = await api.get(`${scope}/blocks/blocks/navigation`)
                 const raw = data.content || []
                 // TODO: refactor data assignment
                 this.nav = raw.map(item => ({
@@ -62,6 +67,7 @@ export const useNavigationStore = defineStore('navigationStore', {
                     sort: Number(item.sort) || 99,
                 // })).sort((a, b) => a.sort - b.sort)
                 }));
+                this.setScope(scope)
             } catch (err) {
                 console.error('fetchNavigation:', err)
             } finally {
