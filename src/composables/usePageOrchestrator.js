@@ -7,8 +7,12 @@ import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { DEFAULT_SCOPE } from '@/config/scopes.js'
 
+const _activeKeys = new Map()
+
 export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
+
     const route = useRoute()
+
     const uiStore = useUiStore()
     const { t } = useI18n()
 
@@ -17,6 +21,7 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
     const blockStore      = blockId ? useBlockStore(blockId) : null
     const navStore        = useNavigationStore()
     const navigationStore = scheme.includes('structure') ? useNavigationStore() : null
+
 
     const headConfig = computed(() => {
         const page = uiStore.uiMainVars?.page || {}
@@ -43,8 +48,17 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
 
     const load = async () => {
         const slug = resolveFetch(route)
+        const fetchKey = `${blockId}::${slug}::${uiStore.scope}`
+
+        if (_activeKeys.get(blockId) === fetchKey) {
+            console.log('⏭ skip', fetchKey)
+            return
+        }
+        _activeKeys.set(blockId, fetchKey)
 
         console.info('\u{1F320} PageOrchestrator ->load:' , scheme, resolveFetch(route))
+
+        //console.log('load triggered', blockId, new Error().stack.split('\n')[2])
 
         // Навигация — параллельно с контентом, не блокирует друг друга
 /*        const navPromise = navStore.nav.length === 0
@@ -76,9 +90,9 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
     onMounted(load)
 
     watch(
-        () => [route.params.slug, uiStore.uiMainVars.section],
-        ([newSlug, newSection], [oldSlug, oldSection]) => {
-            if (newSlug !== oldSlug || newSection !== oldSection) load()
+        () => [route.params.slug, uiStore.scope],
+        ([ns, nsc], [os, osc]) => {
+            if (ns !== os || nsc !== osc) load()
         }
     )
 
