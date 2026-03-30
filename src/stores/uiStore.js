@@ -89,7 +89,7 @@ export const useUiStore = defineStore('UiStore', {
             this.uiMainVars[key] = value
         },
         setPageTitle(value) {
-            console.log('setPageTitle:', value);
+            // console.log('setPageTitle:', value);
             this.uiMainVars.page.title = value
         },
         setHeaderVars(key, value) {
