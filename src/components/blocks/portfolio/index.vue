@@ -6,6 +6,7 @@ const { blockStore } = usePageOrchestrator('portfolio', 'category', {
 })
 
 import { useI18n } from 'vue-i18n'
+import Info from "@/components/blocks/services/presentation/info.vue";
 const { t } = useI18n()
 
 function setFilter(filterKey) {
@@ -15,6 +16,7 @@ function setFilter(filterKey) {
 
 <template>
   <!-- Start Portfolio Section-->
+  <!--
   <section v-if="blockStore.isCatReady" class="portfolio-area section-padding">
     <div class="container">
       <div class="row">
@@ -28,6 +30,13 @@ function setFilter(filterKey) {
             </h2>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  -->
+  <section v-if="blockStore.isCatReady" class="portfolio-area section-padding">
+    <div class="container">
+      <div class="row">
         <div class="col-md-12">
           <div class="portfolio-list">
             <ul class="nav" id="portfolio-flters">
@@ -41,6 +50,9 @@ function setFilter(filterKey) {
       </div>
       <List :items="blockStore.filteredItems"/>
     </div>
+  </section>
+  <section v-if="blockStore.catReady" class="mb-5">
+    <Info :data="blockStore.category" />
   </section>
   <!-- End Portfolio Section -->
 </template>
