@@ -51,7 +51,8 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
             ? navigationStore.fetchNavigation(uiStore.scope)
             : Promise.resolve()*/
 
-        if(navStore.nav.length === 0)
+
+        if(navStore.nav.length === 0 || uiStore.scope !== navStore.scope)
         {
             await navStore.fetchNavigation(uiStore.scope)
         }
