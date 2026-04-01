@@ -25,6 +25,12 @@ const uiStore = useUiStore();
 onMounted(() => {
    uiStore.setHeaderVars('menu', false);
 });
+
+import { chat } from '@/chat' // tidio
+
+const openTidioChat = () => {
+  chat.open()
+}
 </script>
 
 <template>
@@ -183,7 +189,8 @@ onMounted(() => {
                 <li v-for="f in item.features" :key="f">{{ f }}</li>
               </ul>
               <div class="b_wrap">
-                <AppLink :to="'/pages/contacts'" class="know_price">{{ t('cp.packages.button') }}</AppLink>
+                <a href="/pages/contacts"  @click.prevent="openTidioChat"  class="know_price">{{ t('cp.packages.button') }}</a>
+                <!--                <AppLink :to="'/pages/contacts'" class="know_price">{{ t('cp.packages.button') }}</AppLink>-->
               </div>
             </div>
           </div>
