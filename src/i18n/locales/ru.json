@@ -56,6 +56,7 @@
     "packages": {
       "budget": "бюджет",
       "period": "срок",
+      "discount": "скидка",
       "button": "Обсудить план"
     },
     "includes": {

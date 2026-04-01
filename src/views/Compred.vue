@@ -179,7 +179,10 @@ const openTidioChat = () => {
               <div v-if="item.desc" class="descr">
                 {{ item.desc }}
               </div>
-              <div class="price roboto">
+              <div v-if="item.discount" class="price roboto">
+                {{ t('cp.packages.budget') }} <span class="sofia_bold oldprice">{{ item.price }}</span> {{ t('cp.packages.discount') }} <span class="discount">{{ item.discount }}</span>
+              </div>
+              <div v-else class="price w_dis roboto">
                 {{ t('cp.packages.budget') }} <span class="sofia_bold">{{ item.price }}</span>
               </div>
               <div class="term roboto">
