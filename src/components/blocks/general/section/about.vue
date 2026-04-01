@@ -1,4 +1,6 @@
 <script setup>
+import AppLink from "@/components/AppLink.vue";
+
 const props = defineProps({
   slide: {
     type: Object,
@@ -18,9 +20,9 @@ const props = defineProps({
             <h2>{{props.slide.maintitle}}</h2>
             <div v-html="props.slide.body"></div>
             <div class="about-btn-box">
-              <RouterLink :to=props.slide.link class="default-btn">
+              <AppLink :to=props.slide.link class="default-btn">
                 {{props.slide.anchor}}<span></span>
-              </RouterLink>
+              </AppLink>
             </div>
           </div>
         </div>

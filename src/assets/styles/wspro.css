@@ -60,6 +60,18 @@
 #compred strong {color:#223A76;}
 #compred .content_wrap ul {
   color: #FFF;}
+
+#compred .acticle { font-size: 25px;}
+#compred .acticle .text-primary { color: #223A76 !important;}
+#compred .acticle .text-success { color: #0C90C7 !important;}
+#compred .acticle .bg-primary { background-color: #E5F7FD !important;}
+#compred .acticle .list-unstyled { }
+#compred .acticle .list-unstyled li { list-style: none outside none;}
+
+@media (max-width: 767px) {
+  #compred .acticle { font-size: 25px;}
+}
+
 a.blue_link {font-size: 20px; color: #223A76; text-decoration: underline}
 a.blue_link:hover { text-decoration: none}
 .acticle .content { font-size: 30px;}

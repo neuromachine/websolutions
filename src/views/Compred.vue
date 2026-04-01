@@ -78,7 +78,8 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <!-- HERO -->
+
+    <!-- HERO
     <section v-if="blockStore.item.properties.content"  class="compred_content services-section-two section-padding">
       <div class="container">
         <div class="row">
@@ -90,7 +91,7 @@ onMounted(() => {
         </div>
       </div>
     </section>
-
+-->
 
     <Benefits v-if="blockStore.item.properties.benefits" :data = "blockStore.item.properties.benefits" />
 
@@ -99,7 +100,7 @@ onMounted(() => {
       <div class="container">
         <div class="row d-flex align-items-center">
           <div class="col-lg-6 col-md-12">
-            <div v-if="uiStore.scope ==='ru'" class="about-content">
+            <div v-if="uiStore.scope === 'ru'" class="about-content">
               <h6 class="sub-title">О нас</h6>
               <h2>Web Solution — решения с фокусом на результат</h2>
               <p class="about__text">Мы — международная digital-команда.</p>
@@ -108,13 +109,29 @@ onMounted(() => {
                 Фокус на удобстве пользователей, внимании к деталям и технологиях,
                 которые решают задачи.
               </p>
+              <p class="about__text"><em>Условия работы во Вьетнаме смотрите в конце документа.</em></p>
             </div>
+
+            <div v-else-if="uiStore.scope === 'vi'" class="about-content">
+              <h6 class="sub-title">Về chúng tôi</h6>
+              <h2>Giải pháp Web — Tập trung vào kết quả thực tế</h2>
+              <p class="about__text">Chúng tôi là một đội ngũ kỹ thuật số quốc tế.</p>
+              <p class="about__text">Chúng tôi xây dựng các trang web giúp <strong>thúc đẩy sự tăng trưởng</strong> của doanh nghiệp.</p>
+              <p class="about__text">
+                Chú trọng vào trải nghiệm người dùng, sự tỉ mỉ trong chi tiết và công nghệ hiện đại để giải quyết mọi thách thức.
+              </p>
+              <p class="about__text">
+                <small>Chi tiết về điều khoản làm việc tại Việt Nam, vui lòng xem ở cuối tài liệu này.</small>
+              </p>
+            </div>
+
             <div v-else class="about-content">
               <h6 class="sub-title">About the studio</h6>
               <h2>Results-focused web solutions</h2>
               <p class="about__text">We develop web solutions that drive business forward.</p>
               <p class="about__text">We create thoughtful websites and digital products <strong>focused on growth and user experience</strong>.</p>
               <p class="about__text">Attention to detail, technology, and design are at the core of every project.</p>
+              <p class="about__text"><em>Please refer to the end of the document for terms of work in Vietnam.</em></p>
             </div>
           </div>
           <div class="col-lg-6 col-md-12">
@@ -344,7 +361,6 @@ onMounted(() => {
 .service .know_price:hover { background-color: #00D9EA; color: #FFF; }
 
 
-
 @media (max-width: 767px) {
   .home-section.home-2 {
     padding-top: 40px;
@@ -352,7 +368,6 @@ onMounted(() => {
   #compred .main-banner-content h6 { font-size: 14px;}
   #compred .home-section.home-2 .main-banner-content h1 { font-size: 38px;}
   #compred .section-title h2 { font-size: 27px;}
-  #compred .acticle .content { font-size: 25px;}
 }
 
 </style>

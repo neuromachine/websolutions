@@ -13,6 +13,12 @@ export const SCOPES_CONFIG = {
         label: 'EN',
         default: false,
     },
+    vi: {
+        code: 'vi',
+        locale: 'vi',
+        label: 'VI',
+        default: false,
+    },
 }
 
 export const DEFAULT_SCOPE = Object.keys(SCOPES_CONFIG)
