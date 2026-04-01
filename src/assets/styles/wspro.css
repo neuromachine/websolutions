@@ -65,8 +65,11 @@
 #compred .acticle .text-primary { color: #223A76 !important;}
 #compred .acticle .text-success { color: #0C90C7 !important;}
 #compred .acticle .bg-primary { background-color: #E5F7FD !important;}
+#compred .acticle .btn-outline-light { background-color: #00D9EA !important;
+  color: #223A76;}
 #compred .acticle .list-unstyled { }
 #compred .acticle .list-unstyled li { list-style: none outside none;}
+
 
 @media (max-width: 767px) {
   #compred .acticle { font-size: 25px;}

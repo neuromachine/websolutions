@@ -78,6 +78,7 @@ router.afterEach((to) => {
 
     const deployTarget = import.meta.env.VITE_DEPLOY_TARGET
     if (deployTarget !== 'local') {
+    // if (true) {
         analytics.hit(to)
         analytics.goal(to)
 
