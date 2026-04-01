@@ -1,5 +1,6 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import AppLink from "@/components/AppLink.vue";
 const { t } = useI18n()
 const props = defineProps({
   list: {
@@ -36,7 +37,7 @@ const props = defineProps({
               <h3>{{item.title}}</h3>
               <p>{{item.descr}}</p>
               <div class="services-btn">
-                <RouterLink :to="item.link" class="read-more"><i class="bi bi-arrow-right-short"></i> {{ t('ui.more')}}</RouterLink>
+                <AppLink :to="item.link" class="read-more"><i class="bi bi-arrow-right-short"></i> {{ t('ui.more')}}</AppLink>
               </div>
             </div>
           </div>

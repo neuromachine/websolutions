@@ -62,17 +62,6 @@
         // Disable auto page viev, hits in router
         gtag('config', 'G-9BD9NGZGHB', { send_page_view: false });
     </script><% } %>
-
-    <% if (TARGET === 'local') { %><!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BD9NGZGHB"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        // Disable auto page viev, hits in router
-        gtag('config', 'G-9BD9NGZGHB', { send_page_view: false });
-    </script><% } %>
 </head>
 <body>
 <div id="app"></div>

@@ -37,6 +37,12 @@ onMounted(() => {
   });
 });
 
+import { chat } from '@/chat' // tidio
+
+const openTidioChat = () => {
+  chat.open()
+}
+
 </script>
 
 <template>
@@ -69,8 +75,19 @@ onMounted(() => {
             <div v-if="uiStore.scope ==='ru'" class="cta_wrap">
               <a class="btn head_button" href="https://t.me/Lola_06" target="_blank"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
             </div>
-            <div v-else class="cta_wrap">
+<!--            <div v-else class="cta_wrap">
               <a class="btn head_button" href="https://m.me/wspro.xyz" target="_blank"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
+            </div>-->
+            <!-- tidio chat-->
+            <div v-else class="cta_wrap">
+              <button
+                  class="btn head_button"
+                  @click.prevent="openTidioChat"
+              >
+                <i class="bi bi-telegram"></i>
+                {{ t('ui.cta_b_text') }}
+                <span></span>
+              </button>
             </div>
           </div>
 

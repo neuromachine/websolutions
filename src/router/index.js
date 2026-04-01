@@ -76,19 +76,21 @@ router.beforeEach(async(to, from, next) => {
 
 router.afterEach((to) => {
 
-    analytics.hit(to)
-    analytics.goal(to)
+    const deployTarget = import.meta.env.VITE_DEPLOY_TARGET
+    if (deployTarget !== 'local') {
+    // if (true) {
+        analytics.hit(to)
+        analytics.goal(to)
 
-    // const lang = to.params.scope ? to.params.scope: DEFAULT_SCOPE;
-    //
-    //
+        const uiStore = useUiStore()
+        const currentScope = to.params.scope || uiStore.scope || DEFAULT_SCOPE;
 
-    const uiStore = useUiStore()
-    const currentScope = to.params.scope || uiStore.scope || DEFAULT_SCOPE;
-
-    if (!window.tidioChatApi) {
-        chat.init(currentScope)
+        if (!window.tidioChatApi) {
+            chat.init(currentScope)
+        }
     }
+
+
 
     setTimeout(() => {
         $('html, body').animate({ scrollTop: 0 }, 100)
