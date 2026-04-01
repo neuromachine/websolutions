@@ -61,6 +61,19 @@
 #compred .content_wrap ul {
   color: #FFF;}
 
+.plan .oldprice { color: #666; font-size: 24px; text-decoration: line-through; text-align: center}
+.plan .oldprice span {font-size: 20px; margin-right: 5px; text-decoration: none}
+.plan .discount { margin-left: 5px; color: #FFC500; font-size: 20px; font-weight: 900; text-align: center}
+
+.plan .discount {
+  /** TEXT GRADIENT */
+  color: #f44336;
+  background-image: -webkit-linear-gradient(45deg, #0C90C7 30%, #f44336 56%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 #compred .acticle { font-size: 25px;}
 #compred .acticle .text-primary { color: #223A76 !important;}
 #compred .acticle .text-success { color: #0C90C7 !important;}
