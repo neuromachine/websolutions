@@ -11,6 +11,8 @@ import content from "@/components/blocks/services/presentation/content.vue"
 import Benefits from "@/components/blocks/compred/presentation/benefits.vue";
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
 
+import qrcode from "@/components/blocks/general/ui/qrcode.vue"
+
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
@@ -337,6 +339,16 @@ const openTidioChat = () => {
       </div>
     </section>
     <!-- End acticle -->
+
+    <section v-if="blockStore.item.key === 'ivorycoast'">
+      <div class="container">
+        <qrcode
+            url="https://www.wspro.xyz/vi/compred/ivorycoast"
+            :size="150"
+            foreground-color="#2c3e50"
+        />
+      </div>
+    </section>
 
 
     <Portfolio />
