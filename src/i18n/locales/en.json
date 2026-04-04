@@ -12,6 +12,7 @@
         "contacts":"Contacts"
       }
     },
+    "qrdescr": "Scan to go to this page",
     "contacts": {
       "phone": {
         "name": "Phone",
