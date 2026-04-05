@@ -12,14 +12,11 @@ const handleTidioButtons = () => {
     }
   })
 }
-
-
 // Запускаем после того, как v-html отрендерится
 onMounted(async () => {
   await nextTick()
   handleTidioButtons()
 })
-
 
 const props = defineProps({
   content: {
