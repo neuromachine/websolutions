@@ -1,0 +1,111 @@
+{
+  "ui": {
+    "sitename": "Web Solutions",
+    "loading": "Đang tải",
+    "more": "Chi tiết",
+    "cta_b_text": "Liên hệ",
+    "slogan": "Chúng tôi tạo ra, hoàn thiện và cải tiến các giải pháp web mang lại kết quả thực tế.",
+    "navi": {
+      "groups": {
+        "services": "Dịch vụ",
+        "info": "Thông tin",
+        "contacts": "Liên hệ"
+      }
+    },
+    "qrdescr": "Quét mã để truy cập trang này.",
+    "contacts": {
+      "phone": {
+        "name": "Điện thoại",
+        "anchor": "0845122254 (Việt Nam)",
+        "link": "+84845122254"
+      },
+      "email": {
+        "name": "Email",
+        "anchor": "manager\\@wspro.xyz",
+        "link": "manager\\@wspro.xyz"
+      },
+      "messaging": {
+        "name": "Zalo",
+        "anchor": "0845122254",
+        "link": "https://zalo.me/0845122254"
+      },
+      "location": {
+        "name": "Địa chỉ",
+        "anchor": "Làm việc trên toàn thế giới",
+        "link": ""
+      }
+    }
+  },
+  "services": {
+    "directions": {
+      "development": "Phát triển",
+      "promotion": "Quảng bá",
+      "support": "Hỗ trợ",
+      "ai": "AI & ML",
+      "content": "Nội dung & Sáng tạo",
+      "consulting": "Tư vấn & Chiến lược"
+    }
+  },
+  "pages": {
+    "info": {
+      "about": "Về chúng tôi",
+      "contacts": "Liên hệ",
+      "price": "Bảng giá"
+    }
+  },
+  "cp": {
+    "packages": {
+      "budget": "ngân sách",
+      "period": "thời gian",
+      "discount": "Giảm giá",
+      "button": "Thảo luận kế hoạch"
+    },
+    "includes": {
+      "title": "Tất cả các gói đều bao gồm:"
+    }
+  },
+  "portfolio": {
+    "title": "Danh mục dự án",
+    "subtitle": "Các công việc gần đây",
+    "currency": "usd",
+    "category": "Danh mục",
+    "cost": "Giá",
+    "date": "Ngày",
+    "social": "Mạng xã hội",
+    "link": "Liên kết",
+    "linktext": "Truy cập"
+  },
+  "contacts": {
+    "email": "manager@wspro.xyz",
+    "social": {
+      "instagram": "wspro.xyz",
+      "message": "https://t.me/websolutionspro"
+    }
+  },
+  "filter": {
+    "all": "Tất cả",
+    "develop": "Phát triển",
+    "html": "Lập trình",
+    "design": "Thiết kế"
+  },
+  "form": {
+    "title": "Điền form yêu cầu",
+    "desc": "Để lại thông tin liên hệ, chúng tôi sẽ liên lạc với bạn",
+    "contact": "Tên trên Messenger, số điện thoại hoặc email",
+    "send": "Gửi",
+    "sending": "Đang gửi...",
+    "send_fail_onserver": "Lỗi gửi:",
+    "send_try_again": "Vui lòng thử lại sau",
+    "send_result_ok": "Cảm ơn! Yêu cầu của bạn đã được nhận",
+    "field_label": "Tên trên Messenger, số điện thoại hoặc email",
+    "field_is_required": "Trường bắt buộc"
+  },
+  "validation": {
+    "required": "Trường bắt buộc",
+    "email": "Email không hợp lệ",
+    "format": "Định dạng không đúng",
+    "min_chars": "Tối thiểu {min} ký tự",
+    "max_chars": "Tối đa {max} ký tự",
+    "min_number": "Tối thiểu {min}"
+  }
+}

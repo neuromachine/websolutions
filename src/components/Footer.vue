@@ -1,12 +1,13 @@
 <script setup>
-import { ref, onMounted, onUnmounted , computed} from 'vue'
-import FeedbackForm from "@/components/FeedbackForm.vue";
+import { onMounted , computed } from 'vue'
 import SimplifiedForm from "@/components/forms/SimplifiedForm.vue";
-import OfferRequestForm from "@/components/OfferRequestForm.vue";
+import WSpro from "@/components/WSpro.vue";
+// import FeedbackForm from "@/components/FeedbackForm.vue";
+// import OfferRequestForm from "@/components/OfferRequestForm.vue";
+
 import {useUiStore} from "@/stores/uiStore.js";
 import {useRoute} from "vue-router";
 import $ from 'jquery'
-import WSpro from "@/components/WSpro.vue";
 
 defineProps({
   isMain: { type: Boolean, default: false },
@@ -18,6 +19,9 @@ const uiStore = useUiStore();
 const route = useRoute();
 
 const isNavi = computed(() => route.path === '/compred');
+
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 
 
 // TODO: Refactoring
@@ -37,39 +41,26 @@ onMounted(() => {
 </script>
 
 <template>
-  <!-- Start Footer & Subscribe Section -->
+  <!-- Start Footer Section -->
   <section class="footer-subscribe-wrapper">
-    <!-- Start Subscribe Section -->
+    <!-- Start Form Section -->
     <div class="subscribe-area" v-if="!isNavi">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 col-md-6">
             <div class="subscribe-content">
-              <h2>Заполните форму</h2>
-              <p>Оставьте нам свой контакт - свяжемся оперативно</p>
+              <h2>{{ t('form.title') }}</h2>
+              <p>{{ t('form.desc') }}</p>
             </div>
           </div>
           <div class="col-lg-6 col-md-6">
             <SimplifiedForm />
-            <!--
-                        <FeedbackForm />
-                        <hr/>
-
-                        <hr/>
-
-                        <OfferRequestForm />
-
-                        <form class="newsletter-form">
-                          <input type="text" class="input-newsletter" name="email" placeholder="имя в мессенджере, телефон или e-mail" required autocomplete="off">
-                          <button type="submit">Отправить</button>
-                        </form>
-                    -->
           </div>
         </div>
       </div>
     </div>
-    <!-- End Subscribe Section -->
-    <!-- Start Footer Section -->
+    <!-- End Form Section -->
+    <!-- Start Footer menu Section -->
     <div class="footer-area ptb-100">
       <div class="container">
         <div class="row">
@@ -77,37 +68,46 @@ onMounted(() => {
             <div class="single-footer-widget">
               <a class="footer-logo" href="/">
                 <WSpro />
-<!--                <img src="/assets/img/logo.png" class="white-logo" alt="logo">-->
               </a>
-              <p>Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.</p>
-              <ul class="footer-social">
+              <p>{{ t('ui.slogan') }}</p>
+              <!--TODO: Need make scope widget-->
+              <ul v-if="uiStore.scope ==='ru'" class="footer-social">
                 <li><a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
                 <li><a href="https://t.me/websolutionspro" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
                 <li><a href="https://t.me/Lola_06" target="_blank"><i class="fa-solid fa-message"></i></a></li>
               </ul>
-            </div>
-          </div>
-          <div  v-if="!isNavi" class="col-lg-2 col-md-6 col-sm-6">
-            <div class="single-footer-widget">
-              <div class="footer-heading">
-                <h3>Услуги</h3>
-              </div>
-              <ul class="footer-quick-links">
-                <li><a href="/services">Разработка</a></li>
-                <li><a href="/services">Продвижение</a></li>
-                <li><a href="/services">Сопровождение</a></li>
-                <li><a href="/services">Индивидуально</a></li>
+              <ul v-else class="footer-social">
+                <li><a href="https://www.instagram.com/wspro.xyz" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://www.facebook.com/wsproxyz" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="https://m.me/wspro.xyz" target="_blank"><i class="fa-solid fa-message"></i></a></li>
               </ul>
             </div>
           </div>
           <div  v-if="!isNavi" class="col-lg-2 col-md-6 col-sm-6">
             <div class="single-footer-widget">
               <div class="footer-heading">
-                <h3>Инфо</h3>
+                <h3>{{ t('ui.navi.groups.services') }}</h3>
+              </div>
+              <!--TODO: Hard Links-->
+              <ul class="footer-quick-links">
+                <li><AppLink :to="'/direction/razrabotka'">{{ t('services.directions.development') }}</AppLink></li>
+                <li><AppLink :to="'/direction/prodvizenie'" >{{ t('services.directions.promotion') }}</AppLink></li>
+                <li><AppLink :to="'/direction/podderzka-i-soprovozdenie'" >{{ t('services.directions.support') }}</AppLink></li>
+                <li><AppLink :to="'/direction/ai'" >{{ t('services.directions.ai') }}</AppLink></li>
+                <li><AppLink :to="'/direction/kontent-i-kreativ'" >{{ t('services.directions.content') }}</AppLink></li>
+                <li><AppLink :to="'/direction/konsalting-i-strategiia'" >{{ t('services.directions.consulting') }}</AppLink></li>
+              </ul>
+            </div>
+          </div>
+          <div  v-if="!isNavi" class="col-lg-2 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <div class="footer-heading">
+                <h3>{{ t('ui.navi.groups.info') }}</h3>
               </div>
               <ul class="footer-quick-links">
-                <li><a href="/pages/about">О нас</a></li>
-                <li><a href="/pages/contacts">Контакты</a></li>
+                <li><AppLink :to="'/pages/about'">{{ t('pages.info.about') }}</AppLink></li>
+                <li><AppLink :to="'/pages/contacts'">{{ t('pages.info.contacts') }}</AppLink></li>
+                <li><AppLink :to="'/pages/price'">{{ t('pages.info.price') }}</AppLink></li>
 <!--                <li><a href="portfolio.html">Команда</a></li>
                 <li><a href="contact.html">Цены</a></li>
                 <li><a href="privacy-policy.html">FAQ</a></li>-->
@@ -117,37 +117,37 @@ onMounted(() => {
           <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="single-footer-widget">
               <div class="footer-heading">
-                <h3>Контакты</h3>
+                <h3>{{ t('ui.navi.groups.contacts') }}</h3>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-phone-call"></i>
-                <h3>Телефон</h3>
+                <h3>{{ t('ui.contacts.phone.name') }}</h3>
 <!--                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{ uiStore.uiMainVars.page.contacts.phone }}</a></span>-->
-                <span><a href="tel:+84845122254" target="_blank">0845122254</a></span>
+                <span><a :href="'tel:' + t('ui.contacts.phone.link')" target="_blank">{{ t('ui.contacts.phone.anchor') }}</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
-                <h3>Email</h3>
-                <span><a href="mailto:lili@ws-pro.ru" target="_blank">lili@ws-pro.ru</a></span>
+                <h3>{{ t('ui.contacts.email.name') }}</h3>
+                <span><a :href="'mailto:' + t('ui.contacts.email.link')" target="_blank">{{ t('ui.contacts.email.anchor') }}</a></span>
               </div>
               <div class="footer-info-contact">
                 <i class="flaticon-envelope"></i>
-                <h3>Telegram</h3>
-                <span><a href="https://t.me/Lola_06" target="_blank">Lola_06</a></span>
+                <h3>{{ t('ui.contacts.messaging.name') }}</h3>
+                <span><a :href="'' + t('ui.contacts.messaging.link')" target="_blank">{{ t('ui.contacts.messaging.anchor') }}</a></span>
               </div>
               <div class="footer-info-contact">
-                <i class="flaticon-placeholder"></i>
-                <h3>Адрес</h3>
-                <span>г. Краснодар. Ул. Сормовская 7 лит. Г</span>
+                <i class="flaticon-location"></i>
+                <h3>{{ t('ui.contacts.location.name') }}</h3>
+                <span>{{ t('ui.contacts.location.anchor') }}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- End Footer Section -->
+    <!-- End Footer menu Section -->
   </section>
-  <!-- End Footer & Subscribe Section -->
+  <!-- End Footer Section -->
 
   <!-- Start Copy Right Section -->
   <div v-if="!isNavi" class="copyright-area">
