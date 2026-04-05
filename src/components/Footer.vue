@@ -78,7 +78,7 @@ onMounted(() => {
               </ul>
               <ul v-else class="footer-social">
                 <li><a href="https://www.instagram.com/wspro.xyz" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="https://www.facebook.com/share/189j8TnVn2/?mibextid=wwXIfr" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="https://www.facebook.com/wsproxyz" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
                 <li><a href="https://m.me/wspro.xyz" target="_blank"><i class="fa-solid fa-message"></i></a></li>
               </ul>
             </div>

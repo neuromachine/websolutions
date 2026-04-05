@@ -29,7 +29,6 @@ onMounted(() => {
 });
 
 import { chat } from '@/chat' // tidio
-
 const openTidioChat = () => {
   chat.open()
 }
