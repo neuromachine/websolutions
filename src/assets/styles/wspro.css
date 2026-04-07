@@ -1,5 +1,15 @@
 #global { z-index: 10000; position: absolute; top: 0; left: 0; width: 100%; }
 
+.hero-content { display: flex; flex-direction: column; }
+.hero-content h1 { display: flex; flex-direction: column; }
+.slogan_first { font-size: 50px; display: inline-block}
+.hero-content .text-gradient {     color: #f44336;
+  background-image: -webkit-linear-gradient(100deg, #f44336 48%, #ff9800 56%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;}
+
+
 .content_wrap { padding: 0 0 0 0;}
   .content_wrap a {color: #7b68ee; text-decoration: none; }
   .content_wrap h6 { font-size: 1.5em;}

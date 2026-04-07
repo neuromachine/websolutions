@@ -1,11 +1,33 @@
 <script setup>
+import { onMounted, onUnmounted, ref } from 'vue'
+import gsap from 'gsap'
 import AppLink from "@/components/AppLink.vue";
+import CPimg from "@/components/CPimg.vue";
 
 const props = defineProps({
   hero: {
     type: Object,
     required: true
   },
+})
+
+const heroContent = ref(null)
+let ctx = null
+
+onMounted(() => {
+  ctx = gsap.context(() => {
+    gsap.from('h6, h1, p, .banner-btn', {
+      x: -60,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power2.out',
+      stagger: 0.25,
+    })
+  }, heroContent.value)
+})
+
+onUnmounted(() => {
+  ctx?.revert()
 })
 </script>
 
@@ -17,18 +39,10 @@ const props = defineProps({
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-6 col-md-12">
-              <div class="main-banner-content">
+              <div class="hero-content main-banner-content" ref="heroContent">
                 <h6 class="text-gradient">{{props.hero.subtitle}}</h6>
                 <h1 v-html="props.hero.maintitle"></h1>
                 <p>{{props.hero.descr}}</p>
-                <!--
-                <div class="banner-btn">
-                  <a class="default-btn-one" href="services.html">Смотреть видео<span></span></a>
-                  <div class="video-box">
-                    <a href="https://www.youtube.com/watch?v=G9TdA8d5aaU" class="popup-video video-btn"> <i class="fa fa-play"></i></a>
-                  </div>
-                </div>
-                -->
                 <div class="banner-btn">
                   <AppLink :to="props.hero.link" class="default-btn-one">
                     {{props.hero.anchor}}<span></span>
@@ -43,7 +57,7 @@ const props = defineProps({
             </div>
             <div class="col-lg-6 col-md-12">
               <div class="banner-image">
-                <img :src="props.hero.image" alt="image">
+                <CPimg :svgkey="props.hero.image"/>
               </div>
             </div>
           </div>
