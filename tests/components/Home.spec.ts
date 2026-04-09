@@ -3,7 +3,7 @@ import { describe, it, expect , vi} from 'vitest'
 import Home from '@/views/Home.vue'
 import { mountWithPlugins } from '~tests/utils/mountWithPlugins'  // ← новый импорт
 import { useUiStore } from '@/stores/uiStore'
-import { useDataStore} from '@/stores/dataStore.js';
+
 
 
 describe('Home view', () => {

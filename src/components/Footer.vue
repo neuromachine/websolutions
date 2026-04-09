@@ -2,8 +2,6 @@
 import { onMounted , computed } from 'vue'
 import SimplifiedForm from "@/components/forms/SimplifiedForm.vue";
 import WSpro from "@/components/WSpro.vue";
-// import FeedbackForm from "@/components/FeedbackForm.vue";
-// import OfferRequestForm from "@/components/OfferRequestForm.vue";
 
 import {useUiStore} from "@/stores/uiStore.js";
 import {useRoute} from "vue-router";

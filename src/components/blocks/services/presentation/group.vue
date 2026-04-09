@@ -1,6 +1,4 @@
 <script setup>
-import { DialogModal} from 'v-dialogs'
-import Overlay from "@/components/OverlayCat.vue"; //Legacy
 import Icon from "@/components/blocks/services/micro/icon.vue"
 import { useUiStore } from '@/stores/uiStore.js';
 import {computed} from "vue";
@@ -37,23 +35,6 @@ const props = defineProps({
     required: true
   },
 })
-async function handleChild(slug) {
-  // TODO: dataStore.isCatReady
-  // TODO: переход на compositon overlay
-  //if (!result) return false; // TODO: Проверить что данные не пришли - дял overlay
-  DialogModal(Overlay, {
-    maxButton: false,
-    // title: dataStore.category.name,
-    title: 'Инфо',
-    params: {
-      //data: dataStore.category
-      data: {
-        'slug': slug
-      },
-    },
-  });
-  return false
-}
 </script>
 <template>
   <div class="col-lg-4 col-md-6">
@@ -62,7 +43,6 @@ async function handleChild(slug) {
           :slug="props.slug"
       />
       <div class="services-three-content">
-<!--        <h3 @click="handleChild(props.slug)" class="head_action">{{props.title}}</h3>-->
         <h3 class="head_action">{{props.title}}</h3>
         <p v-show="isVersionFull">{{props.description}}</p>
         <ul class="features-list clases">
@@ -71,7 +51,6 @@ async function handleChild(slug) {
             <span v-show="isVersionFull" class="block text-3xl" v-html="schild.description"></span>
             <ul class="groups">
               <li v-for="offer in schild.child">
-<!--                <span class="block head_action" @click="handleChild(offer.key)">{{offer.name}}</span>-->
                 <span class="block head_action">
                   <RouterLink class="float_link" :to="{ path: hrefPrefix +'/group/' + offer.key }">
                   {{offer.name}}
