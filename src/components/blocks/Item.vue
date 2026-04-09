@@ -71,7 +71,7 @@ function onSwiperInit(swiper) {
               <h3 class="widget-title">Наши услуги</h3>
               <ul>
                 <li v-for="item in navigationStore.structure.child">
-                  <RouterLink :to="{ path: '/direction/' + item.key }">{{item.name}}</RouterLink>
+                  <AppLink :to="{ name: 'direction', params: { slug: item.key } }">{{item.name}}</AppLink>
                 </li>
               </ul>
             </section>

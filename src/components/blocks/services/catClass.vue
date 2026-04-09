@@ -1,4 +1,6 @@
 <script setup>
+import AppLink from "@/components/AppLink.vue";
+
 const props = defineProps({
   slug: {
     type: String,
@@ -17,6 +19,8 @@ const props = defineProps({
     required: false
   },
 })
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 </script>
 
 <template>
@@ -49,11 +53,11 @@ const props = defineProps({
       <p>{{props.descr}}</p>
       <ul v-if="props.childs && props.childs?.length" class="list_services">
         <li v-for="(schild, indexS) in props.childs" :key="indexS">
-          <RouterLink :to="{ path: '/group/' + schild.key }">{{schild.name}}</RouterLink>
+          <AppLink :to="{ name: 'group', params: { slug: schild.key } }">{{schild.name}}</AppLink>
         </li>
       </ul>
       <div class="services-btn">
-        <RouterLink class="read-more" :to="{ path: '/group/' + props.slug }"><i class="bi bi-arrow-right-short"></i> Подробнее</RouterLink>
+        <App-link class="read-more" :to="{ name: 'group', params: {slug: props.slug } }"><i class="bi bi-arrow-right-short"></i> {{ t('ui.more')}}</App-link>
       </div>
     </div>
   </div>

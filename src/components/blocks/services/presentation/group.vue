@@ -12,7 +12,6 @@ const isVersionFull = computed({
     uiStore.setVersionFull(value);
   },
 });
-const hrefPrefix = '/'+ uiStore.currentLocale;
 const props = defineProps({
   id: {
     type: Number,
@@ -47,29 +46,27 @@ const props = defineProps({
         <p v-show="isVersionFull">{{props.description}}</p>
         <ul class="features-list clases">
           <li v-for="schild in props.childs">
-            <h4><RouterLink class="head_action" :to="{ path: hrefPrefix +'/group/' + schild.key }">{{schild.name}}</RouterLink></h4>
+            <h4>
+              <AppLink class="head_action" :to="{ name: 'group', params: { slug: schild.key } }">{{schild.name}}</AppLink>
+            </h4>
             <span v-show="isVersionFull" class="block text-3xl" v-html="schild.description"></span>
             <ul class="groups">
               <li v-for="offer in schild.child">
                 <span class="block head_action">
-                  <RouterLink class="float_link" :to="{ path: hrefPrefix +'/group/' + offer.key }">
-                  {{offer.name}}
-                    </RouterLink>
+                  <AppLink class="float_link" :to="{ name: 'group', params: { slug: offer.key } }">{{offer.name}}</AppLink>
                 </span>
                 <span v-show="isVersionFull" class="block" v-html="offer.description"></span>
                 <span v-show="isVersionFull" class="block">
-                  <RouterLink class="float_link" :to="{ path: hrefPrefix +'/group/' + offer.key }">
-                    <i class="bi bi-arrow-right text-brand-deep"></i> Подробно
-                  </RouterLink>
+                  <AppLink class="float_link" :to="{ name: 'group', params: { slug: offer.key } }"><i class="bi bi-arrow-right text-brand-deep"></i> Подробно</AppLink>
                 </span>
               </li>
             </ul>
           </li>
         </ul>
         <div class="services-btn">
-          <RouterLink :to="{ path: hrefPrefix +'/direction/' + props.slug }" class="float_link">
+          <AppLink  class="float_link" :to="{ name: 'direction', params: { slug: props.slug } }">
             <i class="bi bi-arrow-right-short"></i> Подробнее о направлении : {{props.title}}
-          </RouterLink>
+          </AppLink>
         </div>
       </div>
     </div>

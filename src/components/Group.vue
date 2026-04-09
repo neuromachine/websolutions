@@ -20,23 +20,26 @@ const { blockStore } = usePageOrchestrator('group', 'category', {
         :content="blockStore.category.content.content"
       />
 
-      <div v-if="blockStore.isHaveSubCat" class="row groups_list">
-        <div v-for="(item, index) in blockStore.category.children" :key="index" class="col-lg-4 col-md-6">
+
+<!--      <div v-if="blockStore.isHaveSubCat" class="row groups_list">-->
+      <div v-if="blockStore.isHaveSubCategories" class="row groups_list">
+        <div v-for="(item, index) in blockStore.category.subcategories" :key="index" class="col-lg-4 col-md-6">
           <catClass
-              :slug=item.key
-              :name=item.name
-              :descr=item.description
-              :childs=item.child
+              :slug=item.slug
+              :name=item.title
+              :descr=item.descr
+              :childs=item.childs
           />
         </div>
       </div>
 
-      <div v-if="blockStore.isHaveItems" class="row items_list">
-<!--        <item v-for="item in blockStore.category.blocks[0].items"
+<!--      <div v-if="blockStore.isHaveItems" class="row items_list">-->
+<!--      <div  class="row items_list">
+        <item v-for="item in blockStore.category.blocks[0].items"
               :slug="item.key"
               :name="item.name"
               :properties="item.properties"
-        />-->
+        />
         <service v-for="(item, index) in blockStore.category.blocks[0].items"
               :slug="item.key"
               :name="item.name"
@@ -44,7 +47,7 @@ const { blockStore } = usePageOrchestrator('group', 'category', {
                  :owner="blockStore.category"
               :properties="item.properties"
         />
-      </div>
+      </div>-->
 
     </div>
     <div v-else class="container"><div class="row row_load">Loading Category</div></div>
