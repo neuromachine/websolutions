@@ -11,9 +11,9 @@
     "directoryStructure": true,
     "files": true,
     "removeComments": false,
-    "removeEmptyLines": false,
+    "removeEmptyLines": true,
     "compress": false,
-    "topFilesLength": 5,
+    "topFilesLength": 10,
     "showLineNumbers": false,
     "truncateBase64": false,
     "copyToClipboard": false,
@@ -32,7 +32,28 @@
     "useGitignore": true,
     "useDotIgnore": true,
     "useDefaultPatterns": true,
-    "customPatterns": []
+    "customPatterns": [
+      "node_modules/**",
+      "dist/**",
+      ".nuxt/**",
+
+      "src/assets/fonts/**",
+      "src/assets/images/**",
+      "public/**",
+
+      "**/*.min.js",
+      "**/*.min.css",
+      "**/*.d.ts",
+      "**/__tests__/**",
+      "**/*.spec.ts",
+      "**/*.test.ts",
+
+      "vite.config.ts",
+      ".eslintrc.*",
+      ".prettierrc.*",
+      "tsconfig.json",
+      "env.d.ts"
+    ]
   },
   "security": {
     "enableSecurityCheck": true

@@ -1,0 +1,6144 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+The content has been processed where empty lines have been removed, content has been compressed (code blocks are separated by ⋮---- delimiter).
+
+# File Summary
+
+## Purpose
+This file contains a packed representation of a subset of the repository's contents that is considered the most important context.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+## File Format
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  a. A header with the file path (## File: path/to/file)
+  b. The full contents of the file in a code block
+
+## Usage Guidelines
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+## Notes
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: node_modules/**, dist/**, .nuxt/**, src/assets/fonts/**, src/assets/images/**, public/**, **/*.min.js, **/*.min.css, **/*.d.ts, **/__tests__/**, **/*.spec.ts, **/*.test.ts, vite.config.ts, .eslintrc.*, .prettierrc.*, tsconfig.json, env.d.ts
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Empty lines have been removed from all files
+- Content has been compressed - code blocks are separated by ⋮---- delimiter
+- Files are sorted by Git change count (files with more changes are at the bottom)
+
+# Directory Structure
+```
+.env.production
+.env.vercel
+.github/workflows/frontend.yml
+.gitignore
+.repomixignore
+docker
+docker-compose
+index.html
+jsconfig.json
+package.json
+postcss.config.js
+README.md
+repomix.config.json
+src/analytics/index.js
+src/analytics/trackers/ga.js
+src/analytics/trackers/ym.js
+src/App.vue
+src/chat/index.js
+src/chat/tidio.js
+src/components/AppLink.vue
+src/components/blocks/compred/presentation/benefits.vue
+src/components/blocks/general/section/about.vue
+src/components/blocks/general/section/Counter.vue
+src/components/blocks/general/section/Faq.vue
+src/components/blocks/general/section/hero.vue
+src/components/blocks/general/section/services.vue
+src/components/blocks/general/section/workflow.vue
+src/components/blocks/general/ui/card.vue
+src/components/blocks/general/ui/qrcode.vue
+src/components/blocks/general/ui/SectionHeader.vue
+src/components/blocks/Item.vue
+src/components/blocks/pages/item.vue
+src/components/blocks/portfolio/index.vue
+src/components/blocks/portfolio/Item.vue
+src/components/blocks/portfolio/presentation/list.vue
+src/components/blocks/portfolio/presentation/work.vue
+src/components/blocks/services/catClass.vue
+src/components/blocks/services/index.vue
+src/components/blocks/services/list.vue
+src/components/blocks/services/presentation/category.vue
+src/components/blocks/services/presentation/content.vue
+src/components/blocks/services/presentation/group.vue
+src/components/blocks/services/presentation/info.vue
+src/components/blocks/services/presentation/item.vue
+src/components/blocks/services/presentation/service.vue
+src/components/blocks/services/presentation/subcategories.vue
+src/components/blocks/services/wrap.vue
+src/components/CPheader.vue
+src/components/CPicon.vue
+src/components/CPimg.vue
+src/components/Debug.vue
+src/components/Direction.vue
+src/components/FeedbackForm.vue
+src/components/Footer.vue
+src/components/forms/BaseCheckbox.vue
+src/components/forms/BaseInput.vue
+src/components/forms/BaseSelect.vue
+src/components/forms/BaseTextarea.vue
+src/components/forms/DynamicForm.vue
+src/components/forms/SimplifiedForm.vue
+src/components/Group.vue
+src/components/Header.vue
+src/components/navbar.vue
+src/components/OfferRequestForm.vue
+src/components/OverlayCat.vue
+src/components/OverlayItem.vue
+src/components/PageTitle.vue
+src/components/portfolio/img_desctop.vue
+src/components/portfolio/img_phone.vue
+src/components/ResponsiveMenu.vue
+src/components/ScopeSwitch.vue
+src/components/Services.vue
+src/components/Testimonial.vue
+src/components/WSpro.vue
+src/composables/usePageData.js
+src/composables/usePageOrchestrator.js
+src/composables/useStorageUrl.ts
+src/config/scopes.js
+src/data.json
+src/debug.js
+src/debug.js.vue
+src/i18n/index.js
+src/i18n/locales/en.json
+src/i18n/locales/ru.json
+src/i18n/locales/vi.json
+src/index.css
+src/main.js
+src/plugins/i18nSync.js
+src/router/index.js
+src/router/routes/portfolio.js
+src/router/routes/services.js
+src/schemas/feedbackForm.js
+src/schemas/offerRequestForm.js
+src/schemas/simplifiedForm.js
+src/services/formService.js
+src/stores/blockStore.js
+src/stores/dataStore.js
+src/stores/formStore.js
+src/stores/navigationStore.js
+src/stores/uiStore.js
+src/utils/api.js
+src/utils/normalizeLink.js
+src/utils/validationBuilder.js
+src/views/blocks/Item.vue
+src/views/blocks/Page.vue
+src/views/Compred.vue
+src/views/Direction.vue
+src/views/Group.vue
+src/views/Home.vue
+src/views/Notfound.vue
+src/views/Portfolio.vue
+src/views/portfolio/Item.vue
+src/views/Services.vue
+src/views/ServiceView.vue
+tailwind.config.js
+tests/setup.ts
+tests/utils/createTestRouter.ts
+tests/utils/mountWithPlugins.ts
+tests/utils/testI18n.ts
+vite.config.js
+```
+
+# Files
+
+## File: jsconfig.json
+````json
+{
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"],
+  "include": [
+    "./src/**/*"
+  ]
+}
+````
+
+## File: postcss.config.js
+````javascript
+
+````
+
+## File: src/components/blocks/services/catClass.vue
+````vue
+<script setup>
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  descr: {
+    type: String,
+    required: true
+  },
+  childs: {
+    type: Array,
+    required: false
+  },
+})
+</script>
+<template>
+  <div class="single-services-two-item">
+    <div v-if="props.slug ==='posadocnaia-stranica'" class="services-icon-box">
+      <i class="bi bi-window"></i>
+    </div>
+    <div v-else-if="props.slug ==='korporativnyi-sait'" class="services-icon-box">
+      <i class="bi bi-building"></i>
+    </div>
+    <div v-else-if="props.slug ==='internet-katalog'" class="services-icon-box">
+      <i class="bi bi-list-ul"></i>
+    </div>
+    <div v-else-if="props.slug ==='internet-magazin'" class="services-icon-box">
+      <i class="bi bi-cart"></i>
+    </div>
+    <div v-else class="services-icon-box">
+      <i class="bi bi-box-seam"></i>
+    </div>
+<!--    <div v-else class="services-icon-box">
+      <div class="default-icon">
+        <img src="/assets/img/icon/services-icon-1.svg" alt="svg icon">
+      </div>
+      <div class="hover-icon">
+        <img src="/assets/img/icon/services-icon-hover-1.svg" alt="svg icon">
+      </div>
+    </div>-->
+    <div class="services-two-content">
+      <h3>{{props.name}}</h3>
+      <p>{{props.descr}}</p>
+      <ul v-if="props.childs && props.childs?.length" class="list_services">
+        <li v-for="(schild, indexS) in props.childs" :key="indexS">
+          <RouterLink :to="{ path: '/group/' + schild.key }">{{schild.name}}</RouterLink>
+        </li>
+      </ul>
+      <div class="services-btn">
+        <RouterLink class="read-more" :to="{ path: '/group/' + props.slug }"><i class="bi bi-arrow-right-short"></i> Подробнее</RouterLink>
+      </div>
+    </div>
+  </div>
+</template>
+⋮----
+<!--    <div v-else class="services-icon-box">
+      <div class="default-icon">
+        <img src="/assets/img/icon/services-icon-1.svg" alt="svg icon">
+      </div>
+      <div class="hover-icon">
+        <img src="/assets/img/icon/services-icon-hover-1.svg" alt="svg icon">
+      </div>
+    </div>-->
+⋮----
+<h3>{{props.name}}</h3>
+<p>{{props.descr}}</p>
+⋮----
+<RouterLink :to="{ path: '/group/' + schild.key }">{{schild.name}}</RouterLink>
+⋮----
+<style scoped>
+.services-icon-box i { font-size: 50px; color: #223A76}
+.single-services-two-item:hover .services-icon-box i { color: #FFF;}
+.list_services {
+  padding: 5px 0;
+  /*  border-top: 2px solid #e6e5f1;
+    border-bottom: 2px solid #e6e5f1;*/
+  margin-bottom: 20px;
+}
+.list_services  li  {
+  position: relative;
+  color: #5f5f5f;
+  font-size: 16px;
+  padding-left: 20px;
+  margin: 10px 0;
+}
+.list_services li:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 10px;
+  background-color: #7b68ee;
+}
+</style>
+````
+
+## File: src/components/blocks/services/presentation/item.vue
+````vue
+<script setup>
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  properties: {
+    type: Object,
+    required: true
+  },
+})
+</script>
+<template>
+  <div class="col-lg-4 col-md-6">
+    <div class="single-services-item">
+      <div class="services-icon">
+        <i class="flaticon-development"></i>
+      </div>
+      <h3>{{props.name}}</h3>
+      <p>{{props.properties.descr}}</p>
+      <p>Цена от: {{props.properties.price}}</p>
+<!--      <div>{{props.properties}}</div>-->
+<!--      <p v-for="(value, key) in props.properties">{{key}} - {{value}}</p>-->
+      <div class="services-btn">
+        <RouterLink class="read-more" :to="{ path: '/blocks/item/' + props.key }"><i class="bi bi-arrow-right-short"></i> Подробнее</RouterLink>
+      </div>
+    </div>
+  </div>
+</template>
+⋮----
+<h3>{{props.name}}</h3>
+<p>{{props.properties.descr}}</p>
+<p>Цена от: {{props.properties.price}}</p>
+<!--      <div>{{props.properties}}</div>-->
+<!--      <p v-for="(value, key) in props.properties">{{key}} - {{value}}</p>-->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/blocks/services/presentation/service.vue
+````vue
+<script setup>
+import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  index: {
+    type: Number,
+    required: true
+  },
+  owner: {
+    type: Object,
+    required: true
+  },
+  properties: {
+    type: Object,
+    required: true
+  },
+})
+</script>
+<template>
+  <div class="col-lg-3 col-md-6">
+    <div class="service" v-if="props.properties?.timeline">
+      <div class="icon">
+        <IconOffer
+            :index="props.index"
+            :properties="props.properties"
+        />
+      </div>
+<!--      <div class="title">
+        {{props.owner.name}} – {{props.name}}
+      </div>-->
+      <div class="title">
+        {{props.name}}
+      </div>
+      <div class="descr">
+        {{props.properties.descr}}
+      </div>
+      <div class="price roboto">
+        бюджет <span class="sofia_bold">{{props.properties.price[0]}} - {{props.properties.price[1]}}</span> ₽
+      </div>
+      <div class="term roboto">
+        срок <span class="sofia_bold">{{props.properties.timeline[0]}} - {{props.properties.timeline[1]}}</span>недель
+      </div>
+      <ul class="conditions">
+        <li v-for="item in props.properties.features">{{item}}</li>
+      </ul>
+      <div class="b_wrap">
+<!--        <RouterLink class="know_price" :to="{ path: '/blocks/item/' + props.key }">Узнать точную цену</RouterLink>-->
+        <RouterLink class="know_price" to="/pages/contacts">Узнать точную цену</RouterLink>
+      </div>
+    </div>
+  </div>
+</template>
+⋮----
+<!--      <div class="title">
+        {{props.owner.name}} – {{props.name}}
+      </div>-->
+⋮----
+{{props.name}}
+⋮----
+{{props.properties.descr}}
+⋮----
+бюджет <span class="sofia_bold">{{props.properties.price[0]}} - {{props.properties.price[1]}}</span> ₽
+⋮----
+срок <span class="sofia_bold">{{props.properties.timeline[0]}} - {{props.properties.timeline[1]}}</span>недель
+⋮----
+<li v-for="item in props.properties.features">{{item}}</li>
+⋮----
+<!--        <RouterLink class="know_price" :to="{ path: '/blocks/item/' + props.key }">Узнать точную цену</RouterLink>-->
+⋮----
+<style scoped>
+.service {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  color: #000;
+  box-shadow: 5px 7px 15px 2px rgba(82, 90, 101, 0.12);
+}
+  .service .icon { width: 50px; height: 50px;}
+  .service .title { font-size: 16px; font-weight: bold; margin: 16px 0 16px 0;}
+  .service .descr { font-size: 14px; line-height: 17px; color: #5F5F5F; margin: 0 0 16px 0;}
+  .service .roboto { font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 11px; line-height: 22px; margin: 0 0 16px 0;}
+    .service .sofia_bold { font-family: "Sofia Sans", sans-serif; font-size: 18px; font-weight: bold; margin: 0 10px 0 10px;}
+  .service .conditions { padding: 0 0 0 16px; color: #5F5F5F;}
+    .service .conditions li { margin: 4px 0 4px 0; list-style: disc;}
+  .service .b_wrap {  display: flex; margin: 16px 0 0 0;}
+  .service .know_price { color: #00D9EA; border: solid 1px #00D9EA; border-radius: 4px; padding: 18px 14px;}
+  .service .know_price:hover { background-color: #00D9EA; color: #FFF; }
+</style>
+````
+
+## File: src/components/blocks/services/wrap.vue
+````vue
+<script setup>
+import list from "@/components/blocks/services/list.vue";
+</script>
+<template>
+<list/>
+</template>
+<style scoped>
+</style>
+````
+
+## File: src/components/Debug.vue
+````vue
+<script setup>
+import {computed,onMounted} from "vue";
+onMounted(() => {
+  /*
+  uiStore.setUiVars('debug', false);
+   uiStore.setNavBarStatus(true);
+   uiStore.setUiVars('menu', true);
+   uiStore.setHeaderVars('menu', true);
+*/
+});
+import { useDataStore } from '@/stores/dataStore';
+const dataStore = useDataStore();
+import { useUiStore } from '@/stores/uiStore.js';
+const uiStore = useUiStore();
+const isMenu = computed({
+  get() {
+    const value = uiStore.uiMainVars.menu;
+    return value;
+  },
+  set(value) {
+    uiStore.setUiVars('menu', value);
+  },
+});
+const isDebug = computed({
+  get() {
+    const value = uiStore.uiMainVars.debug;
+    return value;
+  },
+  set(value) {
+    uiStore.setUiVars('debug', value);
+  },
+});
+const isNavBar = computed({
+  get() {
+    const value = uiStore.uiMainVars.header.navbar;
+    return value;
+  },
+  set(value) {
+    uiStore.setNavBarStatus(value);
+  },
+});
+const isVersionFull = computed({
+  get() {
+    const value = uiStore.uiMainVars.page.version;
+    return value === 'full';
+  },
+  set(value) {
+    if(value === true)
+    {
+      console.log('value set FULL', value);
+      uiStore.setVersionFull('full');
+    }
+    else
+    {
+      console.log('value set SHORT', value);
+      uiStore.setVersionFull('short');
+    }
+  },
+});
+</script>
+<template>
+  <div class="bg-brand-aqua" id="global" v-if="uiStore.uiMainVars.menu === true">
+    <div class="container">
+      <div class="row">
+        <div class="form-check bg-brand-aqua text-brand-alert">
+          <input  v-model="isDebug" class="form-check-input" type="checkbox" value="" id="checkDefault">
+          <label class="form-check-label" for="checkDefault">
+            Debug
+          </label>
+        </div>
+        <label class="switch">
+          <input type="checkbox" v-model="isMenu"/>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="switch">
+          <input type="checkbox" v-model="isDebug"/>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="switch">
+          <input type="checkbox" v-model="isNavBar"/>
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="switch">
+          <input type="checkbox" v-model="isVersionFull"/>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div v-if="uiStore.uiMainVars.debug===true" id="DebugPanel" class="bg-brand-aqua text-brand-light">
+    <pre>
+    <div v-if="dataStore.isStrReady"><h1>{{ JSON.stringify(dataStore.getGlobalLoading, null, 2) }}<</h1></div>
+    <div v-if="!uiStore.getGlobalLoading"><div>{{ JSON.stringify(uiStore.getGlobalLoading, null, 2) }}</div></div>
+    <div v-if="dataStore.isStrReady">{{ JSON.stringify(dataStore.structure, null, 2) }}</div>
+<!--    <div v-if="uiStore.isVersionFull">{{ JSON.stringify(uiStore.page.version, null, 2) }}</div>-->
+      </pre>
+  </div>
+</template>
+⋮----
+<div v-if="dataStore.isStrReady"><h1>{{ JSON.stringify(dataStore.getGlobalLoading, null, 2) }}<</h1></div>
+<div v-if="!uiStore.getGlobalLoading"><div>{{ JSON.stringify(uiStore.getGlobalLoading, null, 2) }}</div></div>
+<div v-if="dataStore.isStrReady">{{ JSON.stringify(dataStore.structure, null, 2) }}</div>
+<!--    <div v-if="uiStore.isVersionFull">{{ JSON.stringify(uiStore.page.version, null, 2) }}</div>-->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/FeedbackForm.vue
+````vue
+<template>
+  <DynamicForm :schema="schema" />
+</template>
+<script setup>
+import DynamicForm from '@/components/forms/DynamicForm.vue'
+import schema from '@/schemas/feedbackForm.js'
+</script>
+````
+
+## File: src/components/forms/BaseCheckbox.vue
+````vue
+<template>
+  <div class="form-control-checkbox">
+    <label :for="id" class="checkbox-label">
+      <input
+          :id="id"
+          type="checkbox"
+          :checked="value"
+          @change="$emit('input', $event.target.checked)"
+          @blur="$emit('blur', $event)"
+          v-bind="$attrs"
+      />
+      <span class="checkbox-text">{{ label }}</span>
+    </label>
+    <p v-if="error" class="field-error">{{ error }}</p>
+  </div>
+</template>
+⋮----
+<span class="checkbox-text">{{ label }}</span>
+⋮----
+<p v-if="error" class="field-error">{{ error }}</p>
+⋮----
+<script setup>
+const props = defineProps({
+  value: Boolean,
+  label: String,
+  error: [String, null],
+  id: { type: String, default: () => `cb-${Math.random().toString(36).slice(2,9)}` },
+})
+defineEmits(['input','blur'])
+</script>
+````
+
+## File: src/components/forms/BaseInput.vue
+````vue
+<script setup>
+const props = defineProps({
+  value: [String, Number], // теперь вместо modelValue
+  type: { type: String, default: 'text' },
+  label: String,
+  hint: String,
+  error: [String, Array, null],
+  required: { type: Boolean, default: false },
+  id: { type: String, default: () => `input-${Math.random().toString(36).slice(2,9)}` },
+})
+defineEmits(['input', 'blur'])
+</script>
+<template>
+  <div class="form-control">
+    <label v-if="label" :for="id" class="label">
+      {{ label }}
+      <span v-if="required" aria-hidden="true">*</span>
+    </label>
+    <div class="input-wrapper">
+      <slot name="prepend" />
+      <input
+          :id="id"
+          :placeholder="label"
+          :type="type"
+          :value="value"
+          @input="$emit('input', $event.target.value)"
+          @blur="$emit('blur', $event)"
+          v-bind="$attrs"
+          :class="['base-input', { 'has-error': !!error }]"
+          :aria-invalid="!!error"
+          :aria-describedby="error ? id + '-error' : null"
+      />
+      <slot name="append" />
+    </div>
+    <p v-if="error" :id="id + '-error'" class="field-error">{{ error }}</p>
+    <p v-else-if="hint" class="field-hint">{{ hint }}</p>
+  </div>
+</template>
+⋮----
+{{ label }}
+⋮----
+<p v-if="error" :id="id + '-error'" class="field-error">{{ error }}</p>
+<p v-else-if="hint" class="field-hint">{{ hint }}</p>
+⋮----
+<style scoped>
+.base-input {
+  color: #404040;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  height: 50px;
+  display: block;
+  padding-left: 25px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  border: none;
+  outline: 0;
+}
+.base-input::-webkit-input-placeholder {
+  color: #5f5f5f;
+}
+.base-input:-ms-input-placeholder {
+  color: #5f5f5f;
+}
+.base-input::-ms-input-placeholder {
+  color: #5f5f5f;
+}
+.base-input::placeholder {
+  color: #5f5f5f;
+}
+/* TODO: переработать позиционирование и т.п. */
+.field-error { position: absolute; top: 0; left: 10px; color: #ff4d15; font-size: 14px;}
+.label { display: none}
+.has-error { color: #2c0b0e !important;}
+</style>
+````
+
+## File: src/components/forms/BaseSelect.vue
+````vue
+<template>
+  <div class="form-control">
+    <label v-if="label" :for="id" class="label">{{ label }}</label>
+    <select
+        :id="id"
+        :value="value"
+        @change="$emit('input', $event.target.value)"
+        @blur="$emit('blur', $event)"
+        v-bind="$attrs"
+        :class="['base-select', { 'has-error': !!error }]"
+    >
+      <option v-if="placeholder" value="">{{ placeholder }}</option>
+      <option v-for="opt in options" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
+    </select>
+    <p v-if="error" class="field-error">{{ error }}</p>
+  </div>
+</template>
+⋮----
+<label v-if="label" :for="id" class="label">{{ label }}</label>
+⋮----
+<option v-if="placeholder" value="">{{ placeholder }}</option>
+<option v-for="opt in options" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
+⋮----
+<p v-if="error" class="field-error">{{ error }}</p>
+⋮----
+<script setup>
+const props = defineProps({
+  value: [String, Number],
+  options: { type: Array, default: () => [] },
+  label: String,
+  placeholder: String,
+  error: [String, Array, null],
+  id: { type: String, default: () => `select-${Math.random().toString(36).slice(2,9)}` },
+})
+defineEmits(['input','blur'])
+</script>
+````
+
+## File: src/components/forms/BaseTextarea.vue
+````vue
+<template>
+  <div class="form-control">
+    <label v-if="label" :for="id" class="label">{{ label }}</label>
+    <textarea
+        :id="id"
+        :value="value"
+        @input="$emit('input', $event.target.value)"
+        @blur="$emit('blur', $event)"
+        v-bind="$attrs"
+        :class="['base-textarea', { 'has-error': !!error }]"
+        :aria-invalid="!!error"
+        :aria-describedby="error ? id + '-error' : null"
+    />
+    <p v-if="error" :id="id + '-error'" class="field-error">{{ error }}</p>
+    <p v-else-if="hint" class="field-hint">{{ hint }}</p>
+  </div>
+</template>
+⋮----
+<label v-if="label" :for="id" class="label">{{ label }}</label>
+⋮----
+<p v-if="error" :id="id + '-error'" class="field-error">{{ error }}</p>
+<p v-else-if="hint" class="field-hint">{{ hint }}</p>
+⋮----
+<script setup>
+const props = defineProps({
+  value: String,
+  label: String,
+  hint: String,
+  error: [String, Array, null],
+  id: { type: String, default: () => `textarea-${Math.random().toString(36).slice(2,9)}` },
+})
+defineEmits(['input','blur'])
+</script>
+````
+
+## File: src/components/OfferRequestForm.vue
+````vue
+<script setup>
+import { ref } from 'vue'
+import { useDataStore } from '@/stores/dataStore'
+const props = defineProps({
+  id: {
+    type: Number,
+    required: false,
+  }
+})
+const contact = ref('')
+const dataStore = useDataStore()
+async function submitForm() {
+  if (!contact.value.trim()) return
+  await dataStore.sendOfferRequest(contact.value)
+  contact.value = ''
+}
+</script>
+<template>
+  <form class="newsletter-form" @submit.prevent="submitForm">
+    <input
+        type="text"
+        class="input-newsletter"
+        v-model="contact"
+        name="contact"
+        placeholder="имя в мессенджере, телефон или e-mail"
+        required
+        autocomplete="off"
+    />
+    <button type="submit">Отправить</button>
+  </form>
+</template>
+````
+
+## File: src/components/OverlayCat.vue
+````vue
+<script setup>
+const props = defineProps({
+  title: String,
+  data: {
+    type: Object,
+    required: true
+  }
+})
+const emit = defineEmits(['close'])
+// emit `close` event to close Modal dialog
+const close = () => emit('close', 'message out')
+import {onMounted} from "vue";
+import { useDataStore } from '@/stores/dataStore';
+const dataStore = useDataStore();
+onMounted(() => {
+  dataStore.fetchOverlayCategory(props.data.slug);
+});
+</script>
+<template>
+  <div v-if="dataStore.isOverlayReady" class="overlay_page">
+    <div class="category">
+      <div class="descr tiny" v-html="dataStore.overlay.description"></div>
+  <!--    <div class="check">{{props.data.blocks}}</div>-->
+      <div class="blocks">
+        <div class="block" v-for="block in dataStore.overlay.blocks">
+          <div class="head">{{block.name}}</div>
+  <!--        <div class="head">{{block.items}}</div>-->
+          <div class="items_list">
+            <div class="item" v-for="item in block.items">
+              <span class="name">{{item.name}}</span>
+              <span>{{item.properties.title}}</span>
+              <span>{{item.properties.url}}</span>
+              <span>{{item.properties.price}}</span>
+              <span>{{item.properties.descr}}</span>
+              <span v-html="item.properties.content"></span>
+              <a class="read-more" :href="'/blocks/item/' + item.key"><i class="bi bi-arrow-right-short"></i> Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--    <div class="data">{{props.data}}</div>-->
+<!--    <div class="more">-->
+<!--      <RouterLink :to="{ path: '/direction/' + props.slug }" class="read-more">Страница</RouterLink>-->
+<!--    </div>-->
+  </div>
+  <div v-else class="container"><div class="row row_load">Loading Overlay</div></div>
+</template>
+⋮----
+<!--    <div class="check">{{props.data.blocks}}</div>-->
+⋮----
+<div class="head">{{block.name}}</div>
+<!--        <div class="head">{{block.items}}</div>-->
+⋮----
+<span class="name">{{item.name}}</span>
+<span>{{item.properties.title}}</span>
+<span>{{item.properties.url}}</span>
+<span>{{item.properties.price}}</span>
+<span>{{item.properties.descr}}</span>
+⋮----
+<!--    <div class="data">{{props.data}}</div>-->
+<!--    <div class="more">-->
+<!--      <RouterLink :to="{ path: '/direction/' + props.slug }" class="read-more">Страница</RouterLink>-->
+<!--    </div>-->
+⋮----
+<style scoped>
+.check { color:#03b103}
+.overlay_page { margin: 2em}
+.overlay_page .body_title { font-size: 20px !important;}
+  .category { display: flex; flex-direction: column;}
+  .category .descr { font-size: 1.5em;}
+  .blocks {display: flex; flex-direction: row;}
+    .block { display: flex; flex-direction: column;}
+    .block .head {  font-size: 1.2em;}
+    .block .items_list { display: flex; flex-direction: column; }
+      .block .items_list .item { display: flex;  flex-direction: column; margin: 10px 0 10px;}
+      .block .items_list .item span { display: inline-block; }
+        .item .name { font-weight: bold;}
+</style>
+````
+
+## File: src/components/OverlayItem.vue
+````vue
+<script setup>
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true
+  }
+})
+const emit = defineEmits(['close'])
+// const profile = getUserProfile()
+// emit `close` event to close Modal dialog
+const close = () => emit('close', 'message out')
+</script>
+<template>
+  <div>
+    <div>{{props.data.title}}</div>
+    <div v-for="(child, indexC) in props.data.childs" :key="indexC">
+      <span><h3>{{child.title}}</h3></span>
+      <ul class="subitems">
+        <li v-for="(schild, indexS) in child.childs" :key="indexS">
+          <span>{{schild.title}}</span>
+          <span  class="lv3">{{schild.thumb}}</span>
+          <span  class="lv3">{{schild.id}}</span>
+          <span  class="lv3">{{schild.slug}}</span>
+          <span  v-for="(tchild, index3) in schild.childs" :key="index3" class="lv3">{{tchild.title}}</span>
+        </li>
+      </ul>
+    </div>
+    <button
+        type="button"
+        @click="close"
+    >Close</button>
+  </div>
+</template>
+⋮----
+<div>{{props.data.title}}</div>
+⋮----
+<span><h3>{{child.title}}</h3></span>
+⋮----
+<span>{{schild.title}}</span>
+<span  class="lv3">{{schild.thumb}}</span>
+<span  class="lv3">{{schild.id}}</span>
+<span  class="lv3">{{schild.slug}}</span>
+<span  v-for="(tchild, index3) in schild.childs" :key="index3" class="lv3">{{tchild.title}}</span>
+````
+
+## File: src/components/portfolio/img_desctop.vue
+````vue
+<script setup>
+defineProps({
+  slug: String,
+  filename: String,
+  svg: false,
+})
+</script>
+<template>
+  <div class="img_desctop">
+    <div v-if="svg" class="svg_wrap">
+      <div class="portfolio-details-image">
+        <svg id="_Слой_1" data-name="Слой_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 552.58 394.94">
+          <g id="IMG" class="img_wrap">
+            <image transform="translate(22.6 22.9)"  class="image" :href="'/assets/img/portfolio/'+slug+'/'+filename"/>
+          </g>
+          <path id="white" class="white" d="M0,0v394.9h552.6V0H0ZM522.6,330.9c0,6.6-5.4,12-12,12H34.6c-6.6,0-12-5.4-12-12V34.9c0-6.6,5.4-12,12-12h476c6.6,0,12,5.4,12,12v296Z"/>
+          <path id="shadow" class="shadow" d="M528.6,12.9H36.6c-13.3,0-24,10.8-24,24v312c0,13.2,10.7,24,24,24h492c13.2,0,24-10.8,24-24V36.9c0-13.2-10.8-24-24-24ZM522.6,330.9c0,6.6-5.4,12-12,12H34.6c-6.6,0-12-5.4-12-12V34.9c0-6.6,5.4-12,12-12h476c6.6,0,12,5.4,12,12v296Z"/>
+          <path id="frame" class="frame" d="M522.6,2.9H22.6C11.5,2.9,2.6,11.9,2.6,22.9v320c0,11,9,20,20,20h500c11,0,20-9,20-20V22.9c0-11-9-20-20-20ZM522.6,330.9c0,6.6-5.4,12-12,12H34.6c-6.6,0-12-5.4-12-12V34.9c0-6.6,5.4-12,12-12h476c6.6,0,12,5.4,12,12v296Z"/>
+          <rect id="stand_1" class="stand_1" x="242.6" y="372.9" width="80" height="12" rx="4" ry="4"/>
+          <path id="stand_2" class="stand_2" d="M217.6,384.9h130c2.8,0,5,2.2,5,5h0c0,2.8-2.2,5-5,5h-130c-2.8,0-5-2.2-5-5h0c0-2.8,2.2-5,5-5Z"/>
+        </svg>
+      </div>
+    </div>
+    <div v-else class="css_wrap">
+      <img :src="'/assets/img/portfolio/'+slug+'/'+filename" >
+    </div>
+  </div>
+</template>
+<style scoped>
+.phone_wrap { max-width: 300px;}
+#frame_p {
+  fill: none;
+  stroke: #362c72;
+  stroke-width: 2px;
+}
+#button,#dinamic {
+  fill: #000;
+}
+.white {fill: #fff;}
+.image_p { width: 100%; height: auto;}
+#shadow {fill: #0a53be}
+</style>
+````
+
+## File: src/components/portfolio/img_phone.vue
+````vue
+<script setup>
+defineProps({
+  slug: String,
+  filename: String,
+})
+</script>
+<template>
+  <div class="portfolio-details-image phone_wrap">
+    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200.14 375">
+      <g id="IMG" class="img_wrap">
+        <image  class="image_p" :href="'/assets/img/portfolio/'+slug+'/'+filename"/>
+      </g>
+      <path id="uplayer" class="white" d="M0,0v375h200V0H0ZM194.14,334c0,15.46-12.54,28-28,28H30.14c-15.47,0-28-12.54-28-28V30C2.14,14.54,14.67,2,30.14,2h136c15.46,0,28,12.54,28,28v304Z"/>
+      <rect id="frame_p" class="cls-3" x="3.35" y="2.89" width="192" height="360" rx="28" ry="28"/>
+      <path id="shadow" d="M200.14,41v296c0,17.67-14.33,32-32,32H40.14c-9.48,0-18-4.12-23.86-10.67,4.08,2.34,8.81,3.67,13.86,3.67h136c15.46,0,28-12.54,28-28V30c0-3.52-.65-6.89-1.84-9.99,4.88,5.62,7.84,12.96,7.84,20.99Z"/>
+<!--      <path id="dinamic" class="cls-4" d="M81.54,15h31.2c1.33,0,2.4.9,2.4,2h0c0,1.1-1.07,2-2.4,2h-31.2c-1.33,0-2.4-.9-2.4-2h0c0-1.1,1.07-2,2.4-2Z"/>-->
+<!--      <circle id="button" class="cls-2" cx="98.14" cy="332" r="10"/>-->
+    </svg>
+  </div>
+</template>
+⋮----
+<!--      <path id="dinamic" class="cls-4" d="M81.54,15h31.2c1.33,0,2.4.9,2.4,2h0c0,1.1-1.07,2-2.4,2h-31.2c-1.33,0-2.4-.9-2.4-2h0c0-1.1,1.07-2,2.4-2Z"/>-->
+<!--      <circle id="button" class="cls-2" cx="98.14" cy="332" r="10"/>-->
+⋮----
+<style scoped>
+.phone_wrap { max-width: 300px;}
+#frame_p {
+  fill: none;
+  stroke: #362c72;
+  stroke-width: 2px;
+}
+#button,#dinamic {
+  fill: #000;
+}
+.white {fill: #fff;}
+.image_p { width: 100%; height: auto;}
+#shadow {fill: #0a53be}
+</style>
+````
+
+## File: src/components/Services.vue
+````vue
+<script setup>
+import componentWrap from "@/components/blocks/services/wrap.vue";
+</script>
+<template>
+  <componentWrap />
+</template>
+````
+
+## File: src/data.json
+````json
+[ 
+{ 
+"id":1,
+"title":"Авто-Кроватка",
+"slug":"car",
+"descr":"<p>Полное описание</p>",
+"thumb":"thumb_1.jpg",
+"mainimg":"work_1_1.png",
+"announce":"announce",
+"date":"2025-04-01 18:12:08"
+},
+{ 
+"id":2,
+"title":"TFF",
+"slug":"tff",
+"descr":"Описание",
+"thumb":"thumb_2.jpg",
+"mainimg":"work_1_1.png",
+"announce":"Анонс",
+"date":"2025-04-14 21:28:57"
+}
+]
+````
+
+## File: src/debug.js
+````javascript
+
+````
+
+## File: src/debug.js.vue
+````vue
+<script setup>
+</script>
+<template>
+</template>
+<style scoped>
+</style>
+````
+
+## File: src/index.css
+````css
+/*@import "tailwindcss";*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+⋮----
+.bg-brand-light { background-color: #E5F7FD; }
+.bg-brand-aqua  { background-color: #00D9EA; }
+.bg-brand-sky   { background-color: #0C90C7; }
+.bg-brand-deep  { background-color: #223A76; }
+.bg-brand-sun1  { background-color: #FFE265; }
+.bg-brand-sun2  { background-color: #FFC500; }
+.bg-brand-alert { background-color: #FF5A5F; }
+.text-brand-light { color: #E5F7FD; }
+.text-brand-aqua  { color:#00D9EA; }
+.text-brand-sky   { color:#0C90C7; }
+.text-brand-deep  { color:#223A76; }
+.text-brand-sun1  { color:#FFE265; }
+.text-brand-sun2  { color:#FFC500; }
+.text-brand-alert { color:#FF5A5F; }
+````
+
+## File: src/schemas/offerRequestForm.js
+````javascript
+
+````
+
+## File: src/utils/api.js
+````javascript
+// 'Authorization': `Bearer ${token}` // если нужен токен
+````
+
+## File: src/views/blocks/Item.vue
+````vue
+<script setup>
+import Header from "@/components/Header.vue";
+import PageTitle from "@/components/PageTitle.vue";
+import Footer from "@/components/Footer.vue";
+import Item from "@/components/blocks/Item.vue";
+</script>
+<template>
+  <Header />
+  <PageTitle />
+  <Item />
+  <Footer />
+</template>
+````
+
+## File: src/views/blocks/Page.vue
+````vue
+<script setup>
+import Header from "@/components/Header.vue";
+import PageTitle from "@/components/PageTitle.vue";
+import Footer from "@/components/Footer.vue";
+import Item from "@/components/blocks/pages/item.vue";
+</script>
+<template>
+  <Header />
+  <PageTitle />
+  <Item />
+  <Footer />
+</template>
+````
+
+## File: src/views/Portfolio.vue
+````vue
+<script setup>
+import Header from "@/components/Header.vue";
+import PageTitle from "@/components/PageTitle.vue";
+import Footer from '@/components/Footer.vue'
+import Index from "@/components/blocks/portfolio/index.vue";
+</script>
+<template>
+  <Header />
+  <PageTitle />
+  <Index />
+  <Footer />
+</template>
+````
+
+## File: src/views/ServiceView.vue
+````vue
+<script>
+export default {
+  data(){
+    return {
+      service: {}
+    }
+  },
+  created() {
+    const id = parseInt(this.$route.params.id)
+    // this.service = services.find(id)
+  }
+}
+</script>
+<script setup>
+import {useRoute} from "vue-router"
+const route = useRoute()
+const id = parseInt(route.params.id)
+//const service = services.find(id)
+</script>
+<template>
+<!--<main>{{ service.name }}</main>-->
+<main><h1>SERVICE</h1></main>
+</template>
+⋮----
+<!--<main>{{ service.name }}</main>-->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: tailwind.config.js
+````javascript
+'3xl': '1.875rem', // 30px
+⋮----
+//
+````
+
+## File: .gitignore
+````
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+#dist
+dist-ssr
+coverage
+*.local
+
+/cypress/videos/
+/cypress/screenshots/
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.osp
+
+*.tsbuildinfo
+
+package-lock.json
+
+.htaccess
+````
+
+## File: .repomixignore
+````
+# Add patterns to ignore here, one per line
+# Example:
+# *.log
+# tmp/
+
+#svg
+src/components/blocks/compred/micro/svg/**
+src/components/blocks/services/micro/**
+src/components/WSteam.vue
+src/components/Logo.vue
+
+#all assets
+src/assets/**
+
+#self files - off recurcive
+context-arch.md
+repomix-output.xml
+````
+
+## File: docker
+````
+
+````
+
+## File: docker-compose
+````
+
+````
+
+## File: README.md
+````markdown
+# Project Context — Frontend Architecture
+
+> Живой документ. Фиксирует архитектурные решения, принятые в процессе рефакторинга.  
+> Обновляется по мере развития проекта.
+
+---
+
+## Стек
+
+| Слой | Технология |
+|---|---|
+| Frontend Framework | Vue 3 (Composition API, `<script setup>`) |
+| Роутер | Vue Router 4 |
+| State Management | Pinia |
+| HTTP | Axios (обёртка `utils/api.js`) |
+| i18n | vue-i18n + плагин `setupI18nSync(pinia)` |
+| Backend API | Laravel 12 (вне scope frontend-задач) |
+| Сборка | Vite |
+
+---
+
+## Архитектура: слои и зоны ответственности
+
+### Stores
+
+```
+uiStore          — состояние интерфейса приложения
+  ├─ scope               текущий URL-префикс раздела (ранее section)
+  ├─ uiMainVars.page     title, breadcrumbs, parent, children
+  ├─ isGlobalLoading     счётчик активных запросов (_loadingCount)
+  ├─ buildPageVars()     формирует page из { structure, category, item }
+  └─ setSection()        нормализует и устанавливает scope
+
+navigationStore  — структурное дерево раздела (singleton)
+  ├─ structure           дерево навигации раздела (services)
+  ├─ nav[]               нормализованные ссылки для navbar
+  ├─ fetchStructure()    загружает structure по slug
+  └─ fetchNavigation()   загружает nav-ссылки по scope
+
+blockStore(id)   — фабрика данных блока (инстанс на блок)
+  ├─ category            данные категории
+  ├─ item                данные элемента
+  ├─ overlay             данные оверлея
+  ├─ filter              активный фильтр ('*' | key)
+  ├─ filteredItems       геттер: Object → Array с нормализацией slug
+  ├─ fetchBlockCategory()
+  ├─ fetchBlockItem()
+  └─ fetchOverlayCategory()
+
+formStore        — состояние форм (отдельный слой, вне scope текущих задач)
+```
+
+### Фабрика blockStore — ключевое решение
+
+`blockStore` — не синглтон. Это фабрика, возвращающая независимые инстансы по ID.
+
+```js
+// src/stores/blockStore.js
+const _registry = new Map()  // ← определение store кэшируется на уровне модуля
+
+export function useBlockStore(id) {
+  if (!_registry.has(id)) {
+    _registry.set(id, createBlockStoreDefinition(id))
+  }
+  return _registry.get(id)()  // Pinia ID: block/${id}
+}
+```
+
+**Почему важно:** `defineStore` должен вызываться ровно один раз на ID. Иначе компонент и fetch работают с разными инстансами — DevTools показывает данные, шаблон нет.
+
+---
+
+## Lifecycle компонентов
+
+### Схема слоёв
+
+```
+View.vue          — только компоновка (Header, Footer, PageTitle, Index)
+                    не содержит логики, не знает о stores
+  └─ index.vue    — оркестратор
+                    владеет store(s), вызывает fetch, передаёт props
+                    единственный кто вызывает usePageOrchestrator с isPageOwner
+       └─ list.vue — презентационный оркестратор
+                     принимает данные через props
+                     реализует функционал секции (фильтры, emit)
+            └─ item.vue — чисто презентационный, только props
+```
+
+### Правила
+
+- `View.vue` — никаких store, никаких composables с fetch
+- `index.vue` — ровно один `usePageOrchestrator` на маршрут, с логикой определения isPageOwner
+- Дочерние блоки на той же странице — `usePageOrchestrator` без права на `buildPageVars`
+- Презентационные компоненты — только `defineProps`, никакого прямого импорта store
+
+---
+
+## usePageOrchestrator
+
+Файл: `src/composables/usePageOrchestrator.js`
+
+### Сигнатура
+
+```js
+const { blockStore, navigationStore } = usePageOrchestrator(blockId, scheme, {
+  fetch: (route) => slug  // resolver — что передать в fetch-методы
+})
+```
+
+### Схемы (scheme)
+
+| Значение | Что загружает |
+|---|---|
+| `'category'` | `fetchBlockCategory(slug)` |
+| `'item'` | `fetchBlockItem(slug)` |
+| `'structure'` | `fetchStructure(slug)` |
+| `'structure+category'` | оба, последовательно |
+| `'structure+category+item'` | все три |
+
+### isPageOwner — автоматическое определение
+
+Только один оркестратор на странице должен вызывать `buildPageVars`. Определяется автоматически:
+
+```js
+const isPageOwner = route.name === blockId || route.params.slug === blockId
+```
+
+Если компонент `portfolio` вызван на маршруте `/portfolio` — он владелец страницы.  
+Если тот же компонент вызван на главной `/` — он не владелец, `buildPageVars` не перезаписывается.
+
+### Защита от повторных запросов
+
+```js
+// На уровне модуля — один Map на всё приложение
+const _activeKeys = new Map()
+
+const fetchKey = `${blockId}::${slug}::${uiStore.scope}`
+if (_activeKeys.get(blockId) === fetchKey) return
+_activeKeys.set(blockId, fetchKey)
+```
+
+Решает: повторный вызов при навигации назад, двойной mount (старый + новый инстанс компонента).
+
+### fetchNavigation — не блокирует рендер
+
+```js
+// В load() — запускается параллельно, не await на входе
+const navPromise = navStore.nav.length === 0
+  ? navStore.fetchNavigation(uiStore.scope)
+  : Promise.resolve()
+
+// ... остальные fetch ...
+await navPromise  // ждём только если реально запускали
+```
+
+Навигация не блокирует `beforeEach` — страница рендерится сразу, navbar появляется когда данные пришли.
+
+---
+
+## Роутер
+
+Файл: `src/router/index.js`
+
+### Структура маршрутов
+
+```
+/:scope([^/]+)?          ← scope = языковой/раздельный префикс (ru, en, пусто)
+  /                      → Home.vue
+  /services              → Services.vue
+  /direction/:slug       → Direction.vue
+  /group/:slug           → Group.vue
+  /portfolio             → Portfolio.vue
+  /blocks/item/:slug     → blocks/Item.vue
+  /pages/:slug           → pages/Page.vue
+```
+
+### beforeEach — только критичное
+
+```js
+router.beforeEach((to, from, next) => {
+  const newScope = to.params.scope ?? ''
+  if (newScope !== uiStore.scope) uiStore.setScope(newScope)
+  // fetchNavigation — НЕ здесь, НЕ с await
+  uiStore.startGlobalLoading()
+  next()
+})
+```
+
+**Правило:** `beforeEach` не делает async-запросы к API. Только синхронное обновление состояния.
+
+---
+
+## Система scope (ранее section)
+
+**Терминология (зафиксировано):**
+
+| Понятие | Переменная | Где |
+|---|---|---|
+| URL-префикс раздела | `scope` | `uiStore.scope`, `route.params.scope` |
+| Язык интерфейса | `locale` | `i18n.locale`, `uiStore.locale` |
+| Конфиг раздела | `currentScope` | getter uiStore |
+
+Источник конфига: `src/config/sections.js` — `SECTIONS_CONFIG`, `DEFAULT_SCOPE`, `VALID_SCOPES`.
+
+---
+
+## AppLink
+
+Файл: `src/components/AppLink.vue`
+
+Обёртка над `RouterLink`. Автоматически прeпендирует scope к пути.
+
+```js
+// Строка → /${scope}${cleanPath}
+<AppLink to="/portfolio">Портфолио</AppLink>
+
+// Объект → именованный маршрут (scope через :scope param роутера)
+<AppLink :to="{ name: 'blocks_item', params: { slug: item.slug } }">
+```
+
+**Проблема:** текущая версия принимает только `String`. Поддержка объекта — в очереди задач.
+
+---
+
+## Данные: формат API
+
+### Навигация
+
+Endpoint: `${scope}/blocks/blocks/navigation`  
+Рабочие данные: `data.content[]` — массив `{ anchor, link, sort }`
+
+Ссылки в `link` могут содержать scope-префикс (`ru/portfolio`).  
+**Требование к API:** возвращать scope-агностичные пути (`/portfolio`).  
+До исправления — нормализация на frontend через `normalizeLink(rawLink, VALID_SCOPES)`.
+
+### Блоки категорий
+
+Данные работ портфолио: `category.sections.works` — Object `{ slug: properties }`.
+
+Нормализация в геттере `filteredItems`:
+```js
+Object.entries(works).map(([slug, data]) => ({ slug, ...data }))
+```
+
+`workclass` — массив `[{ key, label }]`, не объект.
+
+---
+
+## Глобальный loading — счётчик
+
+```js
+// uiStore
+state: { _loadingCount: 0 },
+getters: {
+  isGlobalLoading: (s) => s._loadingCount > 0
+},
+actions: {
+  startGlobalLoading() { this._loadingCount++ },
+  stopGlobalLoading()  { this._loadingCount = Math.max(0, this._loadingCount - 1) }
+}
+```
+
+Любой store вызывает `start/stop` — индикатор корректен при параллельных запросах.  
+Зависимость `useBlockStore('main')` в uiStore — удалена.
+
+---
+
+## Вектор развития: Server-Driven UI
+
+Текущее состояние — статичная компоновка страниц во View-файлах.  
+Целевое состояние — API возвращает конфигурацию страницы:
+
+```json
+{
+  "meta": { "title": "Главная", "breadcrumbs": [] },
+  "blocks": [
+    { "type": "hero",      "key": "hero",      "scheme": "category", "fetch_slug": "main" },
+    { "type": "portfolio", "key": "portfolio",  "scheme": "category", "fetch_slug": "portfolio" }
+  ]
+}
+```
+
+Frontend: единый `PageRenderer.vue` + реестр блоков `src/registry/blocks.js`.  
+Новый тип → одна строка в реестре, компоненты не меняются.
+
+---
+
+## Открытые задачи (индекс)
+
+| Приоритет | Задача |
+|---|---|
+| 🔴 | Переименование `section → scope` во всех файлах (механическое, но важно до расширения) |
+| 🔴 | `AppLink` — поддержка объекта `{ name, params }` |
+| 🟡 | `buildPageVars` — защита от `null` при неполных схемах (item.slug краш) |
+| 🟡 | API: scope-агностичные ссылки в navigation endpoint |
+| 🟡 | Реализация `PageRenderer` + `pageStore` (SDUI первый шаг) |
+| 🟡 | `updatePageVars` / `buildPageVars` — доработка под все схемы вложенности |
+| 🟢 | `navigationStore.setLoading` — перенести из getters в actions |
+| 🟢 | `useBlockStore('main')` в uiStore — определить назначение или удалить |
+| 🟢 | Хардкод фильтров в `portfolio/index.vue` — получать workclass-справочник из API |
+| 🟢 | `AppLink` адаптация для всех частных случаев маршрутизации |
+| 🟢 | i18n ↔ scope синхронизация — отдельная итерация |
+| 🟢 | Vue Router warn: `/:pathMatch` param mismatch — исправить определение catch-all маршрута |
+
+---
+
+## Компоненты — примеры эксплуатации
+
+### Оркестратор страницы (isPageOwner = true автоматически)
+
+```js
+// src/components/blocks/portfolio/index.vue
+const { blockStore } = usePageOrchestrator('portfolio', 'category', {
+  fetch: (route) => route.params.slug ?? route.name
+})
+```
+
+### Дочерний блок (на главной, не владеет page context)
+
+```js
+// тот же компонент, вызван внутри home
+const { blockStore } = usePageOrchestrator('portfolio', 'category', {
+  fetch: () => 'portfolio'
+})
+// route.name === 'main' !== 'portfolio' → isPageOwner = false → buildPageVars не вызывается
+```
+
+### Services — structure + category
+
+```js
+// src/components/blocks/services/direction/index.vue
+const { blockStore, navigationStore } = usePageOrchestrator('direction', 'structure+category', {
+  fetch: (route) => route.params.slug
+})
+```
+````
+
+## File: repomix.config.json
+````json
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "input": {
+    "maxFileSize": 52428800
+  },
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "parsableStyle": false,
+    "fileSummary": true,
+    "directoryStructure": true,
+    "files": true,
+    "removeComments": false,
+    "removeEmptyLines": true,
+    "compress": false,
+    "topFilesLength": 10,
+    "showLineNumbers": false,
+    "truncateBase64": false,
+    "copyToClipboard": false,
+    "includeFullDirectoryStructure": false,
+    "tokenCountTree": false,
+    "git": {
+      "sortByChanges": true,
+      "sortByChangesMaxCommits": 100,
+      "includeDiffs": false,
+      "includeLogs": false,
+      "includeLogsCount": 50
+    }
+  },
+  "include": [],
+  "ignore": {
+    "useGitignore": true,
+    "useDotIgnore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "node_modules/**",
+      "dist/**",
+      ".nuxt/**",
+
+      "src/assets/fonts/**",
+      "src/assets/images/**",
+      "public/**",
+
+      "**/*.min.js",
+      "**/*.min.css",
+      "**/*.d.ts",
+      "**/__tests__/**",
+      "**/*.spec.ts",
+      "**/*.test.ts",
+
+      "vite.config.ts",
+      ".eslintrc.*",
+      ".prettierrc.*",
+      "tsconfig.json",
+      "env.d.ts"
+    ]
+  },
+  "security": {
+    "enableSecurityCheck": true
+  },
+  "tokenCount": {
+    "encoding": "o200k_base"
+  }
+}
+````
+
+## File: src/analytics/trackers/ga.js
+````javascript
+function isGtagReady()
+⋮----
+hit(to)
+goal(to)
+⋮----
+// Триггер: наличие поля meta.gaGoal в роуте
+````
+
+## File: src/analytics/trackers/ym.js
+````javascript
+hit(to)
+goal(to)
+````
+
+## File: src/components/blocks/general/section/Counter.vue
+````vue
+<script setup>
+import { ref, onMounted, getCurrentInstance, computed } from "vue";
+import CounterUp from "counterup2"; //https://github.com/bfintal/Counter-Up2
+const props = defineProps({
+  list: {
+    type: Object,
+    required: true
+  },
+})
+const counterRefs = ref([]); // Массив ссылок на все счетчики
+const counters = computed(() => {
+  const items = props.list.items || [];
+  return items.map((item) => ({
+    value: item.title,
+    label: item.descr,
+  }));
+});
+onMounted(() => {
+  const instance = getCurrentInstance();
+  const Waypoint = instance.appContext.config.globalProperties.$Waypoint;
+  if (!Waypoint) return;
+  counterRefs.value.forEach((counter) => {
+    new Waypoint({
+      element: counter,
+      handler: function () {
+        CounterUp(counter, { duration: 1000, delay: 16 });
+        this.destroy(); // Удаляем Waypoint после анимации
+      },
+      offset: "75%",
+    });
+  });
+});
+</script>
+<template>
+  <!-- Start Counter Section -->
+  <section class="counter-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div v-for="(item, index) in counters" :key="index" class="col-lg-3 col-md-6 counter-item">
+          <div class="single-counter">
+            <div class="counter-contents">
+              <h2>
+                <span ref="counterRefs" class="counter-number">{{ item.value }}</span>
+                <span>+</span>
+              </h2>
+              <h3 class="counter-heading">{{ item.label }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Counter Section -->
+</template>
+⋮----
+<!-- Start Counter Section -->
+⋮----
+<span ref="counterRefs" class="counter-number">{{ item.value }}</span>
+⋮----
+<h3 class="counter-heading">{{ item.label }}</h3>
+⋮----
+<!-- End Counter Section -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/blocks/general/section/workflow.vue
+````vue
+<script setup>
+const props = defineProps({
+  list: {
+    type: Object,
+    required: true
+  },
+})
+</script>
+<template>
+  <!-- Start Works Process Section -->
+  <section class="workprocess-section bg-grey section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">{{props.list.subtitle}}</h6>
+            <h2>{{props.list.title}}</h2>
+          </div>
+        </div>
+        <div v-for="(item , index) in props.list.items" class="col-lg-3 col-md-6">
+          <div class="workprocess-single-item">
+            <div class="workprocess-icon-box">
+              <img :src="item.icon" alt="icon">
+            </div>
+            <div class="workprocess-info">
+              <h3>{{item.title}}</h3>
+              <p>{{item.descr}}</p>
+            </div>
+            <div class="workprocess-number-bg"><span>0{{ index + 1 }}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Works Process Section -->
+</template>
+⋮----
+<!-- Start Works Process Section -->
+⋮----
+<h6 class="sub-title">{{props.list.subtitle}}</h6>
+<h2>{{props.list.title}}</h2>
+⋮----
+<h3>{{item.title}}</h3>
+<p>{{item.descr}}</p>
+⋮----
+<div class="workprocess-number-bg"><span>0{{ index + 1 }}</span></div>
+⋮----
+<!-- End Works Process Section -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/blocks/general/ui/card.vue
+````vue
+<script setup>
+</script>
+<template>
+  <div class="ui-card">
+    <div class="ui-card__header">
+      <div class="ui-card__header-inner">
+        <div class="ui-card__icon">
+          <slot name="icon"></slot>
+        </div>
+        <div class="ui-card__title">
+          <slot name="title"></slot>
+        </div>
+      </div>
+    </div>
+    <div class="ui-card__body">
+      <slot name="text"></slot>
+    </div>
+  </div>
+</template>
+<style scoped>
+/* custom styles */
+.ui-card {
+  box-shadow: 5px 7px 15px 2px rgba(82, 90, 101, 0.12);
+}
+.ui-card__header {
+  padding: 1rem 1rem 1rem 1.5rem;
+}
+.ui-card__header-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+.ui-card__icon {
+  flex: 0 0 auto;
+}
+.ui-card__title {
+  flex: 1 1 auto;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.ui-card__body {
+  padding: 0 1rem 2rem 1.5rem;
+  color: #5f5f5f;;
+}
+@media (max-width: 767px) {
+  .ui-card__header {
+    padding: 0.8rem;
+  }
+  .ui-card__header-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .ui-card__icon {
+    flex: auto;
+  }
+  .ui-card__title {
+    flex: auto;
+    text-align: center;
+  }
+  .ui-card__body {
+    padding: 0 0.8rem 0.8rem 1rem;
+  }
+}
+</style>
+````
+
+## File: src/components/blocks/general/ui/qrcode.vue
+````vue
+<script setup>
+import QrcodeVue from 'qrcode.vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+const props = defineProps({
+  url: {
+    type: String,
+    required: true,
+    default: 'https://www.wspro.xyz/vi/compred/ivorycoast'
+  },
+  size: {
+    type: Number,
+    default: 200
+  },
+  showLabel: {
+    type: Boolean,
+    default: true
+  },
+  backgroundColor: {
+    type: String,
+    default: '#ffffff'
+  },
+  foregroundColor: {
+    type: String,
+    default: '#000000'
+  }
+})
+</script>
+<template>
+  <div class="qr-container">
+    <!-- render-as="svg" — ключевой параметр для вашего запроса -->
+    <qrcode-vue
+        :value="url"
+        :size="size"
+        level="H"
+        render-as="svg"
+        :background="backgroundColor"
+        :foreground="foregroundColor"
+    />
+    <p v-if="showLabel" class="qr-label">{{ t('ui.qrdescr') }}</p>
+  </div>
+</template>
+⋮----
+<!-- render-as="svg" — ключевой параметр для вашего запроса -->
+⋮----
+<p v-if="showLabel" class="qr-label">{{ t('ui.qrdescr') }}</p>
+⋮----
+<style scoped>
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.qr-label {
+  margin-top: 12px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #666;
+}
+</style>
+````
+
+## File: src/components/blocks/general/ui/SectionHeader.vue
+````vue
+<script setup>
+</script>
+<template>
+  <header class="header">
+    <h6 class="subtitle">
+      <slot name="subtitle"></slot>
+    </h6>
+    <h2 class="title">
+      <slot name="title"></slot>
+    </h2>
+  </header>
+</template>
+<style scoped>
+.header {margin-bottom: 2rem;}
+.subtitle {
+  color: #ff9800;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+.title {
+  color: #404040;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+}
+@media (max-width: 767px) {
+  .subtitle {
+    font-size: 0.8rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+}
+</style>
+````
+
+## File: src/components/blocks/services/list.vue
+````vue
+<script setup>
+import group from "@/components/blocks/services/presentation/group.vue";
+const props = defineProps({
+  items: {
+    type: Object,
+    default: () => ({})
+  }
+})
+</script>
+<template>
+  <!-- Start List -->
+  <section id="list_services" class="services-section-three section-padding">
+    <div class="container">
+<!--      <div class="row" v-if="navigationStore.isStrReady">-->
+      <div class="row">
+        <group v-for="(item, index) in props.items" :key="index"
+               :id="item.id"
+               :title="item.name"
+               :description="item.description"
+               :childs="item.child"
+               :slug="item.key"
+        />
+      </div>
+<!--      <div v-else class="row row_load">Loading Structure</div>-->
+    </div>
+  </section>
+  <!-- End List -->
+</template>
+⋮----
+<!-- Start List -->
+⋮----
+<!--      <div class="row" v-if="navigationStore.isStrReady">-->
+⋮----
+<!--      <div v-else class="row row_load">Loading Structure</div>-->
+⋮----
+<!-- End List -->
+````
+
+## File: src/components/blocks/services/presentation/category.vue
+````vue
+<script setup>
+import Icon from "@/components/blocks/services/micro/icon.vue"
+import AppLink from "@/components/AppLink.vue";
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+const props = defineProps({
+  id: {
+    type: Number,
+    required: true
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  description	: {
+    type: String,
+    required: true
+  },
+  slug: {
+    type: String,
+    required: true
+  },
+  childs: {
+    type: Array,
+    required: true
+  },
+})
+</script>
+<template>
+  <div class="d-flex col-lg-4 col-md-6">
+    <div class="single-services-three-item dir h-80">
+      <div class="head">
+        <Icon :slug="props.slug" />
+        <h3 class="title align-items-center">
+          <AppLink :to="{ name: 'group', params: { slug: props.slug } }">
+            {{props.title}}
+          </AppLink>
+        </h3>
+      </div>
+      <div class="services-three-content">
+        <p>{{props.description}}</p>
+        <AppLink :to="{ name: 'direction', params: { slug: props.slug } }" class="float_link">
+          <i class="bi bi-arrow-right-short"></i> {{ t('ui.more')}}
+        </AppLink>
+      </div>
+    </div>
+  </div>
+</template>
+⋮----
+{{props.title}}
+⋮----
+<p>{{props.description}}</p>
+⋮----
+<i class="bi bi-arrow-right-short"></i> {{ t('ui.more')}}
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/blocks/services/presentation/group.vue
+````vue
+<script setup>
+import { DialogModal} from 'v-dialogs'
+import Overlay from "@/components/OverlayCat.vue"; //Legacy
+import Icon from "@/components/blocks/services/micro/icon.vue"
+import { useUiStore } from '@/stores/uiStore.js';
+import {computed} from "vue";
+const uiStore = useUiStore();
+const isVersionFull = computed({
+  get() {
+    const value = uiStore.uiMainVars.page.version;
+    return value === 'full';
+  },
+  set(value) {
+    uiStore.setVersionFull(value);
+  },
+});
+const hrefPrefix = '/'+ uiStore.currentLocale;
+const props = defineProps({
+  id: {
+    type: Number,
+    required: true
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  description	: {
+    type: String,
+    required: true
+  },
+  slug: {
+    type: String,
+    required: true
+  },
+  childs: {
+    type: Array,
+    required: true
+  },
+})
+async function handleChild(slug) {
+  // TODO: dataStore.isCatReady
+  // TODO: переход на compositon overlay
+  //if (!result) return false; // TODO: Проверить что данные не пришли - дял overlay
+  DialogModal(Overlay, {
+    maxButton: false,
+    // title: dataStore.category.name,
+    title: 'Инфо',
+    params: {
+      //data: dataStore.category
+      data: {
+        'slug': slug
+      },
+    },
+  });
+  return false
+}
+</script>
+<template>
+  <div class="col-lg-4 col-md-6">
+    <div class="single-services-three-item dir">
+      <Icon
+          :slug="props.slug"
+      />
+      <div class="services-three-content">
+<!--        <h3 @click="handleChild(props.slug)" class="head_action">{{props.title}}</h3>-->
+        <h3 class="head_action">{{props.title}}</h3>
+        <p v-show="isVersionFull">{{props.description}}</p>
+        <ul class="features-list clases">
+          <li v-for="schild in props.childs">
+            <h4><RouterLink class="head_action" :to="{ path: hrefPrefix +'/group/' + schild.key }">{{schild.name}}</RouterLink></h4>
+            <span v-show="isVersionFull" class="block text-3xl" v-html="schild.description"></span>
+            <ul class="groups">
+              <li v-for="offer in schild.child">
+<!--                <span class="block head_action" @click="handleChild(offer.key)">{{offer.name}}</span>-->
+                <span class="block head_action">
+                  <RouterLink class="float_link" :to="{ path: hrefPrefix +'/group/' + offer.key }">
+                  {{offer.name}}
+                    </RouterLink>
+                </span>
+                <span v-show="isVersionFull" class="block" v-html="offer.description"></span>
+                <span v-show="isVersionFull" class="block">
+                  <RouterLink class="float_link" :to="{ path: hrefPrefix +'/group/' + offer.key }">
+                    <i class="bi bi-arrow-right text-brand-deep"></i> Подробно
+                  </RouterLink>
+                </span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <div class="services-btn">
+          <RouterLink :to="{ path: hrefPrefix +'/direction/' + props.slug }" class="float_link">
+            <i class="bi bi-arrow-right-short"></i> Подробнее о направлении : {{props.title}}
+          </RouterLink>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+⋮----
+<!--        <h3 @click="handleChild(props.slug)" class="head_action">{{props.title}}</h3>-->
+<h3 class="head_action">{{props.title}}</h3>
+<p v-show="isVersionFull">{{props.description}}</p>
+⋮----
+<h4><RouterLink class="head_action" :to="{ path: hrefPrefix +'/group/' + schild.key }">{{schild.name}}</RouterLink></h4>
+⋮----
+<!--                <span class="block head_action" @click="handleChild(offer.key)">{{offer.name}}</span>-->
+⋮----
+{{offer.name}}
+⋮----
+<i class="bi bi-arrow-right-short"></i> Подробнее о направлении : {{props.title}}
+⋮----
+<style scoped>
+  .dir {}
+    .dir .float_link { color:#0C90C7; text-decoration: none; cursor: pointer; font-size: 18px;}
+    .dir .float_link:hover {color: #223A76; text-decoration: underline; cursor: pointer;}
+      .dir .float_link i {color:#0C90C7; font-size: 22px; font-weight: normal}
+      .dir .float_link:hover i {color: #223A76; margin-left: 5px; transition: all 0.2s;}
+    .dir .head_action { font-size: 24px; color:#223A76;}
+    .dir h4 { margin: 0; padding: 0; line-height: normal; font-size: 18px; line-height: 22px;}
+    .dir .clases .head_action {font-size: 20px; color:#223A76;}
+    .dir .clases .head_action:hover { text-decoration: underline; cursor: pointer;}
+    .dir ul {}
+    .services-three-content .features-list li::before { background-color: #223A76;}
+    .dir .groups {}
+      .dir .groups .head_action {font-size: 18px; color:#223A76;}
+      .dir .groups .head_action:hover { text-decoration: underline; cursor: pointer; }
+      .services-three-content .features-list .groups li::before { background-color: #223A76; top: 10px; left: 5px; width: 6px; height: 6px;}
+      .dir .groups .float_link { font-size: 16px;}
+        .dir .groups .float_link i {font-size: 14px;}
+</style>
+````
+
+## File: src/components/blocks/services/presentation/info.vue
+````vue
+<script setup>
+import Content from "@/components/blocks/services/presentation/content.vue"
+import Subcategories from "@/components/blocks/services/presentation/subcategories.vue";
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true,
+  }
+})
+</script>
+<template>
+  <Content :content="props.data.content.content" />
+  <Subcategories :data="props.data.subcategories" />
+</template>
+<style scoped>
+</style>
+````
+
+## File: src/components/forms/SimplifiedForm.vue
+````vue
+<script setup>
+import DynamicForm from '@/components/forms/DynamicForm.vue'
+import schema from '@/schemas/simplifiedForm.js'
+</script>
+<template>
+  <DynamicForm :schema="schema" />
+</template>
+````
+
+## File: src/components/ResponsiveMenu.vue
+````vue
+<script setup>
+import { useNavigationStore } from '@/stores/navigationStore'
+import ScopeSwitch from "@/components/ScopeSwitch.vue";
+const navStore = useNavigationStore()
+</script>
+<template>
+  <nav class="responsive-menu">
+    <ul>
+      <li
+          v-for="item in navStore.nav"
+          :key="item.path">
+        <AppLink :to="item.path" class="nav-link">{{ item.anchor }}</AppLink>
+      </li>
+    </ul>
+    <ScopeSwitch />
+  </nav>
+</template>
+⋮----
+<AppLink :to="item.path" class="nav-link">{{ item.anchor }}</AppLink>
+⋮----
+<style scoped>
+.responsive-menu {
+  background: white;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+/* Прячем на десктопах */
+@media screen and (min-width: 992px) {
+  .responsive-menu {
+    display: none;
+  }
+}
+.responsive-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.responsive-menu li {
+  margin-bottom: 0.75rem;
+}
+.burger-button {
+  background: white;
+  border: none;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a1f44; /* Тёмно-синий */
+  cursor: pointer;
+  display: none; /* Покажем только в адаптиве */
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.burger-button:hover {
+  background-color: rgba(10, 31, 68, 0.05);
+}
+.burger-button .fa-bars {
+  transition: transform 0.3s ease;
+}
+.burger-button.open .fa-bars {
+  transform: rotate(90deg);
+}
+@media screen and (max-width: 991px) {
+  .burger-button {
+    display: block;
+  }
+}
+</style>
+````
+
+## File: src/components/Testimonial.vue
+````vue
+<script setup>
+import { ref } from "vue";
+import Carousel from "vue-owl-carousel";
+const options = ref({
+  loop: true,
+  nav: true,
+  dots: true,
+  autoplay: true,
+  smartSpeed: 1000,
+  margin: 20,
+  navText: [
+    "<i class='fa fa-chevron-left'></i>",
+    "<i class='fa fa-chevron-right'></i>"
+  ],
+  responsive: {
+    0: { items: 1 },
+    768: { items: 2 },
+    1200: { items: 3 }
+  }
+});
+</script>
+<template>
+  <!-- Start Testimonial Section -->
+  <section class="testimonial-section section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">Обратная связь клиентов</h6>
+            <h2>Отзывы</h2>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12">
+          <div class="testimonial-slider owl-carousel owl-theme">
+            <!-- testimonials item -->
+            <div class="single-testimonial">
+              <div class="rating-box">
+                <ul>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
+              <div class="testimonial-content">
+                <p>Обратилась в Web Solution для создания сайта монобренда. Всё сделали быстро, качественно и по цене ниже, чем у конкурентов. Получила удобный, стильный сайт, полностью соответствующий моему бренду!</p>
+              </div>
+              <div class="avatar">
+                <img src="@/assets/img/client/review_1.jpg" alt="testimonial images">
+              </div>
+              <div class="testimonial-bio">
+                <div class="bio-info">
+                  <h3>Рая</h3>
+                  <span>основатель бренда одежды</span>
+                </div>
+              </div>
+            </div>
+            <!-- testimonials item -->
+            <div class="single-testimonial">
+              <div class="rating-box">
+                <ul>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
+              <div class="testimonial-content">
+                <p>Сотрудничаем с Web Solution уже более 5 лет. За это время сайт прошёл множество модификаций, доработок и улучшений. Команда всегда оперативно решает задачи и предлагает грамотные решения!</p>
+              </div>
+              <div class="avatar">
+                <img src="@/assets/img/client/review_2.jpg" alt="testimonial images">
+              </div>
+              <div class="testimonial-bio">
+                <div class="bio-info">
+                  <h3>Дмитрий</h3>
+                  <span>основатель портала о рыболовстве</span>
+                </div>
+              </div>
+            </div>
+            <!-- testimonials item -->
+            <div class="single-testimonial">
+              <div class="rating-box">
+                <ul>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
+              <div class="testimonial-content">
+                <p>Работали с Web Solution по ряду проектов. Нужно было создать удобные, конверсионные сайты для крупнейшего B2B-дилера шин. Задачи выполнены на высоком уровне, в срок и с учётом всех нюансов SEO.</p>
+              </div>
+              <div class="avatar">
+                <img src="@/assets/img/client/review_3.jpg" alt="testimonial images">
+              </div>
+              <div class="testimonial-bio">
+                <div class="bio-info">
+                  <h3>Вячеслав</h3>
+                  <span>B2B-дилер шин, ЮФО</span>
+                </div>
+              </div>
+            </div>
+            <!-- testimonials item -->
+            <div class="single-testimonial">
+              <div class="rating-box">
+                <ul>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <li><i class="fa fa-star"></i></li>
+                </ul>
+              </div>
+              <div class="testimonial-content">
+                <p>За время работы с Web Solution реализовали множество сайтов для компании. Команда всегда на связи, быстро решает технические вопросы и обеспечивает стабильную поддержку на аутсорсе.</p>
+              </div>
+              <div class="avatar">
+                <img src="@/assets/img/client/review_4.jpg" alt="testimonial images">
+              </div>
+              <div class="testimonial-bio">
+                <div class="bio-info">
+                  <h3>Денис</h3>
+                  <span>директор веб-студии</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Testimonial Section -->
+</template>
+⋮----
+<!-- Start Testimonial Section -->
+⋮----
+<!-- testimonials item -->
+⋮----
+<!-- testimonials item -->
+⋮----
+<!-- testimonials item -->
+⋮----
+<!-- testimonials item -->
+⋮----
+<!-- End Testimonial Section -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/WSpro.vue
+````vue
+<script setup lang="ts">
+</script>
+<template>
+  <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 91 38"
+      width="91"
+      height="38"
+      fill="none"
+      role="img"
+      aria-label="WS.pro logo"
+  >
+    <defs>
+      <linearGradient id="bg-gradient" x1="0" y1="0" x2="30.13" y2="66.38" gradientUnits="userSpaceOnUse">
+        <stop class="grad-stop-1" offset="0"   stop-color="#FFE265"/>
+        <stop class="grad-stop-2" offset="1"   stop-color="#FFC500"/>
+      </linearGradient>
+    </defs>
+    <!-- Background plate -->
+    <rect id="logo-bg" width="91" height="38" fill="url(#bg-gradient)"/>
+    <!-- "WS." wordmark -->
+    <g id="wordmark" fill="currentColor">
+      <!-- W -->
+      <path id="letter-w" d="M12.88 29c-.192 0-.309-.085-.352-.256L6.672 8.392c-.064-.235.032-.352.288-.352h2.112c.192 0 .31.085.352.256l3.712 13.216c.15.491.288.992.416 1.504.128.491.256.992.384 1.504.15.491.288.992.416 1.504h.032c.235-.747.459-1.483.672-2.208.235-.725.459-1.45.672-2.176L18.416 12.712 17.264 8.712c-.021-.107-.01-.192.032-.256.064-.064.15-.096.256-.096h2.176c.192 0 .31.096.352.288l3.616 13.28c.192.683.373 1.365.544 2.048.192.683.384 1.365.576 2.048h.032c.128-.491.256-.981.384-1.472.128-.49.256-.981.384-1.472.128-.49.256-.981.384-1.472L29.584 8.296c.043-.17.16-.256.352-.256h2.208c.256 0 .352.117.288.352L26.8 28.744c-.043.17-.16.256-.352.256h-3.04c-.192 0-.31-.085-.352-.256L20.88 21.224c-.213-.704-.416-1.408-.608-2.112-.192-.704-.384-1.408-.576-2.112h-.032c-.213.683-.427 1.376-.64 2.08-.192.683-.395 1.365-.608 2.048L16.144 28.744c-.064.17-.181.256-.352.256H12.88Z"/>
+      <!-- S -->
+      <path id="letter-s" d="M41.896 29.384c-2.56 0-4.437-.544-5.632-1.632-1.195-1.11-1.728-2.55-1.6-4.32.021-.384.149-.576.384-.576h2.016c.256 0 .384.17.384.512 0 1.301.384 2.24 1.152 2.816.768.555 1.941.832 3.52.832 1.515 0 2.656-.267 3.424-.8.789-.555 1.184-1.387 1.184-2.496 0-.555-.096-1.024-.288-1.408-.171-.405-.469-.757-.896-1.056-.427-.299-1.003-.597-1.728-.896l-4.704-1.952c-.981-.405-1.781-.853-2.4-1.344-.597-.512-1.035-1.088-1.312-1.728-.256-.661-.384-1.408-.384-2.24.021-1.771.608-3.115 1.76-4.032 1.173-.917 2.869-1.376 5.088-1.376 1.515 0 2.827.224 3.936.672 1.11.448 1.952 1.099 2.528 1.952.576.853.811 1.899.704 3.136-.043.405-.16.608-.352.608H46.632c-.107 0-.192-.043-.256-.128-.043-.085-.053-.245-.032-.48.085-1.088-.288-1.92-1.12-2.496-.811-.597-1.963-.896-3.456-.896-1.323 0-2.325.235-3.008.704-.661.47-1.003 1.195-1.024 2.176 0 .512.085.96.256 1.344.192.384.501.736.928 1.056.448.32 1.056.64 1.824.96l4.64 1.952c.981.405 1.771.853 2.368 1.344.597.491 1.024 1.067 1.28 1.728.277.64.416 1.419.416 2.336 0 1.792-.608 3.2-1.824 4.224-1.216 1.003-3.125 1.504-5.728 1.504Z"/>
+      <!-- . (dot) -->
+      <path id="letter-dot" d="M54.9 29.384c-.64 0-1.099-.16-1.376-.48-.277-.341-.416-.779-.416-1.312v-.32c0-.533.139-.96.416-1.28.277-.341.736-.512 1.376-.512s1.099.17 1.376.512c.277.32.416.747.416 1.28v.32c0 .533-.139.971-.416 1.312-.277.32-.736.48-1.376.48Z"/>
+    </g>
+    <!-- "pro" mark (rotated, right side) -->
+    <g id="pro-mark" fill="currentColor">
+      <!-- bar-e (bottom row) -->
+      <path id="pro-e" d="M70 27.98c0 .088-.048.132-.144.132H62.284c-.096 0-.144-.044-.144-.132v-2.232c0-1.04.22-1.804.66-2.292.432-.496 1.068-.744 1.908-.744.824 0 1.456.252 1.896.756.432.504.648 1.26.648 2.268v.936h2.604c.096 0 .144.048.144.144v1.164Zm-3.972-1.308v-.912c0-.544-.104-.948-.312-1.212-.208-.264-.54-.396-.996-.396-.48 0-.824.132-1.032.396-.208.264-.312.672-.312 1.224v.9h2.652Z"/>
+      <!-- bar-r -->
+      <path id="pro-r" d="M70 21.277c0 .088-.048.132-.144.132H62.284c-.096 0-.144-.044-.144-.132v-2.52c0-1.032.2-1.784.6-2.256.392-.472.968-.708 1.728-.708.552 0 1.02.128 1.404.384.376.248.636.62.78 1.116h.024l3.156-1.932c.048-.032.088-.036.12-.012.032.016.048.052.048.108v1.332c0 .072-.032.128-.096.168l-3.036 1.812v1.2h2.988c.096 0 .144.048.144.144v1.164Zm-4.272-1.308v-1.152c0-.552-.096-.952-.288-1.2-.192-.256-.5-.384-.924-.384-.416 0-.712.116-.888.348-.176.232-.264.624-.264 1.176v1.212h2.364Z"/>
+      <!-- bar-o -->
+      <path id="pro-o" d="M70.144 11.166c0 1.056-.252 1.848-.756 2.376-.512.528-1.244.792-2.196.792H64.948c-.96 0-1.692-.264-2.196-.792-.504-.528-.756-1.32-.756-2.376 0-1.048.252-1.836.756-2.364.504-.528 1.236-.792 2.196-.792H67.188c.952 0 1.684.264 2.196.792.504.528.756 1.316.756 2.364Zm-1.26 0c0-.568-.148-.996-.444-1.284-.304-.288-.744-.432-1.32-.432H64.92c-.576 0-1.012.144-1.308.432-.304.288-.456.716-.456 1.284 0 .568.152 1 .456 1.296.296.288.732.432 1.308.432H67.12c.576 0 1.016-.144 1.32-.432.296-.296.444-.728.444-1.296Z"/>
+    </g>
+  </svg>
+</template>
+⋮----
+<!-- Background plate -->
+⋮----
+<!-- "WS." wordmark -->
+⋮----
+<!-- W -->
+⋮----
+<!-- S -->
+⋮----
+<!-- . (dot) -->
+⋮----
+<!-- "pro" mark (rotated, right side) -->
+⋮----
+<!-- bar-e (bottom row) -->
+⋮----
+<!-- bar-r -->
+⋮----
+<!-- bar-o -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/composables/usePageData.js
+````javascript
+export function usePageData(fetchFn)
+⋮----
+const load = ()
+⋮----
+// Следим за slug И за section — оба триггерят перезагрузку
+````
+
+## File: src/composables/useStorageUrl.ts
+````typescript
+export const useStorageUrl = () =>
+⋮----
+// Убираем слеш в конце, если есть
+⋮----
+const getStorageUrl = (path: string): string =>
+⋮----
+// Если путь уже начинается с http/https — возвращаем как есть
+````
+
+## File: src/router/routes/portfolio.js
+````javascript
+component: ()
+````
+
+## File: src/router/routes/services.js
+````javascript
+component: ()
+````
+
+## File: src/schemas/feedbackForm.js
+````javascript
+// (опционально) human title
+````
+
+## File: src/utils/normalizeLink.js
+````javascript
+export function normalizeLink(rawLink, knownScopes)
+⋮----
+// убираем ведущий /
+⋮----
+// убираем scope-префикс если он там есть
+⋮----
+return '/' + path  // возвращаем чистый путь: /portfolio, /services, /
+````
+
+## File: src/utils/validationBuilder.js
+````javascript
+/**
+ * Простой маппер validation -> yup
+ * Поддерживаемые ключи: required, min, max, email, matches (regex), url, length, minItems, maxItems, number|minNumber|maxNumber
+ */
+export function buildYupSchema(formSchema, t)
+⋮----
+// default base type
+⋮----
+// map by field type
+⋮----
+// common rules
+⋮----
+// string length or number min
+⋮----
+// number specific
+⋮----
+// default to nullable string (so empty string fails required)
+````
+
+## File: src/views/Direction.vue
+````vue
+<script setup>
+import Direction from "@/components/Direction.vue";
+import PageTitle from "@/components/PageTitle.vue";
+import Header from "@/components/Header.vue";
+import Footer from '@/components/Footer.vue'
+</script>
+<template>
+  <Header />
+  <PageTitle />
+  <Direction />
+  <Footer />
+</template>
+````
+
+## File: src/views/Group.vue
+````vue
+<script setup>
+import Group from "@/components/Group.vue";
+import PageTitle from "@/components/PageTitle.vue";
+import Header from "@/components/Header.vue";
+import Footer from '@/components/Footer.vue'
+</script>
+<template>
+  <Header />
+  <PageTitle />
+  <Group />
+  <Footer />
+</template>
+````
+
+## File: src/views/Notfound.vue
+````vue
+<script setup>
+</script>
+<template>
+  <section>
+    <h1>Page - Not Found <a href="/public">Go to main page</a></h1>
+  </section>
+</template>
+<style scoped>
+</style>
+````
+
+## File: src/views/portfolio/Item.vue
+````vue
+<script setup>
+import PageTitle from "@/components/PageTitle.vue";
+import Header from "@/components/Header.vue";
+import Footer from '@/components/Footer.vue'
+import Item from "@/components/blocks/portfolio/Item.vue";
+</script>
+<template>
+  <Header />
+  <PageTitle />
+  <Item />
+  <Footer />
+</template>
+````
+
+## File: src/views/Services.vue
+````vue
+<script setup>
+// import debug from "@/components/Debug.vue";
+import Header from "@/components/Header.vue";
+import Footer from '@/components/Footer.vue'
+import PageTitle from "@/components/PageTitle.vue";
+import Index from "@/components/blocks/services/index.vue";
+</script>
+<template>
+<!--  <debug/>-->
+  <Header />
+  <PageTitle />
+  <Index />
+  <Footer />
+</template>
+⋮----
+<!--  <debug/>-->
+````
+
+## File: tests/utils/createTestRouter.ts
+````typescript
+import { createRouter, createMemoryHistory } from 'vue-router'
+import realRouter from '@/router/index.js'   // default export — твой реальный router
+export function createTestRouter(initialPath = '/')
+⋮----
+routes: realRouter.options.routes,   // ← вот здесь был undefined
+````
+
+## File: tests/utils/testI18n.ts
+````typescript
+// tests/utils/testI18n.ts
+import { createI18n } from 'vue-i18n'
+import ru from '@/i18n/locales/ru.json'
+// import en from '@/i18n/locales/en.json'
+⋮----
+// en, // если нужно
+````
+
+## File: .env.vercel
+````
+VITE_API_URL=https://api.ws-pro.ru/api
+VITE_STORAGE_URL=https://api.wspro.xyz
+VITE_DEPLOY_TARGET=vercel
+````
+
+## File: src/analytics/index.js
+````javascript
+// import { ymTracker } from './trackers/ym'
+⋮----
+//const trackers = [ymTracker, gaTracker]
+⋮----
+hit(to)
+goal(to)
+````
+
+## File: src/App.vue
+````vue
+<script setup>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useUiStore } from '@/stores/uiStore'
+const route = useRoute()
+const uiStore = useUiStore()
+const routerKey = computed(() =>
+    `${uiStore.scope}::${route.fullPath}`
+)
+</script>
+<template>
+  <RouterView :key="routerKey" />
+</template>
+````
+
+## File: src/chat/index.js
+````javascript
+async init(currentScope = 'en')
+open: ()
+close: ()
+identify: (userData)
+````
+
+## File: src/chat/tidio.js
+````javascript
+async init(currentScope = 'en')
+⋮----
+tidioScript.onload = () =>
+tidioScript.onerror = () =>
+⋮----
+refreshLanguage()
+⋮----
+// Tidio автоматически подхватит новый lang при следующем взаимодействии
+⋮----
+// Пример методов из Widget SDK Tidio (можно расширять)
+open()
+close()
+// Пример: идентификация пользователя после авторизации
+identify(userData)
+⋮----
+window.tidioChatApi.setVisitorData(userData); // или .identify()
+````
+
+## File: src/components/AppLink.vue
+````vue
+<script setup>
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
+import { useUiStore } from '@/stores/uiStore'
+const props = defineProps({
+  to: { type: [String, Object], required: true }
+})
+const uiStore = useUiStore()
+const router = useRouter()
+const resolved = computed(() => {
+  const scope = uiStore.scope  // ← переименованный section
+  // Объект — именованный маршрут, передаём как есть
+  // scope уже вшит в route через /:scope параметр роутера
+  if (typeof props.to === 'object') {
+    return props.to
+  }
+  // Строка — нормализуем и прeпендируем scope
+  const clean = props.to.startsWith('/') ? props.to : '/' + props.to
+  return scope ? `/${scope}${clean}` : clean
+})
+</script>
+<template>
+  <RouterLink :to="resolved"><slot /></RouterLink>
+</template>
+````
+
+## File: src/components/blocks/general/section/Faq.vue
+````vue
+<script setup>
+import $ from 'jquery'
+import {onMounted} from "vue"
+onMounted( () => {
+  $('.accordion').find('.accordion-title').on('click', function(){
+    // Adds Active Class
+    $(this).toggleClass('active');
+    // Expand or Collapse This Panel
+    $(this).next().slideToggle('slow');
+    // Hide The Other Panels
+    $('.accordion-content').not($(this).next()).slideUp('slow');
+    // Removes Active Class From Other Titles
+    $('.accordion-title').not($(this)).removeClass('active');
+  });
+})
+const props = defineProps({
+  list: {
+    type: Object,
+    required: true
+  },
+})
+</script>
+<template>
+  <!-- Start Faq Section -->
+  <section class="faq-section home-faq bg-grey section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12">
+          <div class="faq-img">
+            <img src="@/assets/img/faq.png" alt="images">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">{{props.list.subtitle}}</h6>
+            <h2>{{props.list.title}}</h2>
+          </div>
+          <div class="faq-accordion first-faq-box">
+            <ul class="accordion">
+              <li class="accordion-item" v-for="(item,index) in props.list.items">
+                <a class="accordion-title" href="javascript:void(0)"> <i class="fa fa-plus"></i> {{item.title}}</a>
+                <p class="accordion-content">{{item.descr}}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Faq Section -->
+</template>
+⋮----
+<!-- Start Faq Section -->
+⋮----
+<h6 class="sub-title">{{props.list.subtitle}}</h6>
+<h2>{{props.list.title}}</h2>
+⋮----
+<a class="accordion-title" href="javascript:void(0)"> <i class="fa fa-plus"></i> {{item.title}}</a>
+<p class="accordion-content">{{item.descr}}</p>
+⋮----
+<!-- End Faq Section -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/blocks/Item.vue
+````vue
+<script setup>
+import { ref} from "vue";
+import { Swiper, SwiperSlide, } from 'swiper/vue'
+import {  Autoplay,Zoom } from 'swiper/modules'
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+const { blockStore, navigationStore } = usePageOrchestrator('blocks_item', 'structure+item', {
+  fetch: (route) => route.params.slug
+})
+const swiperInstance = ref(null)
+function toggleZoom() {
+  if (!swiperInstance.value) return
+  // Если уже увеличено — сбросить, иначе — увеличить
+  if (swiperInstance.value.zoom.scale > 1) {
+    swiperInstance.value.zoom.out()
+  } else {
+    swiperInstance.value.zoom.in()
+  }
+}
+function onSwiperInit(swiper) {
+  swiperInstance.value = swiper
+}
+</script>
+<template>
+  <!-- Start Services Details Section -->
+  <section class="services-details-area section-padding">
+    <div v-if="blockStore.isItemReady" class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+          <div class="services-details-content">
+            <div class="services-details-image">
+              <Swiper :loop="true"
+                      @swiper="onSwiperInit"
+                      :modules="[Autoplay,Zoom]"
+                      :slides-per-view="1"
+                      :autoplay="{ delay: 3000 }"
+                      :zoom="{ maxRatio: 3 }"
+                      :breakpoints="{
+                      0: {
+                        slidesPerView: 1,
+                      },
+                      768: {
+                        slidesPerView: 1,
+                      },
+                      1200: {
+                        slidesPerView: 1,
+                      }
+                    }"
+                      class="my-swiper">
+                <SwiperSlide v-for="(img, idx) in blockStore.item.properties.image" :key="idx">
+                  <div @click="toggleZoom" class="swiper-zoom-container">
+                    <img :src="'/assets/img/services/'+img" class="w-full h-auto" />
+                  </div>
+                </SwiperSlide>
+              </Swiper>
+            </div>
+<!--            <div v-for="img in blockStore.item.properties.image" class="services-details-image">-->
+<!--              <img v-bind="{src:'/assets/img/services/'+img}" alt="">-->
+<!--            </div>-->
+            <h3>{{blockStore.item.properties.title}}</h3>
+            <p>{{blockStore.item.properties.descr}}</p>
+            <div class="features-text" v-html="blockStore.item.properties.content"></div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <aside class="services-widget">
+            <section v-if="navigationStore.isStrReady" class="widget widget_categories">
+              <h3 class="widget-title">Наши услуги</h3>
+              <ul>
+                <li v-for="item in navigationStore.structure.child">
+                  <RouterLink :to="{ path: '/direction/' + item.key }">{{item.name}}</RouterLink>
+                </li>
+              </ul>
+            </section>
+            <section v-else class="row row_load"></section>
+            <section v-if="blockStore.item.properties.files?.length" class="widget widget_download_btn">
+              <h3 class="widget-title">Документы</h3>
+              <div class="download-btn-box">
+                <a
+                    v-for="(file, idx) in blockStore.item.properties.files"
+                    :key="idx"
+                    :href="'/assets/img/services/' + file.src"
+                    class="default-btn"
+                    target="_blank"
+                    rel="noopener"
+                >
+                  {{ file.title }}<span></span>
+                </a>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <div v-else class="container"><div class="row row_load">Loading Item</div></div>
+  </section>
+  <!-- End Services Details Section -->
+</template>
+⋮----
+<!-- Start Services Details Section -->
+⋮----
+<!--            <div v-for="img in blockStore.item.properties.image" class="services-details-image">-->
+<!--              <img v-bind="{src:'/assets/img/services/'+img}" alt="">-->
+<!--            </div>-->
+<h3>{{blockStore.item.properties.title}}</h3>
+<p>{{blockStore.item.properties.descr}}</p>
+⋮----
+<RouterLink :to="{ path: '/direction/' + item.key }">{{item.name}}</RouterLink>
+⋮----
+{{ file.title }}<span></span>
+⋮----
+<!-- End Services Details Section -->
+⋮----
+<style scoped>
+@import 'swiper/swiper-bundle.css';
+.swiper-zoom-container img {
+  cursor: zoom-in;
+}
+</style>
+````
+
+## File: src/components/blocks/portfolio/presentation/list.vue
+````vue
+<script setup>
+import work from "@/components/blocks/portfolio/presentation/work.vue";
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true,
+  }
+})
+</script>
+<template>
+  <div class="portfolio-container">
+    <TransitionGroup name="fade" tag="div" class="grid row">
+      <work v-for="item in props.items"
+            :key="item.slug"
+            :slug="item.slug"
+            :properties="item"
+      />
+    </TransitionGroup>
+  </div>
+</template>
+<style scoped>
+</style>
+````
+
+## File: src/components/blocks/services/presentation/subcategories.vue
+````vue
+<script setup>
+import Category from "@/components/blocks/services/presentation/category.vue";
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true,
+  }
+})
+</script>
+<template>
+  <!-- Start List -->
+  <section class="list_categories services-section-three">
+    <div class="container">
+      <div class="row align-items-stretch">
+        <Category v-for="(item, index) in props.data" :key="index"
+               :id="item.id"
+               :title="item.title"
+               :description="item.descr"
+               :childs="item.childs"
+               :slug="item.slug"
+        />
+      </div>
+    </div>
+  </section>
+  <!-- End List -->
+</template>
+⋮----
+<!-- Start List -->
+⋮----
+<!-- End List -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/forms/DynamicForm.vue
+````vue
+<script setup>
+import { computed } from 'vue'
+import { Form, Field, useForm } from 'vee-validate'
+import { buildYupSchema } from '@/utils/validationBuilder' // если у тебя есть утилита
+import { useFormStore } from '@/stores/formStore'
+// Base components (импортируем реальные компоненты)
+import BaseInput from './BaseInput.vue'
+import BaseTextarea from './BaseTextarea.vue'
+import BaseSelect from './BaseSelect.vue'
+import BaseCheckbox from './BaseCheckbox.vue'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+// props
+const props = defineProps({
+  schema: { type: Object, required: true },
+})
+// store
+const store = useFormStore()
+// валидация: генерация yup-схемы из схемы формы (использует твою утилиту)
+const validationSchema = computed(() => {
+  // если у тебя есть buildYupSchema — используй её
+  if (typeof buildYupSchema === 'function') return buildYupSchema(props.schema, t)
+  // fallback: простая схема (не строгая)
+  const shape = {}
+  props.schema.fields.forEach(f => {
+    if (f.validation?.required) shape[f.name] = (v) => v // placeholder
+  })
+  return null
+})
+// доступ к setErrors (взято из контекста Form)
+const { setErrors } = useForm()
+// статус/ответ из store
+const submitStatus = computed(() => store.forms[props.schema.key]?.status || null)
+const lastResponse = computed(() => store.forms[props.schema.key]?.response || null)
+const isSubmitting = computed(() => submitStatus.value === 'loading')
+// резолвер компонента (возвращает сам компонент)
+function resolveComponent(type) {
+  switch (type) {
+    case 'textarea': return BaseTextarea
+    case 'select': return BaseSelect
+    case 'checkbox': return BaseCheckbox
+    case 'text':
+    default: return BaseInput
+  }
+}
+/**
+ * Объединяет пропсы, приходящие из Field (value, onInput, name и т.д.)
+ * с дополнительными props из схемы и с label.
+ * Важно: spread order таков, что handlers из `field` имеют приоритет.
+ */
+function mergeBindings(field, fieldDef) {
+  return {
+    // сначала все кастомные props (placeholder, id, class и т.д.)
+    ...(fieldDef.props || {}),
+    // передаём label как обычный проп (если указан)
+    ...(fieldDef.label ? { label: t(fieldDef.label) } : {}),
+    // затем привязки vee-validate (value, name, onInput и пр.)
+    ...field
+  }
+}
+/* нормализуем server errors: { field: [msgs] } -> { field: 'first msg' } */
+function normalizeServerErrors(errorsObj = {}) {
+  const out = {}
+  Object.keys(errorsObj).forEach(k => {
+    const v = errorsObj[k]
+    out[k] = Array.isArray(v) ? v[0] : String(v)
+  })
+  return out
+}
+/* submit */
+async function onSubmit(values) {
+  try {
+    await store.submitForm(props.schema.key, values)
+    // success — store обновит статус/response
+  } catch (err) {
+    // ожидаем err.type === 'validation' от formService/formStore
+    if (err?.type === 'validation' && err.errors) {
+      const normalized = normalizeServerErrors(err.errors)
+      // проставляем ошибки в vee-validate
+      try { setErrors(normalized) } catch (e) { /* noop */ }
+      // ставим фокус на первое поле с ошибкой
+      const first = Object.keys(normalized)[0]
+      if (first) {
+        const el = document.querySelector(`[name="${first}"]`)
+        if (el && typeof el.focus === 'function') el.focus()
+      }
+      return
+    }
+    // иначе — глобальная ошибка (store уже содержит response.message)
+    // можно показать toast или полагаться на computed submitStatus/lastResponse
+  }
+}
+</script>
+<template>
+  <Form v-slot="{ handleSubmit }" :validation-schema="validationSchema">
+    <form @submit.prevent="handleSubmit(onSubmit)" class="dynamic-form dynamic-form">
+      <!-- fields -->
+      <div v-for="fieldDef in schema.fields" :key="fieldDef.name" class="form-field">
+        <Field :name="fieldDef.name" v-slot="{ field, errors }">
+          <component
+              :is="resolveComponent(fieldDef.type)"
+              v-bind="mergeBindings(field, fieldDef)"
+              :error="errors?.[0] || null"
+          />
+        </Field>
+      </div>
+      <!-- button -->
+      <button type="submit" :disabled="isSubmitting">
+        {{ isSubmitting ? t('form.sending') : t('form.send') }}
+      </button>
+      <!-- send result messages -->
+      <div v-if="submitStatus === 'success'" class="success-msg" role="status" aria-live="polite">
+        {{ t('form.send_result_ok')}} (ID: {{ lastResponse?.id }})
+      </div>
+      <div v-if="submitStatus === 'error'" class="error-msg" role="alert">
+        {{ t('form.send_fail_onserver') }} {{ lastResponse?.message || t('form.send_try_again') }}
+      </div>
+    </form>
+  </Form>
+</template>
+⋮----
+<!-- fields -->
+⋮----
+<!-- button -->
+⋮----
+{{ isSubmitting ? t('form.sending') : t('form.send') }}
+⋮----
+<!-- send result messages -->
+⋮----
+{{ t('form.send_result_ok')}} (ID: {{ lastResponse?.id }})
+⋮----
+{{ t('form.send_fail_onserver') }} {{ lastResponse?.message || t('form.send_try_again') }}
+⋮----
+<style scoped>
+.dynamic-form { display:flex; flex-direction:column; gap:1rem; }
+.success-msg { color:green; }
+.error-msg { color:#b91c1c; }
+button[disabled] { opacity:.6; cursor:not-allowed; }
+.dynamic-form {
+  position: relative;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.dynamic-form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 30px;
+  border-radius: 0px 5px 5px 0px;
+  text-transform: capitalize;
+  background-color: #7b68ee;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border: none;
+}
+.dynamic-form button:hover {
+  color: #ffffff;
+  background-color: #ff9800;
+}
+.dynamic-form .form-control { padding: 0; border: 0} /* TODO: исключить .form-control т.к. он наследуется от bootstrap */
+</style>
+````
+
+## File: src/components/Group.vue
+````vue
+<script setup>
+import catClass from "@/components/blocks/services/catClass.vue";
+import item from "@/components/blocks/services/presentation/item.vue"
+import service from "@/components/blocks/services/presentation/service.vue"
+import content from "@/components/blocks/services/presentation/content.vue"
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+// const { blockStore, navigationStore } = usePageOrchestrator('group', 'structure+category', {
+const { blockStore } = usePageOrchestrator('group', 'category', {
+  fetch: (route) => route.params.slug
+})
+</script>
+<template>
+  <section class="service_section">
+    <div v-if="blockStore.isCatReady" class="container">
+      <content
+        :content="blockStore.category.content.content"
+      />
+      <div v-if="blockStore.isHaveSubCat" class="row groups_list">
+        <div v-for="(item, index) in blockStore.category.children" :key="index" class="col-lg-4 col-md-6">
+          <catClass
+              :slug=item.key
+              :name=item.name
+              :descr=item.description
+              :childs=item.child
+          />
+        </div>
+      </div>
+      <div v-if="blockStore.isHaveItems" class="row items_list">
+<!--        <item v-for="item in blockStore.category.blocks[0].items"
+              :slug="item.key"
+              :name="item.name"
+              :properties="item.properties"
+        />-->
+        <service v-for="(item, index) in blockStore.category.blocks[0].items"
+              :slug="item.key"
+              :name="item.name"
+              :index="index"
+                 :owner="blockStore.category"
+              :properties="item.properties"
+        />
+      </div>
+    </div>
+    <div v-else class="container"><div class="row row_load">Loading Category</div></div>
+  </section>
+</template>
+⋮----
+<!--        <item v-for="item in blockStore.category.blocks[0].items"
+              :slug="item.key"
+              :name="item.name"
+              :properties="item.properties"
+        />-->
+````
+
+## File: src/components/PageTitle.vue
+````vue
+<script setup>
+import { useUiStore } from '@/stores/uiStore';
+import AppLink from "@/components/AppLink.vue";
+const uiStore = useUiStore();
+</script>
+<template v-if="uiStore.isStrReady">
+<!--  <div v-if="uiStore.uiMainVars.head" class="page-title-area item-bg2">
+    <div class="d-table">
+      <div class="d-table-cell">
+        <div class="container">
+          <div class="page-title-content">
+            <h2>{{uiStore.uiMainVars.page.title}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+  <div id="page_head" class="page-title-area item-bg2">
+    <div class="d-table">
+      <div class="d-table-cell">
+        <div class="container">
+          <div class="page-title-content">
+            <h2>{{uiStore.uiMainVars.page.title}}</h2>
+<!--              <ul>
+                <li v-for="(item, index) in uiStore.uiMainVars.page.breadcrumbs" :key="index">
+                  <AppLink :to="'/'+item.key">{{ item.title }}</AppLink>
+                </li>
+                <li>{{uiStore.uiMainVars.page.title}}</li>
+              </ul>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+⋮----
+<!--  <div v-if="uiStore.uiMainVars.head" class="page-title-area item-bg2">
+    <div class="d-table">
+      <div class="d-table-cell">
+        <div class="container">
+          <div class="page-title-content">
+            <h2>{{uiStore.uiMainVars.page.title}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+⋮----
+<h2>{{uiStore.uiMainVars.page.title}}</h2>
+<!--              <ul>
+                <li v-for="(item, index) in uiStore.uiMainVars.page.breadcrumbs" :key="index">
+                  <AppLink :to="'/'+item.key">{{ item.title }}</AppLink>
+                </li>
+                <li>{{uiStore.uiMainVars.page.title}}</li>
+              </ul>-->
+````
+
+## File: src/config/scopes.js
+````javascript
+// locale: 'ru-RU',
+⋮----
+// locale: 'en-US',
+⋮----
+.find(key => SCOPES_CONFIG[key].default)  // 'ru'
+export const VALID_SCOPES = Object.keys(SCOPES_CONFIG) // ['ru', 'en']
+````
+
+## File: src/i18n/index.js
+````javascript
+
+````
+
+## File: src/plugins/i18nSync.js
+````javascript
+export function setupI18nSync(pinia)
+````
+
+## File: src/schemas/simplifiedForm.js
+````javascript
+
+````
+
+## File: tests/setup.ts
+````typescript
+import { createPinia, setActivePinia } from 'pinia'
+import { beforeEach } from 'vitest'
+import { createI18n } from 'vue-i18n'
+// Минимальный i18n для тестов (чтобы useI18n() не падал)
+⋮----
+ru: {}   // можно оставить пустым на старте
+````
+
+## File: .env.production
+````
+VITE_API_URL=https://api.wspro.xyz/api
+VITE_STORAGE_URL=https://api.wspro.xyz
+VITE_DEPLOY_TARGET=selfhosted
+````
+
+## File: src/components/blocks/compred/presentation/benefits.vue
+````vue
+<script setup>
+import { computed } from 'vue'
+import SectionHeader from "@/components/blocks/general/ui/SectionHeader.vue";
+import Card from "@/components/blocks/general/ui/card.vue";
+import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
+const props = defineProps({
+  data: {
+    type: Object,
+    required: true,
+  }
+})
+const colsClass = computed(() => {
+  const count = props.data.items.length
+  if (count <= 2) return 'row-cols-lg-2'
+  if (count === 3) return 'row-cols-lg-3'
+  if (count === 4) return 'row-cols-lg-4'
+  if (count === 5) return 'row-cols-lg-5'
+  if (count <= 6) return 'row-cols-lg-3'
+  return 'row-cols-lg-4'
+})
+</script>
+<template>
+  <!-- presentation component start -->
+  <section class="ui-cards">
+    <div class="container">
+      <SectionHeader class="text-center">
+        <template #subtitle>{{ props.data.pretitle }}</template>
+        <template #title>{{ props.data.title }}</template>
+      </SectionHeader>
+      <div class="row row-cols-2 align-items-stretch" :class="colsClass">
+        <div class="d-flex col"  v-for="item in props.data.items" :key="item.title">
+          <Card class="mb-4">
+            <template #icon>
+              <IconOffer :index="item.index" :properties="item" />
+            </template>
+            <template #title>
+              {{ item.title }}
+            </template>
+            <template #text>
+              {{ item.text }}
+            </template>
+          </Card>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- presentation component end -->
+</template>
+⋮----
+<!-- presentation component start -->
+⋮----
+<template #subtitle>{{ props.data.pretitle }}</template>
+<template #title>{{ props.data.title }}</template>
+⋮----
+<template #icon>
+              <IconOffer :index="item.index" :properties="item" />
+            </template>
+<template #title>
+              {{ item.title }}
+            </template>
+⋮----
+{{ item.title }}
+⋮----
+<template #text>
+              {{ item.text }}
+            </template>
+⋮----
+{{ item.text }}
+⋮----
+<!-- presentation component end -->
+⋮----
+<style scoped>
+/* custom styles */
+.ui-cards {padding: 100px 0;}
+</style>
+````
+
+## File: src/components/blocks/general/section/about.vue
+````vue
+<script setup>
+import AppLink from "@/components/AppLink.vue";
+const props = defineProps({
+  slide: {
+    type: Object,
+    required: true
+  },
+})
+</script>
+<template>
+  <!-- Start About Section -->
+  <section class="about-area bg-grey section-padding">
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-6 col-md-12">
+          <div class="about-content">
+            <h6 class="sub-title">{{props.slide.subtitle}}</h6>
+            <h2>{{props.slide.maintitle}}</h2>
+            <div v-html="props.slide.body"></div>
+            <div class="about-btn-box">
+              <AppLink :to=props.slide.link class="default-btn">
+                {{props.slide.anchor}}<span></span>
+              </AppLink>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12">
+          <div class="about-image">
+            <img src="@/assets/img/about-2.png" alt="About image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End About Section -->
+</template>
+⋮----
+<!-- Start About Section -->
+⋮----
+<h6 class="sub-title">{{props.slide.subtitle}}</h6>
+<h2>{{props.slide.maintitle}}</h2>
+⋮----
+{{props.slide.anchor}}<span></span>
+⋮----
+<!-- End About Section -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/blocks/general/section/hero.vue
+````vue
+<script setup>
+import { onMounted, onUnmounted, ref } from 'vue'
+import gsap from 'gsap'
+import AppLink from "@/components/AppLink.vue";
+import CPimg from "@/components/CPimg.vue";
+const props = defineProps({
+  hero: {
+    type: Object,
+    required: true
+  },
+})
+const heroContent = ref(null)
+let ctx = null
+onMounted(() => {
+  ctx = gsap.context(() => {
+    gsap.from('h6, h1, p, .banner-btn', {
+      x: -60,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power2.out',
+      stagger: 0.25,
+    })
+  }, heroContent.value)
+})
+onUnmounted(() => {
+  ctx?.revert()
+})
+</script>
+<template>
+  <!-- Start Home Section -->
+  <div class="home-section home-2">
+    <div class="d-table">
+      <div class="d-table-cell" >
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+              <div class="hero-content main-banner-content" ref="heroContent">
+                <h6 class="text-gradient">{{props.hero.subtitle}}</h6>
+                <h1 v-html="props.hero.maintitle"></h1>
+                <p>{{props.hero.descr}}</p>
+                <div class="banner-btn">
+                  <AppLink :to="props.hero.link" class="default-btn-one">
+                    {{props.hero.anchor}}<span></span>
+                  </AppLink>
+                  <div class="video-box">
+                    <AppLink :to="props.hero.link" class="popup-video video-btn">
+                      <i class="fa fa-play"></i>
+                    </AppLink>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+              <div class="banner-image">
+                <CPimg :svgkey="props.hero.image"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="home-shape-animation">
+      <div class="shape-1">
+        <img src="@/assets/img/shape/1.png" alt="shape image">
+      </div>
+      <div class="shape-2">
+        <img src="@/assets/img/shape/2.png" alt="shape image">
+      </div>
+      <div class="shape-3">
+        <img src="@/assets/img/shape/3.png" alt="shape image">
+      </div>
+      <div class="shape-4">
+        <img src="@/assets/img/shape/4.png" alt="shape image">
+      </div>
+      <div class="shape-5">
+        <img src="@/assets/img/shape/5.png" alt="shape image">
+      </div>
+      <div class="shape-6">
+        <img src="@/assets/img/shape/6.png" alt="shape image">
+      </div>
+      <div class="shape-7">
+        <img src="@/assets/img/shape/7.png" alt="shape image">
+      </div>
+    </div>
+  </div>
+  <!-- End Home Section -->
+</template>
+⋮----
+<!-- Start Home Section -->
+⋮----
+<h6 class="text-gradient">{{props.hero.subtitle}}</h6>
+⋮----
+<p>{{props.hero.descr}}</p>
+⋮----
+{{props.hero.anchor}}<span></span>
+⋮----
+<!-- End Home Section -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/blocks/pages/item.vue
+````vue
+<script setup>
+import Content from "@/components/blocks/services/presentation/content.vue"
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+const { blockStore } = usePageOrchestrator('page', 'item', {
+  fetch: (route) => route.params.slug ?? route.name
+})
+</script>
+<template>
+  <!-- Start Services Details Section -->
+  <section class="services-details-area section-padding">
+    <div v-if="blockStore.isItemReady" class="container">
+      <div class="row">
+        <!--
+        <div v-if="blockStore.item.key==='price'" class="col-lg-12 col-md-12">
+        </div>
+       <div v-else class="col-lg-12 col-md-12">
+          <div class="services-details-content">
+            <div class="features-text" v-html="blockStore.item.properties.content"></div>
+          </div>
+        </div>-->
+        <Content :content="blockStore.item.properties.content" />
+      </div>
+    </div>
+    <div v-else class="container"><div class="row row_load">Loading Item</div></div>
+  </section>
+  <!-- End Services Details Section -->
+</template>
+⋮----
+<!-- Start Services Details Section -->
+⋮----
+<!--
+        <div v-if="blockStore.item.key==='price'" class="col-lg-12 col-md-12">
+        </div>
+       <div v-else class="col-lg-12 col-md-12">
+          <div class="services-details-content">
+            <div class="features-text" v-html="blockStore.item.properties.content"></div>
+          </div>
+        </div>-->
+⋮----
+<!-- End Services Details Section -->
+````
+
+## File: src/components/blocks/portfolio/presentation/work.vue
+````vue
+<script setup>
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true
+  },
+  properties: {
+    type: Object,
+    required: true
+  },
+})
+</script>
+<template>
+  <div v-if="props.properties?.workclass?.length"
+       :class="props.properties.workclass.map(c => c.key)" class="col-lg-4 col-md-6 portfolio-grid-item all">
+    <div class="portfolio-item">
+      <AppLink :to="{ name: 'portfolio_item', params: { slug: props.slug } }">
+        <img v-if="props.properties.thumb" v-bind="{src: '/assets/img/portfolio/'+props.properties.thumb}" alt="image">
+        <img v-else src="@/assets/img/portfolio/replacement_thumb.jpg" alt="image">
+      </AppLink>
+      <div class="portfolio-content-overlay">
+        <p>{{ props.properties.workclass[0]?.label }}</p>
+        <h3><AppLink :to="{ name: 'portfolio_item', params: { slug: props.slug } }">{{props.properties.title}}</AppLink></h3>
+        <AppLink :to="{ name: 'portfolio_item', params: { slug: props.slug } }" class="portfolio-link-icon"><i class="bi bi-arrow-right"></i></AppLink>
+      </div>
+    </div>
+  </div>
+</template>
+⋮----
+<p>{{ props.properties.workclass[0]?.label }}</p>
+<h3><AppLink :to="{ name: 'portfolio_item', params: { slug: props.slug } }">{{props.properties.title}}</AppLink></h3>
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/components/blocks/services/index.vue
+````vue
+<script setup>
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+import List from "@/components/blocks/services/list.vue";
+import Info from "@/components/blocks/services/presentation/info.vue"
+const { blockStore,navigationStore } = usePageOrchestrator('services', 'structure+category', {
+  fetch: (route) => route.name
+})
+</script>
+<template>
+  <template v-if="blockStore.catReady && navigationStore.strReady">
+    <section class="service_section mb-5">
+      <Info :data="blockStore.category" />
+      <!--      <List :items="navigationStore.structure?.child" />-->
+    </section>
+  </template>
+</template>
+⋮----
+<template v-if="blockStore.catReady && navigationStore.strReady">
+    <section class="service_section mb-5">
+      <Info :data="blockStore.category" />
+      <!--      <List :items="navigationStore.structure?.child" />-->
+    </section>
+  </template>
+⋮----
+<!--      <List :items="navigationStore.structure?.child" />-->
+````
+
+## File: src/components/blocks/services/presentation/content.vue
+````vue
+<script setup>
+import { onMounted, nextTick, watch } from 'vue'
+import { chat } from '@/chat'
+const handleTidioButtons = () => {
+  const container = document.querySelector('.content')
+  if (!container) return
+  container.addEventListener('click', (e) => {
+    if (e.target.closest('.open-tidio-chat')) {
+      e.preventDefault()
+      chat.open()
+    }
+  })
+}
+// Запускаем после того, как v-html отрендерится
+onMounted(async () => {
+  await nextTick()
+  handleTidioButtons()
+})
+const props = defineProps({
+  content: {
+    type: String,
+    required: true
+  },
+})
+</script>
+<template>
+    <div class="container content" v-html="props.content"></div>
+</template>
+<style scoped>
+</style>
+````
+
+## File: src/components/CPheader.vue
+````vue
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { useUiStore } from '@/stores/uiStore';
+const uiStore = useUiStore();
+import WSpro from "@/components/WSpro.vue";
+// const isScrolled = ref(false)
+// let headerHeight = 0
+//
+// // function onScroll() {
+// //   isScrolled.value = window.scrollY > headerHeight
+// // }
+//
+// onMounted(() => {
+//   headerHeight = document.querySelector('.site-header')?.offsetHeight ?? 0
+//   window.addEventListener('scroll', onScroll, { passive: true })
+// })
+//
+// onUnmounted(() => {
+//   window.removeEventListener('scroll', onScroll)
+// })
+</script>
+<template>
+  <!-- Start Preloader Section -->
+  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.getGlobalLoading }">
+    <div class="loader">
+      <div class="shadow"></div>
+      <div class="box"></div>
+    </div>
+  </div>
+  <!-- End Preloader Section -->
+  <header class="site-header" >
+    <div class="container-xxl">
+      <nav class="navbar navbar-expand-lg">
+        <!-- Logo -->
+        <a class="navbar-brand" href="/">
+          <div class="logo-wrapper">
+            <slot name="logo">
+              <WSpro />
+            </slot>
+          </div>
+        </a>
+        <!-- Desktop nav (collapse on mobile) -->
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto align-items-center gap-2">
+            <li class="nav-item">
+              <a class="nav-link" href="#benefits">Услуги</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#pricing">Стоимость</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">О студии</a>
+            </li>
+            <li class="nav-item ms-2">
+              <a class="btn btn-primary btn-sm" href="#contact">Обсудить проект</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+</template>
+⋮----
+<!-- Start Preloader Section -->
+⋮----
+<!-- End Preloader Section -->
+⋮----
+<!-- Logo -->
+⋮----
+<!-- Desktop nav (collapse on mobile) -->
+⋮----
+<style scoped>
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030;
+  background: transparent;
+  transition: background .25s ease, box-shadow .25s ease;
+}
+.site-header--scrolled {
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .08);
+}
+/* Lock container to 1320px on any screen at or above that width */
+.container-xxl {
+  max-width: 1320px;
+}
+/* Logo wrapper — always 91×38, never shrinks */
+.logo-wrapper {
+  width: 91px;
+  height: 38px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+/* Navbar itself — standard Bootstrap rhythm */
+.navbar {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+@media (max-width: 767px) {
+  .navbar-brand { margin: 0 auto 0 auto;}
+}
+</style>
+````
+
+## File: src/components/CPicon.vue
+````vue
+<script setup>
+import { computed } from 'vue'
+import { defineAsyncComponent } from 'vue'
+const props = defineProps({
+  svgkey: String
+})
+const currentComponent = computed(() =>
+    defineAsyncComponent(() =>
+        import(`@/components/blocks/compred/micro/svg/icon/${props.svgkey}.vue`)
+    )
+)
+</script>
+<template>
+  <component :is="currentComponent" />
+</template>
+````
+
+## File: src/components/navbar.vue
+````vue
+<script setup>
+import { useUiStore } from '@/stores/uiStore'
+import { useNavigationStore } from '@/stores/navigationStore'
+const uiStore = useUiStore()
+const navStore = useNavigationStore()
+</script>
+<template>
+  <ul v-if="uiStore.uiMainVars.header.menu" :class="uiStore.isOpen ? 'open' : 'close'" class="navbar-nav">
+    <li
+        v-for="item in navStore.nav"
+        :key="item.path"
+        class="nav-item"
+    >
+      <AppLink :to="item.path" class="nav-link">{{ item.anchor }}</AppLink>
+    </li>
+  </ul>
+</template>
+⋮----
+<AppLink :to="item.path" class="nav-link">{{ item.anchor }}</AppLink>
+⋮----
+<style scoped>
+@media screen and (max-width: 991px) {
+  .close { display: none}
+  .open { display: none}
+}
+</style>
+````
+
+## File: src/components/ScopeSwitch.vue
+````vue
+<script setup>
+import { computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { useUiStore } from '@/stores/uiStore'
+import { SCOPES_CONFIG, VALID_SCOPES } from '@/config/scopes.js'
+const uiStore = useUiStore()
+const router = useRouter()
+const route = useRoute()
+const current = computed(() => uiStore.scope)
+const switchScope = (code) => {
+  if (code === current.value) return
+  uiStore.setScope(code)
+  localStorage.setItem('scope', code)
+  // Переходим на тот же маршрут, но с новой секцией
+  router.replace({
+    name: route.name,
+    params: { ...route.params, scope: code },
+    query: route.query,
+  })
+}
+</script>
+<template>
+  <div v-if="uiStore.uiMainVars.header.menu" class="section-switch align-items-center gap-1">
+    <i class="bi bi-translate"></i>
+    <template v-for="(cfg, code, index) in SCOPES_CONFIG" :key="code">
+      <span
+          class="switch-item"
+          :class="{ active: current === code }"
+          @click="switchScope(code)"
+      >{{ cfg.label }}</span>
+      <span v-if="index < VALID_SCOPES.length - 1" class="divider">|</span>
+    </template>
+  </div>
+</template>
+⋮----
+<template v-for="(cfg, code, index) in SCOPES_CONFIG" :key="code">
+      <span
+          class="switch-item"
+          :class="{ active: current === code }"
+          @click="switchScope(code)"
+      >{{ cfg.label }}</span>
+      <span v-if="index < VALID_SCOPES.length - 1" class="divider">|</span>
+    </template>
+⋮----
+>{{ cfg.label }}</span>
+⋮----
+<style scoped>
+.switch-item {
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+  font-weight: 500;
+}
+.switch-item.active { opacity: 1; }
+.switch-item:hover { opacity: 0.8; }
+.divider { opacity: 0.3; }
+</style>
+````
+
+## File: src/services/formService.js
+````javascript
+import api from '@/utils/api.js' // твой axios instance
+function buildClientMeta()
+⋮----
+/**
+     * payload: { formKey, data, meta? }
+     * Возвращает: normalised response (data from server)
+     * В случае server-side validation errors — выкидывает ошибку { type: 'validation', errors: {...} }
+     * В случае других ошибок — выбрасывает { type: 'server', ... }
+     */
+async sendForm(
+⋮----
+// Ожидаемый успешный ответ: { success: true, id: 5, status: 'pending' }
+// Ожидаемая ошибка валидации: { success: false, errors: { name: ['msg'] } }
+⋮----
+// нормализуем и пробрасываем
+⋮----
+// axios network / 5xx / other
+⋮----
+// fallback
+````
+
+## File: src/stores/blockStore.js
+````javascript
+function createBlockStoreDefinition(id)
+⋮----
+state: () => (
+⋮----
+getLoadingStatus(state)
+isCatReady:     (s)
+isItemReady:    (s)
+isOverlayReady: (s)
+isHaveItems(state)
+isHaveSubCat(state)
+// TODO: restructure the data format and filtering principle
+filteredItems(state)
+⋮----
+// Конвертируем объект {slug: properties} → [{slug, ...properties}]
+⋮----
+//getItemPrice: (s) => Math.floor(s.item?.properties?.price / 1000) || 0,
+getItemPrice: (s)
+⋮----
+resetCategory()
+resetItem()
+setFilter(key)
+setLoading(v)
+async fetchBlockCategory(slug)
+async fetchBlockItem(slug)
+async fetchOverlayCategory(slug)
+⋮----
+export function useBlockStore(id)
+⋮----
+return _registry.get(id)()  // ← вызов useStore() — всегда тот же инстанс
+````
+
+## File: src/stores/formStore.js
+````javascript
+// src/stores/formStore.js
+⋮----
+state: () => (
+⋮----
+forms: {}, // { [formKey]: { status: 'idle'|'loading'|'success'|'error', response, errors } }
+⋮----
+async submitForm(formKey, data, meta =
+⋮----
+const scope = uiStore.currentLocale // TODO: check
+⋮----
+// err can be { type: 'validation', errors: {...} } or other
+⋮----
+// если это validation — пробрасываем дальше чтобы DynamicForm мог вызвать setErrors
+⋮----
+// для остальных ошибок — бросаем общую ошибку, которую DynamicForm обработает как global
+````
+
+## File: tests/utils/mountWithPlugins.ts
+````typescript
+// tests/utils/mountWithPlugins.ts
+import { mount } from '@vue/test-utils'
+import { createTestingPinia } from '@pinia/testing'
+import { createTestRouter } from './createTestRouter'
+import { testI18n } from './testI18n'
+// Грубая заглушка для useHead
+⋮----
+install(app)
+⋮----
+export async function mountWithPlugins(component, options =
+````
+
+## File: src/components/blocks/portfolio/Item.vue
+````vue
+<script setup>
+import { ref } from "vue";
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+const { blockStore } = usePageOrchestrator('portfolio_item', 'item', {
+  fetch: (route) => route.params.slug
+})
+import { useStorageUrl } from '@/composables/useStorageUrl';   // подкорректируй путь
+const { getStorageUrl } = useStorageUrl();
+import { Swiper, SwiperSlide, } from 'swiper/vue'
+import {  Autoplay,Zoom } from 'swiper/modules'
+const swiperInstance = ref(null)
+function toggleZoom() {
+  if (!swiperInstance.value) return
+  // Если уже увеличено — сбросить, иначе — увеличить
+  if (swiperInstance.value.zoom.scale > 1) {
+    swiperInstance.value.zoom.out()
+  } else {
+    swiperInstance.value.zoom.in()
+  }
+}
+function onSwiperInit(swiper) {
+  swiperInstance.value = swiper
+}
+</script>
+<template>
+  <!-- Start Portfolio Details Section -->
+  <section id="portfolio_work" class="portfolio-details-area">
+<!--    <div class="p_item_descr">{{dataStore.item.properties.descr}}</div>-->
+    <div class="container">
+      <div v-if="!blockStore.isItemReady" class="row">Loading item data</div>
+      <div v-else class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="portfolios-details-desc">
+            <div v-if="blockStore.item.properties.workdescr" v-html="blockStore.item.properties.workdescr" class="features-text work_descr"></div>
+            <div v-else v-html="blockStore.item.properties.content" class="features-text content_wrap"></div>
+            <div class="portfolio-details-info">
+              <div class="single-info-box">
+                <h4>{{ t('portfolio.category') }}</h4>
+<!--                <span><RouterLink :to="{ path: '/direction/razrabotka' }">Разработка</RouterLink></span>-->
+                <span>{{ blockStore.item.properties.workclass[0]?.label }}</span>
+              </div>
+              <div class="single-info-box">
+                <h4>{{ t('portfolio.cost') }}</h4>
+<!--                <span>{{blockStore.getItemPrice}} {{ t('portfolio.currency') }}</span>-->
+                <span>{{blockStore.item.properties.price}} {{ t('portfolio.currency') }}</span>
+              </div>
+              <div class="single-info-box" v-if="blockStore.item.properties.date">
+                <h4>{{ t('portfolio.date') }}</h4>
+                <span>{{ blockStore.item.properties.date }}</span>
+              </div>
+              <div class="single-info-box">
+                <h4>{{ t('portfolio.social') }}</h4>
+                <ul class="social">
+                  <li><a :href="''+t('contacts.social.message')" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+                  <li><a :href="'https://www.instagram.com/'+t('contacts.social.instagram')" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+              </div>
+              <div class="single-info-box" v-if="blockStore.item.properties.url && blockStore.item.properties.url != '-'">
+                <h4>{{ t('portfolio.link') }}</h4>
+                <a :href="blockStore.item.properties.url" target="_blank" class="default-btn">{{ t('portfolio.linktext') }} <span></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio_slider_wrap"  v-if="blockStore.isItemReady">
+      <Swiper :loop="true"
+              @swiper="onSwiperInit"
+              :modules="[Autoplay,Zoom]"
+              :slides-per-view="1"
+              :autoplay="{ delay: 5000 }"
+              :zoom="{ maxRatio: 3 }"
+              :breakpoints="{
+                      0: {
+                        slidesPerView: 1,
+                      },
+                      768: {
+                        slidesPerView: 1,
+                      },
+                      1200: {
+                        slidesPerView: 1,
+                      }
+                    }"
+              class="my-swiper">
+        <SwiperSlide v-for="(img, idx) in blockStore.item.properties.image" :key="idx">
+          <div v-if="blockStore.item.properties.image?.length" @click="toggleZoom" class="swiper-zoom-container">
+<!--            <img :src="'http://wsapi/storage/portfolio/'+blockStore.item.key+'/'+ img" class="w-full h-auto" />-->
+            <img :src="getStorageUrl(`portfolio/${blockStore.item.key}/${img}`)" class="w-full h-auto" />
+<!--            storage/portfolio/barma/barma_desctop_main.png-->
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
+    <div class="container">
+      <div v-if="!blockStore.isItemReady" class="row">Loading item data</div>
+      <div v-else class="row">
+        <div class="col-lg-12 col-md-12">
+          <div v-if="blockStore.item.properties.targets" v-html="blockStore.item.properties.targets" class="features-text content_wrap work_list"></div>
+          <div v-if="blockStore.item.properties.tech" v-html="blockStore.item.properties.tech" class="features-text content_wrap work_list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Portfolio Details Section -->
+</template>
+⋮----
+<!-- Start Portfolio Details Section -->
+⋮----
+<!--    <div class="p_item_descr">{{dataStore.item.properties.descr}}</div>-->
+⋮----
+<h4>{{ t('portfolio.category') }}</h4>
+<!--                <span><RouterLink :to="{ path: '/direction/razrabotka' }">Разработка</RouterLink></span>-->
+<span>{{ blockStore.item.properties.workclass[0]?.label }}</span>
+⋮----
+<h4>{{ t('portfolio.cost') }}</h4>
+<!--                <span>{{blockStore.getItemPrice}} {{ t('portfolio.currency') }}</span>-->
+<span>{{blockStore.item.properties.price}} {{ t('portfolio.currency') }}</span>
+⋮----
+<h4>{{ t('portfolio.date') }}</h4>
+<span>{{ blockStore.item.properties.date }}</span>
+⋮----
+<h4>{{ t('portfolio.social') }}</h4>
+⋮----
+<h4>{{ t('portfolio.link') }}</h4>
+<a :href="blockStore.item.properties.url" target="_blank" class="default-btn">{{ t('portfolio.linktext') }} <span></span></a>
+⋮----
+<!--            <img :src="'http://wsapi/storage/portfolio/'+blockStore.item.key+'/'+ img" class="w-full h-auto" />-->
+⋮----
+<!--            storage/portfolio/barma/barma_desctop_main.png-->
+⋮----
+<!-- End Portfolio Details Section -->
+⋮----
+<style scoped>
+@import 'swiper/swiper-bundle.css';
+.swiper-zoom-container img {
+  cursor: zoom-in;
+}
+</style>
+````
+
+## File: src/components/Direction.vue
+````vue
+<script setup>
+import catClass from "@/components/blocks/services/catClass.vue";
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+const { blockStore, navigationStore } = usePageOrchestrator('direction', 'structure+category', {
+  fetch: (route) => route.params.slug
+})
+</script>
+<template>
+  <!-- Start Services Two Section -->
+  <section class="services-section-two section-padding">
+    <div v-if="blockStore.isCatReady" class="container">
+      <div class="row">
+<!--        <h2>{{blockStore.category.content.title}}</h2>-->
+<!--        <div class="descr" v-html="blockStore.category.content.descr"></div>-->
+        <div class="content" v-html="blockStore.category.content.content"></div>
+      </div>
+    </div>
+    <div v-else class="container"><div class="row row_load">Loading Block</div></div>
+    <!--
+    <div  v-if=navigationStore.isStrReady class="container">
+      <div class="row">
+        <h2>{{navigationStore.structure.name}}</h2>
+        <div class="descr" v-html="navigationStore.structure.description"></div>
+        <div class="content" v-html="navigationStore.structure.content"></div>
+      </div>
+      <div class="row">
+        <div v-for="(item, index) in navigationStore.structure.child" :key="index" class="col-lg-4 col-md-6">
+          <catClass
+              :slug=item.key
+              :name=item.name
+              :descr=item.description
+              :childs=item.child
+          />
+        </div>
+      </div>
+    </div>
+    <div v-else class="container"><div class="row row_load">Loading Structure</div></div>
+    -->
+  </section>
+  <!-- End Services Two Section -->
+</template>
+⋮----
+<!-- Start Services Two Section -->
+⋮----
+<!--        <h2>{{blockStore.category.content.title}}</h2>-->
+<!--        <div class="descr" v-html="blockStore.category.content.descr"></div>-->
+⋮----
+<!--
+    <div  v-if=navigationStore.isStrReady class="container">
+      <div class="row">
+        <h2>{{navigationStore.structure.name}}</h2>
+        <div class="descr" v-html="navigationStore.structure.description"></div>
+        <div class="content" v-html="navigationStore.structure.content"></div>
+      </div>
+      <div class="row">
+        <div v-for="(item, index) in navigationStore.structure.child" :key="index" class="col-lg-4 col-md-6">
+          <catClass
+              :slug=item.key
+              :name=item.name
+              :descr=item.description
+              :childs=item.child
+          />
+        </div>
+      </div>
+    </div>
+    <div v-else class="container"><div class="row row_load">Loading Structure</div></div>
+    -->
+⋮----
+<!-- End Services Two Section -->
+````
+
+## File: src/i18n/locales/vi.json
+````json
+{
+  "ui": {
+    "sitename": "Web Solutions",
+    "loading": "Đang tải",
+    "more": "Chi tiết",
+    "cta_b_text": "Liên hệ",
+    "slogan": "Chúng tôi tạo ra, hoàn thiện và cải tiến các giải pháp web mang lại kết quả thực tế.",
+    "navi": {
+      "groups": {
+        "services": "Dịch vụ",
+        "info": "Thông tin",
+        "contacts": "Liên hệ"
+      }
+    },
+    "qrdescr": "Quét mã để truy cập trang này.",
+    "contacts": {
+      "phone": {
+        "name": "Điện thoại",
+        "anchor": "0845122254 (Việt Nam)",
+        "link": "+84845122254"
+      },
+      "email": {
+        "name": "Email",
+        "anchor": "manager\\@wspro.xyz",
+        "link": "manager\\@wspro.xyz"
+      },
+      "messaging": {
+        "name": "Zalo",
+        "anchor": "0845122254",
+        "link": "https://zalo.me/0845122254"
+      },
+      "location": {
+        "name": "Địa chỉ",
+        "anchor": "Làm việc trên toàn thế giới",
+        "link": ""
+      }
+    }
+  },
+  "services": {
+    "directions": {
+      "development": "Phát triển",
+      "promotion": "Quảng bá",
+      "support": "Hỗ trợ",
+      "ai": "AI & ML",
+      "content": "Nội dung & Sáng tạo",
+      "consulting": "Tư vấn & Chiến lược"
+    }
+  },
+  "pages": {
+    "info": {
+      "about": "Về chúng tôi",
+      "contacts": "Liên hệ",
+      "price": "Bảng giá"
+    }
+  },
+  "cp": {
+    "packages": {
+      "budget": "ngân sách",
+      "period": "thời gian",
+      "discount": "Giảm giá",
+      "button": "Thảo luận kế hoạch"
+    },
+    "includes": {
+      "title": "Tất cả các gói đều bao gồm:"
+    }
+  },
+  "portfolio": {
+    "title": "Danh mục dự án",
+    "subtitle": "Các công việc gần đây",
+    "currency": "usd",
+    "category": "Danh mục",
+    "cost": "Giá",
+    "date": "Ngày",
+    "social": "Mạng xã hội",
+    "link": "Liên kết",
+    "linktext": "Truy cập"
+  },
+  "contacts": {
+    "email": "manager@wspro.xyz",
+    "social": {
+      "instagram": "wspro.xyz",
+      "message": "https://t.me/websolutionspro"
+    }
+  },
+  "filter": {
+    "all": "Tất cả",
+    "develop": "Phát triển",
+    "html": "Lập trình",
+    "design": "Thiết kế"
+  },
+  "form": {
+    "title": "Điền form yêu cầu",
+    "desc": "Để lại thông tin liên hệ, chúng tôi sẽ liên lạc với bạn",
+    "contact": "Tên trên Messenger, số điện thoại hoặc email",
+    "send": "Gửi",
+    "sending": "Đang gửi...",
+    "send_fail_onserver": "Lỗi gửi:",
+    "send_try_again": "Vui lòng thử lại sau",
+    "send_result_ok": "Cảm ơn! Yêu cầu của bạn đã được nhận",
+    "field_label": "Tên trên Messenger, số điện thoại hoặc email",
+    "field_is_required": "Trường bắt buộc"
+  },
+  "validation": {
+    "required": "Trường bắt buộc",
+    "email": "Email không hợp lệ",
+    "format": "Định dạng không đúng",
+    "min_chars": "Tối thiểu {min} ký tự",
+    "max_chars": "Tối đa {max} ký tự",
+    "min_number": "Tối thiểu {min}"
+  }
+}
+````
+
+## File: vite.config.js
+````javascript
+// https://vite.dev/config/
+⋮----
+// define: {
+//   'window.jQuery': 'jquery',
+//   'jQuery': 'jquery',
+//   '$': 'jquery'
+// },
+⋮----
+//tailwindcss({ config: './tailwind.config.js' }),
+⋮----
+// environment: 'happy-dom',
+````
+
+## File: .github/workflows/frontend.yml
+````yaml
+name: Frontend CI/CD (Vercel)
+on:
+  push:
+    branches: [public]
+  pull_request:
+    branches: [public]
+  workflow_dispatch:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      #- name: Lint
+        #run: npm run lint   # если есть
+      - name: Run tests
+        run: npm run test:run
+      - name: Build
+        run: npm run build
+      - name: Deploy to Vercel (Production)
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          npm install -g vercel@latest
+          vercel --prod --token=$VERCEL_TOKEN
+````
+
+## File: src/components/blocks/general/section/services.vue
+````vue
+<script setup>
+import { onMounted, onUnmounted, ref } from 'vue'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+import { useI18n } from 'vue-i18n'
+import AppLink from "@/components/AppLink.vue";
+const { t } = useI18n()
+const props = defineProps({
+  list: {
+    type: Object,
+    required: true
+  },
+})
+const servicesContent = ref(null)
+let ctx = null
+onMounted(() => {
+  ctx = gsap.context(() => {
+    gsap.from('.d-flex', {
+      x: -300,
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power2.out',
+      stagger: 0.25,
+      scrollTrigger: {
+        trigger: servicesContent.value,   // Элемент, который активирует анимацию
+        start: "top 80%",        // Когда верх элемента на 80% высоты экрана
+        end: "top 20%",          // Когда верх элемента на 30% высоты экрана
+        scrub: true,             // Связать прогресс с движением скролла
+        //markers: true            // Удалите в продакшене (показывает границы)
+      }
+    })
+  }, servicesContent.value)
+})
+onUnmounted(() => {
+  ctx?.revert()
+})
+</script>
+<template>
+  <!-- Start Services Two Section -->
+  <section class="services-section-two section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">{{props.list.subtitle}}</h6>
+            <h2>{{props.list.title}}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-stretch" ref="servicesContent">
+        <div v-for="(item, index) in props.list.items" class="d-flex col-lg-4 col-md-6">
+          <div class="single-services-two-item">
+            <div class="services-icon-box">
+              <div class="default-icon">
+                <img :src="item.icon" alt="svg icon">
+              </div>
+              <div class="hover-icon">
+                <img :src="item.icon_h" alt="svg icon">
+              </div>
+            </div>
+            <div class="services-two-content">
+              <h3>{{item.title}}</h3>
+              <p>{{item.descr}}</p>
+              <div class="services-btn">
+                <AppLink :to="item.link" class="read-more"><i class="bi bi-arrow-right-short"></i> {{ t('ui.more')}}</AppLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Services Two Section -->
+</template>
+⋮----
+<!-- Start Services Two Section -->
+⋮----
+<h6 class="sub-title">{{props.list.subtitle}}</h6>
+<h2>{{props.list.title}}</h2>
+⋮----
+<h3>{{item.title}}</h3>
+<p>{{item.descr}}</p>
+⋮----
+<AppLink :to="item.link" class="read-more"><i class="bi bi-arrow-right-short"></i> {{ t('ui.more')}}</AppLink>
+⋮----
+<!-- End Services Two Section -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: index.html
+````html
+<!doctype html>
+<html lang="zxx">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title -->
+    <title>WS - Web Solutions & Business Services</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/img/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="wspro.xyz" />
+    <link rel="manifest" href="/assets/img/site.webmanifest" />
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <!-- FlatIcon CSS -->
+    <link rel="stylesheet" href="/assets/css/flaticon.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/css/fontawesome.min.css">
+    <!-- Mean Menu CSS -->
+    <link rel="stylesheet" href="/assets/css/meanmenu.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/css/magnific-popup.min.css">
+    <!-- Swiper Min CSS -->
+    <link rel="stylesheet" href="/assets/css/swiper.min.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <% if (TARGET === 'selfhosted') { %><!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(103176474, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <!-- /Yandex.Metrika counter --><% } %>
+    <% if (TARGET === 'vercel') { %><!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BD9NGZGHB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        // Disable auto page viev, hits in router
+        gtag('config', 'G-9BD9NGZGHB', { send_page_view: false });
+    </script><% } %>
+</head>
+<body>
+<div id="app"></div>
+<script type="module" src="/src/main.js"></script>
+<% if (TARGET === 'selfhosted') { %><noscript><div><img src="https://mc.yandex.ru/watch/103176474" style="position:absolute; left:-9999px;" alt="" /></div></noscript><% } %>
+<% if (TARGET === 'vercel') { %><!--Versel --> <% } %>
+<% if (TARGET === 'local') { %><!--Local --> <% } %>
+</body>
+</html>
+````
+
+## File: package.json
+````json
+{
+  "name": "websolutions",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest --watch"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.10",
+    "@unhead/vue": "^2.1.12",
+    "axios": "^1.9.0",
+    "bootstrap": "^5.3.7",
+    "bootstrap-icons": "^1.13.1",
+    "counterup2": "^2.0.2",
+    "gsap": "^3.14.2",
+    "imagesloaded": "^5.0.0",
+    "isotope-layout": "^3.0.6",
+    "jquery": "^3.7.1",
+    "pinia": "^3.0.1",
+    "qrcode.vue": "^3.8.1",
+    "swiper": "^11.2.8",
+    "v-dialogs": "^3.0.3",
+    "vee-validate": "^4.15.1",
+    "vue": "^3.5.13",
+    "vue-i18n": "^11.3.0",
+    "vue-owl-carousel": "^2.0.3",
+    "vue-router": "^4.5.0",
+    "waypoints": "^4.0.1",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "@pinia/testing": "^1.0.3",
+    "@tailwindcss/cli": "^4.1.10",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/test-utils": "^2.4.6",
+    "autoprefixer": "^10.4.21",
+    "happy-dom": "^20.7.0",
+    "jsdom": "^28.1.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
+    "vite": "^6.2.1",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-vue-devtools": "^7.7.2",
+    "vitest": "^4.1.2"
+  }
+}
+````
+
+## File: src/components/blocks/portfolio/index.vue
+````vue
+<script setup>
+import List from "@/components/blocks/portfolio/presentation/list.vue";
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+const { blockStore } = usePageOrchestrator('portfolio', 'category', {
+  fetch: (route) => 'portfolio'
+})
+import { useI18n } from 'vue-i18n'
+import Info from "@/components/blocks/services/presentation/info.vue";
+const { t } = useI18n()
+function setFilter(filterKey) {
+  blockStore.filter = filterKey
+}
+</script>
+<template>
+  <!-- Start Portfolio Section-->
+  <!--
+  <section v-if="blockStore.isCatReady" class="portfolio-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">
+              {{ t("portfolio.title") }}
+            </h6>
+            <h2>
+              {{ t("portfolio.subtitle") }}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+  <section v-if="blockStore.isCatReady" class="portfolio-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="portfolio-list">
+            <ul class="nav" id="portfolio-flters">
+              <li class="filter filter-active" @click="setFilter('*')">{{ t("filter.all") }}</li>
+              <li @click="setFilter('develop')">{{ t("filter.develop") }}</li>
+              <li @click="setFilter('html')">{{ t("filter.html") }}</li>
+              <li @click="setFilter('design')">{{ t("filter.design") }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <List :items="blockStore.filteredItems"/>
+    </div>
+  </section>
+  <section v-if="blockStore.catReady" class="mb-5">
+    <Info :data="blockStore.category" />
+  </section>
+  <!-- End Portfolio Section -->
+</template>
+⋮----
+<!-- Start Portfolio Section-->
+<!--
+  <section v-if="blockStore.isCatReady" class="portfolio-area section-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-title">
+            <h6 class="sub-title">
+              {{ t("portfolio.title") }}
+            </h6>
+            <h2>
+              {{ t("portfolio.subtitle") }}
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+⋮----
+<li class="filter filter-active" @click="setFilter('*')">{{ t("filter.all") }}</li>
+<li @click="setFilter('develop')">{{ t("filter.develop") }}</li>
+<li @click="setFilter('html')">{{ t("filter.html") }}</li>
+<li @click="setFilter('design')">{{ t("filter.design") }}</li>
+⋮----
+<!-- End Portfolio Section -->
+````
+
+## File: src/composables/usePageOrchestrator.js
+````javascript
+export function usePageOrchestrator(blockId, scheme,
+⋮----
+// const slug = resolveFetch(route)
+⋮----
+const load = async () =>
+⋮----
+//console.log('load triggered', blockId, new Error().stack.split('\n')[2])
+// Навигация — параллельно с контентом, не блокирует друг друга
+/*        const navPromise = navStore.nav.length === 0
+            ? navigationStore.fetchNavigation(uiStore.scope)
+            : Promise.resolve()*/
+⋮----
+// await navPromise
+````
+
+## File: src/stores/dataStore.js
+````javascript
+state: () => (
+⋮----
+OverlayLoading: false, // status of overlay window loading
+⋮----
+isLoading: false, // status of LOCAL loading
+⋮----
+isDataReady(state)
+isCatReady(state)
+isItemReady(state)
+isOverlayReady(state)
+// TODO: уточнить зачем state - нельзя работать с this?
+isHaveItems(state)
+⋮----
+// TODO: не верная статика - 0
+⋮----
+isHaveSubCat(state)
+filteredItems(state)
+⋮----
+// если “все”
+⋮----
+// иначе — ищем, есть ли в массиве workclass нужный key
+⋮----
+getItemPrice(state)
+getLoadingStatus(state)
+⋮----
+resetCategory()
+setLoading(status)
+setFilter(key)
+//async sendOfferRequest(id,contact)
+/*
+        async sendOfferRequest(contact)
+        {
+            const uiStore = useUiStore()
+            uiStore.startGlobalLoading()
+            this.setLoading(true)
+            //
+            const data = {
+                id: 1202,
+                contact: contact,
+            };
+            try {
+                const response = await api.post('offers/request', data);
+                const status = response.data.status;
+                console.log(status)
+                console.log(response)
+            } catch (err) {
+                console.error('Ошибка API:', err);
+            } finally {
+                uiStore.stopGlobalLoading()
+                this.setLoading(false)
+            }
+        },
+         */
+async fetchOverlayCategory(slug)
+        {
+            try {
+                this.OverlayLoading = true;
+                this.overlay = (await api.get('blocks/categories/'+slug)).data.data; // TODO: разработать механизм (сервис) для повторяющихся запросов
+                this.OverlayLoading = false;
+} catch (err)
+⋮----
+this.overlay = (await api.get('blocks/categories/'+slug)).data.data; // TODO: разработать механизм (сервис) для повторяющихся запросов
+⋮----
+console.error('Ошибка API:', err); // TODO: разработать механизм (сервис) для повторяющихся состояний
+⋮----
+async fetchBlockCategory(slug)
+async fetchBlockItem(slug)
+````
+
+## File: src/stores/navigationStore.js
+````javascript
+state: () => (
+⋮----
+isStrReady(state)
+getLoadingStatus(state)
+⋮----
+setLoading(v)
+setScope(v)
+async fetchStructure(slug)
+async fetchNavigation(scope)
+⋮----
+//const scope = uiStore.scope;
+⋮----
+// TODO: refactor data assignment
+⋮----
+// })).sort((a, b) => a.sort - b.sort)
+````
+
+## File: src/components/CPimg.vue
+````vue
+<script setup>
+import { computed } from 'vue'
+import { defineAsyncComponent } from 'vue'
+const props = defineProps({
+  svgkey: String
+})
+const currentComponent = computed(() =>
+    defineAsyncComponent(() =>
+        import(`@/components/blocks/compred/micro/svg/main/${props.svgkey}.vue`) // TODO: don't use compred in path
+    )
+)
+</script>
+<template>
+  <component :is="currentComponent" />
+</template>
+<style>
+.home-section.home-2 .main-banner-content h1 {
+  font-size: 50px;
+}
+.cp_hero_svg {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cp_hero_svg svg {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  display: block;
+}
+@media (max-width: 767px) {
+  .cp_hero_svg svg {
+    max-width: 100%;
+    max-height: 200px;
+    width: auto;
+    margin: 0 auto;
+  }
+}
+</style>
+````
+
+## File: src/components/Footer.vue
+````vue
+<script setup>
+import { onMounted , computed } from 'vue'
+import SimplifiedForm from "@/components/forms/SimplifiedForm.vue";
+import WSpro from "@/components/WSpro.vue";
+// import FeedbackForm from "@/components/FeedbackForm.vue";
+// import OfferRequestForm from "@/components/OfferRequestForm.vue";
+import {useUiStore} from "@/stores/uiStore.js";
+import {useRoute} from "vue-router";
+import $ from 'jquery'
+defineProps({
+  isMain: { type: Boolean, default: false },
+  isNavi: Boolean,
+});
+const uiStore = useUiStore();
+const route = useRoute();
+const isNavi = computed(() => route.path === '/compred');
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+// TODO: Refactoring
+onMounted(() => {
+  // Go to Top
+  // Scroll Event
+  $(window).on('scroll',function() {
+    var scrolled = $(window).scrollTop();
+    if (scrolled > 600) $('.go-top').addClass('active');
+    if (scrolled < 600) $('.go-top').removeClass('active');
+  });
+  // Click Event
+  $('.go-top').on('click', function() {
+    $("html, body").animate({ scrollTop: "0" }, 100);
+  });
+});
+</script>
+<template>
+  <!-- Start Footer Section -->
+  <section class="footer-subscribe-wrapper">
+    <!-- Start Form Section -->
+    <div class="subscribe-area" v-if="!isNavi">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 col-md-6">
+            <div class="subscribe-content">
+              <h2>{{ t('form.title') }}</h2>
+              <p>{{ t('form.desc') }}</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <SimplifiedForm />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Form Section -->
+    <!-- Start Footer menu Section -->
+    <div class="footer-area ptb-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <a class="footer-logo" href="/">
+                <WSpro />
+              </a>
+              <p>{{ t('ui.slogan') }}</p>
+              <!--TODO: Need make scope widget-->
+              <ul v-if="uiStore.scope ==='ru'" class="footer-social">
+                <li><a href="https://www.instagram.com/websn.pro/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://t.me/websolutionspro" target="_blank"><i class="fa-brands fa-telegram"></i></a></li>
+                <li><a href="https://t.me/Lola_06" target="_blank"><i class="fa-solid fa-message"></i></a></li>
+              </ul>
+              <ul v-else class="footer-social">
+                <li><a href="https://www.instagram.com/wspro.xyz" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://www.facebook.com/wsproxyz" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="https://m.me/wspro.xyz" target="_blank"><i class="fa-solid fa-message"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div  v-if="!isNavi" class="col-lg-2 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <div class="footer-heading">
+                <h3>{{ t('ui.navi.groups.services') }}</h3>
+              </div>
+              <!--TODO: Hard Links-->
+              <ul class="footer-quick-links">
+                <li><AppLink :to="'/direction/razrabotka'">{{ t('services.directions.development') }}</AppLink></li>
+                <li><AppLink :to="'/direction/prodvizenie'" >{{ t('services.directions.promotion') }}</AppLink></li>
+                <li><AppLink :to="'/direction/podderzka-i-soprovozdenie'" >{{ t('services.directions.support') }}</AppLink></li>
+                <li><AppLink :to="'/direction/ai'" >{{ t('services.directions.ai') }}</AppLink></li>
+                <li><AppLink :to="'/direction/kontent-i-kreativ'" >{{ t('services.directions.content') }}</AppLink></li>
+                <li><AppLink :to="'/direction/konsalting-i-strategiia'" >{{ t('services.directions.consulting') }}</AppLink></li>
+              </ul>
+            </div>
+          </div>
+          <div  v-if="!isNavi" class="col-lg-2 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <div class="footer-heading">
+                <h3>{{ t('ui.navi.groups.info') }}</h3>
+              </div>
+              <ul class="footer-quick-links">
+                <li><AppLink :to="'/pages/about'">{{ t('pages.info.about') }}</AppLink></li>
+                <li><AppLink :to="'/pages/contacts'">{{ t('pages.info.contacts') }}</AppLink></li>
+                <li><AppLink :to="'/pages/price'">{{ t('pages.info.price') }}</AppLink></li>
+<!--                <li><a href="portfolio.html">Команда</a></li>
+                <li><a href="contact.html">Цены</a></li>
+                <li><a href="privacy-policy.html">FAQ</a></li>-->
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="single-footer-widget">
+              <div class="footer-heading">
+                <h3>{{ t('ui.navi.groups.contacts') }}</h3>
+              </div>
+              <div class="footer-info-contact">
+                <i class="flaticon-phone-call"></i>
+                <h3>{{ t('ui.contacts.phone.name') }}</h3>
+<!--                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{ uiStore.uiMainVars.page.contacts.phone }}</a></span>-->
+                <span><a :href="'tel:' + t('ui.contacts.phone.link')" target="_blank">{{ t('ui.contacts.phone.anchor') }}</a></span>
+              </div>
+              <div class="footer-info-contact">
+                <i class="flaticon-envelope"></i>
+                <h3>{{ t('ui.contacts.email.name') }}</h3>
+                <span><a :href="'mailto:' + t('ui.contacts.email.link')" target="_blank">{{ t('ui.contacts.email.anchor') }}</a></span>
+              </div>
+              <div class="footer-info-contact">
+                <i class="flaticon-envelope"></i>
+                <h3>{{ t('ui.contacts.messaging.name') }}</h3>
+                <span><a :href="'' + t('ui.contacts.messaging.link')" target="_blank">{{ t('ui.contacts.messaging.anchor') }}</a></span>
+              </div>
+              <div class="footer-info-contact">
+                <i class="flaticon-location"></i>
+                <h3>{{ t('ui.contacts.location.name') }}</h3>
+                <span>{{ t('ui.contacts.location.anchor') }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Footer menu Section -->
+  </section>
+  <!-- End Footer Section -->
+  <!-- Start Copy Right Section -->
+  <div v-if="!isNavi" class="copyright-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 col-md-6">
+          <p><i class="far fa-copyright"></i> 2026 WebSoulutions - All Rights Reserved.</p>
+        </div>
+        <div class="col-lg-6 col-md-6">
+<!--          <ul>-->
+<!--            <li><a href="/pages/agreements">Соглашения</a></li>-->
+<!--            <li><a href="/pages/privacypolicy">Политика конфеденциальности</a></li>-->
+<!--          </ul>-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Copy Right Section -->
+  <!-- Start Go Top Section -->
+  <div class="go-top">
+    <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-chevron-up"></i>
+  </div>
+  <!-- End Go Top Section -->
+</template>
+⋮----
+<!-- Start Footer Section -->
+⋮----
+<!-- Start Form Section -->
+⋮----
+<h2>{{ t('form.title') }}</h2>
+<p>{{ t('form.desc') }}</p>
+⋮----
+<!-- End Form Section -->
+<!-- Start Footer menu Section -->
+⋮----
+<p>{{ t('ui.slogan') }}</p>
+<!--TODO: Need make scope widget-->
+⋮----
+<h3>{{ t('ui.navi.groups.services') }}</h3>
+⋮----
+<!--TODO: Hard Links-->
+⋮----
+<li><AppLink :to="'/direction/razrabotka'">{{ t('services.directions.development') }}</AppLink></li>
+<li><AppLink :to="'/direction/prodvizenie'" >{{ t('services.directions.promotion') }}</AppLink></li>
+<li><AppLink :to="'/direction/podderzka-i-soprovozdenie'" >{{ t('services.directions.support') }}</AppLink></li>
+<li><AppLink :to="'/direction/ai'" >{{ t('services.directions.ai') }}</AppLink></li>
+<li><AppLink :to="'/direction/kontent-i-kreativ'" >{{ t('services.directions.content') }}</AppLink></li>
+<li><AppLink :to="'/direction/konsalting-i-strategiia'" >{{ t('services.directions.consulting') }}</AppLink></li>
+⋮----
+<h3>{{ t('ui.navi.groups.info') }}</h3>
+⋮----
+<li><AppLink :to="'/pages/about'">{{ t('pages.info.about') }}</AppLink></li>
+<li><AppLink :to="'/pages/contacts'">{{ t('pages.info.contacts') }}</AppLink></li>
+<li><AppLink :to="'/pages/price'">{{ t('pages.info.price') }}</AppLink></li>
+<!--                <li><a href="portfolio.html">Команда</a></li>
+                <li><a href="contact.html">Цены</a></li>
+                <li><a href="privacy-policy.html">FAQ</a></li>-->
+⋮----
+<h3>{{ t('ui.navi.groups.contacts') }}</h3>
+⋮----
+<h3>{{ t('ui.contacts.phone.name') }}</h3>
+<!--                <span><a :href="'tel:+'+uiStore.uiMainVars.page.contacts.phone">{{ uiStore.uiMainVars.page.contacts.phone }}</a></span>-->
+<span><a :href="'tel:' + t('ui.contacts.phone.link')" target="_blank">{{ t('ui.contacts.phone.anchor') }}</a></span>
+⋮----
+<h3>{{ t('ui.contacts.email.name') }}</h3>
+<span><a :href="'mailto:' + t('ui.contacts.email.link')" target="_blank">{{ t('ui.contacts.email.anchor') }}</a></span>
+⋮----
+<h3>{{ t('ui.contacts.messaging.name') }}</h3>
+<span><a :href="'' + t('ui.contacts.messaging.link')" target="_blank">{{ t('ui.contacts.messaging.anchor') }}</a></span>
+⋮----
+<h3>{{ t('ui.contacts.location.name') }}</h3>
+<span>{{ t('ui.contacts.location.anchor') }}</span>
+⋮----
+<!-- End Footer menu Section -->
+⋮----
+<!-- End Footer Section -->
+<!-- Start Copy Right Section -->
+⋮----
+<!--          <ul>-->
+<!--            <li><a href="/pages/agreements">Соглашения</a></li>-->
+<!--            <li><a href="/pages/privacypolicy">Политика конфеденциальности</a></li>-->
+<!--          </ul>-->
+⋮----
+<!-- End Copy Right Section -->
+<!-- Start Go Top Section -->
+⋮----
+<!-- End Go Top Section -->
+⋮----
+<style scoped>
+</style>
+````
+
+## File: src/i18n/locales/ru.json
+````json
+{
+  "ui": {
+    "sitename": "Web Solutions",
+    "loading": "Загрузка",
+    "more": "Подробно",
+    "cta_b_text": "Написать",
+    "slogan": "Создаём, дорабатываем, улучшаем. Web-решения, которые работают на результат.",
+    "navi": {
+      "groups": {
+        "services": "Услуги",
+        "info": "Инфо",
+        "contacts": "Контакты"
+      }
+    },
+    "qrdescr": "Сканируйте для перехода на эту страницу",
+    "contacts": {
+      "phone": {
+        "name": "Телефон",
+        "anchor": "0845122254 (Вьетнам)",
+        "link": "+84845122254"
+      },
+      "email": {
+        "name": "Email",
+        "anchor": "manager\\@wspro.xyz",
+        "link": "manager\\@wspro.xyz"
+      },
+      "messaging": {
+        "name": "Telegram",
+        "anchor": "Lola_06",
+        "link": "https://t.me/Lola_06"
+      },
+      "location": {
+        "name": "Адрес",
+        "anchor": "Работаем по всему миру",
+        "link": ""
+      }
+    }
+  },
+  "services": {
+    "directions": {
+      "development": "Разработка",
+      "promotion": "Продвижение",
+      "support": "Поддержка",
+      "ai": "AI и ML",
+      "content": "Контент и креатив",
+      "consulting": "Консалтинг и стратегия"
+    }
+  },
+  "pages": {
+    "info": {
+      "about": "О нас",
+      "contacts": "Контакты",
+      "price": "Цены"
+    }
+  },
+  "cp": {
+    "packages": {
+      "budget": "бюджет",
+      "period": "срок",
+      "discount": "скидка",
+      "button": "Обсудить план"
+    },
+    "includes": {
+      "title": "Все решения включают:"
+    }
+  },
+  "portfolio": {
+    "title": "Наше портфолио",
+    "subtitle": "Последние работы",
+    "currency": "руб.",
+    "category": "Категория",
+    "cost": "Стоимость",
+    "date": "Дата",
+    "social": "Соц. сети",
+    "link": "Ссылка",
+    "linktext": "Перейти"
+  },
+  "contacts": {
+    "email": "manager@wspro.xyz",
+    "social": {
+      "instagram": "websn.pro",
+      "message": "https://t.me/websolutionspro"
+    }
+  },
+  "filter": {
+    "all":"Все",
+    "develop":"Разработка",
+    "html":"Верстка",
+    "design":"Дизайн"
+  },
+  "form": {
+    "title": "Заполните форму",
+    "desc": "Оставьте нам свой контакт - мы свяжемся с вами",
+    "contact": "Имя в мессенджере, телефон или e-mail",
+    "send": "Отправить",
+    "sending": "Отправка...",
+    "send_fail_onserver": "Ошибка отправки:",
+    "send_try_again": "Пожалуйста попробуйте снова позже",
+    "send_result_ok": "Спасибо! Ваша заявка принята",
+    "field_label": "имя в мессенджере, телефон или e-mail",
+    "field_is_required": "Required field"
+  },
+  "validation": {
+    "required": "Обязательное поле",
+    "email": "Некорректный email",
+    "format": "Неверный формат",
+    "min_chars": "Минимум {min} символов",
+    "max_chars": "Максимум {max} символов",
+    "min_number": "Минимум {min}"
+  }
+}
+````
+
+## File: src/main.js
+````javascript
+import App from './App.vue' // Case sensivity fix
+import "waypoints/lib/noframework.waypoints.js"; //http://imakewebthings.com/waypoints/
+⋮----
+import './index.css'; // TailWind
+import './assets/styles/style.css'; // Template CSS
+import './assets/styles/responsive.css'; // Responsive CSS
+import './assets/styles/wspro.css'; // Individual CSS
+⋮----
+// Waypoint уже есть в `window`, просто добавляем его в глобальные свойства
+````
+
+## File: src/i18n/locales/en.json
+````json
+{
+  "ui": {
+    "sitename": "Web Solutions",
+    "loading": "Loading...",
+    "more": "more",
+    "cta_b_text": "Get in touch",
+    "slogan": "We create, refine, and improve web solutions that deliver results.",
+    "navi": {
+      "groups": {
+        "services":"Services",
+        "info":"Info",
+        "contacts":"Contacts"
+      }
+    },
+    "qrdescr": "Scan to go to this page",
+    "contacts": {
+      "phone": {
+        "name": "Phone",
+        "anchor": "0845122254 (Vietnam)",
+        "link": "+84845122254"
+      },
+      "email": {
+        "name": "Email",
+        "anchor": "manager\\@wspro.xyz",
+        "link": "manager\\@wspro.xyz"
+      },
+      "messaging": {
+        "name": "Facebook",
+        "anchor": "wspro.xyz",
+        "link": "https://www.facebook.com/wsproxyz"
+      },
+      "location": {
+        "name": "Address",
+        "anchor": "We work all over the world",
+        "link": ""
+      }
+    }
+  },
+  "services": {
+    "directions": {
+      "development": "Development",
+      "promotion": "Promotion",
+      "support": "Support",
+      "ai": "AI & ML",
+      "content": "Content and creativity",
+      "consulting": "Consulting and strategy"
+    }
+  },
+  "pages": {
+    "info": {
+      "about": "About Us",
+      "contacts": "Contacts",
+      "price": "Prices"
+    }
+  },
+  "cp": {
+    "packages": {
+      "budget": "budget",
+      "period": "period",
+      "discount": "discount",
+      "button": "discuss"
+    },
+    "includes": {
+      "title": "All solutions include:"
+    }
+  },
+  "portfolio": {
+    "title": "Our portfolio",
+    "subtitle": "Recent works",
+    "currency": "usd",
+    "category": "Category",
+    "cost": "Price",
+    "date": "Date",
+    "social": "Social networks",
+    "link": "Link",
+    "linktext": "Go to"
+  },
+  "contacts": {
+    "email": "manager@wspro.xyz",
+    "social": {
+      "instagram": "wspro.xyz",
+      "message": "https://www.facebook.com/wsproxyz"
+    }
+  },
+  "filter": {
+    "all":"All",
+    "develop":"Develop",
+    "html":"Markup",
+    "design":"Design"
+  },
+  "form": {
+    "title": "Fill request form",
+    "desc": "Leave us your contact information and we will contact you",
+    "contact": "Messenger name, phone or email",
+    "send": "Send",
+    "sending": "Sending...",
+    "send_fail_onserver": "Sending error:",
+    "send_try_again": "Please try again later",
+    "send_result_ok": "Thank you! Your application has been accepted",
+    "field_label": "Messenger name, phone number, or email",
+    "field_is_required": "имя в мессенджере, телефон или e-mail"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Invalid email",
+    "format": "Invalid format",
+    "min_chars": "Minimum {min} characters",
+    "max_chars": "Maximum {max} characters",
+    "min_number": "Minimum {min}"
+  }
+}
+````
+
+## File: src/views/Home.vue
+````vue
+<script setup>
+import Header from "@/components/Header.vue";
+import Footer from '@/components/Footer.vue'
+import Hero from '@/components/blocks/general/section/hero.vue'
+import About from '@/components/blocks/general/section/about.vue'
+import Services from '@/components/blocks/general/section/services.vue'
+import Workflow from '@/components/blocks/general/section/workflow.vue'
+import Counter from "@/components/blocks/general/section/Counter.vue";
+import Faq from "@/components/blocks/general/section/Faq.vue";
+import Portfolio from "@/components/blocks/portfolio/index.vue";
+// import Testimonial from "@/components/Testimonial.vue";
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+const { blockStore } = usePageOrchestrator('main', 'category', {
+  fetch: (route) => route.params.slug ?? route.name
+})
+</script>
+<template>
+  <Header :isMain="true"/>
+  <template v-if="blockStore.isCatReady">
+    <Hero :hero="blockStore.category.sections.slide.hero" />
+    <Services :list="blockStore.category.sections.list.section_service" />
+    <About :slide="blockStore.category.sections.slide.section_about" />
+    <Workflow :list="blockStore.category.sections.list.section_workflow" />
+    <Counter :list="blockStore.category.sections.list.section_achiev" />
+    <Portfolio />
+<!--<Testimonial />-->
+    <Faq :list="blockStore.category.sections.list.section_faq" />
+  </template>
+  <!-- Start Hire Section -->
+  <section class="hire-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-md-12" v-if="blockStore.isCatReady">
+          <div class="hire-content" v-html="blockStore.category.sections.simplehtml.content">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Hire Section -->
+  <Footer />
+</template>
+⋮----
+<template v-if="blockStore.isCatReady">
+    <Hero :hero="blockStore.category.sections.slide.hero" />
+    <Services :list="blockStore.category.sections.list.section_service" />
+    <About :slide="blockStore.category.sections.slide.section_about" />
+    <Workflow :list="blockStore.category.sections.list.section_workflow" />
+    <Counter :list="blockStore.category.sections.list.section_achiev" />
+    <Portfolio />
+<!--<Testimonial />-->
+    <Faq :list="blockStore.category.sections.list.section_faq" />
+  </template>
+⋮----
+<!--<Testimonial />-->
+⋮----
+<!-- Start Hire Section -->
+⋮----
+<!-- End Hire Section -->
+````
+
+## File: src/components/Header.vue
+````vue
+<script setup>
+import { onMounted } from 'vue'
+import { useUiStore } from '@/stores/uiStore';
+import $ from 'jquery'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
+import Navbar from '@/components/navbar.vue';
+import ScopeSwitch from "@/components/ScopeSwitch.vue";
+import WSpro from "@/components/WSpro.vue";
+defineProps({
+  isMain: Boolean,
+  isNavi: Boolean
+})
+const uiStore = useUiStore();
+const isOpen = uiStore.isOpen
+const toggleMenu = () => {
+  uiStore.setIsOpen(!uiStore.isOpen);
+}
+onMounted(() => {
+  // Header Sticky
+  $(window).on('scroll',function() {
+    if ($(this).scrollTop() > 120){
+      $('.navbar-section').addClass("is-sticky");
+    }
+    else{
+      $('.navbar-section').removeClass("is-sticky");
+    }
+  });
+});
+import { chat } from '@/chat' // tidio
+const openTidioChat = () => {
+  chat.open()
+}
+</script>
+<template>
+  <!-- Start Preloader Section -->
+  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.isGlobalLoading }">
+    <div class="loader">
+      <div class="shadow"></div>
+      <div class="box"></div>
+    </div>
+  </div>
+  <!-- End Preloader Section -->
+  <!-- Start Navbar Section -->
+  <div  v-if="uiStore.uiMainVars.header?.navbar === true" class="navbar-section">
+    <div class="techvio-nav" :class="{ 'index-navber': isMain }">
+      <div class="container">
+        <nav class="navbar navbar-expand-md navbar-light">
+          <div class="nav_wrap">
+            <AppLink :to="'/'" class="ws_logo_link">
+              <WSpro />
+            </AppLink>
+            <!-- Иконка-бургер -->
+            <button v-if="uiStore.uiMainVars.header.menu" class="burger-button" @click="toggleMenu">
+              <i :class="uiStore.isOpen ? 'bi bi-x-lg' : 'bi bi-list'" class="burger-icon"></i>
+            </button>
+          </div>
+          <div class="navbar-collapse mean-menu" id="navbarSupportedContent">
+            <Navbar />
+            <ScopeSwitch />
+            <div v-if="uiStore.scope ==='ru'" class="cta_wrap">
+              <a class="btn head_button" href="https://t.me/Lola_06" target="_blank"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
+            </div>
+<!--            <div v-else class="cta_wrap">
+              <a class="btn head_button" href="https://m.me/wspro.xyz" target="_blank"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
+            </div>-->
+            <!-- tidio chat-->
+            <div v-else class="cta_wrap">
+              <button
+                  class="btn head_button"
+                  @click.prevent="openTidioChat"
+              >
+                <i class="bi bi-telegram"></i>
+                {{ t('ui.cta_b_text') }}
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </nav>
+        <ResponsiveMenu v-if="uiStore.isOpen && uiStore.uiMainVars.header.menu" />
+      </div>
+    </div>
+  </div>
+</template>
+⋮----
+<!-- Start Preloader Section -->
+⋮----
+<!-- End Preloader Section -->
+<!-- Start Navbar Section -->
+⋮----
+<!-- Иконка-бургер -->
+⋮----
+<a class="btn head_button" href="https://t.me/Lola_06" target="_blank"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
+⋮----
+<!--            <div v-else class="cta_wrap">
+              <a class="btn head_button" href="https://m.me/wspro.xyz" target="_blank"><i class="bi bi-telegram"></i>{{t('ui.cta_b_text')}}<span></span></a>
+            </div>-->
+<!-- tidio chat-->
+⋮----
+{{ t('ui.cta_b_text') }}
+⋮----
+<style scoped>
+.navbar .mean-menu { justify-content: right;}
+.cta_wrap { margin: 0 0 0 0;}
+.cta_wrap .btn { margin-top: 0 !important;}
+.ws_logo_link { border-radius: 5px; display: block; overflow: hidden; }
+.index-navber .index-navber {}
+.navbar-section {
+  /* background: #FFF; */
+}
+/* TODO: вернуться 0 */
+.nav_wrap { display: flex;  flex-direction: row; justify-content: space-between; }
+.logo_wrap { margin: 0 0 0 1rem;}
+.burger-button {
+  background: none;
+  border: none;
+  color: #222;
+  cursor: pointer;
+  display: none; /* по умолчанию скрыт */
+}
+.burger-icon {
+  transition: transform 0.3s ease;
+}
+.burger-button i {
+  font-size: 1.8rem; line-height: 35px;
+}
+/* Показывать бургер только на экранах меньше 991px */
+@media screen and (max-width: 991px) {
+  .nav_wrap { width: 100%;}
+  .techvio-nav { padding: 0 !important;}
+  .burger-button {
+    display: block;
+    margin: 0 1rem 0 0;
+  }
+  .navbar .section-switch {display: none;}
+  .cta_wrap { display: none;}
+}
+</style>
+````
+
+## File: src/stores/uiStore.js
+````javascript
+state: () => (
+⋮----
+isOpen: false, // status of Expand Menu
+⋮----
+// UI переменные
+⋮----
+isGlobalLoading: (state)
+currentScope(state)
+// Удобный прямой доступ к locale — для vue-i18n в будущем
+currentLocale()
+⋮----
+startGlobalLoading()
+stopGlobalLoading()
+buildPageVars(
+⋮----
+let title = 'Главная', key = '/', children = [] // TODO: make using scopes
+⋮----
+if(category.content?.title) title = category.content.title // TODO: change
+⋮----
+if(item?.properties && item.properties?.title) title = item.properties.title // TODO: change
+⋮----
+setScope(value)
+⋮----
+//console.info(normalized)
+// Fallback к default если секция не валидна или пустая
+⋮----
+setUiVars(key, value)
+⋮----
+//console.log('debug:setUiVars', key, value);
+⋮----
+setPageTitle(value)
+⋮----
+// console.log('setPageTitle:', value);
+⋮----
+setHeaderVars(key, value)
+⋮----
+//console.log('debug: setHeaderVars', key, value);
+⋮----
+setNavBarStatus(value)
+        {
+            //console.log('debug:setNavBarStatus', value);
+⋮----
+//console.log('debug:setNavBarStatus', value);
+⋮----
+setVersionFull(value)
+        {
+            console.log('debug:setVersionFull', value);
+setIsOpen(value)
+````
+
+## File: src/router/index.js
+````javascript
+// import {useNavigationStore} from "@/stores/navigationStore.js";
+⋮----
+component:
+⋮----
+component: ()
+⋮----
+gaGoal: 'view_ind_offer', // GA
+⋮----
+// const navStore = useNavigationStore()
+⋮----
+/*
+    if (newScope !== uiStore.scope) {
+        uiStore.setScope(newScope)
+        // навигация обновляется только при смене scope
+        await navStore.fetchNavigation(newScope || DEFAULT_SCOPE)
+    }
+*/
+⋮----
+uiStore.setHeaderVars('menu', true) // TODO: refactor
+⋮----
+// if (true) {
+````
+
+## File: src/views/Compred.vue
+````vue
+<script setup>
+// import debug from "@/components/Debug.vue";
+import Header from "@/components/Header.vue";
+// import CPheader from "@/components/CPheader.vue";
+import CPimg from "@/components/CPimg.vue";
+import CPicon from "@/components/CPicon.vue";
+import WSteam from "@/components/WSteam.vue";
+import Portfolio from "@/components/blocks/portfolio/index.vue"
+import Footer from "@/components/Footer.vue";
+import content from "@/components/blocks/services/presentation/content.vue"
+import Benefits from "@/components/blocks/compred/presentation/benefits.vue";
+import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
+import qrcode from "@/components/blocks/general/ui/qrcode.vue"
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+import {onMounted} from "vue";
+const { blockStore } = usePageOrchestrator('compred', 'item', {
+  fetch: (route) => route.params.slug
+})
+import { useUiStore } from '@/stores/uiStore';
+const uiStore = useUiStore();
+onMounted(() => {
+   uiStore.setHeaderVars('menu', false);
+});
+import { chat } from '@/chat' // tidio
+const openTidioChat = () => {
+  chat.open()
+}
+</script>
+<template>
+<!--  <debug/>-->
+  <Header/>
+<!--  <CPheader />-->
+  <div id="compred" v-if="blockStore.isItemReady">
+    <!-- HERO -->
+    <div class="home-section home-2">
+      <div class="d-table">
+        <div class="d-table-cell">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-lg-6 col-md-12">
+                <div class="main-banner-content">
+                  <h6 class="text-gradient">{{ blockStore.item.properties.hero.pretitle }}</h6>
+                  <h1>{{ blockStore.item.properties.hero.title }}<br><span class="text-gradient">{{ blockStore.item.properties.hero.focus }}</span></h1>
+                  <p>{{ blockStore.item.properties.hero.paragraph }}</p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12">
+                <div class="banner-image">
+                  <CPimg :svgkey="blockStore.item.key"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="home-shape-animation">
+        <div class="shape-1">
+          <img src="/assets/img/shape/1.png" alt="shape image">
+        </div>
+        <div class="shape-2">
+          <img src="/assets/img/shape/2.png" alt="shape image">
+        </div>
+        <div class="shape-3">
+          <img src="/assets/img/shape/3.png" alt="shape image">
+        </div>
+        <div class="shape-4">
+          <img src="/assets/img/shape/4.png" alt="shape image">
+        </div>
+        <div class="shape-5">
+          <img src="/assets/img/shape/5.png" alt="shape image">
+        </div>
+        <div class="shape-6">
+          <img src="/assets/img/shape/6.png" alt="shape image">
+        </div>
+        <div class="shape-7">
+          <img src="/assets/img/shape/7.png" alt="shape image">
+        </div>
+      </div>
+    </div>
+    <!-- HERO
+    <section v-if="blockStore.item.properties.content"  class="compred_content services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <content
+                :content="blockStore.item.properties.content"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+-->
+    <Benefits v-if="blockStore.item.properties.benefits" :data = "blockStore.item.properties.benefits" />
+    <!-- About -->
+    <section class="about-area bg-grey section-padding">
+      <div class="container">
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-6 col-md-12">
+            <div v-if="uiStore.scope === 'ru'" class="about-content">
+              <h6 class="sub-title">О нас</h6>
+              <h2>Web Solution — решения с фокусом на результат</h2>
+              <p class="about__text">Мы — международная digital-команда.</p>
+              <p class="about__text">Создаём сайты, которые <strong>работают</strong> на рост бизнеса.</p>
+              <p class="about__text">
+                Фокус на удобстве пользователей, внимании к деталям и технологиях,
+                которые решают задачи.
+              </p>
+              <p class="about__text"><em>Условия работы во Вьетнаме смотрите в конце документа.</em></p>
+            </div>
+            <div v-else-if="uiStore.scope === 'vi'" class="about-content">
+              <h6 class="sub-title">Về chúng tôi</h6>
+              <h2>Giải pháp Web — Tập trung vào kết quả thực tế</h2>
+              <p class="about__text">Chúng tôi là một đội ngũ kỹ thuật số quốc tế.</p>
+              <p class="about__text">Chúng tôi xây dựng các trang web giúp <strong>thúc đẩy sự tăng trưởng</strong> của doanh nghiệp.</p>
+              <p class="about__text">
+                Chú trọng vào trải nghiệm người dùng, sự tỉ mỉ trong chi tiết và công nghệ hiện đại để giải quyết mọi thách thức.
+              </p>
+              <p class="about__text">
+                <small>Chi tiết về điều khoản làm việc tại Việt Nam, vui lòng xem ở cuối tài liệu này.</small>
+              </p>
+            </div>
+            <div v-else class="about-content">
+              <h6 class="sub-title">About the studio</h6>
+              <h2>Results-focused web solutions</h2>
+              <p class="about__text">We develop web solutions that drive business forward.</p>
+              <p class="about__text">We create thoughtful websites and digital products <strong>focused on growth and user experience</strong>.</p>
+              <p class="about__text">Attention to detail, technology, and design are at the core of every project.</p>
+              <p class="about__text"><em>Please refer to the end of the document for terms of work in Vietnam.</em></p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="about-image">
+              <WSteam />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End About -->
+    <!-- Packages -->
+    <section class="services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h6 class="sub-title">{{ blockStore.item.properties.items.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.items.title }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-stretch">
+          <div class="col-lg-4 col-md-6 d-flex" v-for="item in blockStore.item.properties.items.items">
+            <div class="service plan">
+<!--              <div class="visual">
+                <CPicon :svgkey="blockStore.item.key"/>
+              </div>-->
+              <div class="icon">
+                <IconOffer
+                    :index="item.index"
+                    :properties="item"
+                />
+              </div>
+              <div class="title">
+                {{ item.name }}
+              </div>
+              <div v-if="item.desc" class="descr">
+                {{ item.desc }}
+              </div>
+              <div v-if="item.discount" class="price roboto">
+                {{ t('cp.packages.budget') }} <span class="sofia_bold oldprice">{{ item.price }}</span> {{ t('cp.packages.discount') }} <span class="discount">{{ item.discount }}</span>
+              </div>
+              <div v-else class="price w_dis roboto">
+                {{ t('cp.packages.budget') }} <span class="sofia_bold">{{ item.price }}</span>
+              </div>
+              <div class="term roboto">
+                {{ t('cp.packages.period') }} <span class="sofia_bold">{{ item.term }}</span>
+              </div>
+              <ul class="conditions">
+                <li v-for="f in item.features" :key="f">{{ f }}</li>
+              </ul>
+              <div class="b_wrap">
+                <a href="/pages/contacts"  @click.prevent="openTidioChat"  class="know_price">{{ t('cp.packages.button') }}</a>
+                <!--                <AppLink :to="'/pages/contacts'" class="know_price">{{ t('cp.packages.button') }}</AppLink>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Packages -->
+    <!-- Includes -->
+    <section v-if="blockStore.item.properties.includes" class="services-section-two">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h6 class="sub-title">{{ t('cp.includes.title') }}</h6>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-stretch">
+          <div class="col-lg-3 col-md-6 d-flex" v-for="item in blockStore.item.properties.includes" :key="item.text">
+            <div class="service">
+              <div class="icon">
+                <IconOffer
+                    :index="item.index"
+                    :properties="item"
+                />
+              </div>
+              <div class="title">
+                {{ item.text }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Includes -->
+    <!-- important -->
+    <section v-if="blockStore.item.properties.important" class="services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h6 class="sub-title">{{ blockStore.item.properties.important.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.important.title }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-stretch">
+          <div class="col d-flex" v-for="b in blockStore.item.properties.important.items" :key="b.title">
+            <div class="service">
+              <div class="icon">
+                <IconOffer
+                    :index="b.index"
+                    :properties="b"
+                />
+              </div>
+              <div class="title">
+                {{ b.title }}
+              </div>
+              <div class="descr" v-html="b.text"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End important -->
+    <!-- reelsSystem -->
+    <section v-if="blockStore.item.properties.reelsSystem" class="services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h6 class="sub-title">{{ blockStore.item.properties.reelsSystem.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.reelsSystem.title }}</h2>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.reelsSystem.items" :key="b.title">
+            <div class="service">
+              <div class="icon">
+                <IconOffer
+                    :index="b.index"
+                    :properties="b"
+                />
+              </div>
+              <div class="title">
+                {{ b.title }}
+              </div>
+              <div class="descr">
+                {{ b.text }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End reelsSystem -->
+    <!-- extras -->
+    <section v-if="blockStore.item.properties.extras" class="services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h6 class="sub-title">{{ blockStore.item.properties.extras.pretitle }}</h6>
+              <h2>{{ blockStore.item.properties.extras.title }}</h2>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6"  v-for="b in blockStore.item.properties.extras.items" :key="b.title">
+            <div class="service">
+              <div class="icon">
+                <IconOffer
+                    :index="b.index"
+                    :properties="b"
+                />
+              </div>
+              <div class="title">
+                {{ b.title }}
+              </div>
+              <div class="descr">
+                {{ b.text }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End extras -->
+    <!-- acticle -->
+    <section v-if="blockStore.item.properties.acticle"  class="acticle services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <content
+                :content="blockStore.item.properties.acticle"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End acticle -->
+    <section v-if="blockStore.item.key === 'ivorycoast'">
+      <div class="container">
+        <qrcode
+            url="https://www.wspro.xyz/vi/compred/ivorycoast"
+            :size="150"
+            foreground-color="#2c3e50"
+        />
+      </div>
+    </section>
+    <Portfolio />
+  </div>
+  <div v-else class="container">
+    <div class="row row_load">Loading Item</div>
+  </div>
+  <Footer/>
+</template>
+⋮----
+<!--  <debug/>-->
+⋮----
+<!--  <CPheader />-->
+⋮----
+<!-- HERO -->
+⋮----
+<h6 class="text-gradient">{{ blockStore.item.properties.hero.pretitle }}</h6>
+<h1>{{ blockStore.item.properties.hero.title }}<br><span class="text-gradient">{{ blockStore.item.properties.hero.focus }}</span></h1>
+<p>{{ blockStore.item.properties.hero.paragraph }}</p>
+⋮----
+<!-- HERO
+    <section v-if="blockStore.item.properties.content"  class="compred_content services-section-two section-padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <content
+                :content="blockStore.item.properties.content"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+-->
+⋮----
+<!-- About -->
+⋮----
+<!-- End About -->
+<!-- Packages -->
+⋮----
+<h6 class="sub-title">{{ blockStore.item.properties.items.pretitle }}</h6>
+<h2>{{ blockStore.item.properties.items.title }}</h2>
+⋮----
+<!--              <div class="visual">
+                <CPicon :svgkey="blockStore.item.key"/>
+              </div>-->
+⋮----
+{{ item.name }}
+⋮----
+{{ item.desc }}
+⋮----
+{{ t('cp.packages.budget') }} <span class="sofia_bold oldprice">{{ item.price }}</span> {{ t('cp.packages.discount') }} <span class="discount">{{ item.discount }}</span>
+⋮----
+{{ t('cp.packages.budget') }} <span class="sofia_bold">{{ item.price }}</span>
+⋮----
+{{ t('cp.packages.period') }} <span class="sofia_bold">{{ item.term }}</span>
+⋮----
+<li v-for="f in item.features" :key="f">{{ f }}</li>
+⋮----
+<a href="/pages/contacts"  @click.prevent="openTidioChat"  class="know_price">{{ t('cp.packages.button') }}</a>
+<!--                <AppLink :to="'/pages/contacts'" class="know_price">{{ t('cp.packages.button') }}</AppLink>-->
+⋮----
+<!-- End Packages -->
+<!-- Includes -->
+⋮----
+<h6 class="sub-title">{{ t('cp.includes.title') }}</h6>
+⋮----
+{{ item.text }}
+⋮----
+<!-- End Includes -->
+<!-- important -->
+⋮----
+<h6 class="sub-title">{{ blockStore.item.properties.important.pretitle }}</h6>
+<h2>{{ blockStore.item.properties.important.title }}</h2>
+⋮----
+{{ b.title }}
+⋮----
+<!-- End important -->
+<!-- reelsSystem -->
+⋮----
+<h6 class="sub-title">{{ blockStore.item.properties.reelsSystem.pretitle }}</h6>
+<h2>{{ blockStore.item.properties.reelsSystem.title }}</h2>
+⋮----
+{{ b.title }}
+⋮----
+{{ b.text }}
+⋮----
+<!-- End reelsSystem -->
+<!-- extras -->
+⋮----
+<h6 class="sub-title">{{ blockStore.item.properties.extras.pretitle }}</h6>
+<h2>{{ blockStore.item.properties.extras.title }}</h2>
+⋮----
+{{ b.title }}
+⋮----
+{{ b.text }}
+⋮----
+<!-- End extras -->
+<!-- acticle -->
+⋮----
+<!-- End acticle -->
+⋮----
+<style scoped>
+.service {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  color: #000;
+  box-shadow: 5px 7px 15px 2px rgba(82, 90, 101, 0.12);
+  width: 100%;
+}
+.service .icon { width: 50px; height: 50px;}
+.service .title { font-size: 16px; font-weight: bold; margin: 16px 0 16px 0;}
+.service .descr { font-size: 14px; line-height: 17px; color: #5F5F5F; margin: 0 0 16px 0; }
+.service .roboto { font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 11px; line-height: 22px; margin: 0 0 16px 0;}
+.service .sofia_bold { font-family: "Sofia Sans", sans-serif; font-size: 18px; font-weight: bold; margin: 0 10px 0 10px;}
+.service .conditions { padding: 0 0 0 16px; color: #5F5F5F; min-height: 220px;}
+.service .conditions li { margin: 4px 0 4px 0; list-style: disc;}
+.service .b_wrap {  display: flex; margin: 16px 0 0 0;}
+.service .know_price { color: #00D9EA; border: solid 1px #00D9EA; border-radius: 4px; padding: 18px 14px;}
+.service .know_price:hover { background-color: #00D9EA; color: #FFF; }
+@media (max-width: 767px) {
+  .home-section.home-2 {
+    padding-top: 40px;
+  }
+  #compred .main-banner-content h6 { font-size: 14px;}
+  #compred .home-section.home-2 .main-banner-content h1 { font-size: 38px;}
+  #compred .section-title h2 { font-size: 27px;}
+}
+</style>
+````
