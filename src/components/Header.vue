@@ -9,6 +9,7 @@ const { t } = useI18n()
 
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
 import Navbar from '@/components/navbar.vue';
+import '@/assets/styles/navbar.css';
 import ScopeSwitch from "@/components/ScopeSwitch.vue";
 
 import WSpro from "@/components/WSpro.vue";
@@ -57,9 +58,9 @@ const openTidioChat = () => {
 
   <!-- Start Navbar Section -->
   <div  v-if="uiStore.uiMainVars.header?.navbar === true" class="navbar-section">
-    <div class="techvio-nav" :class="{ 'index-navber': isMain }">
+    <div class="wspro-nav" :class="{ 'index-navbar': isMain }">
       <div class="container">
-        <nav class="navbar navbar-expand-md navbar-light">
+        <nav class="navbar navbar-expand-md">
           <div class="nav_wrap">
             <AppLink :to="'/'" class="ws_logo_link">
               <WSpro />
@@ -104,7 +105,6 @@ const openTidioChat = () => {
 .cta_wrap { margin: 0 0 0 0;}
 .cta_wrap .btn { margin-top: 0 !important;}
 .ws_logo_link { border-radius: 5px; display: block; overflow: hidden; }
-.index-navber .index-navber {}
 .navbar-section {
   /* background: #FFF; */
 }

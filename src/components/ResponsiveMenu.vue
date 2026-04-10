@@ -19,12 +19,13 @@ const navStore = useNavigationStore()
 
 <style scoped>
 .responsive-menu {
+  margin-top: 1rem;
   background: white;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-radius: 0.5rem;
   transition: all 0.3s ease;
-  margin-left: 1rem;
+  margin-left: 0rem;
 }
 
 /* Прячем на десктопах */
@@ -69,6 +70,9 @@ const navStore = useNavigationStore()
 .burger-button.open .fa-bars {
   transform: rotate(90deg);
 }
+
+.responsive-menu  .section-switch { display: flex; flex-direction: row;}
+.responsive-menu .section-switch .switch-item { padding-left: 5px;}
 
 @media screen and (max-width: 991px) {
   .burger-button {
