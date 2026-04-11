@@ -38,10 +38,8 @@
   "devDependencies": {
     "@pinia/testing": "^1.0.3",
     "@tailwindcss/cli": "^4.1.10",
-    "@tailwindcss/postcss": "^4.1.10",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/test-utils": "^2.4.6",
-    "autoprefixer": "^10.4.21",
     "happy-dom": "^20.7.0",
     "jsdom": "^28.1.0",
     "postcss": "^8.5.6",
