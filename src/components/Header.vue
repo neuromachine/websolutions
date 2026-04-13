@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useUiStore } from '@/stores/uiStore';
+const uiStore = useUiStore();
 
 import $ from 'jquery'
 
@@ -12,14 +13,15 @@ import Navbar from '@/components/navbar.vue';
 import '@/assets/styles/navbar.css';
 import ScopeSwitch from "@/components/ScopeSwitch.vue";
 
-import WSpro from "@/components/WSpro.vue";
+// import WSpro from "@/components/WSpro.vue";
+import logo from "@/components/blocks/general/ui/logo.vue"
 
 defineProps({
   isMain: Boolean,
   isNavi: Boolean
 })
 
-const uiStore = useUiStore();
+
 
 const isOpen = uiStore.isOpen
 const toggleMenu = () => {
@@ -63,7 +65,7 @@ const openTidioChat = () => {
         <nav class="navbar navbar-expand-md">
           <div class="nav_wrap">
             <AppLink :to="'/'" class="ws_logo_link">
-              <WSpro />
+              <logo context="header" />
             </AppLink>
             <!-- Иконка-бургер -->
             <button v-if="uiStore.uiMainVars.header.menu" class="burger-button" @click="toggleMenu">

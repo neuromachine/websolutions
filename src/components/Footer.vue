@@ -1,7 +1,8 @@
 <script setup>
 import { onMounted , computed } from 'vue'
 import SimplifiedForm from "@/components/forms/SimplifiedForm.vue";
-import WSpro from "@/components/WSpro.vue";
+// import WSpro from "@/components/WSpro.vue";
+import logo from "@/components/blocks/general/ui/logo.vue"
 
 import {useUiStore} from "@/stores/uiStore.js";
 import {useRoute} from "vue-router";
@@ -65,7 +66,7 @@ onMounted(() => {
           <div class="col-lg-4 col-md-6 col-sm-6">
             <div class="single-footer-widget">
               <a class="footer-logo" href="/">
-                <WSpro />
+                <logo context="footer" />
               </a>
               <p>{{ t('ui.slogan') }}</p>
               <!--TODO: Need make scope widget-->
