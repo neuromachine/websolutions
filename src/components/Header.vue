@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useUiStore } from '@/stores/uiStore';
+import Preloader from '@/components/blocks/general/ui/preloader.vue';
+
 const uiStore = useUiStore();
 
 import $ from 'jquery'
@@ -49,14 +51,8 @@ const openTidioChat = () => {
 </script>
 
 <template>
-  <!-- Start Preloader Section -->
-  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.isGlobalLoading }">
-    <div class="loader">
-      <div class="shadow"></div>
-      <div class="box"></div>
-    </div>
-  </div>
-  <!-- End Preloader Section -->
+
+  <Preloader />
 
   <!-- Start Navbar Section -->
   <div  v-if="uiStore.uiMainVars.header?.navbar === true" class="navbar-section">
@@ -106,7 +102,7 @@ const openTidioChat = () => {
 .navbar .mean-menu { justify-content: right;}
 .cta_wrap { margin: 0 0 0 0;}
 .cta_wrap .btn { margin-top: 0 !important;}
-.ws_logo_link { border-radius: 5px; display: block; overflow: hidden; }
+.ws_logo_link { }
 .navbar-section {
   /* background: #FFF; */
 }

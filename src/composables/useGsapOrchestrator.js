@@ -1,9 +1,8 @@
 import { onMounted, onUnmounted, watch, unref } from 'vue'
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger' // ОБЯЗАТЕЛЬНЫЙ ИМПОРТ
-import { useAnimationStore } from '@/stores/animationStore.js'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useAnimationStore } from '@/stores/animationStore'
 
-// Регистрируем плагин один раз для всего приложения
 gsap.registerPlugin(ScrollTrigger)
 
 export function useGsapOrchestrator(targetRef, animationsConfig) {
@@ -16,60 +15,69 @@ export function useGsapOrchestrator(targetRef, animationsConfig) {
         const action = config.local?.[localActionName]
 
         if (action && gsapContext) {
-            // overwrite: "auto" заставит GSAP убить конфликтующие анимации (если PAGE_ENTER еще идет)
+            //overwrite: "auto" заставляет GSAP убить конфликтующие анимации на тех же свойствах
             gsapContext.add(() => action.play())
         }
     }
 
     onMounted(() => {
-        gsapContext = gsap.context(() => {}, targetRef.value)
-        const config = unref(animationsConfig)
+        // targetRef.value содержит ссылку на DOM-узел, переданную из компонента.
+        // Создаем контекст GSAP, привязанный к этому узлу.
+        // gsapContext = gsap.context(() => {}, targetRef.value)
 
-        // 1. Инициализация SCROLL анимаций
-        if (config.scroll) {
-            Object.keys(config.scroll).forEach((key) => {
-                const scrollAction = config.scroll[key]
-                gsapContext.add(() => {
-                    scrollAction.play(scrollAction.triggerConfig)
+        gsapContext = gsap.context(() => {
+            const config = unref(animationsConfig)
+
+            if (config.scroll) {
+                Object.values(config.scroll).forEach(action => {
+                    action.play(action.triggerConfig)
                 })
-            })
-        }
+            }
 
-        // 2. Подписка на GLOBAL фазы (из Pinia)
+        }, targetRef.value)
+
         watch(
             () => animationStore.currentPhase,
             (newPhase) => {
-                const globalAction = config.global?.[newPhase]
+                const config = unref(animationsConfig)
 
-                if (globalAction) {
+                // Теперь мы обращаемся к реальному объекту конфигурации
+                const phaseAction = config.global?.[newPhase]
+
+                if (phaseAction) {
                     // ПРОВЕРКА ПАМЯТИ: Если стоит флаг runOnce и фаза уже игралась - игнорируем
-                    if (globalAction.runOnce && animationStore.hasPlayed(newPhase)) {
+                    if (phaseAction.runOnce && animationStore.hasPlayed(newPhase)) {
                         return
                     }
 
-                    if (globalAction.isBlocking) animationStore.registerActive()
+                    // Если анимация критична для очереди, регистрируем ее
+                    if (phaseAction.isBlocking) {
+                        animationStore.registerActive()
+                    }
 
+                    // Выполняем GSAP анимацию внутри контекста компонента
                     gsapContext.add(() => {
-                        const tl = globalAction.play()
+                        const tl = phaseAction.play()
 
-                        if (tl) {
+                        // Если мы блокировали очередь, освобождаем ее по завершению
+                        if (phaseAction.isBlocking && tl) {
                             tl.eventCallback('onComplete', () => {
-                                if (globalAction.isBlocking) animationStore.resolveActive()
-                                // Записываем в память после завершения
-                                if (globalAction.runOnce) animationStore.markAsPlayed(newPhase)
+                                animationStore.resolveActive()
                             })
                         }
                     })
                 }
             },
-            { immediate: true }
+            { immediate: true } // Проверяем фазу сразу при монтировании
         )
     })
 
     onUnmounted(() => {
-        if (gsapContext) gsapContext.revert()
+        // Clear animation context
+        if (gsapContext) {
+            gsapContext.revert()
+        }
     })
 
-    // Экспортируем triggerLocal для использования в шаблонах
     return { triggerLocal, gsapContext }
 }

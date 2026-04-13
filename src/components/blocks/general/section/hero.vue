@@ -1,8 +1,9 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
-import gsap from 'gsap'
+import { ref, computed } from 'vue'
 import AppLink from "@/components/AppLink.vue";
 import CPimg from "@/components/CPimg.vue";
+import { useGsapOrchestrator } from '@/composables/useGsapOrchestrator'
+import { getHeroAnimations } from './hero.animations.js'
 
 const props = defineProps({
   hero: {
@@ -11,24 +12,10 @@ const props = defineProps({
   },
 })
 
+
 const heroContent = ref(null)
-let ctx = null
-
-onMounted(() => {
-  ctx = gsap.context(() => {
-    gsap.from('h6, h1, p, .banner-btn', {
-      x: -60,
-      opacity: 0,
-      duration: 1.2,
-      ease: 'power2.out',
-      stagger: 0.25,
-    })
-  }, heroContent.value)
-})
-
-onUnmounted(() => {
-  ctx?.revert()
-})
+const animConfig = computed(() => getHeroAnimations())
+useGsapOrchestrator(heroContent, animConfig)
 </script>
 
 <template>

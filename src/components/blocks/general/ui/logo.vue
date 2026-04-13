@@ -1,72 +1,49 @@
 <script setup>
 import { ref, computed } from 'vue'
-import gsap from 'gsap'
-import { useGsapOrchestrator } from '@/composables/useGsapOrchestrator.js'
+import { useGsapOrchestrator } from '@/composables/useGsapOrchestrator'
+import { getLogoAnimations } from './logo.animations.js'
 
 const props = defineProps({
-  // 'header', 'footer', 'preloader' - определяет логику анимации
+  // 'header' или 'footer'
   context: {
     type: String,
-    default: 'header'
+    default: 'header',
+    validator: (value) => ['header', 'footer'].includes(value)
   }
 })
 
-const logoWrapper = ref(null)
+// DOM-ссылки (Template Refs)
+const logoRoot = ref(null) // span.logo-wrapper
+const wsGroup = ref(null)  // g.ws-group внутри SVG
+const proGroup = ref(null) // g.pro-group внутри SVG
 
+const textColor = computed(() => props.context === 'footer' ? '#FFFFFF' : '#000000')
+
+// Константы цветов градиента
+const LOGO_COLORS = {
+  START: '#FFE265',
+  END: '#FFC500'
+}
+
+// Генерируем конфигурацию анимаций на основе пропса 'context'
 const animationsConfig = computed(() => {
-  if (props.context === 'header') {
-    return {
-      // Глобальные события (слушают Pinia)
-      global: {
-        'PAGE_ENTER': {
-          runOnce: true, // Сработает 1 раз за сессию (решает проблему обновления роута)
-          isBlocking: false,
-          play: () => gsap.timeline()
-              .from('.gsap-bg', { scaleX: 0, duration: 0.8 })
-        }
-      },
-      // Локальные события (слушают @mouseenter / ручные вызовы)
-      local: {
-        'HOVER_IN': {
-          // overwrite: "auto" решает гонку. Если PAGE_ENTER еще работает, hover перехватит контроль над .gsap-mark
-          play: () => gsap.to('.gsap-mark', { rotation: 10, duration: 0.2, overwrite: "auto" })
-        },
-        'HOVER_OUT': {
-          play: () => gsap.to('.gsap-mark', { rotation: 0, duration: 0.2, overwrite: "auto" })
-        }
-      }
-    }
+  // Собираем все ссылки для фабрики
+  const currentRefs = {
+    root: logoRoot.value,
+    ws: wsGroup.value,
+    pro: proGroup.value
   }
-
-  if (props.context === 'footer') {
-    return {
-      // Скролл-события (не зависят от Pinia, запускаются по скроллу)
-      scroll: {
-        'REVEAL': {
-          triggerConfig: {
-            trigger: logoWrapper.value,
-            start: 'top 90%', // Когда верх элемента достигает 90% высоты окна
-            // markers: true,
-            toggleActions: 'play none none reverse'
-          },
-          play: (triggerCfg) => gsap.timeline({ scrollTrigger: triggerCfg })
-              .from(logoWrapper.value, { opacity: 0, y: 30, duration: 1 })
-        }
-      }
-    }
-  }
-
-  return {}
+  // Вызываем фабрику
+  return getLogoAnimations(props.context, currentRefs, LOGO_COLORS)
 })
 
-// ДОБАВЛЕНО: Деструктуризируем triggerLocal для использования в <template>
-const { triggerLocal } = useGsapOrchestrator(logoWrapper, animationsConfig)
+// Подключаем оркестратор
+const { triggerLocal } = useGsapOrchestrator(logoRoot, animationsConfig)
 </script>
 
 <template>
-  <!-- Корневой элемент для gsap.context() -->
   <span
-      ref="logoWrapper"
+      ref="logoRoot"
       class="logo-wrapper"
       :class="`logo--${props.context}`"
       @mouseenter="triggerLocal('HOVER_IN')"
@@ -74,16 +51,19 @@ const { triggerLocal } = useGsapOrchestrator(logoWrapper, animationsConfig)
   >
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 91 38"
-        width="91"
-        height="38"
+        viewBox="0 0 230 132"
+        preserveAspectRatio="xMidYMid meet"
         fill="none"
     >
-      <!-- Классы .gsap-bg и .gsap-mark используются как селекторы внутри composable -->
-      <rect class="gsap-bg" width="91" height="38" fill="#FFE265"/>
-      <g class="gsap-mark" fill="#223A76">
-        <circle cx="20" cy="19" r="10" />
-        <circle cx="50" cy="19" r="10" />
+      <g ref="wsGroup" class="txt-style ws-group">
+        <text x="0" y="100">WS.</text>
+      </g>
+      <g ref="proGroup" class="txt-style pro-group" transform="translate(212, 103)">
+        <text
+            text-anchor="start"
+            transform="rotate(270)"
+            x="0" y="0"
+        >PRO</text>
       </g>
     </svg>
   </span>
@@ -91,6 +71,25 @@ const { triggerLocal } = useGsapOrchestrator(logoWrapper, animationsConfig)
 
 <style scoped>
 .logo-wrapper {
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  //width: 230px; height: 132px;
+  padding: 0 5px 0 6px;
+  width: 80px; height: auto;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  //background-image: linear-gradient(45deg,#FFE265,#FFC500);
+  background-image: none;
+  border-radius: 5px;
 }
+.logo-wrapper svg { width: 100%; height: auto;}
+.txt-style {
+  font-family: "Sofia Sans", sans-serif;
+  fill: v-bind(textColor);
+}
+.ws-group { font-size: 110px; line-height: 132px;}
+.pro-group { font-size: 41px; line-height: 49px; font-weight: bold;}
 </style>

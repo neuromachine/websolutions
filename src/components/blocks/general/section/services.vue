@@ -1,9 +1,7 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
+import { ref , computed} from 'vue'
+import { useGsapOrchestrator } from '@/composables/useGsapOrchestrator'
+import { getServicesAnimations } from './services.animations.js'
 import { useI18n } from 'vue-i18n'
 import AppLink from "@/components/AppLink.vue";
 const { t } = useI18n()
@@ -16,31 +14,10 @@ const props = defineProps({
 })
 
 const servicesContent = ref(null)
-let ctx = null
-
-onMounted(() => {
-  ctx = gsap.context(() => {
-    gsap.from('.d-flex', {
-      x: -300,
-      opacity: 0,
-      duration: 1.2,
-      ease: 'power2.out',
-      stagger: 0.25,
-      scrollTrigger: {
-        trigger: servicesContent.value,   // Элемент, который активирует анимацию
-        start: "top 80%",        // Когда верх элемента на 80% высоты экрана
-        end: "top 20%",          // Когда верх элемента на 30% высоты экрана
-        scrub: true,             // Связать прогресс с движением скролла
-        //markers: true            // Удалите в продакшене (показывает границы)
-      }
-    })
-  }, servicesContent.value)
-})
-
-onUnmounted(() => {
-  ctx?.revert()
-})
-
+const animConfig = computed(() => getServicesAnimations({
+  servicesContent: servicesContent.value
+}))
+useGsapOrchestrator(servicesContent, animConfig)
 </script>
 
 <template>
