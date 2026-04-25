@@ -1,0 +1,111 @@
+{
+  "ui": {
+    "sitename": "Web Solutions",
+    "loading": "Loading...",
+    "more": "more",
+    "cta_b_text": "Get in touch",
+    "slogan": "We create, refine, and improve web solutions that deliver results.",
+    "navi": {
+      "groups": {
+        "services":"Services",
+        "info":"Info",
+        "contacts":"Contacts"
+      }
+    },
+    "qrdescr": "Scan to go to this page",
+    "contacts": {
+      "phone": {
+        "name": "Phone",
+        "anchor": "0845122254 (Vietnam)",
+        "link": "+84845122254"
+      },
+      "email": {
+        "name": "Email",
+        "anchor": "manager\\@wspro.xyz",
+        "link": "manager\\@wspro.xyz"
+      },
+      "messaging": {
+        "name": "Facebook",
+        "anchor": "wspro.xyz",
+        "link": "https://www.facebook.com/wsproxyz"
+      },
+      "location": {
+        "name": "Address",
+        "anchor": "We work all over the world",
+        "link": ""
+      }
+    }
+  },
+  "services": {
+    "directions": {
+      "development": "Development",
+      "promotion": "Promotion",
+      "support": "Support",
+      "ai": "AI & ML",
+      "content": "Content and creativity",
+      "consulting": "Consulting and strategy"
+    }
+  },
+  "pages": {
+    "info": {
+      "about": "About Us",
+      "contacts": "Contacts",
+      "price": "Prices"
+    }
+  },
+  "cp": {
+    "packages": {
+      "budget": "budget",
+      "period": "period",
+      "discount": "discount",
+      "button": "discuss"
+    },
+    "includes": {
+      "title": "All solutions include:"
+    }
+  },
+  "portfolio": {
+    "title": "Our portfolio",
+    "subtitle": "Recent works",
+    "currency": "usd",
+    "category": "Category",
+    "cost": "Price",
+    "date": "Date",
+    "social": "Social networks",
+    "link": "Link",
+    "linktext": "Go to"
+  },
+  "contacts": {
+    "email": "manager@wspro.xyz",
+    "social": {
+      "instagram": "wspro.xyz",
+      "message": "https://www.facebook.com/wsproxyz"
+    }
+  },
+  "filter": {
+    "all":"All",
+    "develop":"Develop",
+    "html":"Markup",
+    "design":"Design"
+  },
+  "form": {
+    "title": "Fill request form",
+    "desc": "Leave us your contact information and we will contact you",
+    "contact": "Messenger name, phone or email",
+    "send": "Send",
+    "sending": "Sending...",
+    "send_fail_onserver": "Sending error:",
+    "send_try_again": "Please try again later",
+    "send_result_ok": "Thank you! Your application has been accepted",
+    "field_label": "Messenger name, phone number, or email",
+    "field_is_required": "имя в мессенджере, телефон или e-mail"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Invalid email",
+    "format": "Invalid format",
+    "min_chars": "Minimum {min} characters",
+    "max_chars": "Maximum {max} characters",
+    "min_number": "Minimum {min}"
+  }
+}

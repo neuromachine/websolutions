@@ -13,6 +13,9 @@ const props = defineProps({
     required: true
   },
 })
+
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
 </script>
 
 <template>
@@ -27,7 +30,7 @@ const props = defineProps({
 <!--      <div>{{props.properties}}</div>-->
 <!--      <p v-for="(value, key) in props.properties">{{key}} - {{value}}</p>-->
       <div class="services-btn">
-        <RouterLink class="read-more" :to="{ path: '/blocks/item/' + props.key }"><i class="bi bi-arrow-right-short"></i> Подробнее</RouterLink>
+        <AppLink class="read-more" :to="{ name: 'blocks_item', params: { slug: props.key } }"><i class="bi bi-arrow-right-short"></i> {{ t('ui.more')}}</AppLink>
       </div>
     </div>
   </div>

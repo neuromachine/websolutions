@@ -1,6 +1,4 @@
 <script setup>
-import { DialogModal} from 'v-dialogs'
-import Overlay from "@/components/OverlayCat.vue"; //Legacy
 import Icon from "@/components/blocks/services/micro/icon.vue"
 import { useUiStore } from '@/stores/uiStore.js';
 import {computed} from "vue";
@@ -36,23 +34,6 @@ const props = defineProps({
     required: true
   },
 })
-async function handleChild(slug) {
-  // TODO: dataStore.isCatReady
-  // TODO: переход на compositon overlay
-  //if (!result) return false; // TODO: Проверить что данные не пришли - дял overlay
-  DialogModal(Overlay, {
-    maxButton: false,
-    // title: dataStore.category.name,
-    title: 'Инфо',
-    params: {
-      //data: dataStore.category
-      data: {
-        'slug': slug
-      },
-    },
-  });
-  return false
-}
 </script>
 <template>
   <div class="col-lg-4 col-md-6">
@@ -61,35 +42,31 @@ async function handleChild(slug) {
           :slug="props.slug"
       />
       <div class="services-three-content">
-<!--        <h3 @click="handleChild(props.slug)" class="head_action">{{props.title}}</h3>-->
         <h3 class="head_action">{{props.title}}</h3>
         <p v-show="isVersionFull">{{props.description}}</p>
         <ul class="features-list clases">
           <li v-for="schild in props.childs">
-            <h4><RouterLink class="head_action" :to="{ path: '/group/' + schild.key }">{{schild.name}}</RouterLink></h4>
+            <h4>
+              <AppLink class="head_action" :to="{ name: 'group', params: { slug: schild.key } }">{{schild.name}}</AppLink>
+            </h4>
             <span v-show="isVersionFull" class="block text-3xl" v-html="schild.description"></span>
             <ul class="groups">
               <li v-for="offer in schild.child">
-<!--                <span class="block head_action" @click="handleChild(offer.key)">{{offer.name}}</span>-->
                 <span class="block head_action">
-                  <RouterLink class="float_link" :to="{ path: '/group/' + offer.key }">
-                  {{offer.name}}
-                    </RouterLink>
+                  <AppLink class="float_link" :to="{ name: 'group', params: { slug: offer.key } }">{{offer.name}}</AppLink>
                 </span>
                 <span v-show="isVersionFull" class="block" v-html="offer.description"></span>
                 <span v-show="isVersionFull" class="block">
-                  <RouterLink class="float_link" :to="{ path: '/group/' + offer.key }">
-                    <i class="bi bi-arrow-right text-brand-deep"></i> Подробно
-                  </RouterLink>
+                  <AppLink class="float_link" :to="{ name: 'group', params: { slug: offer.key } }"><i class="bi bi-arrow-right text-brand-deep"></i> Подробно</AppLink>
                 </span>
               </li>
             </ul>
           </li>
         </ul>
         <div class="services-btn">
-          <RouterLink :to="{ path: '/direction/' + props.slug }" class="float_link">
+          <AppLink  class="float_link" :to="{ name: 'direction', params: { slug: props.slug } }">
             <i class="bi bi-arrow-right-short"></i> Подробнее о направлении : {{props.title}}
-          </RouterLink>
+          </AppLink>
         </div>
       </div>
     </div>

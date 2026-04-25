@@ -3,15 +3,20 @@ import { describe, it, expect , vi} from 'vitest'
 import Home from '@/views/Home.vue'
 import { mountWithPlugins } from '~tests/utils/mountWithPlugins'  // ← новый импорт
 import { useUiStore } from '@/stores/uiStore'
-import { useDataStore} from '@/stores/dataStore.js';
+
 
 
 describe('Home view', () => {
     it('smoke test', async () => {
-        const wrapper = await mountWithPlugins(Home, {}, '/')   // начальный маршрут '/'
+        const wrapper = await mountWithPlugins(Home, {}, '/')
 
         expect(wrapper.exists()).toBe(true)
-        expect(wrapper.text()).toContain('Надёжные web-решения')
+
+        // Более устойчивый вариант проверки текста (учитывая i18n)
+        const html = wrapper.html()
+        expect(html).toContain('Оставьте нам свой контакт')           // частичное совпадение
+        // или
+        // expect(wrapper.text()).toContain('web-решения')
     })
 
     it('button exists', async () => {
@@ -24,23 +29,16 @@ describe('Home view', () => {
 
     it('reaction to isLoading from uiStore', async () => {
         const wrapper = await mountWithPlugins(Home, {}, '/')
+        const uiStore = useUiStore()
 
-        const uiStore = useUiStore(wrapper.vm.$pinia)
+        // By default global loading is false, so preloader-wrapper is not in DOM due to v-if
+        expect(wrapper.find('.preloader-wrapper').exists()).toBe(false)
 
-        uiStore.isGlobalLoading = false
+        // Turn on loading (actions are stubbed by createTestingPinia, mutate state directly)
+        uiStore._loadingCount = 1
         await wrapper.vm.$nextTick()
 
-        expect(wrapper.find('.preloader').exists()).toBe(true)
-        expect(wrapper.find('.preloader-deactivate').exists()).toBe(true)   // загрузки нет → прелоадер скрыт
-
-        uiStore.isGlobalLoading = true
-        await wrapper.vm.$nextTick()
-
-        expect(wrapper.find('.preloader-deactivate').exists()).toBe(false)  // загрузка есть → класс пропал → прелоадер виден
-
-        uiStore.isGlobalLoading = false
-        await wrapper.vm.$nextTick()
-
-        expect(wrapper.find('.preloader-deactivate').exists()).toBe(true)   // загрузки нет → класс вернулся → прелоадер скрыт
+        // Now preloader should be visible
+        expect(wrapper.find('.preloader-wrapper').exists()).toBe(true)
     })
 })

@@ -1,34 +1,31 @@
+<script setup>
+import { useNavigationStore } from '@/stores/navigationStore'
+import ScopeSwitch from "@/components/ScopeSwitch.vue";
+const navStore = useNavigationStore()
+</script>
+
 <template>
   <nav class="responsive-menu">
     <ul>
-      <li v-for="(item, index) in structure" :key="index">
-        <RouterLink :to="item.slug" :class="item.class || ''">{{ item.title }}</RouterLink>
+      <li
+          v-for="item in navStore.nav"
+          :key="item.path">
+        <AppLink :to="item.path" class="nav-link">{{ item.anchor }}</AppLink>
       </li>
     </ul>
+    <ScopeSwitch />
   </nav>
 </template>
 
-<script setup>
-import { RouterLink } from 'vue-router';
-
-const structure = [
-  { title: 'Главная', slug: '/' },
-  { title: 'Услуги', slug: '/services', class: 'nav-link' },
-  { title: 'Портфолио', slug: '/portfolio', class: 'nav-link' },
-  { title: 'Цены', slug: '/pages/price', class: 'nav-link' },
-  { title: 'О нас', slug: '/pages/about', class: 'nav-link' },
-  { title: 'Контакты', slug: '/pages/contacts', class: 'nav-link' },
-];
-</script>
-
 <style scoped>
 .responsive-menu {
+  margin-top: 1rem;
   background: white;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border-radius: 0.5rem;
   transition: all 0.3s ease;
-  margin-left: 1rem;
+  margin-left: 0rem;
 }
 
 /* Прячем на десктопах */
@@ -73,6 +70,9 @@ const structure = [
 .burger-button.open .fa-bars {
   transform: rotate(90deg);
 }
+
+.responsive-menu  .section-switch { display: flex; flex-direction: row;}
+.responsive-menu .section-switch .switch-item { padding-left: 5px;}
 
 @media screen and (max-width: 991px) {
   .burger-button {

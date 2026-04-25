@@ -2,13 +2,11 @@
 import Direction from "@/components/Direction.vue";
 import PageTitle from "@/components/PageTitle.vue";
 import Header from "@/components/Header.vue";
+import Footer from '@/components/Footer.vue'
 </script>
 <template>
   <Header />
-  <PageTitle :breadcrumbs="[
-  { title: 'Главная', link: '/' },
-  { title: 'Услуги', link: '/services' },
-  { title: 'Направление', link: '/test' },
-]" />
+  <PageTitle />
   <Direction />
+  <Footer />
 </template>
