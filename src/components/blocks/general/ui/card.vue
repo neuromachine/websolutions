@@ -43,7 +43,7 @@
 }
 .ui-card__body {
   padding: 0 1rem 2rem 1.5rem;
-  color: #5f5f5f;;
+  color: #5f5f5f;
 }
 @media (max-width: 767px) {
   .ui-card__header {
