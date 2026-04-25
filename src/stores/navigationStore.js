@@ -20,8 +20,8 @@ export const useNavigationStore = defineStore('navigationStore', {
             if(
                 !state.isLoading &&
                 state.structure !== null &&
-                state.structure.child &&
-                Object.keys(state.structure.child).length
+                state.structure.child
+                //state.structure.child && Object.keys(state.structure.child).length
             )
             {
                 return true
@@ -35,6 +35,7 @@ export const useNavigationStore = defineStore('navigationStore', {
     actions: {
         setLoading(v)   { this.isLoading = v },
         setScope(v)   { this.scope = v },
+        setReady(v)   { this.strReady = v },
         async fetchStructure(slug) {
             const uiStore = useUiStore()
             uiStore.startGlobalLoading()
@@ -42,7 +43,7 @@ export const useNavigationStore = defineStore('navigationStore', {
             try {
                 const { data: { data } } = await api.get(`${uiStore.scope}/blocks/categories/structure/${slug}`)
                 this.structure = data
-                this.strReady = true
+                this.setReady(true)
             } catch (err) {
                 console.error('Ошибка fetchStructure:', err)
             } finally {

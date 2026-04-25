@@ -1,223 +1,335 @@
-# WebSolutions
+# Project Context — Frontend Architecture
 
-## 🌐 About the Project / О проекте
-
-**EN:**  
-WebSolutions is a modular web platform built with Vue 3 (Vite) on the frontend and Laravel 12 as API backend. The project focuses on dynamic content structures, reactive UI rendering, and scalable architecture for complex web solutions.
-
-**RU:**  
-WebSolutions — это модульная веб-платформа на Vue 3 (Vite) с backend API на Laravel 12. Проект ориентирован на динамические структуры контента, реактивный UI и масштабируемую архитектуру для сложных веб-решений.
+> Живой документ. Фиксирует архитектурные решения, принятые в процессе рефакторинга.  
+> Обновляется по мере развития проекта.
 
 ---
 
-# Tech Stack
+## Стек
 
-### Frontend
-- Vue 3 (Vite)
-- Vue Router
-- Pinia
-- Axios
-- Swiper (gallery / zoom)
-
-### Backend
-- Laravel 12 (API)
+| Слой | Технология |
+|---|---|
+| Frontend Framework | Vue 3 (Composition API, `<script setup>`) |
+| Роутер | Vue Router 4 |
+| State Management | Pinia |
+| HTTP | Axios (обёртка `utils/api.js`) |
+| i18n | vue-i18n + плагин `setupI18nSync(pinia)` |
+| Backend API | Laravel 12 (вне scope frontend-задач) |
+| Сборка | Vite |
 
 ---
 
-# Project Structure (Key Files)
+## Архитектура: слои и зоны ответственности
+
+### Stores
 
 ```
-src/
- ├── utils/
- │    └── api.js              # Axios instance (baseURL from env)
- ├── stores/
- │    └── calcStore.js        # Pinia store (structure, item, overlay)
- ├── components/
- │    ├── blocks/
- │    │    └── Item.vue       # Gallery / Item view (Swiper integration)
- │    ├── Group.vue           # View for /group/:slug
- │    └── OverlayCat.vue      # Modal content component
+uiStore          — состояние интерфейса приложения
+  ├─ scope               текущий URL-префикс раздела (ранее section)
+  ├─ uiMainVars.page     title, breadcrumbs, parent, children
+  ├─ isGlobalLoading     счётчик активных запросов (_loadingCount)
+  ├─ buildPageVars()     формирует page из { structure, category, item }
+  └─ setSection()        нормализует и устанавливает scope
+
+navigationStore  — структурное дерево раздела (singleton)
+  ├─ structure           дерево навигации раздела (services)
+  ├─ nav[]               нормализованные ссылки для navbar
+  ├─ fetchStructure()    загружает structure по slug
+  └─ fetchNavigation()   загружает nav-ссылки по scope
+
+blockStore(id)   — фабрика данных блока (инстанс на блок)
+  ├─ category            данные категории
+  ├─ item                данные элемента
+  ├─ overlay             данные оверлея
+  ├─ filter              активный фильтр ('*' | key)
+  ├─ filteredItems       геттер: Object → Array с нормализацией slug
+  ├─ fetchBlockCategory()
+  ├─ fetchBlockItem()
+  └─ fetchOverlayCategory()
+
+formStore        — состояние форм (отдельный слой, вне scope текущих задач)
 ```
 
----
+### Фабрика blockStore — ключевое решение
 
-# Core Architecture Notes
-
-## Axios
-
-API payload format:
+`blockStore` — не синглтон. Это фабрика, возвращающая независимые инстансы по ID.
 
 ```js
-response.data.data
+// src/stores/blockStore.js
+const _registry = new Map()  // ← определение store кэшируется на уровне модуля
+
+export function useBlockStore(id) {
+  if (!_registry.has(id)) {
+    _registry.set(id, createBlockStoreDefinition(id))
+  }
+  return _registry.get(id)()  // Pinia ID: block/${id}
+}
 ```
 
-Always use `response.data.data` as the actual payload.
-
-Base URL is taken from:
-
-```
-VITE_API_URL
-```
+**Почему важно:** `defineStore` должен вызываться ровно один раз на ID. Иначе компонент и fetch работают с разными инстансами — DevTools показывает данные, шаблон нет.
 
 ---
 
-## Routing
+## Lifecycle компонентов
 
-Route:
+### Схема слоёв
 
 ```
-/group/:slug
+View.vue          — только компоновка (Header, Footer, PageTitle, Index)
+                    не содержит логики, не знает о stores
+  └─ index.vue    — оркестратор
+                    владеет store(s), вызывает fetch, передаёт props
+                    единственный кто вызывает usePageOrchestrator с isPageOwner
+       └─ list.vue — презентационный оркестратор
+                     принимает данные через props
+                     реализует функционал секции (фильтры, emit)
+            └─ item.vue — чисто презентационный, только props
 ```
 
-`Group.vue` must watch:
+### Правила
+
+- `View.vue` — никаких store, никаких composables с fetch
+- `index.vue` — ровно один `usePageOrchestrator` на маршрут, с логикой определения isPageOwner
+- Дочерние блоки на той же странице — `usePageOrchestrator` без права на `buildPageVars`
+- Презентационные компоненты — только `defineProps`, никакого прямого импорта store
+
+---
+
+## usePageOrchestrator
+
+Файл: `src/composables/usePageOrchestrator.js`
+
+### Сигнатура
 
 ```js
-watch(() => route.params.slug, ...)
+const { blockStore, navigationStore } = usePageOrchestrator(blockId, scheme, {
+  fetch: (route) => slug  // resolver — что передать в fetch-методы
+})
 ```
 
-to ensure reactive content update without full reload.
+### Схемы (scheme)
 
----
+| Значение | Что загружает |
+|---|---|
+| `'category'` | `fetchBlockCategory(slug)` |
+| `'item'` | `fetchBlockItem(slug)` |
+| `'structure'` | `fetchStructure(slug)` |
+| `'structure+category'` | оба, последовательно |
+| `'structure+category+item'` | все три |
 
-## Swiper Integration
+### isPageOwner — автоматическое определение
 
-Using component API:
+Только один оркестратор на странице должен вызывать `buildPageVars`. Определяется автоматически:
 
 ```js
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Zoom, Autoplay } from 'swiper/modules'
+const isPageOwner = route.name === blockId || route.params.slug === blockId
 ```
 
-### Requirements
+Если компонент `portfolio` вызван на маршруте `/portfolio` — он владелец страницы.  
+Если тот же компонент вызван на главной `/` — он не владелец, `buildPageVars` не перезаписывается.
 
-- Import CSS:
-    - `swiper/css`
-    - `swiper/css/zoom`
-    - or `swiper/swiper-bundle.css`
-- Wrap image in:
-
-```html
-<div class="swiper-zoom-container">
-```
-
-- Capture instance:
-
-```vue
-@swiper="onSwiper"
-```
-
-- Use:
+### Защита от повторных запросов
 
 ```js
-swiper.zoom.in()
-swiper.zoom.out()
+// На уровне модуля — один Map на всё приложение
+const _activeKeys = new Map()
+
+const fetchKey = `${blockId}::${slug}::${uiStore.scope}`
+if (_activeKeys.get(blockId) === fetchKey) return
+_activeKeys.set(blockId, fetchKey)
 ```
 
-Zoom should work on click.
+Решает: повторный вызов при навигации назад, двойной mount (старый + новый инстанс компонента).
 
----
-
-## Modal (DialogModal)
-
-Currently uses functional API:
+### fetchNavigation — не блокирует рендер
 
 ```js
-DialogModal(Component, options)
+// В load() — запускается параллельно, не await на входе
+const navPromise = navStore.nav.length === 0
+  ? navStore.fetchNavigation(uiStore.scope)
+  : Promise.resolve()
+
+// ... остальные fetch ...
+await navPromise  // ждём только если реально запускали
 ```
 
-Limitations:
-- Dynamic header update after open is problematic.
-
-Recommended approaches:
-- Switch to component-based modal (`DialogModalBox`)
-- Or observe `calcStore.isOverlayReady` inside `OverlayCat.vue`
-- Otherwise modal must be reopened to refresh header
+Навигация не блокирует `beforeEach` — страница рендерится сразу, navbar появляется когда данные пришли.
 
 ---
 
-# Environment & Production Setup
+## Роутер
 
-## Environment
+Файл: `src/router/index.js`
 
-`.env.local` → must be in `.gitignore`
+### Структура маршрутов
 
 ```
-VITE_API_URL=https://api.example.com
+/:scope([^/]+)?          ← scope = языковой/раздельный префикс (ru, en, пусто)
+  /                      → Home.vue
+  /services              → Services.vue
+  /direction/:slug       → Direction.vue
+  /group/:slug           → Group.vue
+  /portfolio             → Portfolio.vue
+  /blocks/item/:slug     → blocks/Item.vue
+  /pages/:slug           → pages/Page.vue
 ```
 
-## Production Options
+### beforeEach — только критичное
 
-### Option 1 — Nginx Reverse Proxy
-```
-/api → https://api.ws-pro.ru
+```js
+router.beforeEach((to, from, next) => {
+  const newScope = to.params.scope ?? ''
+  if (newScope !== uiStore.scope) uiStore.setScope(newScope)
+  // fetchNavigation — НЕ здесь, НЕ с await
+  uiStore.startGlobalLoading()
+  next()
+})
 ```
 
-### Option 2 — Laravel CORS
-Proper CORS configuration in backend.
+**Правило:** `beforeEach` не делает async-запросы к API. Только синхронное обновление состояния.
 
 ---
 
-# Git Policy
+## Система scope (ранее section)
 
-- `.env.local` — ignored
-- Decide strategy for `package-lock.json`:
-    - Keep in repo (recommended for deterministic builds)
-    - Or reset locally if necessary
+**Терминология (зафиксировано):**
+
+| Понятие | Переменная | Где |
+|---|---|---|
+| URL-префикс раздела | `scope` | `uiStore.scope`, `route.params.scope` |
+| Язык интерфейса | `locale` | `i18n.locale`, `uiStore.locale` |
+| Конфиг раздела | `currentScope` | getter uiStore |
+
+Источник конфига: `src/config/sections.js` — `SECTIONS_CONFIG`, `DEFAULT_SCOPE`, `VALID_SCOPES`.
 
 ---
 
-# Development Setup
+## AppLink
 
-```bash
-npm install
-npm run dev
+Файл: `src/components/AppLink.vue`
+
+Обёртка над `RouterLink`. Автоматически прeпендирует scope к пути.
+
+```js
+// Строка → /${scope}${cleanPath}
+<AppLink to="/portfolio">Портфолио</AppLink>
+
+// Объект → именованный маршрут (scope через :scope param роутера)
+<AppLink :to="{ name: 'blocks_item', params: { slug: item.slug } }">
 ```
 
-Production build:
+**Проблема:** текущая версия принимает только `String`. Поддержка объекта — в очереди задач.
 
-```bash
-npm run build
+---
+
+## Данные: формат API
+
+### Навигация
+
+Endpoint: `${scope}/blocks/blocks/navigation`  
+Рабочие данные: `data.content[]` — массив `{ anchor, link, sort }`
+
+Ссылки в `link` могут содержать scope-префикс (`ru/portfolio`).  
+**Требование к API:** возвращать scope-агностичные пути (`/portfolio`).  
+До исправления — нормализация на frontend через `normalizeLink(rawLink, VALID_SCOPES)`.
+
+### Блоки категорий
+
+Данные работ портфолио: `category.sections.works` — Object `{ slug: properties }`.
+
+Нормализация в геттере `filteredItems`:
+```js
+Object.entries(works).map(([slug, data]) => ({ slug, ...data }))
 ```
 
----
-
-# Task Checklist
-
-## Swiper
-- [ ] Proper CSS imports
-- [ ] Zoom module connected
-- [ ] `.swiper-zoom-container` implemented
-- [ ] Swiper instance stored via `@swiper`
-- [ ] Zoom in/out works on click
-
-## Routing
-- [ ] `watch(route.params.slug)` implemented
-- [ ] Reactive store update on slug change
-- [ ] No full reload required
-
-## Store
-- [ ] `fetchStructure()` uses `response.data.data`
-- [ ] `fetchBlockItem()` uses `response.data.data`
-- [ ] Loading flags properly handled:
-    - [ ] `isStrReady`
-    - [ ] `isItemReady`
-    - [ ] `isOverlayReady`
-
-## Modal
-- [ ] Decide: functional vs component modal
-- [ ] Dynamic header update implemented
-- [ ] Overlay content reacts to store state
-
-## Production
-- [ ] VITE_API_URL configured
-- [ ] Reverse proxy OR CORS configured
-- [ ] Environment variables validated
-
-## Git
-- [ ] `.env.local` ignored
-- [ ] Lockfile policy defined
+`workclass` — массив `[{ key, label }]`, не объект.
 
 ---
 
-If needed, this document can be extended into ARCHITECTURE.md for deeper technical documentation.
+## Глобальный loading — счётчик
 
+```js
+// uiStore
+state: { _loadingCount: 0 },
+getters: {
+  isGlobalLoading: (s) => s._loadingCount > 0
+},
+actions: {
+  startGlobalLoading() { this._loadingCount++ },
+  stopGlobalLoading()  { this._loadingCount = Math.max(0, this._loadingCount - 1) }
+}
+```
+
+Любой store вызывает `start/stop` — индикатор корректен при параллельных запросах.  
+Зависимость `useBlockStore('main')` в uiStore — удалена.
+
+---
+
+## Вектор развития: Server-Driven UI
+
+Текущее состояние — статичная компоновка страниц во View-файлах.  
+Целевое состояние — API возвращает конфигурацию страницы:
+
+```json
+{
+  "meta": { "title": "Главная", "breadcrumbs": [] },
+  "blocks": [
+    { "type": "hero",      "key": "hero",      "scheme": "category", "fetch_slug": "main" },
+    { "type": "portfolio", "key": "portfolio",  "scheme": "category", "fetch_slug": "portfolio" }
+  ]
+}
+```
+
+Frontend: единый `PageRenderer.vue` + реестр блоков `src/registry/blocks.js`.  
+Новый тип → одна строка в реестре, компоненты не меняются.
+
+---
+
+## Открытые задачи (индекс)
+
+| Приоритет | Задача |
+|---|---|
+| 🔴 | Переименование `section → scope` во всех файлах (механическое, но важно до расширения) |
+| 🔴 | `AppLink` — поддержка объекта `{ name, params }` |
+| 🟡 | `buildPageVars` — защита от `null` при неполных схемах (item.slug краш) |
+| 🟡 | API: scope-агностичные ссылки в navigation endpoint |
+| 🟡 | Реализация `PageRenderer` + `pageStore` (SDUI первый шаг) |
+| 🟡 | `updatePageVars` / `buildPageVars` — доработка под все схемы вложенности |
+| 🟢 | `navigationStore.setLoading` — перенести из getters в actions |
+| 🟢 | `useBlockStore('main')` в uiStore — определить назначение или удалить |
+| 🟢 | Хардкод фильтров в `portfolio/index.vue` — получать workclass-справочник из API |
+| 🟢 | `AppLink` адаптация для всех частных случаев маршрутизации |
+| 🟢 | i18n ↔ scope синхронизация — отдельная итерация |
+| 🟢 | Vue Router warn: `/:pathMatch` param mismatch — исправить определение catch-all маршрута |
+
+---
+
+## Компоненты — примеры эксплуатации
+
+### Оркестратор страницы (isPageOwner = true автоматически)
+
+```js
+// src/components/blocks/portfolio/index.vue
+const { blockStore } = usePageOrchestrator('portfolio', 'category', {
+  fetch: (route) => route.params.slug ?? route.name
+})
+```
+
+### Дочерний блок (на главной, не владеет page context)
+
+```js
+// тот же компонент, вызван внутри home
+const { blockStore } = usePageOrchestrator('portfolio', 'category', {
+  fetch: () => 'portfolio'
+})
+// route.name === 'main' !== 'portfolio' → isPageOwner = false → buildPageVars не вызывается
+```
+
+### Services — structure + category
+
+```js
+// src/components/blocks/services/direction/index.vue
+const { blockStore, navigationStore } = usePageOrchestrator('direction', 'structure+category', {
+  fetch: (route) => route.params.slug
+})
+```

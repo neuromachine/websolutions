@@ -3,7 +3,7 @@ import { describe, it, expect , vi} from 'vitest'
 import Home from '@/views/Home.vue'
 import { mountWithPlugins } from '~tests/utils/mountWithPlugins'  // ← новый импорт
 import { useUiStore } from '@/stores/uiStore'
-import { useDataStore} from '@/stores/dataStore.js';
+
 
 
 describe('Home view', () => {
@@ -29,8 +29,16 @@ describe('Home view', () => {
 
     it('reaction to isLoading from uiStore', async () => {
         const wrapper = await mountWithPlugins(Home, {}, '/')
+        const uiStore = useUiStore()
 
-        expect(wrapper.find('.preloader').exists()).toBe(true)
-        // пока не трогаем сторы — просто проверяем, что компонент смонтировался
+        // By default global loading is false, so preloader-wrapper is not in DOM due to v-if
+        expect(wrapper.find('.preloader-wrapper').exists()).toBe(false)
+
+        // Turn on loading (actions are stubbed by createTestingPinia, mutate state directly)
+        uiStore._loadingCount = 1
+        await wrapper.vm.$nextTick()
+
+        // Now preloader should be visible
+        expect(wrapper.find('.preloader-wrapper').exists()).toBe(true)
     })
 })

@@ -1,6 +1,9 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useUiStore } from '@/stores/uiStore';
+import Preloader from '@/components/blocks/general/ui/preloader.vue';
+
+const uiStore = useUiStore();
 
 import $ from 'jquery'
 
@@ -9,16 +12,18 @@ const { t } = useI18n()
 
 import ResponsiveMenu from '@/components/ResponsiveMenu.vue';
 import Navbar from '@/components/navbar.vue';
+import '@/assets/styles/navbar.css';
 import ScopeSwitch from "@/components/ScopeSwitch.vue";
 
-import WSpro from "@/components/WSpro.vue";
+// import WSpro from "@/components/WSpro.vue";
+import logo from "@/components/blocks/general/ui/logo.vue"
 
 defineProps({
   isMain: Boolean,
   isNavi: Boolean
 })
 
-const uiStore = useUiStore();
+
 
 const isOpen = uiStore.isOpen
 const toggleMenu = () => {
@@ -46,23 +51,17 @@ const openTidioChat = () => {
 </script>
 
 <template>
-  <!-- Start Preloader Section -->
-  <div class="preloader" :class="{ 'preloader-deactivate': !uiStore.isGlobalLoading }">
-    <div class="loader">
-      <div class="shadow"></div>
-      <div class="box"></div>
-    </div>
-  </div>
-  <!-- End Preloader Section -->
+
+  <Preloader />
 
   <!-- Start Navbar Section -->
   <div  v-if="uiStore.uiMainVars.header?.navbar === true" class="navbar-section">
-    <div class="techvio-nav" :class="{ 'index-navber': isMain }">
+    <div class="wspro-nav" :class="{ 'index-navbar': isMain }">
       <div class="container">
-        <nav class="navbar navbar-expand-md navbar-light">
+        <nav class="navbar navbar-expand-md">
           <div class="nav_wrap">
             <AppLink :to="'/'" class="ws_logo_link">
-              <WSpro />
+              <logo context="header" />
             </AppLink>
             <!-- Иконка-бургер -->
             <button v-if="uiStore.uiMainVars.header.menu" class="burger-button" @click="toggleMenu">
@@ -103,8 +102,7 @@ const openTidioChat = () => {
 .navbar .mean-menu { justify-content: right;}
 .cta_wrap { margin: 0 0 0 0;}
 .cta_wrap .btn { margin-top: 0 !important;}
-.ws_logo_link { border-radius: 5px; display: block; overflow: hidden; }
-.index-navber .index-navber {}
+.ws_logo_link { }
 .navbar-section {
   /* background: #FFF; */
 }

@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
   plugins: [
     vue(),
     vueDevTools(),
-    //tailwindcss({ config: './tailwind.config.js' }),
+    tailwindcss({ config: './tailwind.config.js' }),
       createHtmlPlugin({
           inject: {
               data: {

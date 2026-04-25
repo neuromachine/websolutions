@@ -1,5 +1,4 @@
 <script setup>
-// import debug from "@/components/Debug.vue";
 import Header from "@/components/Header.vue";
 // import CPheader from "@/components/CPheader.vue";
 import CPimg from "@/components/CPimg.vue";

@@ -26,7 +26,7 @@ function createBlockStoreDefinition(id) {
             isOverlayReady: (s) => !s.OverlayLoading && s.overlay !== null,
             isHaveItems(state) {
                 return !!(
-                    state.category?.blocks?.[0]?.items &&
+                    state.category?.blocks?.[0]?.items && // TODO: legacy - структура изменилась
                     Object.keys(state.category.blocks[0].items).length
                 )
             },
@@ -34,6 +34,12 @@ function createBlockStoreDefinition(id) {
                 return !!(
                     state.category?.children &&
                     Object.keys(state.category.children).length
+                )
+            },
+            isHaveSubCategories(state) {
+                return !!(
+                    state.category?.subcategories &&
+                    Object.keys(state.category.subcategories).length
                 )
             },
             // TODO: restructure the data format and filtering principle

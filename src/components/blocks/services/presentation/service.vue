@@ -54,7 +54,8 @@ const props = defineProps({
       </ul>
       <div class="b_wrap">
 <!--        <RouterLink class="know_price" :to="{ path: '/blocks/item/' + props.key }">Узнать точную цену</RouterLink>-->
-        <RouterLink class="know_price" to="/pages/contacts">Узнать точную цену</RouterLink>
+<!--        <RouterLink class="know_price" to="/pages/contacts">Узнать точную цену</RouterLink>-->
+        <AppLink class="know_price" :to="'/pages/contacts'">{{ t('pages.info.contacts') }}</AppLink>
       </div>
     </div>
   </div>

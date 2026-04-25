@@ -17,7 +17,7 @@ const { blockStore, navigationStore } = usePageOrchestrator('direction', 'struct
       </div>
     </div>
     <div v-else class="container"><div class="row row_load">Loading Block</div></div>
-    <!--
+    <!---->
     <div  v-if=navigationStore.isStrReady class="container">
       <div class="row">
         <h2>{{navigationStore.structure.name}}</h2>
@@ -36,7 +36,7 @@ const { blockStore, navigationStore } = usePageOrchestrator('direction', 'struct
       </div>
     </div>
     <div v-else class="container"><div class="row row_load">Loading Structure</div></div>
-    -->
+
   </section>
   <!-- End Services Two Section -->
 </template>
