@@ -1,5 +1,6 @@
 <script setup>
 import { ref , computed} from 'vue'
+import icon from '@/components/blocks/general/micro/icon/icon.vue'
 import { useGsapOrchestrator } from '@/composables/useGsapOrchestrator'
 import { getServicesAnimations } from './services.animations.js'
 import { useI18n } from 'vue-i18n'
@@ -35,6 +36,8 @@ useGsapOrchestrator(servicesContent, animConfig)
       <div class="row align-items-stretch" ref="servicesContent">
         <div v-for="(item, index) in props.list.items" class="d-flex col-lg-4 col-md-6">
           <div class="single-services-two-item">
+            <icon />
+            <!--
             <div class="services-icon-box">
               <div class="default-icon">
                 <img :src="item.icon" alt="svg icon">
@@ -43,6 +46,7 @@ useGsapOrchestrator(servicesContent, animConfig)
                 <img :src="item.icon_h" alt="svg icon">
               </div>
             </div>
+            -->
             <div class="services-two-content">
               <h3>{{item.title}}</h3>
               <p>{{item.descr}}</p>
