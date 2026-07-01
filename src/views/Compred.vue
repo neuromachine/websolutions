@@ -6,6 +6,7 @@ import CPicon from "@/components/CPicon.vue";
 import WSteam from "@/components/WSteam.vue";
 import Portfolio from "@/components/blocks/portfolio/index.vue"
 import Footer from "@/components/Footer.vue";
+import Calc from "@/components/Calc.vue";
 import content from "@/components/blocks/services/presentation/content.vue"
 import Benefits from "@/components/blocks/compred/presentation/benefits.vue";
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
@@ -98,6 +99,8 @@ const openTidioChat = () => {
       </div>
     </section>
 -->
+
+    <Calc />
 
     <Benefits v-if="blockStore.item.properties.benefits" :data = "blockStore.item.properties.benefits" />
 
@@ -350,6 +353,7 @@ const openTidioChat = () => {
 
 
     <Portfolio />
+
 
   </div>
   <div v-else class="container">
