@@ -1,65 +1,39 @@
-# Stage 14 — Frontend Light Refactor Package
+# Stage 16 — Frontend Compred / Offers Execution Package
 
-## Purpose
+This package contains three independent frontend execution tasks based on the completed FE-003 report.
 
-This package starts **Stage 2 — Light frontend refactor for API/store adapter readiness**.
-
-It must be applied only after `TASK-FE-000 — Frontend Agent Rules Cleanup` has confirmed:
-
-- the frontend repository has clear two-repository boundaries;
-- the frontend agent must not edit backend files;
-- `npm run build` is forbidden by default;
-- standard Laravel Resource endpoints use `response.data.data`;
-- the flat CP / `ind_offers` endpoint uses `response.data`.
-
-This package does **not** start `Compred.vue` refactoring and does **not** implement UI rendering for service offers or individual commercial proposals.
-
-## Contents
+## Included stages
 
 ```text
-.agents/
-  info/
-    FE-14-api-store-adapter-readiness.md
-
-  contracts/
-    FE-API-ADAPTER-CONTRACT.md
-
-  tasks/
-    TASK-FE-002-light-api-store-adapter-refactor.md
-    LAUNCH-FE-002-light-api-store-adapter-refactor.md
-
-  workflows/
-    RUN-FE-002.md
-
-  reports/
-    templates/
-      REPORT-FE-002-light-api-store-adapter-refactor.template.md
+FE-004 — Compred.vue practical refactor
+FE-005 — ind_offers rendering
+FE-006 — service offers rendering
 ```
 
-## Current task
+## Intended usage
 
-Run only:
+These tasks may be executed independently, but the recommended order is:
 
 ```text
-.agents/tasks/TASK-FE-002-light-api-store-adapter-refactor.md
+FE-004 -> FE-005 -> FE-006
 ```
 
-## Strict scope
+Reason:
 
-Allowed:
+```text
+FE-004 creates a cleaner Compred route/view/orchestrator boundary.
+FE-005 can then connect ind_offers to that boundary.
+FE-006 is a separate service category rendering track and does not depend on Compred directly.
+```
 
-- inspect frontend API/store layer;
-- add or refine tiny adapter helpers;
-- reduce repeated response unwrapping;
-- make standard-vs-flat endpoint handling explicit;
-- add minimal tests if the current testing setup supports it;
-- create a final report.
+## Hard boundaries
 
-Forbidden:
+```text
+- Frontend repo only.
+- Do not edit backend files.
+- Do not run npm run build.
+- Preserve legacy keys: acticle, items, hero, benefits, includes, reelsSystem, extras, important, childs, section.
+- Use npm run test:run for validation.
+- If backend/API contract is unclear, write a handoff note instead of guessing.
+```
 
-- do not edit backend repo;
-- do not run `npm run build`;
-- do not refactor `src/views/Compred.vue` yet;
-- do not implement `ind_offers` rendering yet;
-- do not activate service offer cards yet;
-- do not redesign stores, router, components, or Tailwind system.

@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { useUiStore } from '@/stores/uiStore';
 import api from "@/utils/api.js";
+import { unwrapResourceData } from "@/utils/apiResponse.js";
 import {normalizeLink} from "@/utils/normalizeLink.js";
 
 import {DEFAULT_SCOPE, VALID_SCOPES} from '@/config/scopes.js'
@@ -41,8 +42,8 @@ export const useNavigationStore = defineStore('navigationStore', {
             uiStore.startGlobalLoading()
             this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`${uiStore.scope}/blocks/categories/structure/${slug}`)
-                this.structure = data
+                const response = await api.get(`${uiStore.scope}/blocks/categories/structure/${slug}`)
+                this.structure = unwrapResourceData(response)
                 this.setReady(true)
             } catch (err) {
                 console.error('Ошибка fetchStructure:', err)
@@ -59,7 +60,8 @@ export const useNavigationStore = defineStore('navigationStore', {
 
             this.setLoading(true)
             try {
-                const { data: { data } } = await api.get(`${scope}/blocks/blocks/navigation`)
+                const response = await api.get(`${scope}/blocks/blocks/navigation`)
+                const data = unwrapResourceData(response)
                 const raw = data.content || []
                 // TODO: refactor data assignment
                 this.nav = raw.map(item => ({

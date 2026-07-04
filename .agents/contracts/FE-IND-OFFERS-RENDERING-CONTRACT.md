@@ -1,59 +1,83 @@
-# CONTRACT — Frontend Individual Commercial Proposals Rendering
+# FE Contract — ind_offers Rendering
 
-## Purpose
+## Scope
 
-Define frontend display expectations for `ind_offers` / individual commercial proposal pages.
+This contract governs frontend rendering of individual commercial proposals.
 
-## Endpoint
+## Backend source
 
-```text
-GET /api/{locale}/blocks/categories/offers/{proposalKey}
-```
-
-## Response shape
-
-```json
-{
-  "category": {},
-  "block": {},
-  "items": []
-}
-```
-
-## Section contract
+The flat endpoint is represented in frontend by:
 
 ```text
-hero        optional but preferred
-benefits    optional
-extras      optional
-important   optional
-items       preferred for packages/pricing
-essentials/includes optional common package details
-acticle     legacy final content key, preserve spelling
-content     optional intro text
-reelsSystem optional specialized content section
+blockStore.fetchFlatOffers(slug)
 ```
 
-## Rendering rules
+It unwraps a flat response:
 
 ```text
-- Render only sections that exist and contain usable data.
-- Do not rename `acticle` in API-facing code.
-- Keep section components independent so CP layouts can evolve.
-- Do not mix CP `items` with service offer `items` without a dedicated adapter.
-- Preserve flat response handling.
+response.data
 ```
 
-## Suggested component direction
+not:
 
 ```text
-CpPage.vue
-  CpHero.vue
-  CpBenefits.vue
-  CpPackages.vue
-  CpIncludes.vue
-  CpImportant.vue
-  CpArticle.vue
+response.data.data
 ```
 
-This is a suggested direction, not an immediate implementation requirement.
+## Expected flat payload family
+
+The frontend should expect a payload family shaped around:
+
+```text
+category
+block
+items
+```
+
+The exact nested proposal content may be inside:
+
+```text
+block.properties
+items[]
+items[].properties
+```
+
+The task must inspect the actual current payload before binding UI.
+
+## Rendering rule
+
+Do not pass the raw flat endpoint directly into presentation components unless the shape already matches their props.
+
+Preferred flow:
+
+```text
+fetchFlatOffers(slug)
+  -> flat payload
+    -> local normalizer
+      -> proposal view model
+        -> presentation props
+```
+
+## Protected legacy keys
+
+```text
+acticle
+items
+hero
+benefits
+includes
+reelsSystem
+extras
+important
+```
+
+## Explicit non-goals
+
+```text
+- Do not redesign all commercial proposal components.
+- Do not migrate route names unless explicitly required.
+- Do not rename backend keys.
+- Do not implement service offer cards here.
+- Do not build a calculator here.
+```
+

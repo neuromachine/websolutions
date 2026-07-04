@@ -1,51 +1,68 @@
-# CONTRACT — Frontend Service Offers Rendering
+# FE Contract — Service Offers Rendering
 
-## Purpose
+## Scope
 
-Define frontend display expectations for service offer packages.
+This contract applies to standard service/category pages, not individual commercial proposal pages.
+
+Likely files to inspect:
+
+```text
+src/components/blocks/services/index.vue
+src/components/blocks/services/list.vue
+src/components/blocks/services/presentation/group.vue
+src/components/blocks/services/presentation/service.vue
+src/components/blocks/services/presentation/subcategories.vue
+src/views/Services.vue
+src/views/ServiceView.vue
+src/views/Group.vue
+```
 
 ## Data family
 
-```yaml
-family: service_offers
-backend_source: storage/app/blocks/items/{categoryKey}.json
-seeder: ServicesBlockSeeder
-frontend_location: service category pages
-```
-
-## Expected package fields
+Standard service/category endpoints use Laravel Resource envelope:
 
 ```text
-key
-name/title
-descr/desc
-content
-price
-timeline/term
-features
+response.data.data
+```
+
+Payload areas to preserve:
+
+```text
+data.content
+data.subcategories
+data.blocks
+data.sections
+data.children
+subcategories[].childs
+```
+
+## Rendering goal
+
+Activate or repair rendering of service offer cards/packages without changing backend contract.
+
+A service offer is not the same as an individual commercial proposal (`ind_offers`).
+
+## Known formatting concerns
+
+Inspect before implementation:
+
+```text
 featured
-icon
-url
+price
+currency
+timeline
+features
+empty states
+localized labels
 ```
 
-## Rendering rules
+## Explicit non-goals
 
 ```text
-- Render package lists defensively.
-- Treat `featured` as recommendation marker, not as a guarantee that data is valid.
-- If multiple packages have featured=true, render safely and report data quality issue.
-- If no package has featured=true, render normally without badge.
-- Do not convert currencies.
-- Do not parse prices for calculator unless using a dedicated adapter.
-- Do not assume all locales have the same package completeness.
+- Do not refactor Compred.vue.
+- Do not connect fetchFlatOffers.
+- Do not implement ind_offers.
+- Do not rename childs/child/section/items.
+- Do not run npm run build.
 ```
 
-## Adapter recommendation
-
-Frontend may create a view-model mapper:
-
-```text
-mapServiceOfferPackage(raw) -> ServiceOfferCardVM
-```
-
-But this mapper must preserve access to the original raw object for debugging and future contract checks.

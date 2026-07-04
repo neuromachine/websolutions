@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { useUiStore } from '@/stores/uiStore'
 import api from '@/utils/api.js'
+import { unwrapResourceData, unwrapFlatData } from '@/utils/apiResponse.js'
 
 const _registry = new Map()
 
@@ -76,10 +77,10 @@ function createBlockStoreDefinition(id) {
                 uiStore.startGlobalLoading()
                 this.setLoading(true)
                 try {
-                    const { data: { data } } = await api.get(
+                    const response = await api.get(
                         `${uiStore.scope}/blocks/categories/${slug}`
                     )
-                    this.category = data
+                    this.category = unwrapResourceData(response)
                     this.catReady = true
                 } catch (err) {
                     console.error('fetchBlockCategory:', err)
@@ -95,10 +96,10 @@ function createBlockStoreDefinition(id) {
                 uiStore.startGlobalLoading()
                 this.setLoading(true)
                 try {
-                    const { data: { data } } = await api.get(
+                    const response = await api.get(
                         `${uiStore.scope}/blocks/items/${slug}`
                     )
-                    this.item = data
+                    this.item = unwrapResourceData(response)
                     this.itemReady = true
                 } catch (err) {
                     console.error('fetchBlockItem:', err)
@@ -110,11 +111,32 @@ function createBlockStoreDefinition(id) {
             async fetchOverlayCategory(slug) {
                 this.OverlayLoading = true
                 try {
-                    this.overlay = (await api.get(`${uiStore.scope}/blocks/categories/${slug}`)).data.data
+                    const response = await api.get(`${useUiStore().scope}/blocks/categories/${slug}`)
+                    this.overlay = unwrapResourceData(response)
                 } catch (err) {
                     console.error('fetchOverlayCategory:', err)
                 } finally {
                     this.OverlayLoading = false
+                }
+            },
+
+            async fetchFlatOffers(slug) {
+                const uiStore = useUiStore()
+                uiStore.startGlobalLoading()
+                this.setLoading(true)
+                try {
+                    const response = await api.get(
+                        `${uiStore.scope}/blocks/categories/offers/${slug}`
+                    )
+                    // Currently maps to item state, but could map to custom state.
+                    // This creates a safe path for future rendering work.
+                    this.item = unwrapFlatData(response)
+                    this.itemReady = true
+                } catch (err) {
+                    console.error('fetchFlatOffers:', err)
+                } finally {
+                    uiStore.stopGlobalLoading()
+                    this.setLoading(false)
                 }
             },
         },
