@@ -1,76 +1,65 @@
-# Stage 13 — Frontend Agent Rules Cleanup Package
+# Stage 14 — Frontend Light Refactor Package
 
 ## Purpose
 
-This package installs the organizational layer for the WebSolutions frontend repository.
+This package starts **Stage 2 — Light frontend refactor for API/store adapter readiness**.
 
-It explicitly defines:
+It must be applied only after `TASK-FE-000 — Frontend Agent Rules Cleanup` has confirmed:
 
-```text
-- frontend/backend repository boundaries;
-- frontend agent operating rules;
-- command policy forbidding npm run build by default;
-- API response envelope rules;
-- legacy key compatibility rules;
-- backend/frontend handoff workflow.
-```
+- the frontend repository has clear two-repository boundaries;
+- the frontend agent must not edit backend files;
+- `npm run build` is forbidden by default;
+- standard Laravel Resource endpoints use `response.data.data`;
+- the flat CP / `ind_offers` endpoint uses `response.data`.
 
-## Important
+This package does **not** start `Compred.vue` refactoring and does **not** implement UI rendering for service offers or individual commercial proposals.
 
-This package does not start Stage 2.
-
-It does not refactor:
+## Contents
 
 ```text
-src/**
-Compred.vue
-stores
-router
-components
-service offers
-ind_offers rendering
-calculator data
+.agents/
+  info/
+    FE-14-api-store-adapter-readiness.md
+
+  contracts/
+    FE-API-ADAPTER-CONTRACT.md
+
+  tasks/
+    TASK-FE-002-light-api-store-adapter-refactor.md
+    LAUNCH-FE-002-light-api-store-adapter-refactor.md
+
+  workflows/
+    RUN-FE-002.md
+
+  reports/
+    templates/
+      REPORT-FE-002-light-api-store-adapter-refactor.template.md
 ```
 
-## Install
+## Current task
 
-Unpack/copy into the frontend repository root:
+Run only:
 
 ```text
-C:\OSPanel\home\websolutions
+.agents/tasks/TASK-FE-002-light-api-store-adapter-refactor.md
 ```
 
-Expected files:
+## Strict scope
 
-```text
-AGENTS.md
-.agents/README.md
-.agents/agents.md
-.agents/info/FE-00-two-repository-operating-model.md
-.agents/workflows/FRONTEND-COMMAND-POLICY.md
-.agents/workflows/TWO-REPO-HANDOFF-WORKFLOW.md
-.agents/tasks/TASK-FE-000-agent-rules-cleanup.md
-.agents/tasks/LAUNCH-FE-000-agent-rules-cleanup.md
-.agents/reports/templates/REPORT-FE-000-agent-rules-cleanup.template.md
-```
+Allowed:
 
-## Launch
+- inspect frontend API/store layer;
+- add or refine tiny adapter helpers;
+- reduce repeated response unwrapping;
+- make standard-vs-flat endpoint handling explicit;
+- add minimal tests if the current testing setup supports it;
+- create a final report.
 
-After placing files:
+Forbidden:
 
-```powershell
-cd C:\OSPanel\home\websolutions
-Get-Content .agents\tasks\LAUNCH-FE-000-agent-rules-cleanup.md -Raw | Set-Clipboard
-```
-
-Paste into Antigravity as the task.
-
-## Expected Result
-
-Only report file should be created:
-
-```text
-.agents/reports/REPORT-FE-000-agent-rules-cleanup.md
-```
-
-No source code changes should happen.
+- do not edit backend repo;
+- do not run `npm run build`;
+- do not refactor `src/views/Compred.vue` yet;
+- do not implement `ind_offers` rendering yet;
+- do not activate service offer cards yet;
+- do not redesign stores, router, components, or Tailwind system.
