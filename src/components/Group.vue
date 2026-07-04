@@ -9,6 +9,7 @@ import { ref } from 'vue';
 import AppModal from '@/components/ui/AppModal.vue';
 import { useI18n } from 'vue-i18n';
 import QuoteCartModal from '@/components/calculator/QuoteCartModal.vue';
+import QuoteQuizModal from '@/components/forms/QuoteQuizModal.vue';
 import { useQuoteCartStore } from '@/stores/quoteCartStore';
 import { CalculatorDataAdapter } from '@/adapters/CalculatorDataAdapter';
 
@@ -22,6 +23,7 @@ const cartStore = useQuoteCartStore();
 const selectedOffer = ref(null);
 const isLoadingArticle = ref(false);
 const articleContent = ref(null);
+const isQuizOpen = ref(false);
 
 const handleOpenModal = async (offer) => {
   selectedOffer.value = offer;
@@ -47,10 +49,8 @@ const handleAddToCart = () => {
 };
 
 const handleCheckout = () => {
-  // In MVP, we can redirect to a contact form or pop up an alert
   cartStore.toggleCart(false);
-  // Using native alert for MVP as form route may not be fully connected
-  alert('Имитация: Переход к форме заявки (Proceed to Quote Request Form)');
+  isQuizOpen.value = true;
 };
 </script>
 
@@ -131,5 +131,7 @@ const handleCheckout = () => {
   </AppModal>
 
   <QuoteCartModal @checkout="handleCheckout" />
+  
+  <QuoteQuizModal :is-open="isQuizOpen" @close="isQuizOpen = false" />
 
 </template>
