@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{c as a,o as n,a as o,e as r}from"./index-Bgb_wcTe.js";const c={};function s(f,e){return n(),a("section",null,[...e[0]||(e[0]=[o("h1",null,[r("Page - Not Found "),o("a",{href:"/public"},"Go to main page")],-1)])])}const d=t(c,[["render",s]]);export{d as default};

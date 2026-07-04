@@ -14,7 +14,9 @@
       </div>
     </div>
     <div class="ui-card__body">
-      <slot name="text"></slot>
+      <slot>
+        <slot name="text"></slot>
+      </slot>
     </div>
   </div>
 </template>

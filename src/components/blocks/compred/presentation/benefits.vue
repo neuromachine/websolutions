@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import SectionHeader from "@/components/blocks/general/ui/SectionHeader.vue";
 import Card from "@/components/blocks/general/ui/card.vue";
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
+
 const props = defineProps({
   data: {
     type: Object,
@@ -11,28 +12,34 @@ const props = defineProps({
 })
 
 const colsClass = computed(() => {
-  const count = props.data.items.length
+  const items = props.data?.items
+  if (!Array.isArray(items) || items.length === 0) {
+    return 'row-cols-1'
+  }
 
-  if (count <= 2) return 'row-cols-lg-2'
-  if (count === 3) return 'row-cols-lg-3'
-  if (count === 4) return 'row-cols-lg-4'
-  if (count === 5) return 'row-cols-lg-5'
-  if (count <= 6) return 'row-cols-lg-3'
+  const count = items.length
 
-  return 'row-cols-lg-4'
+  if (count === 1) return 'row-cols-1 row-cols-lg-1'
+  if (count === 2) return 'row-cols-1 row-cols-md-2 row-cols-lg-2'
+  if (count === 3) return 'row-cols-1 row-cols-md-2 row-cols-lg-3'
+  if (count === 4) return 'row-cols-1 row-cols-md-2 row-cols-lg-4'
+  if (count === 5) return 'row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center'
+  if (count === 6) return 'row-cols-1 row-cols-md-2 row-cols-lg-3'
+  
+  return 'row-cols-1 row-cols-md-2 row-cols-lg-4'
 })
 </script>
 
 <template>
   <!-- presentation component start -->
-  <section class="ui-cards">
+  <section v-if="props.data?.items?.length" class="ui-cards">
     <div class="container">
       <SectionHeader class="text-center">
-        <template #subtitle>{{ props.data.pretitle }}</template>
-        <template #title>{{ props.data.title }}</template>
+        <template #subtitle>{{ props.data?.pretitle }}</template>
+        <template #title>{{ props.data?.title }}</template>
       </SectionHeader>
-      <div class="row row-cols-2 align-items-stretch" :class="colsClass">
-        <div class="d-flex col"  v-for="item in props.data.items" :key="item.title">
+      <div class="row align-items-stretch" :class="colsClass">
+        <div class="d-flex col" v-for="item in props.data.items" :key="item.title">
           <Card class="mb-4">
             <template #icon>
               <IconOffer :index="item.index" :properties="item" />
@@ -40,7 +47,7 @@ const colsClass = computed(() => {
             <template #title>
               {{ item.title }}
             </template>
-            <template #text>
+            <template #default>
               {{ item.text }}
             </template>
           </Card>
