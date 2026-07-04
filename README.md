@@ -1,39 +1,58 @@
-# Stage 16 — Frontend Compred / Offers Execution Package
+# Stage 17 — Frontend Next Tasks Roadmap Package
 
-This package contains three independent frontend execution tasks based on the completed FE-003 report.
+This package contains a grouped backlog of future frontend-oriented agent tasks for the WebSolutions frontend repository.
 
-## Included stages
+It does not replace the existing Stage 16 package (`FE-004/005/006`).
+It extends the frontend roadmap after the current Compred / ind_offers / service offers work has been reviewed.
 
-```text
-FE-004 — Compred.vue practical refactor
-FE-005 — ind_offers rendering
-FE-006 — service offers rendering
-```
-
-## Intended usage
-
-These tasks may be executed independently, but the recommended order is:
+## Groups
 
 ```text
-FE-004 -> FE-005 -> FE-006
+Group A — Compred dynamic block rendering architecture
+Group B — Scroll animations for portfolio and home blocks
+Group C — Services rendering adaptation
+Group D — Offer detail modal + backend handoff
+Group E — Configurator / calculator / quote quiz MVP
 ```
 
-Reason:
+## Recommended execution order
 
 ```text
-FE-004 creates a cleaner Compred route/view/orchestrator boundary.
-FE-005 can then connect ind_offers to that boundary.
-FE-006 is a separate service category rendering track and does not depend on Compred directly.
+Prerequisite:
+  FE-004 — Compred practical refactor
+  FE-005 — ind_offers rendering
+  FE-006 — service offers rendering
+
+Then:
+  FE-007 — Compred dynamic section renderer architecture
+  FE-008 — Portfolio List scroll animation
+  FE-009 — Home Workflow / Portfolio scroll animation
+  FE-010 — Services rendering adaptation and i18n hardening
+  FE-011 — Offer detail modal and backend article handoff
+  BE-HANDOFF-001 — Backend article/detail endpoint request
+  FE-012 — Calculator/configurator MVP
+  FE-013 — Quote quiz form upgrade
 ```
 
-## Hard boundaries
+## Command policy
 
-```text
-- Frontend repo only.
-- Do not edit backend files.
-- Do not run npm run build.
-- Preserve legacy keys: acticle, items, hero, benefits, includes, reelsSystem, extras, important, childs, section.
-- Use npm run test:run for validation.
-- If backend/API contract is unclear, write a handoff note instead of guessing.
+Allowed by default:
+
+```bash
+npm run test:run
 ```
+
+Forbidden unless explicitly requested by the human operator:
+
+```bash
+npm run build
+```
+
+Production build is handled by CI/CD. Local build can pollute git status and is not required for these agent tasks.
+
+## Repository boundary
+
+These tasks are primarily for the frontend repository.
+
+Backend needs must be expressed as handoff documents, not implemented from the frontend repo.
 
