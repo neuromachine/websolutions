@@ -4,6 +4,8 @@ import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
 
 const { t } = useI18n();
 
+const emit = defineEmits(['open-modal']);
+
 const props = defineProps({
   slug: {
     type: String,
@@ -58,7 +60,9 @@ const props = defineProps({
       <div class="b_wrap">
 <!--        <RouterLink class="know_price" :to="{ path: '/blocks/item/' + props.key }">Узнать точную цену</RouterLink>-->
 <!--        <RouterLink class="know_price" to="/pages/contacts">Узнать точную цену</RouterLink>-->
-        <AppLink class="know_price" :to="'/pages/contacts'">{{ t('pages.info.contacts') }}</AppLink>
+        <button class="know_price" @click="emit('open-modal', { slug: props.slug, name: props.name, properties: props.properties, index: props.index, owner: props.owner })">
+          {{ t('cp.packages.button') }}
+        </button>
       </div>
     </div>
   </div>
@@ -88,6 +92,15 @@ const props = defineProps({
   .service .conditions { padding: 0 0 0 16px; color: #5F5F5F;}
     .service .conditions li { margin: 4px 0 4px 0; list-style: disc;}
   .service .b_wrap {  display: flex; margin: 16px 0 0 0;}
-  .service .know_price { color: #00D9EA; border: solid 1px #00D9EA; border-radius: 4px; padding: 18px 14px;}
+  .service .know_price { 
+    color: #00D9EA; 
+    border: solid 1px #00D9EA; 
+    border-radius: 4px; 
+    padding: 18px 14px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+  }
   .service .know_price:hover { background-color: #00D9EA; color: #FFF; }
 </style>

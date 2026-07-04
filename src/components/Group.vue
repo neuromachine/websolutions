@@ -5,10 +5,34 @@ import service from "@/components/blocks/services/presentation/service.vue"
 import content from "@/components/blocks/services/presentation/content.vue"
 
 import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
+import { ref } from 'vue';
+import AppModal from '@/components/ui/AppModal.vue';
+import { useI18n } from 'vue-i18n';
+
 // const { blockStore, navigationStore } = usePageOrchestrator('group', 'structure+category', {
 const { blockStore } = usePageOrchestrator('group', 'category', {
   fetch: (route) => route.params.slug
 })
+
+const { t } = useI18n();
+const selectedOffer = ref(null);
+const isLoadingArticle = ref(false);
+const articleContent = ref(null);
+
+const handleOpenModal = async (offer) => {
+  selectedOffer.value = offer;
+  articleContent.value = null;
+  // TODO: Handoff needed - Fetch article content from backend when endpoint is available
+  // isLoadingArticle.value = true;
+  // try {
+  //   const res = await api.get(`/api/${route.params.scope}/blocks/items/${offer.slug}/article`);
+  //   articleContent.value = res.data.content;
+  // } catch (e) {
+  //   console.error('Failed to load article detail');
+  // } finally {
+  //   isLoadingArticle.value = false;
+  // }
+};
 </script>
 
 <template>
@@ -43,6 +67,7 @@ const { blockStore } = usePageOrchestrator('group', 'category', {
                   :index="index"
                   :owner="blockStore.category"
                   :properties="item.properties"
+                  @open-modal="handleOpenModal"
             />
           </div>
         </template>
@@ -51,5 +76,39 @@ const { blockStore } = usePageOrchestrator('group', 'category', {
     </div>
     <div v-else class="container"><div class="row row_load">Loading Category</div></div>
   </section>
+
+  <AppModal v-if="selectedOffer" @close="selectedOffer = null">
+    <template #header>
+      <h3 style="margin: 0; font-size: 1.25rem;">{{ selectedOffer.name }}</h3>
+    </template>
+    <template #default>
+      <div class="offer-summary">
+        <p style="font-size: 14px; color: #5F5F5F; margin-bottom: 16px;">{{ selectedOffer.properties.descr }}</p>
+        
+        <div v-if="selectedOffer.properties.price" style="margin-bottom: 16px; font-weight: bold;">
+          {{ t('cp.packages.budget') }} {{ Array.isArray(selectedOffer.properties.price) ? selectedOffer.properties.price.join(' - ') : selectedOffer.properties.price }} {{ selectedOffer.properties.currency || t('cp.packages.currency') }}
+        </div>
+        
+        <ul class="conditions" v-if="selectedOffer.properties.features && selectedOffer.properties.features.length" style="padding-left: 20px; color: #5F5F5F;">
+          <li v-for="feat in selectedOffer.properties.features" :key="feat" style="list-style: disc; margin: 4px 0;">{{ feat }}</li>
+        </ul>
+        
+        <div v-if="isLoadingArticle" style="margin-top: 20px; color: #00D9EA;">
+          Loading details...
+        </div>
+        <div v-else-if="articleContent" v-html="articleContent" style="margin-top: 20px;"></div>
+      </div>
+    </template>
+    <template #footer>
+      <div style="display: flex; justify-content: flex-end;">
+        <button style="padding: 10px 20px; background: #00D9EA; border: none; border-radius: 4px; cursor: pointer; color: #FFF; font-weight: bold; transition: opacity 0.2s ease;"
+                onmouseover="this.style.opacity='0.8'"
+                onmouseout="this.style.opacity='1'"
+                @click="selectedOffer = null">
+          {{ t('form.send') }}
+        </button>
+      </div>
+    </template>
+  </AppModal>
 
 </template>

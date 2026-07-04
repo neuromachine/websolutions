@@ -1,67 +1,32 @@
-# HANDOFF-BE-001 — Offer Article / Detail Endpoint Request
+# HANDOFF-BE-001 — Offer Article Detail Endpoint
 
-## Source
+## Purpose
+The frontend has successfully introduced an interactive modal (`AppModal.vue`) which opens whenever a user clicks "Discuss plan" on a service offer card (e.g., inside `/services/direction/group`).
 
-Frontend task:
+Currently, the modal safely populates itself with local fallback data already present inside the parent category payload (`description`, `price`, `timeline`, `features`). 
 
-```text
-TASK-FE-011 — Offer Detail Modal and Backend Article Handoff
-```
+However, to provide deeper context (such as long-form explanations, expanded terms, or HTML layouts detailing exact deliverables) **without bloat**, the frontend needs a lightweight API endpoint to fetch detailed article HTML dynamically strictly when the modal is opened.
 
-## Reason
+## Requested Endpoint
 
-Frontend needs a stable way to load article/detail content when a user clicks on an offer/package/service card.
+**HTTP Method:** `GET`
+**URI:** `/api/{locale}/blocks/items/{offerKey}/article`
 
-The current frontend can open a modal with known summary data, but deeper article/detail content should come from backend data, not be invented locally.
+*(Note: If a flatter, more appropriate architecture like `/api/{locale}/offers/{offerKey}/detail` fits the backend routing schema better, feel free to use it. The frontend API wrapper easily adapts).*
 
-## Requested backend capability
+## Expected Payload Shape
 
-Provide or confirm an endpoint for offer detail/article content.
-
-Possible endpoint shape:
-
-```text
-GET /api/{locale}/blocks/items/{offerKey}/article
-```
-
-or:
-
-```text
-GET /api/{locale}/blocks/categories/offers/{proposalKey}/items/{offerKey}
-```
-
-Backend team may choose the better canonical route.
-
-## Desired response shape
+We anticipate standard Laravel Resource envelope wrapping:
 
 ```json
 {
-  "key": "offer-key",
-  "title": "...",
-  "descr": "...",
-  "content": "<p>...</p>",
-  "acticle": "<p>...</p>",
-  "metadata": {},
-  "related": []
+  "data": {
+    "key": "offer_slug",
+    "content": "<h1>Detailed breakdown</h1><p>Here is what you get...</p>"
+  }
 }
 ```
 
-## Compatibility rules
-
-```text
-- preserve legacy key acticle if it is the canonical content field
-- do not rename public keys without frontend handoff
-- support locale filtering
-- return safe empty/null fields if article is absent
-```
-
-## Frontend fallback
-
-Until backend confirms endpoint:
-
-```text
-- modal displays local summary/package data
-- no hardcoded article copy
-- report notes backend endpoint pending
-```
-
+## Considerations & Fallbacks
+- The frontend has currently implemented a `TODO: Handoff needed` commented-out block inside `src/components/Group.vue` at line `20` inside the `handleOpenModal` method.
+- Until this endpoint is delivered, the modal will peacefully render its immediate local summary data with zero console errors. Once the backend endpoint is ready, the frontend operator can simply uncomment the `axios/api.get()` fetch logic to instantly activate article hydration.
