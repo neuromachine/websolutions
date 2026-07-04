@@ -8,6 +8,9 @@ import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
 import { ref } from 'vue';
 import AppModal from '@/components/ui/AppModal.vue';
 import { useI18n } from 'vue-i18n';
+import QuoteCartModal from '@/components/calculator/QuoteCartModal.vue';
+import { useQuoteCartStore } from '@/stores/quoteCartStore';
+import { CalculatorDataAdapter } from '@/adapters/CalculatorDataAdapter';
 
 // const { blockStore, navigationStore } = usePageOrchestrator('group', 'structure+category', {
 const { blockStore } = usePageOrchestrator('group', 'category', {
@@ -15,6 +18,7 @@ const { blockStore } = usePageOrchestrator('group', 'category', {
 })
 
 const { t } = useI18n();
+const cartStore = useQuoteCartStore();
 const selectedOffer = ref(null);
 const isLoadingArticle = ref(false);
 const articleContent = ref(null);
@@ -32,6 +36,21 @@ const handleOpenModal = async (offer) => {
   // } finally {
   //   isLoadingArticle.value = false;
   // }
+};
+
+const handleAddToCart = () => {
+  if (selectedOffer.value) {
+    const calcPackage = CalculatorDataAdapter.normalizePackage(selectedOffer.value);
+    cartStore.addItem(calcPackage);
+    selectedOffer.value = null; // Close the detail modal
+  }
+};
+
+const handleCheckout = () => {
+  // In MVP, we can redirect to a contact form or pop up an alert
+  cartStore.toggleCart(false);
+  // Using native alert for MVP as form route may not be fully connected
+  alert('Имитация: Переход к форме заявки (Proceed to Quote Request Form)');
 };
 </script>
 
@@ -104,11 +123,13 @@ const handleOpenModal = async (offer) => {
         <button style="padding: 10px 20px; background: #00D9EA; border: none; border-radius: 4px; cursor: pointer; color: #FFF; font-weight: bold; transition: opacity 0.2s ease;"
                 onmouseover="this.style.opacity='0.8'"
                 onmouseout="this.style.opacity='1'"
-                @click="selectedOffer = null">
-          {{ t('form.send') }}
+                @click="handleAddToCart">
+          Добавить в запрос (Add to Quote)
         </button>
       </div>
     </template>
   </AppModal>
+
+  <QuoteCartModal @checkout="handleCheckout" />
 
 </template>
