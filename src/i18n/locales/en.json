@@ -58,7 +58,9 @@
       "budget": "budget",
       "period": "period",
       "discount": "discount",
-      "button": "discuss"
+      "button": "discuss",
+      "currency": "$",
+      "weeks": "weeks"
     },
     "includes": {
       "title": "All solutions include:"

@@ -30,7 +30,7 @@ const props = defineProps({
 
 <template>
   <div class="col-lg-3 col-md-6">
-    <div class="service" v-if="props.properties">
+    <div class="service" :class="{ 'featured-package': props.properties.featured }" v-if="props.properties">
       <div class="icon">
         <IconOffer
             :index="props.index"
@@ -47,10 +47,10 @@ const props = defineProps({
         {{props.properties.descr}}
       </div>
       <div class="price roboto" v-if="props.properties.price">
-        бюджет <span class="sofia_bold">{{ Array.isArray(props.properties.price) ? props.properties.price.join(' - ') : props.properties.price }}</span> ₽
+        {{ t('cp.packages.budget') }} <span class="sofia_bold">{{ Array.isArray(props.properties.price) ? props.properties.price.join(' - ') : props.properties.price }}</span> {{ props.properties.currency || t('cp.packages.currency') }}
       </div>
       <div class="term roboto" v-if="props.properties.timeline">
-        срок <span class="sofia_bold">{{ Array.isArray(props.properties.timeline) ? props.properties.timeline.join(' - ') : props.properties.timeline }}</span> недель
+        {{ t('cp.packages.period') }} <span class="sofia_bold">{{ Array.isArray(props.properties.timeline) ? props.properties.timeline.join(' - ') : props.properties.timeline }}</span> {{ props.properties.timeline_unit || t('cp.packages.weeks') }}
       </div>
       <ul class="conditions" v-if="props.properties.features && props.properties.features.length">
         <li v-for="item in props.properties.features" :key="item">{{item}}</li>
@@ -71,6 +71,14 @@ const props = defineProps({
   padding: 24px;
   color: #000;
   box-shadow: 5px 7px 15px 2px rgba(82, 90, 101, 0.12);
+  transition: transform 0.3s ease;
+}
+.service.featured-package {
+  border: 2px solid #00D9EA;
+  transform: translateY(-5px);
+}
+.service:hover {
+  transform: translateY(-5px);
 }
   .service .icon { width: 50px; height: 50px;}
   .service .title { font-size: 16px; font-weight: bold; margin: 16px 0 16px 0;}

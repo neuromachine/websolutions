@@ -58,7 +58,9 @@
       "budget": "ngân sách",
       "period": "thời gian",
       "discount": "Giảm giá",
-      "button": "Thảo luận kế hoạch"
+      "button": "Thảo luận kế hoạch",
+      "currency": "$",
+      "weeks": "tuần"
     },
     "includes": {
       "title": "Tất cả các gói đều bao gồm:"
