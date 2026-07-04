@@ -26,10 +26,7 @@ function createBlockStoreDefinition(id) {
             isItemReady:    (s) => !s.isLoading && s.item !== null,
             isOverlayReady: (s) => !s.OverlayLoading && s.overlay !== null,
             isHaveItems(state) {
-                return !!(
-                    state.category?.blocks?.[0]?.items && // TODO: legacy - структура изменилась
-                    Object.keys(state.category.blocks[0].items).length
-                )
+                return state.category?.blocks?.some(block => block.items && Object.keys(block.items).length > 0) || false
             },
             isHaveSubCat(state) {
                 return !!(

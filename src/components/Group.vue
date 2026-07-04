@@ -33,21 +33,20 @@ const { blockStore } = usePageOrchestrator('group', 'category', {
         </div>
       </div>
 
-<!--      <div v-if="blockStore.isHaveItems" class="row items_list">-->
-<!--      <div  class="row items_list">
-        <item v-for="item in blockStore.category.blocks[0].items"
-              :slug="item.key"
-              :name="item.name"
-              :properties="item.properties"
-        />
-        <service v-for="(item, index) in blockStore.category.blocks[0].items"
-              :slug="item.key"
-              :name="item.name"
-              :index="index"
-                 :owner="blockStore.category"
-              :properties="item.properties"
-        />
-      </div>-->
+      <template v-if="blockStore.isHaveItems">
+        <template v-for="block in blockStore.category.blocks" :key="block.key || block.id">
+          <div v-if="block.items && Object.keys(block.items).length" class="row items_list">
+            <service v-for="(item, index) in block.items"
+                  :key="item.key"
+                  :slug="item.key"
+                  :name="item.name"
+                  :index="index"
+                  :owner="blockStore.category"
+                  :properties="item.properties"
+            />
+          </div>
+        </template>
+      </template>
 
     </div>
     <div v-else class="container"><div class="row row_load">Loading Category</div></div>

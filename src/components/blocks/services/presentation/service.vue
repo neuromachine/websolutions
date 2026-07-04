@@ -1,5 +1,8 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
+
+const { t } = useI18n();
 
 const props = defineProps({
   slug: {
@@ -27,7 +30,7 @@ const props = defineProps({
 
 <template>
   <div class="col-lg-3 col-md-6">
-    <div class="service" v-if="props.properties?.timeline">
+    <div class="service" v-if="props.properties">
       <div class="icon">
         <IconOffer
             :index="props.index"
@@ -43,14 +46,14 @@ const props = defineProps({
       <div class="descr">
         {{props.properties.descr}}
       </div>
-      <div class="price roboto">
-        бюджет <span class="sofia_bold">{{props.properties.price[0]}} - {{props.properties.price[1]}}</span> ₽
+      <div class="price roboto" v-if="props.properties.price">
+        бюджет <span class="sofia_bold">{{ Array.isArray(props.properties.price) ? props.properties.price.join(' - ') : props.properties.price }}</span> ₽
       </div>
-      <div class="term roboto">
-        срок <span class="sofia_bold">{{props.properties.timeline[0]}} - {{props.properties.timeline[1]}}</span>недель
+      <div class="term roboto" v-if="props.properties.timeline">
+        срок <span class="sofia_bold">{{ Array.isArray(props.properties.timeline) ? props.properties.timeline.join(' - ') : props.properties.timeline }}</span> недель
       </div>
-      <ul class="conditions">
-        <li v-for="item in props.properties.features">{{item}}</li>
+      <ul class="conditions" v-if="props.properties.features && props.properties.features.length">
+        <li v-for="item in props.properties.features" :key="item">{{item}}</li>
       </ul>
       <div class="b_wrap">
 <!--        <RouterLink class="know_price" :to="{ path: '/blocks/item/' + props.key }">Узнать точную цену</RouterLink>-->

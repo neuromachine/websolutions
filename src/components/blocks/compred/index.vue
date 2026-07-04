@@ -15,17 +15,54 @@ import Important from "@/components/blocks/compred/presentation/important.vue";
 import ReelsSystem from "@/components/blocks/compred/presentation/reels_system.vue";
 import Extras from "@/components/blocks/compred/presentation/extras.vue";
 
+import { useRoute } from "vue-router";
+import { watch } from "vue";
 import { usePageOrchestrator } from "@/composables/usePageOrchestrator.js";
-const { blockStore } = usePageOrchestrator('compred', 'item', {
+import { useUiStore } from '@/stores/uiStore';
+
+const route = useRoute();
+const uiStore = useUiStore();
+
+// Use an empty scheme so usePageOrchestrator still binds useHead/navigation
+// but does not automatically trigger fetchBlockItem.
+const { blockStore } = usePageOrchestrator('compred', '', {
   fetch: (route) => route.params.slug
 })
 
-const properties = computed(() => blockStore.item?.properties ?? {})
+const normalizeCommercialProposalPayload = (payload) => {
+    if (!payload) return {};
+    
+    // Default fallback to legacy structure if flat structure isn't detected
+    if (payload.properties && !payload.block) {
+        return payload.properties; 
+    }
+    
+    const blockProps = payload.block?.properties || {};
+    // packages/items are at the root of the flat payload array
+    const packages = payload.items || blockProps.items || [];
+    
+    return {
+        ...blockProps,
+        items: packages
+    };
+};
 
-import { useUiStore } from '@/stores/uiStore';
-const uiStore = useUiStore();
+const properties = computed(() => normalizeCommercialProposalPayload(blockStore.item))
+
+const loadData = async () => {
+    await blockStore.fetchFlatOffers(route.params.slug);
+    uiStore.buildPageVars({
+        item: blockStore.item
+    });
+};
+
 onMounted(() => {
    uiStore.setHeaderVars('menu', false);
+   loadData();
+});
+
+watch(() => [route.params.slug, uiStore.scope], () => {
+    loadData();
 });
 
 import { chat } from '@/chat' // tidio
@@ -36,7 +73,7 @@ const openTidioChat = () => {
 
 <template>
   <div id="compred" v-if="blockStore.isItemReady">
-    <Hero v-if="properties.hero" :data="properties.hero" :svgkey="blockStore.item.key" />
+    <Hero v-if="properties.hero" :data="properties.hero" :svgkey="blockStore.item?.block?.key || blockStore.item?.key" />
 
     <Calc />
 
@@ -68,7 +105,7 @@ const openTidioChat = () => {
     </section>
     <!-- End acticle -->
 
-    <section v-if="blockStore.item.key === 'ivorycoast'">
+    <section v-if="blockStore.item?.block?.key === 'ivorycoast' || blockStore.item?.key === 'ivorycoast'">
       <div class="container">
         <qrcode
             url="https://www.wspro.xyz/vi/compred/ivorycoast"
