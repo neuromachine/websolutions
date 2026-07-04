@@ -16,7 +16,7 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
     const uiStore = useUiStore()
     const { t } = useI18n()
 
-    const isPageOwner = route.name === blockId || route.params.slug === blockId
+    const isPageOwner = computed(() => route.name === blockId || route.params.slug === blockId)
 
     const blockStore      = blockId ? useBlockStore(blockId) : null
     const navStore        = useNavigationStore()
@@ -52,6 +52,16 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
 
         if (_activeKeys.get(blockId) === fetchKey) {
             console.log('⏭ skip', fetchKey)
+            // router.beforeEach clears uiStore.page.title on every navigation.
+            // If we skip the fetch because data is cached, we must still rebuild page vars
+            // so the title is restored for the current page owner.
+            if (isPageOwner.value) {
+                uiStore.buildPageVars({
+                    structure: navigationStore?.structure ?? null,
+                    category:  blockStore?.category ?? null,
+                    item:      blockStore?.item ?? null,
+                })
+            }
             return
         }
         _activeKeys.set(blockId, fetchKey)
@@ -78,7 +88,7 @@ export function usePageOrchestrator(blockId, scheme, { fetch: resolveFetch }) {
 
         // await navPromise
 
-        if (isPageOwner) {
+        if (isPageOwner.value) {
             uiStore.buildPageVars({
                 structure: navigationStore?.structure ?? null,
                 category:  blockStore?.category ?? null,
