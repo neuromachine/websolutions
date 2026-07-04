@@ -1,123 +1,256 @@
-# AGENTS.md — WebSolutions Coding Agent Entry
+# AGENTS.md — WebSolutions Frontend Agent Rules
 
-## Purpose
+## Status
 
-This repository uses a compact, layered context package for AI coding agents working on the WebSolutions Vue + Laravel system.
+Frontend repository root agent instructions.
 
-Primary current focus: frontend refactoring around:
+This file defines how code agents must operate inside the **WebSolutions frontend repository**.
 
-```text
-src/components/blocks/compred/presentation/benefits.vue
-```
-
-Do not start implementation from this file alone. First inspect the actual source files.
-
-## Required context loading
-
-Use `/info` as the long-form documentation layer.
-
-Read only the files needed for the current task:
+This repository is one half of a two-repository system:
 
 ```text
-/info/SYSTEM.md  — global architecture context
-/info/CA.md      — Vue Foundation / Component Architecture
-/info/DM.md      — API Contract / Data Mapping
-/info/DS.md      — WS Design System
-/info/TL.md      — Tailwind Theme Layer
-/info/AL.md      — Animation Layer
+wsapi/         -> Laravel backend / data / seeders / EAV / API contracts
+websolutions/  -> Vue frontend / routing / stores / rendering / UI contracts
 ```
 
-For `compred/presentation/benefits.vue`, default context set:
+Treat this workspace as the **frontend repository only**.
+
+---
+
+## 1. Repository Boundary Rule
+
+### Frontend repository owns
 
 ```text
-/info/SYSTEM.md
-/info/CA.md
-/info/DM.md
-/info/DS.md
-/info/TL.md
+Vue rendering
+Vue Router routes
+Pinia stores
+API consumption adapters
+UI components
+forms UI
+frontend tests
+frontend .agents context
 ```
 
-Read `/info/AL.md` only when animation code is touched.
-
-## Repository rules
-
-- Frontend: Vue 3, Composition API, Vue Router, Pinia, Axios, Vite.
-- Backend: Laravel API exists as data source; do not edit backend unless explicitly requested.
-- Laravel Resource payloads are consumed as `response.data.data`.
-- Scope-aware routing is project-critical. Do not hardcode scoped links manually.
-- Use existing project aliases/import style.
-
-## Component boundaries
-
-- `View.vue`: layout shell only. No store, no fetch.
-- `index.vue`: data owner and orchestrator. May use stores/composables.
-- `presentation/*.vue`: props in, UI composition out. No direct store/fetch/route.
-- `item.vue`: pure props component.
-- UI primitives: no backend item knowledge, no feature-specific imports.
-
-## Design-system rules
-
-- Prefer composition over configuration.
-- `Card` should expose slots/zones; it must not import `IconOffer`.
-- `SectionHeader`, `Card`, future `CardsGrid`, `Button`, `RichText` belong to the UI layer.
-- Bootstrap is transitional layout compatibility, not the design-system core.
-- Tailwind tokens/semantic utilities should replace repeated raw CSS over time.
-- Do not introduce raw hex or new global CSS unless clearly justified.
-
-## Data rules for compred
-
-Expected current API shape:
+### Backend repository owns
 
 ```text
-blockStore.item.properties.hero
-blockStore.item.properties.benefits
-blockStore.item.properties.extras
-blockStore.item.properties.important
-blockStore.item.properties.items      // pricing/packages; bad name, use local alias
-blockStore.item.properties.includes
+Laravel API
+EAV data model
+seeders
+JSON content sources
+DB schema
+Laravel Resources
+backend API contracts
 ```
 
-For `benefits`:
+### Rule
 
-```ts
-type BenefitsSection = {
-  pretitle?: string
-  title: string
-  items: Array<{
-    index?: number
-    icon?: string
-    title: string
-    text: string
-  }>
-}
+Do not edit backend files from this repository.
+Do not assume backend behavior that is not described in the handoff contracts.
+
+If a frontend task reveals a backend issue, create a handoff report instead of trying to fix backend code.
+
+Recommended handoff path:
+
+```text
+.agents/reports/HANDOFF-BE-*.md
 ```
 
-Pass only the section node:
+---
 
-```vue
-<Benefits :data="properties.benefits" />
+## 2. Default Agent Operating Mode
+
+For every task, first classify the work:
+
+```text
+audit
+contract clarification
+frontend refactor
+rendering implementation
+test update
+backend handoff
 ```
 
-Do not pass the whole `properties` object.
+Then follow the smallest safe path:
 
-## Code-change protocol
+```text
+inspect -> map current behavior -> identify frontend contract -> change only required files -> verify -> report
+```
 
-- Before editing, inspect the target file and direct dependencies.
-- Make minimal changes.
-- For changes over ~100 lines, work as small diffs by section.
-- Do not rewrite unrelated components.
-- Do not add new dependencies without explicit approval.
-- Preserve working behavior unless the task explicitly says to change it.
-- If a convention conflicts with existing code, prefer the documented architecture and note the legacy exception.
+Do not perform broad refactors unless the task explicitly asks for them.
 
-## Validation
+---
 
-Before finishing, run the relevant existing project checks if available:
+## 3. API Consumption Rules
+
+### Standard Laravel Resource endpoints
+
+Standard backend endpoints return the useful payload as:
+
+```text
+response.data.data
+```
+
+Typical example:
+
+```text
+GET /api/{locale}/blocks/categories/{slug}
+```
+
+Frontend code should treat `response.data.data` as the payload for standard category/item/resource endpoints.
+
+### Flat CP / individual offer endpoint
+
+The individual commercial proposal endpoint is intentionally flat:
+
+```text
+GET /api/{locale}/blocks/categories/offers/{proposalKey}
+```
+
+It returns useful payload as:
+
+```text
+response.data
+```
+
+Expected shape:
+
+```text
+category
+block
+items
+```
+
+Do not wrap or unwrap it as `response.data.data` unless the backend contract is intentionally migrated.
+
+---
+
+## 4. Legacy Compatibility Keys
+
+Preserve these keys unless a dedicated migration task is approved:
+
+```text
+childs
+child
+acticle
+section
+items
+```
+
+Do not globally normalize:
+
+```text
+childs -> children
+acticle -> article
+section -> locale/scope
+```
+
+A frontend compatibility adapter may expose nicer aliases internally, but the raw API contract must remain understood and supported.
+
+---
+
+## 5. Frontend Architecture Rules
+
+Preserve the current Vue layering:
+
+```text
+View.vue
+  -> page composition only
+  -> no direct store/fetch logic
+
+index.vue / route-level orchestrator
+  -> owns stores/fetch/orchestration
+
+presentation components
+  -> props in
+  -> emits out
+  -> no direct store imports
+
+UI primitives
+  -> generic
+  -> domain-free
+```
+
+When working with content pages, prefer a clear boundary between:
+
+```text
+API payload
+frontend adapter/normalizer
+store state
+presentation props
+```
+
+---
+
+## 6. Command Policy
+
+### Forbidden by default
+
+Do not run:
 
 ```bash
 npm run build
-npm run test
-npm run lint
 ```
 
-If a script does not exist, report that fact instead of inventing commands.
+Reason:
+
+```text
+Production build is handled remotely by CI/CD.
+Local build can create generated files and pollute git status.
+The human operator validates development behavior through dev mode and targeted tests.
+```
+
+### Allowed by default
+
+```bash
+npm run test:run
+npm run test
+```
+
+### Ask or report instead of running
+
+```bash
+npm run dev
+npm run build
+```
+
+Run these only when the human explicitly requests them in the current task.
+
+If build validation seems necessary, write it as a recommendation in the final report instead of running it.
+
+---
+
+## 7. Git Hygiene
+
+Before reporting success, state:
+
+```text
+files changed
+commands run
+commands not run and why
+contract impact
+risks / follow-up
+```
+
+Do not leave generated build artifacts in the working tree.
+
+If a command creates generated files unexpectedly, report that immediately and do not hide it.
+
+---
+
+## 8. Current Frontend Direction
+
+Current sequence:
+
+```text
+FE-001 content data consumption audit -> completed
+FE-ORGANIZATION rules cleanup -> current
+Next: light frontend refactor / adapter preparation
+Later: Compred.vue refactor
+Later: ind_offers rendering
+Later: service offers rendering
+Later: calculator draft
+```
+
+Do not jump to later implementation stages unless the current task explicitly asks for them.

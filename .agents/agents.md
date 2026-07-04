@@ -1,261 +1,150 @@
-# WebSolutions Agent Instructions
+# Frontend Agent Operating Protocol
 
-## Identity
+## 1. Repository Identity
 
-You are working inside the WebSolutions project.
+You are operating inside the **WebSolutions frontend repository**.
 
-This is an existing production-oriented codebase with Vue frontend, Laravel backend, dynamic content structures, EAV-style data, and evolving agent-oriented architecture documentation.
-
-Do not treat the project as greenfield.
-
----
-
-## Primary Instruction Sources
-
-Use this priority order:
+The complete system has two repositories:
 
 ```text
-1. AGENTS.md
-2. .agents/agents.md
-3. Explicit user/task instruction
-4. .agents/info/INDEX.md
-5. .agents/info/MATERIALS-MAP.md
-6. Relevant .agents/info/*.md architecture files
-7. Relevant .agents/info/improvements/*.md AIP files
-8. Relevant .agents/skills/*.md files
-9. Source code
-10. .gemini/ legacy context, only as secondary reference
+Backend repo: wsapi
+Frontend repo: websolutions
 ```
 
-`.gemini/` must not override `.agents/*`.
+This workspace is the frontend repo only.
+
+Do not edit backend code.
+Do not invent backend behavior.
+Use copied handoff documents and frontend contracts to understand API payloads.
 
 ---
 
-## Default Execution Protocol
+## 2. Context Priority
 
-For non-trivial work, follow:
+When performing a frontend task, use this priority order:
 
 ```text
-1. Read the task fully.
-2. Identify whether the task is analysis-only or code-changing.
-3. Read relevant architecture docs from `.agents/info`.
-4. Read relevant AIP documents if the task touches planned improvements.
-5. Inspect actual source files before editing.
-6. Map the current flow.
-7. Identify public contracts and compatibility risks.
-8. Choose the smallest coherent improvement strategy.
-9. Edit only the necessary files.
-10. Validate or provide manual regression instructions.
-11. Report facts, assumptions, risks, and next steps.
+1. Current human instruction
+2. Current task file in .agents/tasks/
+3. Root AGENTS.md
+4. .agents/agents.md
+5. .agents/contracts/
+6. .agents/info/
+7. .agents/inbox/backend-handoff/
+8. Existing source code
+9. Older reports / legacy notes
 ```
+
+If documents conflict, prefer the newer task and report the conflict.
 
 ---
 
-## No Hidden Assumptions
+## 3. Work Classification
 
-Do not assume that a field, method, relation, seeder, component, or legacy key is unused because it looks strange.
+Before editing, classify the task:
 
-Examples of compatibility-sensitive names:
+```text
+audit-only
+contract update
+frontend adapter
+store refactor
+component refactor
+rendering implementation
+test-only
+handoff report
+```
+
+If the task is audit-only, do not edit `src/**`.
+
+---
+
+## 4. API Rules
+
+Standard category/resource endpoints:
+
+```text
+payload = response.data.data
+```
+
+Flat individual CP endpoint:
+
+```text
+payload = response.data
+```
+
+Do not treat every endpoint the same.
+The offers/CP endpoint is intentionally asymmetric until a coordinated backend/frontend migration is approved.
+
+---
+
+## 5. Compatibility Rules
+
+Preserve support for:
 
 ```text
 childs
-children
-subcategories
+child
 acticle
-items
-locale
-scope
 section
-content
-sections
-blocks
+items
 ```
 
-These may be ugly, but they may be public contract or legacy compatibility fields.
+These are not typos for agents to fix casually.
+They are compatibility keys.
 
 ---
 
-## Architecture Improvement Proposals
+## 6. Component Boundary Rules
 
-AIP files live in:
+Do not import stores into presentation components.
 
-```text
-.agents/info/improvements/
-```
-
-They describe proposed directions, tradeoffs, and staged plans.
-
-AIP files are not direct execution tasks.
-
-Do not implement an AIP unless a task explicitly asks you to.
-
-When implementing a task related to an AIP area, use the AIP to understand:
+Keep responsibilities separated:
 
 ```text
-- known risks
-- accepted constraints
-- possible strategies
-- open questions
-- compatibility boundaries
+route/view shell -> composition
+orchestrator -> fetch/store coordination
+adapter -> payload normalization
+presentation -> props/rendering
+UI primitive -> generic visual structure
 ```
 
 ---
 
-## Backend Work Rules
+## 7. Command Policy
 
-### Current backend model
+Do not run by default:
 
-The backend includes a dynamic blocks/content system built around:
-
-```text
-blocks
-blocks_categories
-block_items
-block_item_properties
-block_item_property_values
+```bash
+npm run build
 ```
 
-The backend acts as a headless content/API layer for the Vue frontend.
+Allowed by default:
 
-### Read-side rule
-
-```text
-Repository / query layer prepares data.
-Resource serializes prepared data.
-EavContentResolver transforms EAV values.
-BlockAttachMap applies current compatibility routing policy.
+```bash
+npm run test:run
+npm run test
 ```
 
-Resources should not perform hidden SQL queries.
+Only run `npm run build` if the human explicitly asks for it in the current task.
 
-If a Resource appears to compensate for incomplete model loading, analyze whether the preparation belongs in Repository, query layer, or a small assembler/read-model collaborator.
-
-### Compatibility rule
-
-For category endpoints, preserve public response shape unless the task explicitly approves a breaking change.
-
-Especially preserve:
-
-```text
-data.content
-data.sections
-data.subcategories
-data.blocks
-data.children
-subcategories[].id
-subcategories[].slug
-subcategories[].childs
-subcategories[].title
-subcategories[].descr
-subcategories[].content
-subcategories[].metadata
-subcategories[].priority
-```
+If you believe build should be run, state it in the report as a recommendation.
 
 ---
 
-## Frontend Work Rules
+## 8. Reporting Format
 
-The frontend uses Vue 3, Vue Router, Pinia, Vite, Tailwind/Bootstrap transition, WS design system primitives, and GSAP animation orchestration.
-
-Default component boundaries:
+Every agent report should include:
 
 ```text
-View.vue = composition only
-index.vue = orchestration/fetch/store layer
-presentation components = props-only rendering
-UI primitives = domain-agnostic layout/visual behavior
-```
-
-Do not introduce direct API/store dependencies into presentation components unless the relevant architecture document allows it.
-
----
-
-## Refactoring Rules
-
-Refactoring means improving structure while preserving behavior.
-
-Allowed when justified:
-
-```text
-- move logic to the correct layer
-- reduce hidden data lifting
-- split oversized methods
-- introduce small collaborators
-- improve naming internally while keeping public aliases
-- reduce duplication
-- add compatibility wrappers
-- add manual regression notes
-```
-
-Not allowed without explicit task permission:
-
-```text
-- changing database schema
-- changing endpoint URLs
-- renaming public JSON keys
-- deleting compatibility fields
-- rewriting unrelated modules
-- touching frontend during backend-only work
-- changing seed content while refactoring read-side API
-- implementing AIP proposals directly without task approval
-```
-
----
-
-## Validation Expectations
-
-Use available project validation commands.
-
-If commands are unavailable or environment is incomplete, state that clearly and provide manual regression checks.
-
-For backend API shape work, prefer comparing real endpoint output against known payload references when possible.
-
-For frontend work, prefer at least build/test commands if available.
-
-Do not claim runtime validation if only syntax checks were run.
-
----
-
-## Reporting Requirements
-
-Final report must be concrete.
-
-Include:
-
-```text
-1. Context read
+1. Task type
 2. Files inspected
 3. Files changed
-4. What changed
-5. Why it improves the system
-6. What behavior/contract was preserved
-7. Validation performed
-8. Validation not performed and why
-9. Remaining risks
-10. Recommended next step
+4. API contract impact
+5. Legacy compatibility impact
+6. Commands run
+7. Commands intentionally not run
+8. Remaining risks
+9. Recommended next task
 ```
 
-Avoid vague success claims.
-
-If something is uncertain, say so.
-
----
-
-## Core Rule
-
-The project rule is:
-
-```text
-Improve without breaking.
-```
-
-Do not optimize for theoretical elegance over working compatibility.
-
-Do not preserve bad structure forever when a task explicitly asks for architectural refactor.
-
-Balance both:
-
-```text
-safe compatibility + real structural improvement
-```
+For this repository, always explicitly state whether `npm run build` was not run due to policy.
