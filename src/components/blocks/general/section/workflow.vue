@@ -1,15 +1,44 @@
 <script setup>
+import { ref } from "vue";
+import gsap from "gsap";
+import { useGsapOrchestrator } from "@/composables/useGsapOrchestrator.js";
+
 const props = defineProps({
   list: {
     type: Object,
     required: true
   },
 })
+
+const containerRef = ref(null);
+
+const animationConfig = {
+    scroll: {
+        workflowReveal: {
+            play: () => {
+                gsap.from('.workprocess-single-item', {
+                    y: 40,
+                    opacity: 0,
+                    duration: 0.8,
+                    stagger: 0.15,
+                    ease: 'power2.out',
+                    clearProps: 'all',
+                    scrollTrigger: {
+                        trigger: containerRef.value,
+                        start: 'top 80%'
+                    }
+                });
+            }
+        }
+    }
+};
+
+useGsapOrchestrator(containerRef, animationConfig);
 </script>
 
 <template>
   <!-- Start Works Process Section -->
-  <section class="workprocess-section bg-grey section-padding">
+  <section class="workprocess-section bg-grey section-padding" ref="containerRef">
     <div class="container">
       <div class="row">
         <div class="col-md-12">

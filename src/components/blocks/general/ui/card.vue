@@ -14,7 +14,12 @@
       </div>
     </div>
     <div class="ui-card__body">
-      <slot name="text"></slot>
+      <slot>
+        <slot name="text"></slot>
+      </slot>
+    </div>
+    <div v-if="$slots.action" class="ui-card__action">
+      <slot name="action"></slot>
     </div>
   </div>
 </template>
@@ -23,6 +28,11 @@
 /* custom styles */
 .ui-card {
   box-shadow: 5px 7px 15px 2px rgba(82, 90, 101, 0.12);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 .ui-card__header {
   padding: 1rem 1rem 1rem 1.5rem;
@@ -42,9 +52,30 @@
   font-weight: bold;
 }
 .ui-card__body {
-  padding: 0 1rem 2rem 1.5rem;
+  padding: 0 1rem 1rem 1.5rem;
   color: #5f5f5f;
+  flex: 1 1 auto;
 }
+.ui-card__action {
+  padding: 0 1rem 1.5rem 1.5rem;
+  margin-top: auto;
+}
+
+@media (min-width: 768px) {
+  .ui-card__action {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  }
+  .ui-card:hover .ui-card__action,
+  .ui-card:focus-within .ui-card__action {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 767px) {
   .ui-card__header {
     padding: 0.8rem;
@@ -63,6 +94,9 @@
   }
   .ui-card__body {
     padding: 0 0.8rem 0.8rem 1rem;
+  }
+  .ui-card__action {
+    padding: 0 0.8rem 1rem 1rem;
   }
 }
 </style>
