@@ -17,7 +17,7 @@ const props = defineProps({
 <template>
   <section v-if="props.items?.length" class="services-section-two">
     <div class="container">
-      <SectionHeader>
+      <SectionHeader align="center">
         <template #subtitle>{{ t('cp.includes.title') }}</template>
       </SectionHeader>
       

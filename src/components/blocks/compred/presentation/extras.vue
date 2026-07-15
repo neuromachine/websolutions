@@ -14,7 +14,7 @@ const props = defineProps({
 <template>
   <section v-if="props.data?.items?.length" class="services-section-two section-padding">
     <div class="container">
-      <SectionHeader>
+      <SectionHeader align="center">
         <template #subtitle>{{ props.data.pretitle }}</template>
         <template #title>{{ props.data.title }}</template>
       </SectionHeader>

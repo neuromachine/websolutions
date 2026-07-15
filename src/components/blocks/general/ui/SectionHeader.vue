@@ -1,9 +1,14 @@
 <script setup>
-
+defineProps({
+  align: {
+    type: String,
+    default: 'left'
+  }
+})
 </script>
 
 <template>
-  <header class="header">
+  <header :class="['header', `header--align-${align}`]">
     <h6 class="subtitle">
       <slot name="subtitle"></slot>
     </h6>
@@ -15,6 +20,14 @@
 
 <style scoped>
 .header {margin-bottom: 2rem;}
+.header--align-center {
+  text-align: center;
+}
+.header--align-center .title,
+.header--align-center .subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
 .subtitle {
   color: #ff9800;
   font-size: 16px;

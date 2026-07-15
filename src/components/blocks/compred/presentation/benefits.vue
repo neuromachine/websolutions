@@ -34,7 +34,7 @@ const colsClass = computed(() => {
   <!-- presentation component start -->
   <section v-if="props.data?.items?.length" class="ui-cards">
     <div class="container">
-      <SectionHeader class="text-center">
+      <SectionHeader align="center">
         <template #subtitle>{{ props.data?.pretitle }}</template>
         <template #title>{{ props.data?.title }}</template>
       </SectionHeader>
