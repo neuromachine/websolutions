@@ -33,6 +33,8 @@
     "useDotIgnore": true,
     "useDefaultPatterns": true,
     "customPatterns": [
+      ".agents/**",
+      ".gemini/**",
       "node_modules/**",
       "dist/**",
       ".nuxt/**",
