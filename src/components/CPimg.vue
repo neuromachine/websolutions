@@ -8,7 +8,8 @@ const props = defineProps({
 
 const currentComponent = computed(() =>
     defineAsyncComponent(() =>
-        import(`@/components/blocks/compred/micro/svg/main/${props.svgkey}.vue`)
+        import(`@/components/blocks/compred/micro/svg/main/${props.svgkey}.vue`) // TODO: don't use compred in path
+        .catch(() => import('@/components/blocks/compred/micro/svg/main/default.vue'))
     )
 )
 

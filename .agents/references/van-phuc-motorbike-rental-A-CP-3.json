@@ -1,0 +1,656 @@
+{
+  "key": "van-phuc-motorbike-rental",
+  "name": "Vạn Phúc — система аренды байков",
+  "block": "ind_offers",
+  "properties": {
+    "title": "Vạn Phúc — цифровой путь аренды байка",
+    "content": "Персональное предложение для Vạn Phúc: превратить уже сильную репутацию, Facebook-контент и отзывы Google Maps в понятный мобильный путь от выбора байка до сообщения владельцу.",
+    "hero": {
+      "pretitle": "У Vạn Phúc уже есть история, доверие и реальные клиенты — теперь это нужно собрать в одном понятном месте",
+      "title": "Турист должен понять, какой байк ему подходит, ещё до первого сообщения",
+      "focus": "Одна страница: модели, условия, доверие и прямой контакт",
+      "paragraph": "Vạn Phúc работает в Нячанге с 2014 года, имеет рейтинг 4,9 и десятки отзывов. Но полезная информация распределена между Facebook, Google Maps, публикациями и перепиской. Предлагаю собрать её в мобильную мультиязычную страницу, которая помогает туристу выбрать тип байка, понять условия аренды и отправить владельцу подготовленный запрос через Zalo или WhatsApp."
+    },
+    "benefits": {
+      "pretitle": "Не ещё один сайт, а понятный инструмент для аренды",
+      "title": "Что получает Vạn Phúc",
+      "items": [
+        {
+          "index": 1,
+          "icon": "link-45deg",
+          "title": "Одна понятная ссылка",
+          "text": "Модели, ориентировочные цены, условия, адрес, карта и контакты собраны в одном месте вместо десятков отдельных публикаций."
+        },
+        {
+          "index": 2,
+          "icon": "translate",
+          "title": "Три языка",
+          "text": "Вьетнамская, английская и русская версии помогают работать с локальными, международными и русскоязычными туристами."
+        },
+        {
+          "index": 3,
+          "icon": "chat-dots",
+          "title": "Меньше повторяющихся вопросов",
+          "text": "Клиент заранее видит типы байков, залог, документы, доставку и порядок аренды, а владелец получает более подготовленное обращение."
+        },
+        {
+          "index": 4,
+          "icon": "star",
+          "title": "Доверие становится заметным",
+          "text": "Рейтинг 4,9, десятки отзывов, история с 2014 года и реальные фотографии начинают работать ещё до личного контакта."
+        },
+        {
+          "index": 5,
+          "icon": "whatsapp",
+          "title": "Прямой запрос владельцу",
+          "text": "После выбора байка и срока турист отправляет сообщение в Zalo или WhatsApp на +84 97 999 58 00 без сложной регистрации."
+        }
+      ]
+    },
+    "items": {
+      "pretitle": "Варианты развития",
+      "title": "Три уровня развития — для каждого действует персональная скидка 100%",
+      "items": [
+        {
+          "index": 1,
+          "icon": "card-text",
+          "name": "Цифровой старт",
+          "price": "300 USD",
+          "term": "1–2 недели",
+          "featured": false,
+          "desc": "Минимальная самостоятельная страница для понятной презентации бизнеса и быстрого контакта.",
+          "features": [
+            "Одностраничный mobile-first сайт",
+            "Вьетнамская и английская версии",
+            "Основные типы байков",
+            "Ориентировочные цены аренды",
+            "Краткие условия и документы",
+            "Адрес и Google Maps",
+            "Кнопки Zalo и WhatsApp",
+            "Подключение реальных фотографий",
+            "Базовая подготовка к публикации"
+          ],
+          "discount": "0 USD"
+        },
+        {
+          "index": 2,
+          "icon": "stars",
+          "name": "Персональный пилот Vạn Phúc",
+          "price": "600 USD",
+          "discount": "0 USD",
+          "term": "2–3 недели",
+          "featured": true,
+          "desc": "Рекомендуемый вариант: полноценная демонстрационная версия, созданная специально под реальный бизнес Vạn Phúc.",
+          "features": [
+            "Всё из пакета «Цифровой старт»",
+            "Полные версии VI / EN / RU",
+            "Каталог городских байков, 50cc и электромоделей",
+            "Карточки моделей и ориентировочные тарифы",
+            "Выбор срока и типа транспорта",
+            "Структурированная заявка в Zalo или WhatsApp",
+            "Условия залога, документов, доставки и возврата",
+            "Блок доверия на основе Google Maps и Facebook",
+            "Информация о точке на 22 Phúc Đức",
+            "Часы работы 06:00–20:00",
+            "Базовая веб-аналитика",
+            "Подготовка и публикационный handoff"
+          ]
+        },
+        {
+          "index": 3,
+          "icon": "gear-wide-connected",
+          "name": "Система аренды",
+          "price": "от 1 500 USD",
+          "term": "5–8 недель",
+          "featured": false,
+          "desc": "Будущий этап после проверки пилота и подтверждения реальной пользы для бизнеса.",
+          "features": [
+            "Всё из пакета «Персональный пилот»",
+            "Панель управления моделями и тарифами",
+            "Статусы доступности транспорта",
+            "Календарь запросов и аренд",
+            "Карточки клиентов",
+            "История обращений",
+            "Уведомления владельцу",
+            "Фильтры по типу, цене и сроку",
+            "Расширенная аналитика",
+            "Подготовка интеграции CRM",
+            "Подготовка к SEO и SMM-продвижению",
+            "Архитектура для дальнейшей автоматизации"
+          ],
+          "discount": "0 USD"
+        }
+      ]
+    },
+    "includes": [
+      {
+        "index": 1,
+        "text": "Разбор реального бизнеса, его сильных сторон и клиентских вопросов",
+        "icon": "check-lg"
+      },
+      {
+        "index": 2,
+        "text": "Mobile-first UX и понятная структура без лишней сложности",
+        "icon": "check-lg"
+      },
+      {
+        "index": 3,
+        "text": "Контент на вьетнамском, английском и русском языках",
+        "icon": "check-lg"
+      },
+      {
+        "index": 4,
+        "text": "Интеграция фотографий, Google Maps, Zalo и WhatsApp",
+        "icon": "check-lg"
+      },
+      {
+        "index": 5,
+        "text": "Передача результата, объяснение работы и рекомендации по развитию",
+        "icon": "check-lg"
+      }
+    ],
+    "important": {
+      "pretitle": "Как будет работать первый результат",
+      "title": "Путь туриста от поиска до подготовленного сообщения",
+      "items": [
+        {
+          "index": 1,
+          "icon": "phone",
+          "title": "Мобильная страница бизнеса",
+          "text": "<ul><li>Сохраняет имя Vạn Phúc и понятное обозначение Motorbike for Rent in Nha Trang</li><li>Быстро открывается на телефоне</li><li>Показывает предложение без регистрации и лишних шагов</li><li>Работает как единая ссылка из Facebook, Google Maps и мессенджеров</li></ul>"
+        },
+        {
+          "index": 2,
+          "icon": "scooter",
+          "title": "Каталог и условия аренды",
+          "text": "<ul><li>Городские байки, автоматические скутеры, 50cc и электрические модели</li><li>Ориентир цены — от 150 000 VND в день, точная стоимость зависит от модели и срока</li><li>Условия паспорта или денежного залога</li><li>Доставка по Нячангу, шлемы и техническая помощь</li></ul>"
+        },
+        {
+          "index": 3,
+          "icon": "send",
+          "title": "Подготовленный запрос",
+          "text": "<ul><li>Клиент выбирает тип байка и даты</li><li>Указывает доставку или получение</li><li>Получает готовый текст сообщения</li><li>Отправляет его владельцу через Zalo или WhatsApp</li></ul>"
+        },
+        {
+          "index": 4,
+          "icon": "geo-alt",
+          "title": "Доверие и местоположение",
+          "text": "<ul><li>Рейтинг Google Maps 4,9 и около 85 отзывов</li><li>Реальные фотографии и история Facebook с 2014 года</li><li>Адрес: 22 Phúc Đức, Bắc Nha Trang</li><li>Понятный маршрут до точки и прямой контакт</li></ul>"
+        },
+        {
+          "index": 5,
+          "icon": "shield-check",
+          "title": "Первый этап без лишнего риска",
+          "text": "<ul><li>Без онлайн-оплаты</li><li>Без обещания наличия байка в реальном времени</li><li>Без полноценной CRM и сложного backend</li><li>Без включения SEO- и SMM-кампаний в пилот</li><li>Сначала проверяется реальная реакция клиентов и владельца</li></ul>"
+        }
+      ]
+    },
+    "extras": {
+      "pretitle": "Практический эффект",
+      "title": "Что меняется в ежедневной работе",
+      "items": [
+        {
+          "index": 1,
+          "icon": "link-45deg",
+          "title": "1 ссылка",
+          "text": "Вместо поиска информации по ленте Facebook клиент получает одну структурированную страницу."
+        },
+        {
+          "index": 2,
+          "icon": "translate",
+          "title": "3 языка",
+          "text": "Одна и та же услуга понятно представлена для вьетнамской, международной и русскоязычной аудитории."
+        },
+        {
+          "index": 3,
+          "icon": "clock",
+          "title": "Информация 24/7",
+          "text": "Страница объясняет базовые условия даже тогда, когда владелец занят или магазин уже закрыт."
+        },
+        {
+          "index": 4,
+          "icon": "chat-square-text",
+          "title": "Более точный запрос",
+          "text": "Владелец получает модель, даты, способ получения и контакт клиента, а не начинает разговор с нуля."
+        }
+      ]
+    },
+    "acticle": "<div class=\"cp-personal-letter\"><p class=\"cp-personal-letter__eyebrow\">Личное предложение для Vạn Phúc</p><h3>Это не обычная скидка и не предложение «сделать бесплатно»</h3><p>Я познакомился с Vạn Phúc как клиент и увидел реальный локальный бизнес: долгая история, хорошие байки, сильные отзывы и владелец, который умеет работать с иностранцами. Поэтому вместо общего рассказа об услугах я подготовил предложение именно под вашу точку аренды.</p><p>Каждый из представленных вариантов имеет реальную номинальную стоимость. Для Vạn Phúc я предлагаю <strong>персональную скидку 100%</strong>: в рамках первого этапа итоговая стоимость выбранного пакета отображается как <strong>0 USD</strong>.</p><div class=\"cp-personal-letter__offer\"><p><strong>Номинальная стоимость:</strong> согласно выбранному пакету</p><p><strong>Персональная скидка:</strong> 100%</p><p><strong>Стоимость первого этапа для Vạn Phúc:</strong> 0 USD</p></div><p>При этом речь идёт не о безусловной бесплатной работе. Я предлагаю сначала создать полезный результат и проверить его на реальном бизнесе, а затем отдельно обсудить формат дальнейшего сотрудничества, взаимные условия и договорённости, которые будут удобны обеим сторонам.</p><p>Для меня это возможность создать сильный локальный кейс во Вьетнаме, лучше понять задачи прокатного бизнеса и пройти полный цикл разработки вместе с владельцем, открытым к международным клиентам. С вашей стороны мне нужны точные данные, фотографии, честная обратная связь и согласование возможности показать результат в моём портфолио.</p><p><strong>Первый шаг простой:</strong> выбрать подходящий формат, посмотреть демонстрацию и при личной встрече обсудить, какие дальнейшие договорённости будут справедливы и полезны для обеих сторон.</p></div>"
+  },
+  "en": {
+    "name": "Vạn Phúc — Motorbike Rental Digital System",
+    "properties": {
+      "title": "Vạn Phúc — a digital motorbike rental journey",
+      "content": "A personal proposal for Vạn Phúc: turn an already strong reputation, Facebook content and Google Maps reviews into a clear mobile journey from choosing a bike to contacting the owner.",
+      "hero": {
+        "pretitle": "Vạn Phúc already has history, trust and real customers — now these strengths need one clear customer journey",
+        "title": "A traveler should understand which bike fits before sending the first message",
+        "focus": "One page: bikes, conditions, trust and direct contact",
+        "paragraph": "Vạn Phúc has operated in Nha Trang since 2014, with a 4.9 rating and dozens of reviews. Useful information, however, is spread across Facebook, Google Maps, posts and private messages. I propose a mobile-first multilingual page that helps travelers choose a bike type, understand rental conditions and send a prepared request through Zalo or WhatsApp."
+      },
+      "benefits": {
+        "pretitle": "Not just another website, but a practical rental tool",
+        "title": "What Vạn Phúc receives",
+        "items": [
+          {
+            "index": 1,
+            "icon": "link-45deg",
+            "title": "One clear link",
+            "text": "Bike types, indicative prices, rental conditions, location, map and contacts are gathered in one place instead of many separate posts."
+          },
+          {
+            "index": 2,
+            "icon": "translate",
+            "title": "Three languages",
+            "text": "Vietnamese, English and Russian versions help serve local, international and Russian-speaking travelers."
+          },
+          {
+            "index": 3,
+            "icon": "chat-dots",
+            "title": "Fewer repeated questions",
+            "text": "Customers see bike types, deposit options, documents, delivery and rental steps before contacting the owner."
+          },
+          {
+            "index": 4,
+            "icon": "star",
+            "title": "Existing trust becomes visible",
+            "text": "A 4.9 rating, dozens of reviews, a history since 2014 and real photos start working before the first conversation."
+          },
+          {
+            "index": 5,
+            "icon": "whatsapp",
+            "title": "Direct request to the owner",
+            "text": "After selecting a bike and rental period, a traveler sends a prepared message through Zalo or WhatsApp to +84 97 999 58 00."
+          }
+        ]
+      },
+      "items": {
+        "pretitle": "Development options",
+        "title": "Three development levels — each includes a personal 100% discount",
+        "items": [
+          {
+            "index": 1,
+            "icon": "card-text",
+            "name": "Digital Start",
+            "price": "USD 300",
+            "term": "1–2 weeks",
+            "featured": false,
+            "desc": "A minimal standalone page for a clear business presentation and fast direct contact.",
+            "features": [
+              "Mobile-first one-page website",
+              "Vietnamese and English versions",
+              "Main bike categories",
+              "Indicative rental prices",
+              "Short rental and document conditions",
+              "Address and Google Maps",
+              "Zalo and WhatsApp buttons",
+              "Real business photos",
+              "Basic publication preparation"
+            ],
+            "discount": "0 USD"
+          },
+          {
+            "index": 2,
+            "icon": "stars",
+            "name": "Personal Vạn Phúc Pilot",
+            "price": "USD 600",
+            "discount": "0 USD",
+            "term": "2–3 weeks",
+            "featured": true,
+            "desc": "The recommended option: a complete demonstration version created specifically for the real Vạn Phúc business.",
+            "features": [
+              "Everything in Digital Start",
+              "Complete VI / EN / RU versions",
+              "Catalog of city bikes, 50cc and electric models",
+              "Bike cards and indicative rates",
+              "Rental period and vehicle type selection",
+              "Structured Zalo or WhatsApp request",
+              "Deposit, document, delivery and return conditions",
+              "Trust section based on Google Maps and Facebook",
+              "Location information for 22 Phúc Đức",
+              "Opening hours 06:00–20:00",
+              "Basic web analytics",
+              "Launch-ready handoff"
+            ]
+          },
+          {
+            "index": 3,
+            "icon": "gear-wide-connected",
+            "name": "Rental System",
+            "price": "from USD 1,500",
+            "term": "5–8 weeks",
+            "featured": false,
+            "desc": "A future phase after the pilot proves useful for the business.",
+            "features": [
+              "Everything in the Personal Pilot",
+              "Bike and price management panel",
+              "Vehicle availability statuses",
+              "Request and rental calendar",
+              "Customer records",
+              "Inquiry history",
+              "Owner notifications",
+              "Filters by type, price and rental period",
+              "Extended analytics",
+              "CRM integration readiness",
+              "SEO and SMM integration readiness",
+              "Architecture for future automation"
+            ],
+            "discount": "0 USD"
+          }
+        ]
+      },
+      "includes": [
+        {
+          "index": 1,
+          "text": "Analysis of the real business, its strengths and common customer questions",
+          "icon": "check-lg"
+        },
+        {
+          "index": 2,
+          "text": "Mobile-first UX and a clear structure without unnecessary complexity",
+          "icon": "check-lg"
+        },
+        {
+          "index": 3,
+          "text": "Content in Vietnamese, English and Russian",
+          "icon": "check-lg"
+        },
+        {
+          "index": 4,
+          "text": "Integration of photos, Google Maps, Zalo and WhatsApp",
+          "icon": "check-lg"
+        },
+        {
+          "index": 5,
+          "text": "Project handoff, operating explanation and growth recommendations",
+          "icon": "check-lg"
+        }
+      ],
+      "important": {
+        "pretitle": "How the first result will work",
+        "title": "The traveler journey from search to a prepared message",
+        "items": [
+          {
+            "index": 1,
+            "icon": "phone",
+            "title": "Mobile business page",
+            "text": "<ul><li>Keeps the Vạn Phúc name with a clear Motorbike for Rent in Nha Trang descriptor</li><li>Loads quickly on a phone</li><li>Presents the offer without registration or unnecessary steps</li><li>Works as one link from Facebook, Google Maps and messengers</li></ul>"
+          },
+          {
+            "index": 2,
+            "icon": "scooter",
+            "title": "Fleet and rental conditions",
+            "text": "<ul><li>City bikes, automatic scooters, 50cc and electric models</li><li>Indicative price from 150,000 VND per day, with the exact rate depending on model and duration</li><li>Passport or cash deposit options</li><li>Nha Trang delivery, helmets and technical assistance</li></ul>"
+          },
+          {
+            "index": 3,
+            "icon": "send",
+            "title": "Prepared request",
+            "text": "<ul><li>The customer selects a bike type and dates</li><li>Chooses delivery or pickup</li><li>Receives a ready-to-send message</li><li>Sends it to the owner through Zalo or WhatsApp</li></ul>"
+          },
+          {
+            "index": 4,
+            "icon": "geo-alt",
+            "title": "Trust and location",
+            "text": "<ul><li>Google Maps rating of 4.9 with around 85 reviews</li><li>Real photos and Facebook history since 2014</li><li>Address: 22 Phúc Đức, North Nha Trang</li><li>Clear route to the rental point and direct contact</li></ul>"
+          },
+          {
+            "index": 5,
+            "icon": "shield-check",
+            "title": "A controlled first stage",
+            "text": "<ul><li>No online payment</li><li>No promise of real-time vehicle availability</li><li>No full CRM or complex backend</li><li>No SEO or SMM campaign included in the pilot</li><li>First, we test the real response from customers and the owner</li></ul>"
+          }
+        ]
+      },
+      "extras": {
+        "pretitle": "Practical effect",
+        "title": "What changes in everyday work",
+        "items": [
+          {
+            "index": 1,
+            "icon": "link-45deg",
+            "title": "1 link",
+            "text": "Instead of searching through Facebook posts, a customer receives one structured page."
+          },
+          {
+            "index": 2,
+            "icon": "translate",
+            "title": "3 languages",
+            "text": "The same service is clearly presented to Vietnamese, international and Russian-speaking audiences."
+          },
+          {
+            "index": 3,
+            "icon": "clock",
+            "title": "Information 24/7",
+            "text": "The page explains the basic conditions even when the owner is busy or the shop is closed."
+          },
+          {
+            "index": 4,
+            "icon": "chat-square-text",
+            "title": "A more precise inquiry",
+            "text": "The owner receives the bike type, dates, pickup method and customer contact instead of starting from zero."
+          }
+        ]
+      },
+      "acticle": "<div class=\"cp-personal-letter\"><p class=\"cp-personal-letter__eyebrow\">A personal proposal for Vạn Phúc</p><h3>This is not a standard discount and not an offer to “work for free”</h3><p>I first met Vạn Phúc as a customer and saw a real local business: a long history, well-reviewed bikes, strong customer feedback and an owner who communicates well with international travelers. Instead of sending a generic service list, I prepared a proposal specifically for this rental point.</p><p>Each option has a real nominal value. For Vạn Phúc I offer a <strong>personal 100% discount</strong>: during the first stage, the final displayed cost of the selected package is <strong>0 USD</strong>.</p><div class=\"cp-personal-letter__offer\"><p><strong>Nominal value:</strong> according to the selected package</p><p><strong>Personal discount:</strong> 100%</p><p><strong>First-stage cost for Vạn Phúc:</strong> 0 USD</p></div><p>This does not mean unconditional free work. The idea is to create a useful result first and test it with a real business, then discuss the format of further cooperation, mutual conditions and agreements that are comfortable for both sides.</p><p>For me, this is an opportunity to build a strong local case in Vietnam, understand the needs of a real rental business and complete the full development cycle together with an owner who is open to international customers. From your side, I need accurate information, photos, honest feedback and agreement on whether the result may be shown in my portfolio.</p><p><strong>The first step is simple:</strong> choose the most suitable format, review the demonstration and discuss in person what further arrangement would be fair and useful for both sides.</p></div>"
+    }
+  },
+  "vi": {
+    "name": "Vạn Phúc — Hệ thống cho thuê xe máy",
+    "properties": {
+      "title": "Vạn Phúc — hành trình thuê xe máy trên nền tảng số",
+      "content": "Đề xuất dành riêng cho Vạn Phúc: biến uy tín hiện có, nội dung Facebook và đánh giá Google Maps thành một hành trình rõ ràng trên điện thoại, từ chọn xe đến liên hệ trực tiếp với chủ cửa hàng.",
+      "hero": {
+        "pretitle": "Vạn Phúc đã có lịch sử, uy tín và khách hàng thật — bây giờ cần gom những lợi thế đó vào một hành trình rõ ràng",
+        "title": "Khách du lịch nên hiểu mình cần thuê xe gì trước khi gửi tin nhắn đầu tiên",
+        "focus": "Một trang duy nhất: xe, điều kiện, uy tín và liên hệ trực tiếp",
+        "paragraph": "Vạn Phúc hoạt động tại Nha Trang từ năm 2014, có điểm đánh giá 4,9 và hàng chục phản hồi. Tuy nhiên, thông tin hiện đang nằm rải rác trên Facebook, Google Maps, bài đăng và tin nhắn. Tôi đề xuất xây dựng một trang đa ngôn ngữ, tối ưu cho điện thoại, giúp khách chọn loại xe, hiểu điều kiện thuê và gửi yêu cầu đã có sẵn thông tin qua Zalo hoặc WhatsApp."
+      },
+      "benefits": {
+        "pretitle": "Không chỉ là một website, mà là công cụ hỗ trợ cho thuê xe",
+        "title": "Vạn Phúc sẽ nhận được gì",
+        "items": [
+          {
+            "index": 1,
+            "icon": "link-45deg",
+            "title": "Một đường link rõ ràng",
+            "text": "Các loại xe, giá tham khảo, điều kiện thuê, địa chỉ, bản đồ và liên hệ được gom vào một nơi thay vì nằm rải rác trong nhiều bài đăng."
+          },
+          {
+            "index": 2,
+            "icon": "translate",
+            "title": "Ba ngôn ngữ",
+            "text": "Phiên bản tiếng Việt, tiếng Anh và tiếng Nga giúp tiếp cận khách địa phương, khách quốc tế và khách nói tiếng Nga."
+          },
+          {
+            "index": 3,
+            "icon": "chat-dots",
+            "title": "Ít câu hỏi lặp lại hơn",
+            "text": "Khách có thể xem trước loại xe, tiền cọc, giấy tờ, giao xe và quy trình thuê trước khi liên hệ."
+          },
+          {
+            "index": 4,
+            "icon": "star",
+            "title": "Uy tín hiện có được thể hiện rõ",
+            "text": "Điểm 4,9, hàng chục đánh giá, lịch sử từ năm 2014 và hình ảnh thật bắt đầu tạo niềm tin trước cuộc trò chuyện đầu tiên."
+          },
+          {
+            "index": 5,
+            "icon": "whatsapp",
+            "title": "Yêu cầu trực tiếp đến chủ cửa hàng",
+            "text": "Sau khi chọn xe và thời gian thuê, khách gửi tin nhắn đã chuẩn bị sẵn qua Zalo hoặc WhatsApp đến +84 97 999 58 00."
+          }
+        ]
+      },
+      "items": {
+        "pretitle": "Các mức phát triển",
+        "title": "Ba cấp độ phát triển — mỗi gói đều áp dụng ưu đãi cá nhân 100%",
+        "items": [
+          {
+            "index": 1,
+            "icon": "card-text",
+            "name": "Khởi động số",
+            "price": "300 USD",
+            "term": "1–2 tuần",
+            "featured": false,
+            "desc": "Một trang độc lập tối giản để giới thiệu doanh nghiệp rõ ràng và giúp khách liên hệ nhanh.",
+            "features": [
+              "Website một trang, ưu tiên trải nghiệm điện thoại",
+              "Phiên bản tiếng Việt và tiếng Anh",
+              "Các nhóm xe chính",
+              "Giá thuê tham khảo",
+              "Điều kiện thuê và giấy tờ cơ bản",
+              "Địa chỉ và Google Maps",
+              "Nút Zalo và WhatsApp",
+              "Sử dụng hình ảnh thật của cửa hàng",
+              "Chuẩn bị cơ bản để xuất bản"
+            ],
+            "discount": "0 USD"
+          },
+          {
+            "index": 2,
+            "icon": "stars",
+            "name": "Pilot dành riêng cho Vạn Phúc",
+            "price": "600 USD",
+            "discount": "0 USD",
+            "term": "2–3 tuần",
+            "featured": true,
+            "desc": "Phương án được đề xuất: phiên bản trình diễn đầy đủ, được xây dựng riêng cho hoạt động thực tế của Vạn Phúc.",
+            "features": [
+              "Toàn bộ nội dung của gói Khởi động số",
+              "Đầy đủ phiên bản VI / EN / RU",
+              "Danh mục xe đô thị, xe 50cc và xe điện",
+              "Thẻ thông tin xe và giá tham khảo",
+              "Chọn thời gian thuê và loại phương tiện",
+              "Yêu cầu có cấu trúc qua Zalo hoặc WhatsApp",
+              "Điều kiện cọc, giấy tờ, giao nhận và hoàn trả",
+              "Khối uy tín từ Google Maps và Facebook",
+              "Thông tin địa điểm 22 Phúc Đức",
+              "Giờ mở cửa 06:00–20:00",
+              "Phân tích web cơ bản",
+              "Bàn giao sẵn sàng để xuất bản"
+            ]
+          },
+          {
+            "index": 3,
+            "icon": "gear-wide-connected",
+            "name": "Hệ thống cho thuê xe",
+            "price": "từ 1.500 USD",
+            "term": "5–8 tuần",
+            "featured": false,
+            "desc": "Giai đoạn tương lai sau khi gói pilot chứng minh được giá trị thực tế cho doanh nghiệp.",
+            "features": [
+              "Toàn bộ nội dung của gói Pilot Vạn Phúc",
+              "Trang quản lý xe và giá",
+              "Trạng thái xe đang có sẵn",
+              "Lịch yêu cầu và lịch thuê",
+              "Hồ sơ khách hàng",
+              "Lịch sử liên hệ",
+              "Thông báo cho chủ cửa hàng",
+              "Bộ lọc theo loại xe, giá và thời gian",
+              "Phân tích nâng cao",
+              "Sẵn sàng tích hợp CRM",
+              "Sẵn sàng kết nối SEO và SMM",
+              "Kiến trúc cho tự động hóa trong tương lai"
+            ],
+            "discount": "0 USD"
+          }
+        ]
+      },
+      "includes": [
+        {
+          "index": 1,
+          "text": "Phân tích hoạt động thực tế, điểm mạnh và các câu hỏi thường gặp của khách",
+          "icon": "check-lg"
+        },
+        {
+          "index": 2,
+          "text": "Trải nghiệm mobile-first và cấu trúc rõ ràng, không phức tạp không cần thiết",
+          "icon": "check-lg"
+        },
+        {
+          "index": 3,
+          "text": "Nội dung bằng tiếng Việt, tiếng Anh và tiếng Nga",
+          "icon": "check-lg"
+        },
+        {
+          "index": 4,
+          "text": "Tích hợp hình ảnh, Google Maps, Zalo và WhatsApp",
+          "icon": "check-lg"
+        },
+        {
+          "index": 5,
+          "text": "Bàn giao kết quả, hướng dẫn sử dụng và đề xuất hướng phát triển",
+          "icon": "check-lg"
+        }
+      ],
+      "important": {
+        "pretitle": "Kết quả đầu tiên sẽ hoạt động như thế nào",
+        "title": "Hành trình của khách từ tìm kiếm đến tin nhắn đầy đủ thông tin",
+        "items": [
+          {
+            "index": 1,
+            "icon": "phone",
+            "title": "Trang doanh nghiệp trên điện thoại",
+            "text": "<ul><li>Giữ tên Vạn Phúc và bổ sung mô tả rõ ràng Motorbike for Rent in Nha Trang</li><li>Mở nhanh trên điện thoại</li><li>Giới thiệu dịch vụ mà không cần đăng ký hoặc nhiều bước</li><li>Trở thành một đường link chung từ Facebook, Google Maps và các ứng dụng nhắn tin</li></ul>"
+          },
+          {
+            "index": 2,
+            "icon": "scooter",
+            "title": "Danh mục xe và điều kiện thuê",
+            "text": "<ul><li>Xe đô thị, xe tay ga, xe 50cc và xe điện</li><li>Giá tham khảo từ 150.000 VND mỗi ngày, giá chính xác phụ thuộc vào mẫu xe và thời gian thuê</li><li>Lựa chọn cọc bằng hộ chiếu hoặc tiền mặt</li><li>Giao xe tại Nha Trang, mũ bảo hiểm và hỗ trợ kỹ thuật</li></ul>"
+          },
+          {
+            "index": 3,
+            "icon": "send",
+            "title": "Yêu cầu đã chuẩn bị sẵn",
+            "text": "<ul><li>Khách chọn loại xe và ngày thuê</li><li>Chọn giao xe hoặc nhận tại cửa hàng</li><li>Nhận nội dung tin nhắn đã chuẩn bị</li><li>Gửi trực tiếp cho chủ cửa hàng qua Zalo hoặc WhatsApp</li></ul>"
+          },
+          {
+            "index": 4,
+            "icon": "geo-alt",
+            "title": "Uy tín và vị trí",
+            "text": "<ul><li>Điểm Google Maps 4,9 với khoảng 85 đánh giá</li><li>Hình ảnh thật và lịch sử Facebook từ năm 2014</li><li>Địa chỉ: 22 Phúc Đức, Bắc Nha Trang</li><li>Chỉ đường rõ ràng và liên hệ trực tiếp</li></ul>"
+          },
+          {
+            "index": 5,
+            "icon": "shield-check",
+            "title": "Giai đoạn đầu được kiểm soát",
+            "text": "<ul><li>Không có thanh toán trực tuyến</li><li>Không cam kết tình trạng xe trống theo thời gian thực</li><li>Không có CRM đầy đủ hoặc backend phức tạp</li><li>Không bao gồm chiến dịch SEO hoặc SMM trong gói pilot</li><li>Trước tiên kiểm tra phản hồi thực tế từ khách hàng và chủ cửa hàng</li></ul>"
+          }
+        ]
+      },
+      "extras": {
+        "pretitle": "Hiệu quả thực tế",
+        "title": "Điều gì thay đổi trong công việc hằng ngày",
+        "items": [
+          {
+            "index": 1,
+            "icon": "link-45deg",
+            "title": "1 đường link",
+            "text": "Thay vì tìm thông tin trong nhiều bài Facebook, khách nhận được một trang có cấu trúc rõ ràng."
+          },
+          {
+            "index": 2,
+            "icon": "translate",
+            "title": "3 ngôn ngữ",
+            "text": "Cùng một dịch vụ được trình bày rõ ràng cho khách Việt Nam, khách quốc tế và khách nói tiếng Nga."
+          },
+          {
+            "index": 3,
+            "icon": "clock",
+            "title": "Thông tin 24/7",
+            "text": "Trang giải thích các điều kiện cơ bản ngay cả khi chủ cửa hàng đang bận hoặc cửa hàng đã đóng cửa."
+          },
+          {
+            "index": 4,
+            "icon": "chat-square-text",
+            "title": "Yêu cầu chính xác hơn",
+            "text": "Chủ cửa hàng nhận được loại xe, ngày thuê, cách nhận xe và thông tin liên hệ thay vì bắt đầu từ con số không."
+          }
+        ]
+      },
+      "acticle": "<div class=\"cp-personal-letter\"><p class=\"cp-personal-letter__eyebrow\">Đề xuất cá nhân dành cho Vạn Phúc</p><h3>Đây không phải là một chương trình giảm giá thông thường và cũng không phải lời đề nghị “làm miễn phí”</h3><p>Tôi biết đến Vạn Phúc trước tiên với tư cách là một khách hàng và nhìn thấy một doanh nghiệp địa phương thực sự: có lịch sử lâu năm, xe được đánh giá tốt, nhiều phản hồi tích cực và một người chủ có thể giao tiếp tốt với khách quốc tế. Vì vậy, thay vì gửi một danh sách dịch vụ chung chung, tôi đã chuẩn bị một đề xuất riêng cho điểm cho thuê xe này.</p><p>Mỗi phương án đều có giá trị thực tế riêng. Dành cho Vạn Phúc, tôi đề xuất <strong>ưu đãi cá nhân 100%</strong>: trong giai đoạn đầu, chi phí cuối cùng hiển thị của gói được chọn là <strong>0 USD</strong>.</p><div class=\"cp-personal-letter__offer\"><p><strong>Giá trị danh nghĩa:</strong> theo gói được lựa chọn</p><p><strong>Ưu đãi cá nhân:</strong> 100%</p><p><strong>Chi phí giai đoạn đầu dành cho Vạn Phúc:</strong> 0 USD</p></div><p>Điều này không có nghĩa là công việc được thực hiện miễn phí vô điều kiện. Ý tưởng là trước tiên tạo ra một kết quả hữu ích và kiểm chứng nó với doanh nghiệp thực tế, sau đó hai bên sẽ trao đổi riêng về hình thức hợp tác tiếp theo, các điều kiện tương hỗ và những thỏa thuận phù hợp cho cả hai bên.</p><p>Đối với tôi, đây là cơ hội để xây dựng một case study địa phương tốt tại Việt Nam, hiểu sâu hơn nhu cầu của một doanh nghiệp cho thuê xe thực tế và hoàn thành toàn bộ chu trình phát triển cùng với một chủ doanh nghiệp cởi mở với khách quốc tế. Về phía anh, tôi cần thông tin chính xác, hình ảnh, phản hồi trung thực và sự đồng ý về việc có thể giới thiệu kết quả trong portfolio của tôi hay không.</p><p><strong>Bước đầu tiên rất đơn giản:</strong> chọn phương án phù hợp, xem bản trình diễn và trao đổi trực tiếp về hình thức thỏa thuận tiếp theo sao cho công bằng và hữu ích cho cả hai bên.</p></div>"
+    }
+  }
+}

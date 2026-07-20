@@ -1,4 +1,3 @@
-// src/schemas/feedbackForm.js
 export default {
     key: 'feedback',
     // (опционально) human title

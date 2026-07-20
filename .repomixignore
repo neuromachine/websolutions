@@ -1,0 +1,19 @@
+# Add patterns to ignore here, one per line
+# Example:
+# *.log
+# tmp/
+
+#svg
+src/components/blocks/compred/micro/svg/**
+src/components/blocks/services/micro/**
+src/components/WSteam.vue
+src/components/Logo.vue
+
+#all assets
+src/assets/**
+
+#self files - off recurcive
+repomix-output.xml
+context-arch.md
+context-export.md
+*.repomix-output.*

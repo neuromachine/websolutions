@@ -1,0 +1,66 @@
+{
+  "$schema": "https://repomix.com/schemas/latest/schema.json",
+  "input": {
+    "maxFileSize": 52428800
+  },
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "parsableStyle": false,
+    "fileSummary": true,
+    "directoryStructure": true,
+    "files": true,
+    "removeComments": false,
+    "removeEmptyLines": true,
+    "compress": false,
+    "topFilesLength": 10,
+    "showLineNumbers": false,
+    "truncateBase64": false,
+    "copyToClipboard": false,
+    "includeFullDirectoryStructure": false,
+    "tokenCountTree": false,
+    "git": {
+      "sortByChanges": true,
+      "sortByChangesMaxCommits": 100,
+      "includeDiffs": false,
+      "includeLogs": false,
+      "includeLogsCount": 50
+    }
+  },
+  "include": [],
+  "ignore": {
+    "useGitignore": true,
+    "useDotIgnore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      ".agents/**",
+      ".gemini/**",
+      "node_modules/**",
+      "dist/**",
+      ".nuxt/**",
+
+      "src/assets/fonts/**",
+      "src/assets/images/**",
+      "public/**",
+
+      "**/*.min.js",
+      "**/*.min.css",
+      "**/*.d.ts",
+      "**/__tests__/**",
+      "**/*.spec.ts",
+      "**/*.test.ts",
+
+      "vite.config.ts",
+      ".eslintrc.*",
+      ".prettierrc.*",
+      "tsconfig.json",
+      "env.d.ts"
+    ]
+  },
+  "security": {
+    "enableSecurityCheck": true
+  },
+  "tokenCount": {
+    "encoding": "o200k_base"
+  }
+}
