@@ -1,58 +1,54 @@
-# Stage 17 — Frontend Next Tasks Roadmap Package
+## WS Antigravity package — FE-015
 
-This package contains a grouped backlog of future frontend-oriented agent tasks for the WebSolutions frontend repository.
-
-It does not replace the existing Stage 16 package (`FE-004/005/006`).
-It extends the frontend roadmap after the current Compred / ind_offers / service offers work has been reviewed.
-
-## Groups
+Пакет подготовлен для прохода **A-CP-4** и содержит одну frontend-задачу:
 
 ```text
-Group A — Compred dynamic block rendering architecture
-Group B — Scroll animations for portfolio and home blocks
-Group C — Services rendering adaptation
-Group D — Offer detail modal + backend handoff
-Group E — Configurator / calculator / quote quiz MVP
+TASK-FE-015 — Structured Acticle & Responsive CP Card Layout
 ```
 
-## Recommended execution order
+Задача не создаёт и не изменяет JSON коммерческого предложения. Файл предложения
+включён только как read-only reference для проверки структурированного `acticle`.
+
+### Назначение
+
+1. Научить существующий `acticle.vue` корректно отображать:
+   - legacy-цитату;
+   - структурированное персональное письмо.
+
+2. Исправить раскладку карточек коммерческого предложения:
+   - `Benefits`: пять элементов → пять колонок на `lg`;
+   - `Includes`: перейти от фиксированных `col-lg-3 col-md-6` к `d-flex col`
+     и общей адаптивной row-cols-схеме.
+
+3. Сохранить существующие API-контракты и legacy-ключ `acticle`.
+
+### Установка
+
+Распакуйте архив в корень frontend-репозитория `websolutions`.
+
+После распаковки появятся только файлы внутри:
 
 ```text
-Prerequisite:
-  FE-004 — Compred practical refactor
-  FE-005 — ind_offers rendering
-  FE-006 — service offers rendering
-
-Then:
-  FE-007 — Compred dynamic section renderer architecture
-  FE-008 — Portfolio List scroll animation
-  FE-009 — Home Workflow / Portfolio scroll animation
-  FE-010 — Services rendering adaptation and i18n hardening
-  FE-011 — Offer detail modal and backend article handoff
-  BE-HANDOFF-001 — Backend article/detail endpoint request
-  FE-012 — Calculator/configurator MVP
-  FE-013 — Quote quiz form upgrade
+.agents/
 ```
 
-## Command policy
+Исходный код `src/**` пакет не изменяет.
 
-Allowed by default:
+### Запуск в Antigravity
 
-```bash
-npm run test:run
+Передайте агенту launch-файл:
+
+```text
+.agents/tasks/LAUNCH-FE-015-compred-structured-acticle-layout.md
 ```
 
-Forbidden unless explicitly requested by the human operator:
+### Ожидаемый отчёт агента
 
-```bash
-npm run build
+```text
+.agents/reports/REPORT-FE-015-compred-structured-acticle-layout.md
 ```
 
-Production build is handled by CI/CD. Local build can pollute git status and is not required for these agent tasks.
+### Важная граница
 
-## Repository boundary
-
-These tasks are primarily for the frontend repository.
-
-Backend needs must be expressed as handoff documents, not implemented from the frontend repo.
-
+Автономный website prototype из вектора B-WP не относится к этой задаче.
+FE-015 касается только существующего frontend WebSolutions и вывода `ind_offers`.
