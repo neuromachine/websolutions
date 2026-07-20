@@ -2,7 +2,7 @@
 defineProps({
   align: {
     type: String,
-    default: 'left'
+    default: 'center'
   }
 })
 </script>

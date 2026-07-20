@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import SectionHeader from "@/components/blocks/general/ui/SectionHeader.vue";
 import Card from "@/components/blocks/general/ui/card.vue";
 import IconOffer from "@/components/blocks/services/micro/icon_offer.vue";
+import { getCardGridClasses } from "@/components/blocks/general/ui/cardGridClasses.js";
 
 const props = defineProps({
   data: {
@@ -16,17 +17,7 @@ const colsClass = computed(() => {
   if (!Array.isArray(items) || items.length === 0) {
     return 'row-cols-1'
   }
-
-  const count = items.length
-
-  if (count === 1) return 'row-cols-1 row-cols-lg-1'
-  if (count === 2) return 'row-cols-1 row-cols-md-2 row-cols-lg-2'
-  if (count === 3) return 'row-cols-1 row-cols-md-2 row-cols-lg-3'
-  if (count === 4) return 'row-cols-1 row-cols-md-2 row-cols-lg-4'
-  if (count === 5) return 'row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center'
-  if (count === 6) return 'row-cols-1 row-cols-md-2 row-cols-lg-3'
-  
-  return 'row-cols-1 row-cols-md-2 row-cols-lg-4'
+  return getCardGridClasses(items.length)
 })
 </script>
 
